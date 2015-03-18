@@ -11,9 +11,17 @@ import SpriteKit
 class GameScene: SKScene {
     
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
+    let title = SKSpriteNode(imageNamed: "Title")
     
     override func didMoveToView(view: SKView) {
         /* Sets up Scene */
+        self.title.anchorPoint = CGPointMake(0.5, 0.5)
+        self.title.xScale = (300/self.title.size.width)
+        self.title.yScale = (100/self.title.size.height)
+        self.title.position = CGPointMake(CGRectGetMidX(self.frame),
+            CGRectGetMaxY(self.frame) - 120)
+        
+        
         self.playButton.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMidY(self.frame))
         self.addChild(playButton)
@@ -23,6 +31,8 @@ class GameScene: SKScene {
         let pulseDown = SKAction.scaleTo(0.95, duration: 0.5)
         let pulse = SKAction.sequence([pulseUp, pulseDown])
         let repeatPulse = SKAction.repeatActionForever(pulse)
+        
+        self.addChild(title)
         self.playButton.runAction(repeatPulse)
     }
     

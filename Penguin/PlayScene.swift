@@ -21,6 +21,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let longBlock = SKSpriteNode(imageNamed: "Tallblock")
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
     let winner = SKSpriteNode(imageNamed: "Winner")
+    let pausedImage = SKSpriteNode(imageNamed: "Paused")
+    
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     enum BodyType:UInt32 {
@@ -94,6 +96,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.winner.yScale = (200/self.winner.size.height)
         self.winner.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         
+        self.pausedImage.anchorPoint = CGPointMake(0.5, 0.5)
+        self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        
+        
         //Add all children images to self
         self.addChild(penguin)
         self.addChild(playButton)
@@ -124,10 +130,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 skView.presentScene(gameScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Down, duration: 1.0))
             }else{
                 if(self.physicsWorld.speed == 0){
-                    println("Resume")
+                    //Resume
+                    self.pausedImage.removeFromParent()
                     self.physicsWorld.speed = 1
                 }else{
-                    println("Pause")
+                    //Pause
+                    self.addChild(pausedImage)
                     self.physicsWorld.speed = 0
                 }
             }
@@ -150,7 +158,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         switch(contactMask) {
             
         case BodyType.penguin.rawValue | BodyType.goal.rawValue:
-            println("contact made")
+            //println("contact made")
             self.addChild(winner)
             
         default:
@@ -169,7 +177,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         switch(contactMask) {
         case BodyType.penguin.rawValue | BodyType.goal.rawValue:
             //either the contactMask was the bro type or the ground type
-            println("contact ended")
+            //println("contact ended")
             self.winner.removeFromParent()
             
         default:
