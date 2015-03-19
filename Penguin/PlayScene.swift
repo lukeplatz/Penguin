@@ -15,6 +15,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var destX:CGFloat = 0
     var destY:CGFloat = 0
     
+    var calibrateX = CGFloat(0)
+    var calibrateY = CGFloat(0)
+    var needToCalibrate = true
+    
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
     let goal = SKSpriteNode(imageNamed: "Spaceship")
@@ -107,13 +111,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(longBlock)
         self.addChild(shortBlock)
         
-        //Set up and manage motion manager to get accelerometer data
-        motionManager.accelerometerUpdateInterval = (1/40)
-        motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{
-            data, error in
-            self.physicsWorld.gravity = CGVectorMake(CGFloat(data.acceleration.x) * 9.8 * 9.8, CGFloat(data.acceleration.y) * 9.8 * 9.8)
-            self.penguin.physicsBody!.applyImpulse(CGVectorMake(-CGFloat(data.acceleration.x) * 3, -CGFloat(data.acceleration.y) * 3 ))
-        })
+        if (self.motionManager.accelerometerAvailable){
+            //Set up and manage motion manager to get accelerometer data
+            self.motionManager.accelerometerUpdateInterval = (1/40)
+            self.motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{
+                data, error in
+                if(self.needToCalibrate){
+                    self.calibrateX = CGFloat(data.acceleration.x)
+                    self.calibrateY = CGFloat(data.acceleration.y)
+                    self.needToCalibrate = false
+                    println("calibrated: \(self.calibrateX), \(self.calibrateY)")
+                }
+                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 20 * 9.8, (CGFloat(data.acceleration.y) - self.calibrateY) * 20 * 9.8)
+            })
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -122,6 +133,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.locationInNode(self)
             if self.nodeAtPoint(location) == self.playButton{
                 motionManager.stopAccelerometerUpdates()
+                self.needToCalibrate = true
                 var gameScene = GameScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
