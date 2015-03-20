@@ -12,6 +12,8 @@ class MainMenuScene: SKScene {
     //Sets up playbutton and title variables
 
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
+    let optionsButton = SKSpriteNode(imageNamed: "OptionsButton")
+    let highscoresButton = SKSpriteNode(imageNamed: "HighscoresButton")
     let title = SKSpriteNode(imageNamed: "Title")
     
     
@@ -27,7 +29,9 @@ class MainMenuScene: SKScene {
             CGRectGetMaxY(self.frame) - 120)
         
         self.playButton.position = CGPointMake(CGRectGetMidX(self.frame),
-            CGRectGetMidY(self.frame))
+            CGRectGetMidY(self.frame) + 60 )
+        self.optionsButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 60)
+        self.highscoresButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 180)
 
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
         
@@ -38,8 +42,12 @@ class MainMenuScene: SKScene {
         
         self.addChild(title)
         self.addChild(playButton)
+        self.addChild(optionsButton)
+        self.addChild(highscoresButton)
         
         self.playButton.runAction(repeatPulse)
+        self.optionsButton.runAction(repeatPulse)
+        self.highscoresButton.runAction(repeatPulse)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
