@@ -8,7 +8,7 @@
 
 import SpriteKit
 //Gamescene == View
-class GameScene: SKScene {
+class MainMenuScene: SKScene {
     //Sets up playbutton and title variables
 
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
