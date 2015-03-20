@@ -15,6 +15,9 @@ class MainMenuScene: SKScene {
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
     let title = SKSpriteNode(imageNamed: "Title")
     
+    
+    
+    
     override func didMoveToView(view: SKView) {
         /* Sets up Scene */
         self.title.anchorPoint = CGPointMake(0.5, 0.5)
@@ -22,7 +25,7 @@ class MainMenuScene: SKScene {
         self.title.yScale = (100/self.title.size.height)
         self.title.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMaxY(self.frame) - 120)
-        
+        let test = self.title.xScale
         
         self.playButton.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMidY(self.frame))
