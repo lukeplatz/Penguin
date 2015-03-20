@@ -7,11 +7,10 @@
 //
 
 import SpriteKit
-
+//Gamescene == View
 class MainMenuScene: SKScene {
-    
-    
-    
+    //Sets up playbutton and title variables
+
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
     let title = SKSpriteNode(imageNamed: "Title")
     
@@ -20,16 +19,16 @@ class MainMenuScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         /* Sets up Scene */
+        /*self == this*/
         self.title.anchorPoint = CGPointMake(0.5, 0.5)
         self.title.xScale = (300/self.title.size.width)
         self.title.yScale = (100/self.title.size.height)
         self.title.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMaxY(self.frame) - 120)
-        let test = self.title.xScale
         
         self.playButton.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMidY(self.frame))
-        self.addChild(playButton)
+
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
         
         let pulseUp = SKAction.scaleTo(1.05, duration: 0.5)
@@ -38,6 +37,8 @@ class MainMenuScene: SKScene {
         let repeatPulse = SKAction.repeatActionForever(pulse)
         
         self.addChild(title)
+        self.addChild(playButton)
+        
         self.playButton.runAction(repeatPulse)
     }
     

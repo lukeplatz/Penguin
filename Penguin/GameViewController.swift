@@ -30,8 +30,8 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // "GameScene" means MainMenuScene. DO NOT CHANGE
-        if let scene = MainMenuScene.unarchiveFromFile("GameScene") as? MainMenuScene {
+
+        if let scene = MainMenuScene.unarchiveFromFile("MainMenuScene") as? MainMenuScene {
             // Configure the view.
             let skView = self.view as SKView
             skView.showsFPS = true
