@@ -1,5 +1,5 @@
 //
-//  GameScene.swift
+//  MainMenuScene.swift
 //  Penguin
 //
 //  Created by Luke Platz on 3/17/15.
@@ -8,7 +8,9 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class MainMenuScene: SKScene {
+    
+    
     
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
     let title = SKSpriteNode(imageNamed: "Title")
@@ -48,7 +50,7 @@ class GameScene: SKScene {
                 playScene.size = skView.bounds.size
                 skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Up, duration: 1.0))
             }else{
-                println("GameScene Background Pressed")
+                println("MainMenuScene Background Pressed")
             }
         }
     }
