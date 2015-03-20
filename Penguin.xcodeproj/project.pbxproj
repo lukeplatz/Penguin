@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */; };
 		371649231AB8781A0019694B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649221AB8781A0019694B /* AppDelegate.swift */; };
 		371649251AB8781A0019694B /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 371649241AB8781A0019694B /* MainMenuScene.sks */; };
 		371649271AB8781A0019694B /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649261AB8781A0019694B /* MainMenuScene.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectionScene.swift; sourceTree = "<group>"; };
 		3716491D1AB8781A0019694B /* Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penguin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		371649211AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371649221AB8781A0019694B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				371649261AB8781A0019694B /* MainMenuScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
+				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				3716492A1AB8781A0019694B /* Main.storyboard */,
 				3716492D1AB8781A0019694B /* Images.xcassets */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
@@ -226,6 +229,7 @@
 				371649271AB8781A0019694B /* MainMenuScene.swift in Sources */,
 				371649291AB8781A0019694B /* GameViewController.swift in Sources */,
 				371649471AB87ECB0019694B /* PlayScene.swift in Sources */,
+				37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */,
 				371649231AB8781A0019694B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
