@@ -134,12 +134,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             if self.nodeAtPoint(location) == self.playButton{
                 motionManager.stopAccelerometerUpdates()
                 self.needToCalibrate = true
-                var gameScene = GameScene(size: self.size)
+                var mainMenuScene = MainMenuScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
-                gameScene.scaleMode = .ResizeFill
-                gameScene.size = skView.bounds.size
-                skView.presentScene(gameScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Down, duration: 1.0))
+                mainMenuScene.scaleMode = .ResizeFill
+                mainMenuScene.size = skView.bounds.size
+                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Down, duration: 1.0))
             }else{
                 if(self.physicsWorld.speed == 0){
                     //Resume
