@@ -13,6 +13,9 @@ class GameScene: SKScene {
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
     let title = SKSpriteNode(imageNamed: "Title")
     
+    
+    
+    
     override func didMoveToView(view: SKView) {
         /* Sets up Scene */
         self.title.anchorPoint = CGPointMake(0.5, 0.5)
