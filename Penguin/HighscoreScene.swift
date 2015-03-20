@@ -9,12 +9,11 @@
 import SpriteKit
 
 
-class ModeSelectionScene: SKScene {
+class HighscoreScene: SKScene {
     
-    let title = SKSpriteNode(imageNamed: "ModeSelection")
+    let title = SKSpriteNode(imageNamed: "HighscoresTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
-    let storyButton = SKSpriteNode(imageNamed: "StoryButton")
-    let endlessButton = SKSpriteNode(imageNamed: "EndlessButton")
+    
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     override func didMoveToView(view: SKView) {
@@ -31,13 +30,9 @@ class ModeSelectionScene: SKScene {
         self.backButton.xScale = (100/self.backButton.size.width)
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-        self.storyButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 40)
-        self.endlessButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 40)
         
         self.addChild(title)
         self.addChild(backButton)
-        self.addChild(storyButton)
-        self.addChild(endlessButton)
         
     }
     
@@ -53,16 +48,8 @@ class ModeSelectionScene: SKScene {
                 mainMenuScene.size = skView.bounds.size
                 skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
                 
-            }
-            else if self.nodeAtPoint(location) == self.storyButton{
-                var levelSelectScene = LevelSelectScene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                levelSelectScene.scaleMode = .ResizeFill
-                levelSelectScene.size = skView.bounds.size
-                skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }else{
-                println("ModeSelectionScene Background Pressed")
+                println("HighscoreScene Background Pressed")
             }
         }
     }

@@ -27,9 +27,9 @@ class MainMenuScene: SKScene {
             CGRectGetMaxY(self.frame) - 120)
         
         self.playButton.position = CGPointMake(CGRectGetMidX(self.frame),
-            CGRectGetMidY(self.frame) + 60 )
-        self.optionsButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 60)
-        self.highscoresButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 180)
+            CGRectGetMidY(self.frame) + 40 )
+        self.optionsButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 40)
+        self.highscoresButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 100)
 
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
         
@@ -53,19 +53,36 @@ class MainMenuScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             if self.nodeAtPoint(location) == self.playButton{
-                var playScene = PlayScene(size: self.size)
+                var ModeSelectScene = ModeSelectionScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
-                playScene.scaleMode = .ResizeFill
-                playScene.size = skView.bounds.size
-                skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Up, duration: 1.0))
-            }else{
+                ModeSelectScene.scaleMode = .ResizeFill
+                ModeSelectScene.size = skView.bounds.size
+                skView.presentScene(ModeSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Up, duration: 1.0))
+            }
+            else if self.nodeAtPoint(location) == self.optionsButton{
+                var optionsScene = OptionsScene(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                optionsScene.scaleMode = .ResizeFill
+                optionsScene.size = skView.bounds.size
+                skView.presentScene(optionsScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1.0))
+            }
+            else if self.nodeAtPoint(location) == self.highscoresButton{
+                var highscoreScene = HighscoreScene(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                highscoreScene.scaleMode = .ResizeFill
+                highscoreScene.size = skView.bounds.size
+                skView.presentScene(highscoreScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1.0))
+            }
+            else{
                 var modeSelect = ModeSelectionScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
                 modeSelect.scaleMode = .ResizeFill
                 modeSelect.size = skView.bounds.size
-                skView.presentScene(modeSelect, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                skView.presentScene(modeSelect, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }
         }
     }

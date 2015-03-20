@@ -20,7 +20,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var needToCalibrate = true
     
     let penguin = SKSpriteNode(imageNamed: "Penguin")
-    let playButton = SKSpriteNode(imageNamed: "PlayButton")
+    let backButton = SKSpriteNode(imageNamed: "BackButton")
     let goal = SKSpriteNode(imageNamed: "Spaceship")
     let longBlock = SKSpriteNode(imageNamed: "Tallblock")
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
@@ -61,12 +61,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         
         //Sets up Back Image (playButton)
-        self.playButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.playButton.xScale = (100/self.playButton.size.width)
-        self.playButton.yScale = (50/self.playButton.size.height)
-        self.playButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.playButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.playButton.size.height / 2) - statusbarHeight)
-        self.playButton.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(100), CGFloat(50)))
-        self.playButton.physicsBody?.dynamic = false
+        self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
+        self.backButton.xScale = (100/self.backButton.size.width)
+        self.backButton.yScale = (50/self.backButton.size.height)
+        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
+        self.backButton.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(100), CGFloat(50)))
+        self.backButton.physicsBody?.dynamic = false
         
         //Sets up goal
         self.goal.anchorPoint = CGPointMake(0.5, 0.5)
@@ -106,7 +106,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         //Add all children images to self
         self.addChild(penguin)
-        self.addChild(playButton)
+        self.addChild(backButton)
         self.addChild(goal)
         self.addChild(longBlock)
         self.addChild(shortBlock)
@@ -131,7 +131,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         /* Called when a touch begins */
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            if self.nodeAtPoint(location) == self.playButton{
+            if self.nodeAtPoint(location) == self.backButton{
                 motionManager.stopAccelerometerUpdates()
                 self.needToCalibrate = true
                 var mainMenuScene = MainMenuScene(size: self.size)
@@ -139,7 +139,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 skView.ignoresSiblingOrder = true
                 mainMenuScene.scaleMode = .ResizeFill
                 mainMenuScene.size = skView.bounds.size
-                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Down, duration: 1.0))
+                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1.0))
             }else{
                 if(self.physicsWorld.speed == 0){
                     //Resume
