@@ -23,7 +23,7 @@ class GameScene: SKScene {
         self.title.yScale = (100/self.title.size.height)
         self.title.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMaxY(self.frame) - 120)
-        
+        let test = self.title.xScale
         
         self.playButton.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMidY(self.frame))
