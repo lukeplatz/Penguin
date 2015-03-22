@@ -139,7 +139,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 skView.ignoresSiblingOrder = true
                 mainMenuScene.scaleMode = .ResizeFill
                 mainMenuScene.size = skView.bounds.size
-                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 1.0))
+                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
             }else{
                 if(self.physicsWorld.speed == 0){
                     //Resume

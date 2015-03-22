@@ -58,7 +58,7 @@ class MainMenuScene: SKScene {
                 skView.ignoresSiblingOrder = true
                 ModeSelectScene.scaleMode = .ResizeFill
                 ModeSelectScene.size = skView.bounds.size
-                skView.presentScene(ModeSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 1.0))
+                skView.presentScene(ModeSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }
             else if self.nodeAtPoint(location) == self.optionsButton{
                 var optionsScene = OptionsScene(size: self.size)
@@ -66,7 +66,7 @@ class MainMenuScene: SKScene {
                 skView.ignoresSiblingOrder = true
                 optionsScene.scaleMode = .ResizeFill
                 optionsScene.size = skView.bounds.size
-                skView.presentScene(optionsScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 1.0))
+                skView.presentScene(optionsScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }
             else if self.nodeAtPoint(location) == self.highscoresButton{
                 var highscoreScene = HighscoreScene(size: self.size)
@@ -74,15 +74,10 @@ class MainMenuScene: SKScene {
                 skView.ignoresSiblingOrder = true
                 highscoreScene.scaleMode = .ResizeFill
                 highscoreScene.size = skView.bounds.size
-                skView.presentScene(highscoreScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 1.0))
+                skView.presentScene(highscoreScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }
             else{
-                var modeSelect = ModeSelectionScene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                modeSelect.scaleMode = .ResizeFill
-                modeSelect.size = skView.bounds.size
-                skView.presentScene(modeSelect, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+                println("Background Pressed")
             }
         }
     }
