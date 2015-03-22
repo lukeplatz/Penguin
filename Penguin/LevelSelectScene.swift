@@ -49,12 +49,12 @@ class LevelSelectScene: SKScene {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             if self.nodeAtPoint(location) == self.backButton{
-                var mainMenuScene = MainMenuScene(size: self.size)
+                var modeSelectionScene = ModeSelectionScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
-                mainMenuScene.scaleMode = .ResizeFill
-                mainMenuScene.size = skView.bounds.size
-                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+                modeSelectionScene.scaleMode = .ResizeFill
+                modeSelectionScene.size = skView.bounds.size
+                skView.presentScene(modeSelectionScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 
             }
             else if self.nodeAtPoint(location) == self.level1Button{

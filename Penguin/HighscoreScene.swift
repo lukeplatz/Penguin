@@ -46,7 +46,7 @@ class HighscoreScene: SKScene {
                 skView.ignoresSiblingOrder = true
                 mainMenuScene.scaleMode = .ResizeFill
                 mainMenuScene.size = skView.bounds.size
-                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 
             }else{
                 println("HighscoreScene Background Pressed")
