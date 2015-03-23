@@ -26,6 +26,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
     let winner = SKSpriteNode(imageNamed: "Winner")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
+    let score = SKLabelNode(fontNamed: "Arial")
+    var PlayerScore = 0
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -87,6 +89,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.longBlock.physicsBody?.dynamic = false
         
         
+        self.PlayerScore = 0
+        self.score.text = "Score: \(PlayerScore)"
+        self.score.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width * 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
+        
+        
         self.shortBlock.anchorPoint = CGPointMake(0.5, 0.5)
         self.shortBlock.xScale = (50/self.goal.size.width)
         self.shortBlock.yScale = (50/self.goal.size.height)
@@ -110,6 +117,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(goal)
         self.addChild(longBlock)
         self.addChild(shortBlock)
+        self.addChild(score)
         
         if (self.motionManager.accelerometerAvailable){
             //Set up and manage motion manager to get accelerometer data
@@ -172,7 +180,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case BodyType.penguin.rawValue | BodyType.goal.rawValue:
             //println("contact made")
             self.addChild(winner)
-            
+            PlayerScore++
+            self.score.text = "Score: \(PlayerScore)"
         default:
             return
             
