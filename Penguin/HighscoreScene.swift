@@ -13,6 +13,8 @@ class HighscoreScene: SKScene {
     
     let title = SKSpriteNode(imageNamed: "HighscoresTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
+    let score = SKLabelNode(fontNamed: "Arial")
+    var PlayerScore = 0
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -31,6 +33,12 @@ class HighscoreScene: SKScene {
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         
+        PlayerScore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+        self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        self.score.text = "Score: \(PlayerScore)"
+        
+        
+        self.addChild(score)
         self.addChild(title)
         self.addChild(backButton)
         

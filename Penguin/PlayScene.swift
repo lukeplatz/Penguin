@@ -142,6 +142,17 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             if self.nodeAtPoint(location) == self.backButton{
                 motionManager.stopAccelerometerUpdates()
                 self.needToCalibrate = true
+                
+                NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+                
+                //Check if score is higher than NSUserDefaults stored value and change NSUserDefaults stored value if it's true
+                if PlayerScore > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
+                    NSUserDefaults.standardUserDefaults().setInteger(PlayerScore, forKey: "highscore")
+                    NSUserDefaults.standardUserDefaults().synchronize()
+                }
+                
+                NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+                
                 var mainMenuScene = MainMenuScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
