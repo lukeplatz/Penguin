@@ -13,6 +13,7 @@ class HighscoreScene: SKScene {
     
     let title = SKSpriteNode(imageNamed: "HighscoresTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
+    let resetButton = SKSpriteNode(imageNamed: "ResetButton")
     let score = SKLabelNode(fontNamed: "Arial")
     var PlayerScore = 0
     
@@ -37,10 +38,14 @@ class HighscoreScene: SKScene {
         self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.score.text = "Score: \(PlayerScore)"
         
+        self.resetButton.anchorPoint = CGPointMake(0.5, 0.5)
+        self.resetButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + statusbarHeight)
+        
         
         self.addChild(score)
         self.addChild(title)
         self.addChild(backButton)
+        self.addChild(resetButton)
         
     }
     
@@ -56,6 +61,13 @@ class HighscoreScene: SKScene {
                 mainMenuScene.size = skView.bounds.size
                 skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 
+            }else if self.nodeAtPoint(location) == self.resetButton{
+                PlayerScore = 0
+                NSUserDefaults.standardUserDefaults().setInteger(PlayerScore, forKey: "highscore")
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
+                self.score.text = "Score: \(PlayerScore)"
+                println("reset")
             }else{
                 println("HighscoreScene Background Pressed")
             }

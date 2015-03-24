@@ -143,6 +143,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 motionManager.stopAccelerometerUpdates()
                 self.needToCalibrate = true
                 
+                //Sets High Scores
+                
                 NSUserDefaults.standardUserDefaults().integerForKey("highscore")
                 
                 //Check if score is higher than NSUserDefaults stored value and change NSUserDefaults stored value if it's true
@@ -152,6 +154,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 NSUserDefaults.standardUserDefaults().integerForKey("highscore")
+                
+                //Done setting high scores
                 
                 var mainMenuScene = MainMenuScene(size: self.size)
                 let skView = self.view! as SKView
