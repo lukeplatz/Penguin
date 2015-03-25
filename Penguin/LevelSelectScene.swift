@@ -29,7 +29,7 @@ class LevelSelectScene: SKScene {
             CGRectGetMaxY(self.frame) - 120)
         
         self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backButton.xScale = (100/self.backButton.size.width)
+        self.backButton.xScale = (50/self.backButton.size.width)
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         
