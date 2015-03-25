@@ -28,6 +28,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
+    let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     var PlayerScore = 0
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
@@ -104,7 +105,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 mainMenuScene.scaleMode = .ResizeFill
                 mainMenuScene.size = skView.bounds.size
                 skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-            }else{
+            }else if self.nodeAtPoint(location) == self.pauseButton{
                 if(self.physicsWorld.speed == 0){
                     //Resume
                     self.pausedImage.removeFromParent()
@@ -160,6 +161,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.score.zPosition = 2
         
+        
+        self.pauseButton.xScale = (50/self.pauseButton.size.width)
+        self.pauseButton.yScale = (50/self.pauseButton.size.height)
+        self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - statusbarHeight)
+        self.pauseButton.zPosition = 2
+        
         //Winner Message
         self.winner.anchorPoint = CGPointMake(0.5, 0.5)
         self.winner.xScale = (200/self.winner.size.width)
@@ -173,9 +180,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.pausedImage.zPosition = 1
         
+        
         self.addChild(HUDbar)
         self.addChild(backButton)
         self.addChild(score)
+        self.addChild(pauseButton)
     }
     
     
