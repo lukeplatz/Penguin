@@ -40,7 +40,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
-        self.zPosition = 0
         self.physicsWorld.gravity = CGVectorMake(9.8, 9.8)
         self.physicsWorld.contactDelegate = self
         
