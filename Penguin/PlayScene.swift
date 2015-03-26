@@ -98,7 +98,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 
                 //Done setting high scores
                 
-                var mainMenuScene = MainMenuScene(size: self.size)
+                var mainMenuScene = LevelSelectScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
                 mainMenuScene.scaleMode = .ResizeFill
