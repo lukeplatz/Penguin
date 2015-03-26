@@ -58,6 +58,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
         
+        PlayerScore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
         
         highScoreBannerView.frame = CGRectMake(size.width * 0.2, 0, size.width * 0.6, size.height * 0.1)
         highScoreBannerView.image = UIImage(named: "HighscoresTitle")
