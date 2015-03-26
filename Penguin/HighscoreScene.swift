@@ -16,7 +16,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let resetButton = SKSpriteNode(imageNamed: "ResetButton")
     let score = SKLabelNode(fontNamed: "Arial")
-    var PlayerScore = 0
+    var NumLevelsUnlocked = 2
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -58,7 +58,6 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
         
-        PlayerScore = NSUserDefaults.standardUserDefaults().integerForKey("highscore")
         
         highScoreBannerView.frame = CGRectMake(size.width * 0.2, 0, size.width * 0.6, size.height * 0.1)
         highScoreBannerView.image = UIImage(named: "HighscoresTitle")
@@ -131,38 +130,38 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (story) {
-            if (PlayerScore == 0) {
-                return 1;
-            }
-            return PlayerScore
+        if(story){
+            return NumLevelsUnlocked
+        }else{
+            return 1
         }
-        return PlayerScore
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        var score = NSUserDefaults.standardUserDefaults().integerForKey("highscore\(indexPath.row + 1)")
+        
+        var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
+
         if (story) {
-            if (PlayerScore != 0) {
-                
-                var cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
-                
-                cell.textLabel?.text = "\(indexPath.row + 1). \(PlayerScore)"
-                cell.detailTextLabel?.text = String(PlayerScore)
-                return cell
+            if (score != 0) {
+                cell.textLabel?.text = "Level \(indexPath.row + 1):"
+                cell.detailTextLabel?.text = String(score)
             }
-            var cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
-            
-            cell.textLabel?.text = "no highscores"
-            cell.detailTextLabel?.text = ":("
-            return cell
+            cell.textLabel?.text = "Level \(indexPath.row + 1):"
+            cell.detailTextLabel?.text = "0"
         }
         else {
-            var cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
-            
-            cell.textLabel?.text = "\(indexPath.row + 1). \(PlayerScore)"
-            cell.detailTextLabel?.text = String(PlayerScore)
-            return cell
+            //Endless Mode
+            cell.textLabel?.text = "No Highscores"
+            cell.detailTextLabel?.text = ":("
         }
+        cell.textLabel?.font = UIFont(name: "Arial", size: 20)
+        cell.detailTextLabel?.font = UIFont(name: "Arial", size: 20)
+        cell.detailTextLabel?.textColor = UIColor.orangeColor()
+        cell.textLabel?.textColor = UIColor.orangeColor()
+        cell.backgroundColor = UIColor.clearColor()
+        
+        return cell
     }
     
     func refreshFeed(sender: AnyObject) {
@@ -192,7 +191,6 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
             self.refreshControl.removeTarget(self, action: "refreshFeed:", forControlEvents: nil)
             self.refreshControl.removeFromSuperview()
         }
-        println(("story"))
         endless = false
         story = true
         table.reloadData()

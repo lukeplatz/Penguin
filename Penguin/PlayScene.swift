@@ -19,6 +19,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
     
+    var level = 1
+    
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let goal = SKSpriteNode(imageNamed: "Spaceship")
@@ -84,19 +86,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 motionManager.stopAccelerometerUpdates()
                 self.needToCalibrate = true
                 
-                //Sets High Scores
-                
-                NSUserDefaults.standardUserDefaults().integerForKey("highscore")
-                
-                //Check if score is higher than NSUserDefaults stored value and change NSUserDefaults stored value if it's true
-                if PlayerScore > NSUserDefaults.standardUserDefaults().integerForKey("highscore") {
-                    NSUserDefaults.standardUserDefaults().setInteger(PlayerScore, forKey: "highscore")
-                    NSUserDefaults.standardUserDefaults().synchronize()
-                }
-                
-                NSUserDefaults.standardUserDefaults().integerForKey("highscore")
-                
-                //Done setting high scores
+                //Sets HighScore
+                setHighScore(level, score: PlayerScore)
                 
                 var mainMenuScene = LevelSelectScene(size: self.size)
                 let skView = self.view! as SKView
@@ -190,6 +181,18 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func setupMap(){
         //Sets up goal
        
+    }
+    
+    func setHighScore(level: Int, score: Int){
+        NSUserDefaults.standardUserDefaults().integerForKey("highscore\(level)")
+        
+        //Check if score is higher than NSUserDefaults stored value and change NSUserDefaults stored value if it's true
+        if PlayerScore > NSUserDefaults.standardUserDefaults().integerForKey("highscore\(level)") {
+            NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore\(level)")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+        
+        NSUserDefaults.standardUserDefaults().integerForKey("highscore\(level)")
     }
     
 
