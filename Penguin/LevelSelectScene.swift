@@ -14,7 +14,7 @@ class LevelSelectScene: SKScene {
     let title = SKSpriteNode(imageNamed: "LevelSelectTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
-    
+    let level2Button = SKSpriteNode(imageNamed: "Level2")
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -35,11 +35,14 @@ class LevelSelectScene: SKScene {
         
         self.level1Button.position = CGPointMake(CGRectGetMidX(self.frame),
             CGRectGetMidY(self.frame) + 40 )
+        self.level2Button.position = CGPointMake(CGRectGetMidX(self.frame),
+            CGRectGetMidY(self.frame) - 40)
         
         
         self.addChild(title)
         self.addChild(backButton)
         self.addChild(level1Button)
+        self.addChild(level2Button)
         
         
     }
@@ -64,6 +67,14 @@ class LevelSelectScene: SKScene {
                 level1.scaleMode = .ResizeFill
                 level1.size = skView.bounds.size
                 skView.presentScene(level1, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            }
+            else if self.nodeAtPoint(location) == self.level2Button{
+                var level2 = Level2Scene(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                level2.scaleMode = .ResizeFill
+                level2.size = skView.bounds.size
+                skView.presentScene(level2, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }else{
                 println("LevelSelectScene Background Pressed")
             }
