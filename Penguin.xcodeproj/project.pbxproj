@@ -106,7 +106,6 @@
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */,
 				3716492A1AB8781A0019694B /* Main.storyboard */,
-				65589ECC1AC21B7100E6CC2E /* To-Do List.txt */,
 				3716492D1AB8781A0019694B /* Images.xcassets */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
 				371649201AB8781A0019694B /* Supporting Files */,
@@ -223,7 +222,6 @@
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
 				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
-				65589ECD1AC21B7100E6CC2E /* To-Do List.txt in Resources */,
 				3716492C1AB8781A0019694B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
