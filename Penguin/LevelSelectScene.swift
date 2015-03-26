@@ -58,12 +58,12 @@ class LevelSelectScene: SKScene {
                 
             }
             else if self.nodeAtPoint(location) == self.level1Button{
-                var playScene = PlayScene(size: self.size)
+                var level1 = Level1Scene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
-                playScene.scaleMode = .ResizeFill
-                playScene.size = skView.bounds.size
-                skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+                level1.scaleMode = .ResizeFill
+                level1.size = skView.bounds.size
+                skView.presentScene(level1, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }else{
                 println("LevelSelectScene Background Pressed")
             }
