@@ -39,6 +39,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
         table.frame  = CGRectMake(size.width * 0.2, size.height * 0.3, size.width * 0.6, size.height - (size.height * 0.3))
         table.backgroundColor = UIColor.clearColor()
         
+        table.tableFooterView = UIView(frame: CGRectZero)
         table.dataSource = self
         table.delegate   = self
         table.allowsSelection = true

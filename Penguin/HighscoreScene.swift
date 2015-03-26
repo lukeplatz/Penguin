@@ -63,6 +63,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         highScoreBannerView.image = UIImage(named: "HighscoresTitle")
         self.view?.addSubview(highScoreBannerView)
         
+        table.tableFooterView = UIView(frame: CGRectZero)
         table.dataSource = self
         table.delegate   = self
         table.allowsSelection = false
