@@ -30,11 +30,11 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     var refreshControl: UIRefreshControl!
     
     //for displaying correct table
-    var local = true
-    var global = false
+    var story = true
+    var endless = false
     
-    let globalButton = UIButton()
-    let localButton = UIButton()
+    let endlessButton = UIButton()
+    let storyButton = UIButton()
     
     let PURPLE   = UIColor(red: 122/255, green: 113/255, blue: 254/255, alpha: 1)
     let SKY_BLUE = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
@@ -69,24 +69,24 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.view?.addSubview(table)
         
         let buttonHeader = UIView(frame: CGRectMake(0, 0, table.bounds.width, table.bounds.height * 0.1))
-        //local set up
-        localButton.frame = CGRectMake(0, 0, buttonHeader.bounds.width/2, buttonHeader.bounds.height)
+        //story set up
+        storyButton.frame = CGRectMake(0, 0, buttonHeader.bounds.width/2, buttonHeader.bounds.height)
         //set colors
-        localButton.backgroundColor = SKY_BLUE
-        localButton.setTitleColor(PURPLE, forState: UIControlState.Normal)
+        storyButton.backgroundColor = SKY_BLUE
+        storyButton.setTitleColor(PURPLE, forState: UIControlState.Normal)
         
-        localButton.addTarget(self, action: "localTouched", forControlEvents: UIControlEvents.TouchUpInside)
-        localButton.setTitle("Local", forState: UIControlState.Normal)
-        buttonHeader.addSubview(localButton)
+        storyButton.addTarget(self, action: "storyTouched", forControlEvents: UIControlEvents.TouchUpInside)
+        storyButton.setTitle("Story", forState: UIControlState.Normal)
+        buttonHeader.addSubview(storyButton)
         
         
-        //global button set up
-        globalButton.frame = CGRectMake(buttonHeader.bounds.width/2, 0, buttonHeader.bounds.width/2, buttonHeader.bounds.height)
-        globalButton.backgroundColor = PURPLE
-        globalButton.setTitleColor(SKY_BLUE, forState: UIControlState.Normal)
-        globalButton.setTitle("Global", forState: UIControlState.Normal)
-        globalButton.addTarget(self, action: "globalTouched", forControlEvents: UIControlEvents.TouchUpInside)
-        buttonHeader.addSubview(globalButton)
+        //endless button set up
+        endlessButton.frame = CGRectMake(buttonHeader.bounds.width/2, 0, buttonHeader.bounds.width/2, buttonHeader.bounds.height)
+        endlessButton.backgroundColor = PURPLE
+        endlessButton.setTitleColor(SKY_BLUE, forState: UIControlState.Normal)
+        endlessButton.setTitle("Endless", forState: UIControlState.Normal)
+        endlessButton.addTarget(self, action: "endlessTouched", forControlEvents: UIControlEvents.TouchUpInside)
+        buttonHeader.addSubview(endlessButton)
         
         table.tableHeaderView = buttonHeader
         
@@ -130,7 +130,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (local) {
+        if (story) {
             if (PlayerScore == 0) {
                 return 1;
             }
@@ -140,7 +140,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        if (local) {
+        if (story) {
             if (PlayerScore != 0) {
                 
                 var cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
@@ -170,36 +170,36 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.refreshControl.endRefreshing()
     }
     
-    func globalTouched() {
-        if (local) {
+    func endlessTouched() {
+        if (story) {
             self.refreshControl.addTarget(self, action: "refreshFeed:", forControlEvents: UIControlEvents.ValueChanged)
             self.table.addSubview(refreshControl)
         }
-        global = true
-        local = false
+        endless = true
+        story = false
         table.reloadData()
-        globalButton.backgroundColor = SKY_BLUE
-        globalButton.setTitleColor(PURPLE, forState: UIControlState.Normal)
+        endlessButton.backgroundColor = SKY_BLUE
+        endlessButton.setTitleColor(PURPLE, forState: UIControlState.Normal)
         
-        localButton.backgroundColor = PURPLE
-        localButton.setTitleColor(SKY_BLUE, forState: UIControlState.Normal)
+        storyButton.backgroundColor = PURPLE
+        storyButton.setTitleColor(SKY_BLUE, forState: UIControlState.Normal)
         
     }
     
-    func localTouched() {
-        if (global) {
+    func storyTouched() {
+        if (endless) {
             self.refreshControl.removeTarget(self, action: "refreshFeed:", forControlEvents: nil)
             self.refreshControl.removeFromSuperview()
         }
-        println(("local"))
-        global = false
-        local = true
+        println(("story"))
+        endless = false
+        story = true
         table.reloadData()
-        globalButton.backgroundColor = PURPLE
-        globalButton.setTitleColor(SKY_BLUE, forState: UIControlState.Normal)
+        endlessButton.backgroundColor = PURPLE
+        endlessButton.setTitleColor(SKY_BLUE, forState: UIControlState.Normal)
         
-        localButton.backgroundColor = SKY_BLUE
-        localButton.setTitleColor(PURPLE, forState: UIControlState.Normal)
+        storyButton.backgroundColor = SKY_BLUE
+        storyButton.setTitleColor(PURPLE, forState: UIControlState.Normal)
     }
     //****************
     
