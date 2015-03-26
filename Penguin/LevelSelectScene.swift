@@ -15,6 +15,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
     let table = UITableView()
+    var NumLevelsUnlocked = 2
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -76,6 +77,16 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
         cell.textLabel?.text = "Level \(indexPath.row + 1)"
+        cell.textLabel?.textAlignment = NSTextAlignment.Center
+        cell.textLabel?.font = UIFont(name: "Arial", size: 25)
+        cell.textLabel?.textColor = UIColor.orangeColor()
+        
+        cell.backgroundColor = UIColor.clearColor()
+        
+        if (indexPath.row + 1 > NumLevelsUnlocked){
+            cell.userInteractionEnabled = false
+            cell.textLabel?.enabled = false
+        }
         return cell
     }
     
