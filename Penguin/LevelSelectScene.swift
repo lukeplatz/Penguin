@@ -64,7 +64,15 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
                 table.removeFromSuperview()
             }
             else if self.nodeAtPoint(location) == self.level1Button{
-                var playScene = PlayScene(size: self.size)
+                var level1 = Level1Scene(size: self.size)
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                level1.scaleMode = .ResizeFill
+                level1.size = skView.bounds.size
+                skView.presentScene(level1, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            }
+            else if self.nodeAtPoint(location) == self.level2Button{
+                var level2 = Level2Scene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
                 playScene.scaleMode = .ResizeFill
