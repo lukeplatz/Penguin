@@ -96,6 +96,11 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.backButton.xScale = (50/self.backButton.size.width)
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
+        
+        self.resetButton.name = "reset"
+        self.resetButton.anchorPoint = CGPointMake(0.5, 0.5)
+        self.resetButton.position = CGPointMake(CGRectGetMaxX(self.frame) - resetButton.size.width / 2, CGRectGetMidY(self.frame) - resetButton.size.height / 2)
+        self.addChild(resetButton)
 
         self.addChild(backButton)
         
@@ -117,6 +122,13 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
             table.removeFromSuperview()
             highScoreBannerView.removeFromSuperview()
             
+        }else if(touchedNode.name == "reset"){
+            for index in 1 ... NumLevelsUnlocked{
+                NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscore\(index)")
+                NSUserDefaults.standardUserDefaults().synchronize()
+            }
+            table.reloadData()
+            println("reset")
         }
         
     }
@@ -140,16 +152,16 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         var score = NSUserDefaults.standardUserDefaults().integerForKey("highscore\(indexPath.row + 1)")
-        
         var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: nil)
 
         if (story) {
             if (score != 0) {
                 cell.textLabel?.text = "Level \(indexPath.row + 1):"
-                cell.detailTextLabel?.text = String(score)
+                cell.detailTextLabel?.text = "\(score)"
+            }else{
+                cell.textLabel?.text = "Level \(indexPath.row + 1):"
+                cell.detailTextLabel?.text = "0"
             }
-            cell.textLabel?.text = "Level \(indexPath.row + 1):"
-            cell.detailTextLabel?.text = "0"
         }
         else {
             //Endless Mode
@@ -243,7 +255,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
 //        self.resetButton.anchorPoint = CGPointMake(0.5, 0.5)
 //        self.resetButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + statusbarHeight)
 //        
-//        
+//
 //        self.addChild(score)
 //        self.addChild(title)
 //        self.addChild(backButton)
@@ -267,7 +279,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
 //                PlayerScore = 0
 //                NSUserDefaults.standardUserDefaults().setInteger(PlayerScore, forKey: "highscore")
 //                NSUserDefaults.standardUserDefaults().synchronize()
-//                
+//
 //                self.score.text = "Score: \(PlayerScore)"
 //                println("reset")
 //            }else{

@@ -20,6 +20,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var needToCalibrate = true
     
     var level = 1
+    var PlayerScore = 0
     
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
@@ -30,7 +31,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let score = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
-    var PlayerScore = 0
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -56,7 +56,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         //Sets up BackButton, Score, PauseButton
         setupHUD()
-        
         
         //Sets up Everything on map, except the Penguin
         setupMap()
@@ -87,7 +86,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 self.needToCalibrate = true
                 
                 //Sets HighScore
-                setHighScore(level, score: PlayerScore)
+                println(PlayerScore)
+                setHighScore()
                 
                 var mainMenuScene = LevelSelectScene(size: self.size)
                 let skView = self.view! as SKView
@@ -183,16 +183,16 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
        
     }
     
-    func setHighScore(level: Int, score: Int){
-        NSUserDefaults.standardUserDefaults().integerForKey("highscore\(level)")
+    func setHighScore(){
+        NSUserDefaults.standardUserDefaults().integerForKey("highscore\(self.level)")
         
         //Check if score is higher than NSUserDefaults stored value and change NSUserDefaults stored value if it's true
-        if PlayerScore > NSUserDefaults.standardUserDefaults().integerForKey("highscore\(level)") {
-            NSUserDefaults.standardUserDefaults().setInteger(score, forKey: "highscore\(level)")
+        if PlayerScore > NSUserDefaults.standardUserDefaults().integerForKey("highscore\(self.level)") {
+            NSUserDefaults.standardUserDefaults().setInteger(PlayerScore, forKey: "highscore\(self.level)")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
-        
-        NSUserDefaults.standardUserDefaults().integerForKey("highscore\(level)")
+        var x = NSUserDefaults.standardUserDefaults().integerForKey("highscore\(self.level)")
+        println(x)
     }
     
 
