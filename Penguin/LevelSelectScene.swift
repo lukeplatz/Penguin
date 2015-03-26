@@ -62,23 +62,6 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
                 modeSelectionScene.size = skView.bounds.size
                 skView.presentScene(modeSelectionScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 table.removeFromSuperview()
-            }
-            else if self.nodeAtPoint(location) == self.level1Button{
-                var level1 = Level1Scene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                level1.scaleMode = .ResizeFill
-                level1.size = skView.bounds.size
-                skView.presentScene(level1, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            }
-            else if self.nodeAtPoint(location) == self.level2Button{
-                var level2 = Level2Scene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                playScene.scaleMode = .ResizeFill
-                playScene.size = skView.bounds.size
-                skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-                table.removeFromSuperview()
             }else{
                 println("LevelSelectScene Background Pressed")
             }
@@ -109,7 +92,13 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
             skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             table.removeFromSuperview()
         case (2):
-            println("level2")
+            var level2 = Level2Scene(size: self.size)
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            level2.scaleMode = .ResizeFill
+            level2.size = skView.bounds.size
+            skView.presentScene(level2, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            table.removeFromSuperview()
         default:
             println("Level Not Unlocked!")
         }
