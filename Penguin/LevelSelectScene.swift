@@ -9,12 +9,12 @@
 import SpriteKit
 
 
-class LevelSelectScene: SKScene {
+class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     
     let title = SKSpriteNode(imageNamed: "LevelSelectTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
-    
+    let table = UITableView()
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -33,13 +33,19 @@ class LevelSelectScene: SKScene {
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         
-        self.level1Button.position = CGPointMake(CGRectGetMidX(self.frame),
-            CGRectGetMidY(self.frame) + 40 )
+        //self.level1Button.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) + 40 )
         
+        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.3, size.width * 0.6, size.height - (size.height * 0.3))
+        table.backgroundColor = UIColor.clearColor()
+        
+        table.dataSource = self
+        table.delegate   = self
+        table.allowsSelection = true
+        self.view?.addSubview(table)
         
         self.addChild(title)
         self.addChild(backButton)
-        self.addChild(level1Button)
+        //self.addChild(level1Button)
         
         
     }
@@ -55,7 +61,7 @@ class LevelSelectScene: SKScene {
                 modeSelectionScene.scaleMode = .ResizeFill
                 modeSelectionScene.size = skView.bounds.size
                 skView.presentScene(modeSelectionScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-                
+                table.removeFromSuperview()
             }
             else if self.nodeAtPoint(location) == self.level1Button{
                 var playScene = PlayScene(size: self.size)
@@ -64,10 +70,40 @@ class LevelSelectScene: SKScene {
                 playScene.scaleMode = .ResizeFill
                 playScene.size = skView.bounds.size
                 skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+                table.removeFromSuperview()
             }else{
                 println("LevelSelectScene Background Pressed")
             }
             
+        }
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: nil)
+        cell.textLabel?.text = "Level \(indexPath.row + 1)"
+        return cell
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        println("Level: \(indexPath.row + 1)!")
+        
+        switch (indexPath.row + 1){
+        case (1):
+            var playScene = PlayScene(size: self.size)
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            playScene.scaleMode = .ResizeFill
+            playScene.size = skView.bounds.size
+            skView.presentScene(playScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            table.removeFromSuperview()
+        case (2):
+            println("level2")
+        default:
+            println("Level Not Unlocked!")
         }
     }
     
