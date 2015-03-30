@@ -15,3 +15,4 @@ Authors: Luke Platz, Jacob Gerstler, Riley Chapin
 
 -Multiple Levels, and progression between them
 
+Endless Mode: alternate between picking between 2 powerups, then the next obstacle uses the powerup you chose.
