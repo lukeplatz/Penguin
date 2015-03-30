@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370055001AC8E9AF002C5231 /* EndlessPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */; };
 		37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */; };
 		371649231AB8781A0019694B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649221AB8781A0019694B /* AppDelegate.swift */; };
 		371649251AB8781A0019694B /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 371649241AB8781A0019694B /* MainMenuScene.sks */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndlessPlayScene.swift; sourceTree = "<group>"; };
 		37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectionScene.swift; sourceTree = "<group>"; };
 		3716491D1AB8781A0019694B /* Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penguin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		371649211AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				371649281AB8781A0019694B /* GameViewController.swift */,
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */,
+				370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */,
 				3716492A1AB8781A0019694B /* Main.storyboard */,
 				3716492D1AB8781A0019694B /* Images.xcassets */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
@@ -248,6 +251,7 @@
 				65B4B2B21ABCDB9700F8DD9C /* LevelSelectScene.swift in Sources */,
 				371649291AB8781A0019694B /* GameViewController.swift in Sources */,
 				371649471AB87ECB0019694B /* PlayScene.swift in Sources */,
+				370055001AC8E9AF002C5231 /* EndlessPlayScene.swift in Sources */,
 				37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */,
 				371649231AB8781A0019694B /* AppDelegate.swift in Sources */,
 				65B4B2AC1ABCD18900F8DD9C /* OptionsScene.swift in Sources */,

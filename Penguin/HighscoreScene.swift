@@ -125,6 +125,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         }else if(touchedNode.name == "reset"){
             for index in 1 ... NumLevelsUnlocked{
                 NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscore\(index)")
+                NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscoreEndless")
                 NSUserDefaults.standardUserDefaults().synchronize()
             }
             table.reloadData()
@@ -165,8 +166,9 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         }
         else {
             //Endless Mode
-            cell.textLabel?.text = "No Highscores"
-            cell.detailTextLabel?.text = ":("
+            var EndlessScore = NSUserDefaults.standardUserDefaults().integerForKey("highscoreEndless")
+            cell.textLabel?.text = "Score: "
+            cell.detailTextLabel?.text = "\(EndlessScore)"
         }
         cell.textLabel?.font = UIFont(name: "Arial", size: 20)
         cell.detailTextLabel?.font = UIFont(name: "Arial", size: 20)

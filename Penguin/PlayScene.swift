@@ -12,8 +12,6 @@ import CoreMotion
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()
-    var destX:CGFloat = 0
-    var destY:CGFloat = 0
     
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
