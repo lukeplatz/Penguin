@@ -18,6 +18,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
     let gameOver = SKLabelNode(fontNamed: "Arial")
+    let instructions1 = SKLabelNode(fontNamed: "Arial")
+    let instructions2 = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     
@@ -35,7 +37,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var scrollSpeed = 2
     
     var blockMaxX = CGFloat(0)
-    var origBlockPositionY = CGFloat(0)
+    var origShortBlockPositionY = CGFloat(0)
+    var origLongBlockPositionY = CGFloat(0)
     var shortCounted = false
     var longCounted = false
     
@@ -45,10 +48,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     var Pause = false
+    var gameO = false
+    var presentInstructions = true
+    var forwardMovement = CGFloat(0.0)
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
-        self.physicsWorld.gravity = CGVectorMake(0, 0)
+        self.physicsWorld.gravity = CGVectorMake(0, 2)
         self.physicsWorld.contactDelegate = self
         
         // 1 Create a physics body that borders the screen
@@ -73,6 +79,20 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.gameOver.fontColor = UIColor.orangeColor()
         self.gameOver.fontSize = 20
         
+        self.instructions1.text = "Press and Hold to slide backwards"
+        self.instructions1.position.x = CGRectGetMidX(self.frame)
+        self.instructions1.position.y = CGRectGetMidY(self.frame) + 10
+        self.instructions1.fontColor = UIColor.orangeColor()
+        self.instructions1.fontSize = 20
+        
+        self.instructions2.text = "Release to slide forwards!"
+        self.instructions2.position.x = CGRectGetMidX(self.frame)
+        self.instructions2.position.y = CGRectGetMidY(self.frame) - 10
+        self.instructions2.fontColor = UIColor.orangeColor()
+        self.instructions2.fontSize = 20
+        
+        self.addChild(instructions1)
+        self.addChild(instructions2)
         
         maxDistance = CGRectGetMaxY(self.frame) - CGRectGetMidY(self.frame)
         
@@ -93,19 +113,21 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.needToCalibrate = false
                     println("calibrated: \(self.calibrateX)")
                 }
-                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 20 * 9.8, 0)
+                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 20 * 9.8, self.forwardMovement)
             })
         }
         let xPosition1 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
         self.shortBlock.position = CGPointMake(xPosition1, CGRectGetMaxY(self.frame) + self.shortBlock.size.height / 2)
         self.shortBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
         self.shortBlock.physicsBody?.dynamic = false
+        self.origShortBlockPositionY = self.shortBlock.position.y
         
         let xPosition2 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
-        self.longBlock.position = CGPointMake(xPosition2, self.shortBlock.position.y + CGFloat(maxDistance))
+        self.longBlock.position = CGPointMake(xPosition2, self.shortBlock.position.y + CGRectGetHeight(self.frame) / 2)
         self.longBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(100)))
         self.longBlock.physicsBody?.dynamic = false
-        origBlockPositionY = self.longBlock.position.y
+        self.longBlock.zRotation = CGFloat(M_PI / 2)
+        self.origLongBlockPositionY = self.longBlock.position.y
         
         self.addChild(shortBlock)
         self.addChild(longBlock)
@@ -128,7 +150,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 mainMenuScene.scaleMode = .ResizeFill
                 mainMenuScene.size = skView.bounds.size
                 skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-            }else if self.nodeAtPoint(location) == self.pauseButton{
+            }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
                 if(self.Pause == true){
                     //Resume
                     self.pausedImage.removeFromParent()
@@ -140,7 +162,20 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.physicsWorld.speed = 0
                     self.Pause = true
                 }
+            }else{
+                if(self.presentInstructions == true){
+                    instructions1.removeFromParent()
+                    instructions2.removeFromParent()
+                }
+                self.forwardMovement = -3.0
             }
+        }
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            self.forwardMovement = 3.0
         }
     }
     
@@ -229,14 +264,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         if longBlock.position.y <= CGRectGetMinY(self.frame) - self.longBlock.size.height / 2 {
             let xPosition = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
             self.longBlock.position.x = xPosition
-            self.longBlock.position.y = self.origBlockPositionY
+            self.longBlock.position.y = self.origShortBlockPositionY
             self.longCounted = false
         }
         
         if self.shortBlock.position.y <= CGRectGetMinY(self.frame) - self.shortBlock.size.height / 2 {
             let xPosition = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
             self.shortBlock.position.x = xPosition
-            self.shortBlock.position.y = self.origBlockPositionY
+            self.shortBlock.position.y = self.origShortBlockPositionY
             self.shortCounted = false
         }
         if (self.shortBlock.position.y < self.penguin.position.y || self.longBlock.position.y < self.penguin.position.y) && self.shortCounted == false && self.longCounted == false{
@@ -264,6 +299,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         case BodyType.penguin.rawValue | BodyType.bottom.rawValue:
             self.addChild(gameOver)
             self.physicsWorld.speed = 0
+            self.gameO = true
             self.Pause = true
         default:
             return
