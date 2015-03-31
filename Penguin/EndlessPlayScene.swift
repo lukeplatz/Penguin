@@ -22,6 +22,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let instructions2 = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
+    let speedLabel = SKLabelNode(fontNamed: "Arial")
     
     var PlayerScore = 0
     
@@ -34,7 +35,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var needToCalibrate = true
     
     var maxDistance = CGFloat(0)
-    var scrollSpeed = 2
+    var scrollSpeed = 1
     
     var blockMaxX = CGFloat(0)
     var origShortBlockPositionY = CGFloat(0)
@@ -124,13 +125,15 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             })
         }
         let xPosition1 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
-        self.shortBlock.position = CGPointMake(xPosition1, CGRectGetMaxY(self.frame) + self.shortBlock.size.height / 2)
+        self.shortBlock.anchorPoint = CGPointMake(0.5, 0.5)
+        self.shortBlock.position = CGPointMake(xPosition1, CGRectGetMaxY(self.frame))
         self.shortBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
         self.shortBlock.physicsBody?.dynamic = false
         self.origShortBlockPositionY = self.shortBlock.position.y
         
         let xPosition2 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
-        self.longBlock.position = CGPointMake(xPosition2, self.shortBlock.position.y + CGRectGetHeight(self.frame) / 2)
+        self.longBlock.anchorPoint = CGPointMake(0.5, 0.5)
+        self.longBlock.position = CGPointMake(xPosition2, CGRectGetMaxY(self.frame) + (CGRectGetHeight(self.frame) / 2))
         self.longBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(100)))
         self.longBlock.physicsBody?.dynamic = false
         self.longBlock.zRotation = CGFloat(M_PI / 2)
@@ -246,7 +249,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.pausedImage.zPosition = 1
         
+        self.speedLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.frame) / 8, self.backButton.position.y - self.backButton.size.height)
+        self.speedLabel.zPosition = 2
+        self.speedLabel.fontColor = UIColor.orangeColor()
+        self.speedLabel.text = "Speed: 1"
+        self.speedLabel.fontSize = 15
         
+        
+        self.addChild(speedLabel)
         self.addChild(HUDbar)
         self.addChild(backButton)
         self.addChild(score)
@@ -292,6 +302,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             self.score.text = "Score: \(self.PlayerScore)"
             if ((self.PlayerScore % 5) == 0) {
                 self.scrollSpeed++
+                self.speedLabel.text = "Speed: \(self.scrollSpeed)"
             }
         }
         longBlock.position.y -= CGFloat(self.scrollSpeed)
