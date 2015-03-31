@@ -62,14 +62,21 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         // 2 Set physicsBody of scene to borderBody
         self.physicsBody = borderBody
         
-        var bottom = SKSpriteNode(color: UIColor.clearColor(), size: CGSizeMake(CGRectGetWidth(self.frame), 1))
+        var bottom = SKSpriteNode(color: UIColor.redColor(), size: CGSizeMake(CGRectGetWidth(self.frame), 10))
         bottom.position.x = CGRectGetMidX(self.frame)
-        bottom.position.y = CGRectGetMinY(self.frame) + 1
+        bottom.position.y = CGRectGetMinY(self.frame)
         bottom.physicsBody = SKPhysicsBody(rectangleOfSize: bottom.size)
         bottom.physicsBody?.dynamic = false
         bottom.physicsBody?.collisionBitMask = 1
         bottom.physicsBody?.categoryBitMask = BodyType.bottom.rawValue
         bottom.physicsBody?.contactTestBitMask = BodyType.penguin.rawValue | BodyType.bottom.rawValue
+        
+        let moveUp = SKAction.moveBy(CGVectorMake(0, 5), duration: 1.0)
+        let moveDown = SKAction.moveBy(CGVectorMake(0, -5), duration: 1.0)
+        let pulse = SKAction.sequence([moveUp, moveDown])
+        let repeatMove = SKAction.repeatActionForever(pulse)
+        
+        bottom.runAction(repeatMove)
         
         self.addChild(bottom)
         
@@ -113,7 +120,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.needToCalibrate = false
                     println("calibrated: \(self.calibrateX)")
                 }
-                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 20 * 9.8, self.forwardMovement)
+                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 30 * 9.8, self.forwardMovement)
             })
         }
         let xPosition1 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
