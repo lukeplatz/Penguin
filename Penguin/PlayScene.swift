@@ -9,6 +9,15 @@
 import SpriteKit
 import CoreMotion
 
+
+struct collision {
+    static let none           : UInt32  = 0b0
+    static let playerCategory : UInt32  = 0b1
+    static let ballCategory   : UInt32  = 0b10
+    static let IcebergCategory : UInt32 = 0b100
+    static let powerUpCategory: UInt32  = 0b1000
+}
+
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()

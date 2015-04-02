@@ -9,6 +9,7 @@
 import SpriteKit
 import CoreMotion
 
+
 class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     let longBlock = SKSpriteNode(imageNamed: "Tallblock")
