@@ -14,16 +14,16 @@ class Iceberg: Object {
     var sprite: SKSpriteNode
     
     init (position: CGPoint, size: CGSize) {
-        self.sprite = SKSpriteNode(imageNamed: "Iceberg")
+        self.sprite = SKSpriteNode(imageNamed: "Shortblock")
         sprite.name = "Iceberg"
         sprite.size = size
         sprite.position = position
         sprite.physicsBody = SKPhysicsBody(rectangleOfSize: size)
         sprite.physicsBody?.affectedByGravity = false
         sprite.physicsBody?.dynamic = false
-        sprite.physicsBody?.categoryBitMask = collision.IcebergCategory
-        sprite.physicsBody?.contactTestBitMask = collision.playerCategory
-        sprite.physicsBody?.collisionBitMask = collision.none
+//        sprite.physicsBody?.categoryBitMask = collision.IcebergCategory
+//        sprite.physicsBody?.contactTestBitMask = collision.playerCategory
+//        sprite.physicsBody?.collisionBitMask = collision.IcebergCategory
     }
     
 //    func move() {
