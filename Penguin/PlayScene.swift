@@ -11,11 +11,13 @@ import CoreMotion
 
 
 struct collision {
-    static let none           : UInt32  = 0b0
-    static let playerCategory : UInt32  = 0b1
-    static let ballCategory   : UInt32  = 0b10
+    static let none            : UInt32 = 0b0
+    static let playerCategory  : UInt32 = 0b1
+    static let ballCategory    : UInt32 = 0b10
     static let IcebergCategory : UInt32 = 0b100
-    static let powerUpCategory: UInt32  = 0b1000
+    static let WaterCategory   : UInt32 = 0b1000
+    static let powerUpCategory : UInt32 = 0b10000
+    static let goalCategory    : UInt32 = 0b100000
 }
 
 class PlayScene: SKScene, SKPhysicsContactDelegate {
@@ -40,12 +42,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-    
-    enum BodyType:UInt32 {
-        case penguin = 1
-        case goal = 2
-    }
-    
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
@@ -131,9 +127,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.penguin.physicsBody?.linearDamping = 5
         self.penguin.physicsBody?.allowsRotation = true
         self.penguin.physicsBody?.usesPreciseCollisionDetection = true
-        self.penguin.physicsBody?.categoryBitMask = BodyType.penguin.rawValue
+        self.penguin.physicsBody?.categoryBitMask = collision.playerCategory
         self.penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
-        self.penguin.physicsBody?.contactTestBitMask = BodyType.penguin.rawValue | BodyType.goal.rawValue
+        self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory
         
         self.addChild(penguin)
     }
@@ -207,11 +203,15 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //this gets called automatically when two objects begin contact with each other
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
-        case BodyType.penguin.rawValue | BodyType.goal.rawValue:
-            //println("contact made")
+        case collision.playerCategory | collision.goalCategory:
+            //change to next level
+            println("goal reached")
             self.addChild(winner)
             PlayerScore++
             self.score.text = "Score: \(PlayerScore)"
+        case collision.playerCategory | collision.WaterCategory:
+            //die
+            println("water - die")
         default:
             return
         }
@@ -220,13 +220,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func didEndContact(contact: SKPhysicsContact) {
         //this gets called automatically when two objects end contact with each other
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        switch(contactMask) {
-        case BodyType.penguin.rawValue | BodyType.goal.rawValue:
+        //switch(contactMask) {
+        //case BodyType.penguin.rawValue | BodyType.goal.rawValue:
             //either the contactMask was the bro type or the ground type
             //println("contact ended")
-            self.winner.removeFromParent()
-        default:
-            return
-        }
+        //    self.winner.removeFromParent()
+        //default:
+        //    return
+        //}
     }
 }

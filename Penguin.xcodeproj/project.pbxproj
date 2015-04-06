@@ -26,6 +26,7 @@
 		65B4B2AC1ABCD18900F8DD9C /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */; };
 		65B4B2B21ABCDB9700F8DD9C /* LevelSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */; };
 		65B4B2B41ABCDECF00F8DD9C /* HighscoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */; };
+		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
 		65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectScene.swift; sourceTree = "<group>"; };
 		65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighscoreScene.swift; sourceTree = "<group>"; };
+		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */,
 				37D0ADED1ACDBAE600264216 /* Object.swift */,
 				37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */,
+				A4CC317F1AD30CB3005B09DD /* WaterObject.swift */,
 				370ABBBB1ACDC2BF008BD084 /* PowerUpObject.swift */,
 				3716492A1AB8781A0019694B /* Main.storyboard */,
 				3716492D1AB8781A0019694B /* Images.xcassets */,
@@ -254,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D0ADF01ACDBEDF00264216 /* IcebergObject.swift in Sources */,
+				A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */,
 				6571DCCF1AC481A300793471 /* Level1Scene.swift in Sources */,
 				371649271AB8781A0019694B /* MainMenuScene.swift in Sources */,
 				6571DCD11AC4862000793471 /* Level2Scene.swift in Sources */,

@@ -21,7 +21,7 @@ class Level1Scene: PlayScene{
         self.goal.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.goal.size.width / 2), CGRectGetMaxY(self.frame) - (self.goal.size.height / 2) - statusbarHeight * 11)
         self.goal.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
         self.goal.physicsBody?.dynamic = false
-        self.goal.physicsBody?.categoryBitMask = BodyType.goal.rawValue
+        self.goal.physicsBody?.categoryBitMask = collision.goalCategory
         self.goal.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
         //Sets up longblock
