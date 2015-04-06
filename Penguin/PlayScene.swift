@@ -204,14 +204,17 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
         case collision.playerCategory | collision.goalCategory:
-            //change to next level
             println("goal reached")
             self.addChild(winner)
             PlayerScore++
             self.score.text = "Score: \(PlayerScore)"
+            //self.physicsWorld.speed = 0
+            //throw up "start next level?" dialog
         case collision.playerCategory | collision.WaterCategory:
             //die
-            println("water - die")
+            println("you're dead")
+            self.physicsWorld.speed = 0
+            //restart level / main menu dialog
         default:
             return
         }
@@ -220,13 +223,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func didEndContact(contact: SKPhysicsContact) {
         //this gets called automatically when two objects end contact with each other
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
-        //switch(contactMask) {
-        //case BodyType.penguin.rawValue | BodyType.goal.rawValue:
+        switch(contactMask) {
+        case collision.goalCategory | collision.playerCategory:
             //either the contactMask was the bro type or the ground type
-            //println("contact ended")
-        //    self.winner.removeFromParent()
-        //default:
-        //    return
-        //}
+            println("contact ended")
+            self.winner.removeFromParent()
+        default:
+            return
+        }
     }
 }

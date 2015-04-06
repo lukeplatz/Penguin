@@ -14,6 +14,7 @@ class Level1Scene: PlayScene{
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
     
     override func setupMap(){
+        println("setup lvl1")
         level = 1
         self.goal.anchorPoint = CGPointMake(0.5, 0.5)
         self.goal.xScale = (50/self.goal.size.width)
@@ -43,5 +44,10 @@ class Level1Scene: PlayScene{
         self.addChild(goal)
      //   self.addChild(longBlock)
         self.addChild(shortBlock)
+        
+        
+        let waterTest = Water(position: CGPointMake(CGRectGetMaxX(self.frame)*0.1,CGRectGetMaxY(self.frame)*0.1), size: CGSizeMake(CGFloat(50), CGFloat(50)))
+        self.addChild(waterTest.sprite)
+
     }
 }

@@ -96,7 +96,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
         
         switch (indexPath.row + 1){
         case (1):
-            var playScene = PlayScene(size: self.size)
+            var playScene = Level1Scene(size: self.size)
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = true
             playScene.scaleMode = .ResizeFill
