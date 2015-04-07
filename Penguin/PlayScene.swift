@@ -18,6 +18,8 @@ struct collision {
     static let WaterCategory   : UInt32 = 69
     static let powerUpCategory : UInt32 = 0b10000
     static let goalCategory    : UInt32 = 100
+    static let fishCategory    : UInt32 = 22
+
 }
 
 class PlayScene: SKScene, SKPhysicsContactDelegate {
@@ -225,17 +227,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 println("goal reached")
                 self.physicsWorld.speed = 0
                 self.addChild(winner)
-                PlayerScore++
-                self.score.text = "Score: \(PlayerScore)"
                 self.physicsWorld.speed = 0
                 //throw up "start next level?" dialog
             }
         case collision.playerCategory | collision.WaterCategory:
             //die
             self.addChild(gameOver)
+            contact.bodyA.node?.removeAllActions()
             self.died = true
             self.physicsWorld.speed = 0
             //restart level / main menu dialog
+        case collision.playerCategory | collision.fishCategory:
+            PlayerScore++;
+            self.score.text = "Score: \(PlayerScore)"
+            contact.bodyA.node?.removeFromParent()
         default:
             return
         }
