@@ -49,6 +49,8 @@ class Level2Scene: PlayScene{
         self.shortBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
         self.shortBlock.physicsBody?.dynamic = false
         
+        
+        self.addChild(penguin)
         self.addChild(goal)
         self.addChild(longBlock)
         self.addChild(shortBlock)

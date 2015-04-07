@@ -12,12 +12,12 @@ import CoreMotion
 
 struct collision {
     static let none            : UInt32 = 0b0
-    static let playerCategory  : UInt32 = 0b1
+    static let playerCategory  : UInt32 = 1
     static let ballCategory    : UInt32 = 0b10
-    static let IcebergCategory : UInt32 = 0b100
-    static let WaterCategory   : UInt32 = 0b1000
+    static let IcebergCategory : UInt32 = 2
+    static let WaterCategory   : UInt32 = 69
     static let powerUpCategory : UInt32 = 0b10000
-    static let goalCategory    : UInt32 = 0b100000
+    static let goalCategory    : UInt32 = 100
 }
 
 class PlayScene: SKScene, SKPhysicsContactDelegate {
@@ -31,6 +31,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var level = 1
     var PlayerScore = 0
     
+    var levelWin = false
+    var died = false
+    
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let goal = SKSpriteNode(imageNamed: "Spaceship")
@@ -41,11 +44,15 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     
+    let gameOver = SKLabelNode(fontNamed: "Arial")
+    
+    var SPEED_MULTIPLIER = CGFloat(3)
+    
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
-        self.physicsWorld.gravity = CGVectorMake(9.8, 9.8)
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
         
         // 1 Create a physics body that borders the screen
@@ -75,7 +82,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     self.needToCalibrate = false
                     println("calibrated: \(self.calibrateX), \(self.calibrateY)")
                 }
-                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 20 * 9.8, (CGFloat(data.acceleration.y) - self.calibrateY) * 20 * 9.8)
+                self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * self.SPEED_MULTIPLIER * 9.8, (CGFloat(data.acceleration.y) - self.calibrateY) * self.SPEED_MULTIPLIER * 9.8)
             })
         }
     }
@@ -99,14 +106,16 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 mainMenuScene.size = skView.bounds.size
                 skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
             }else if self.nodeAtPoint(location) == self.pauseButton{
-                if(self.physicsWorld.speed == 0){
-                    //Resume
-                    self.pausedImage.removeFromParent()
-                    self.physicsWorld.speed = 1
-                }else{
-                    //Pause
-                    self.addChild(pausedImage)
-                    self.physicsWorld.speed = 0
+                if(self.died == false && self.levelWin == false){
+                    if(self.physicsWorld.speed == 0){
+                        //Resume
+                        self.pausedImage.removeFromParent()
+                        self.physicsWorld.speed = 1
+                    }else{
+                        //Pause
+                        self.addChild(pausedImage)
+                        self.physicsWorld.speed = 0
+                    }
                 }
             }
         }
@@ -131,7 +140,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
         self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory
         
-        self.addChild(penguin)
+        //self.addChild(penguin)
     }
     
     func setupHUD(){
@@ -165,13 +174,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.winner.xScale = (200/self.winner.size.width)
         self.winner.yScale = (200/self.winner.size.height)
         self.winner.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        self.winner.zPosition = 1
+        self.winner.zPosition = 10
         
         
         //Paused image
         self.pausedImage.anchorPoint = CGPointMake(0.5, 0.5)
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        self.pausedImage.zPosition = 1
+        self.pausedImage.zPosition = 10
+        
+        self.gameOver.text = "Game Over"
+        self.gameOver.position.x = CGRectGetMidX(self.frame)
+        self.gameOver.position.y = CGRectGetMidY(self.frame)
+        self.gameOver.fontColor = UIColor.orangeColor()
+        self.gameOver.fontSize = 25
+        self.gameOver.zPosition = 10
         
         
         self.addChild(HUDbar)
@@ -204,15 +220,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
         case collision.playerCategory | collision.goalCategory:
-            println("goal reached")
-            self.addChild(winner)
-            PlayerScore++
-            self.score.text = "Score: \(PlayerScore)"
-            //self.physicsWorld.speed = 0
-            //throw up "start next level?" dialog
+            if(self.levelWin == false){
+                self.levelWin = true
+                println("goal reached")
+                self.physicsWorld.speed = 0
+                self.addChild(winner)
+                PlayerScore++
+                self.score.text = "Score: \(PlayerScore)"
+                self.physicsWorld.speed = 0
+                //throw up "start next level?" dialog
+            }
         case collision.playerCategory | collision.WaterCategory:
             //die
-            println("you're dead")
+            self.addChild(gameOver)
+            self.died = true
             self.physicsWorld.speed = 0
             //restart level / main menu dialog
         default:
@@ -228,6 +249,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             //either the contactMask was the bro type or the ground type
             println("contact ended")
             self.winner.removeFromParent()
+        case collision.playerCategory | collision.WaterCategory:
+            //die
+            self.gameOver.removeFromParent()
+            self.physicsWorld.speed = 1
+            println("remove this functionality - end contact water|penguin")
         default:
             return
         }
