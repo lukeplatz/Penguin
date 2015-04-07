@@ -35,11 +35,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var levelWin = false
     var died = false
+    var gameStarted = false
     
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let goal = SKSpriteNode(imageNamed: "Spaceship")
-   
     let winner = SKSpriteNode(imageNamed: "Winner")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
@@ -47,6 +47,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     
     let gameOver = SKLabelNode(fontNamed: "Arial")
+    let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
+    let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
     
     var SPEED_MULTIPLIER = CGFloat(3)
     
@@ -62,6 +64,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         // 2 Set physicsBody of scene to borderBody
         self.physicsBody = borderBody
         
+        self.physicsWorld.speed = 0
         //Sets up Penguin Image
         setupPenguin()
         
@@ -98,7 +101,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 self.needToCalibrate = true
                 
                 //Sets HighScore
-                println(PlayerScore)
                 setHighScore()
                 
                 var mainMenuScene = LevelSelectScene(size: self.size)
@@ -119,6 +121,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                         self.physicsWorld.speed = 0
                     }
                 }
+            }else{
+                self.instructions1.removeFromParent()
+                self.instructions2.removeFromParent()
+                self.physicsWorld.speed = 1
+                self.gameStarted = true
+                self.needToCalibrate = true
             }
         }
     }
@@ -191,6 +199,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.gameOver.fontSize = 25
         self.gameOver.zPosition = 10
         
+        self.instructions1.text = "Tilt to move your Penguin"
+        self.instructions1.position.x = CGRectGetMidX(self.frame)
+        self.instructions1.position.y = CGRectGetMidY(self.frame) + 10
+        self.instructions1.fontColor = UIColor.blackColor()
+        self.instructions1.fontSize = 20
+        
+        self.instructions2.text = "Gather Fish, Reach Spaceship!"
+        self.instructions2.position.x = CGRectGetMidX(self.frame)
+        self.instructions2.position.y = CGRectGetMidY(self.frame) - 10
+        self.instructions2.fontColor = UIColor.blackColor()
+        self.instructions2.fontSize = 20
+        
+        self.addChild(instructions1)
+        self.addChild(instructions2)
         
         self.addChild(HUDbar)
         self.addChild(backButton)
@@ -213,7 +235,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
         var x = NSUserDefaults.standardUserDefaults().integerForKey("highscore\(self.level)")
-        println(x)
     }
     
 
