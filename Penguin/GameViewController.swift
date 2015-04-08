@@ -25,14 +25,14 @@ extension SKNode {
     }
 }
 
-extension Level1Scene {
-    override class func unarchiveFromFile(file : NSString) -> Level1Scene? {
+extension LevelAScene {
+    override class func unarchiveFromFile(file : NSString) -> LevelAScene? {
         if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
             var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as Level1Scene
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as LevelAScene
             archiver.finishDecoding()
             return scene
         } else {
@@ -41,14 +41,14 @@ extension Level1Scene {
     }
 }
 
-extension Level2Scene {
-    override class func unarchiveFromFile(file : NSString) -> Level2Scene? {
+extension LevelBScene {
+    override class func unarchiveFromFile(file : NSString) -> LevelBScene? {
         if let path = NSBundle.mainBundle().pathForResource(file, ofType: "sks") {
             var sceneData = NSData(contentsOfFile: path, options: .DataReadingMappedIfSafe, error: nil)!
             var archiver = NSKeyedUnarchiver(forReadingWithData: sceneData)
             
             archiver.setClass(self.classForKeyedUnarchiver(), forClassName: "SKScene")
-            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as Level2Scene
+            let scene = archiver.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as LevelBScene
             archiver.finishDecoding()
             return scene
         } else {

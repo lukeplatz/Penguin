@@ -18,10 +18,10 @@ import Foundation
 import SpriteKit
 import CoreMotion
 
-class Level2Scene: PlayScene{
+class LevelBScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = Level2Scene.unarchiveFromFile("Level2")! as Level2Scene
+        var levelStuff = LevelBScene.unarchiveFromFile("LevelB")! as LevelBScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
