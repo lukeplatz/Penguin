@@ -31,36 +31,10 @@ class Level1Scene: PlayScene{
 //        self.addChild(waterTest.sprite)
         
         
-        let levelStuff = SKNode.unarchiveFromFile("Level1")! as SKNode
+//        let levelStuff = SKNode.unarchiveFromFile("Level1")! as SKNode
         //self.scene?.scaleMode = SKSceneScaleMode.Fill
         
-        var penguinIndex = 0
-        var goalIndex = 0
-        var F1Index = 0
-        var F2Index = 0
-        var F3Index = 0
-        var pufferIndex = 0
-        for index in 0...levelStuff.children.count - 1{
-            if(levelStuff.children[index].name == "Penguin"){
-                penguinIndex = index
-            }
-            if(levelStuff.children[index].name == "goal"){
-                goalIndex = index
-            }
-            if(levelStuff.children[index].name == "fish1"){
-                F1Index = index
-            }
-            if(levelStuff.children[index].name == "fish2"){
-                F2Index = index
-            }
-            if(levelStuff.children[index].name == "fish3"){
-                F3Index = index
-            }
-            if(levelStuff.children[index].name == "pufferFish"){
-                pufferIndex = index
-            }
-        }
-        let penguin = levelStuff.children[penguinIndex] as SKSpriteNode
+        let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
         penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory
@@ -70,34 +44,35 @@ class Level1Scene: PlayScene{
         let pulse = SKAction.sequence([pulseUp, pulseDown])
         let repeatPulse = SKAction.repeatActionForever(pulse)
         
-        let goal = levelStuff.children[goalIndex] as SKSpriteNode
+        let goal = childNodeWithName("goal") as SKSpriteNode
         goal.physicsBody?.categoryBitMask = collision.goalCategory
         goal.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
-        let F1 = levelStuff.children[F1Index] as SKSpriteNode
+        let F1 = childNodeWithName("fish1") as SKSpriteNode
         F1.physicsBody?.categoryBitMask = collision.fishCategory
         F1.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F1.runAction(repeatPulse)
         
-        let F2 = levelStuff.children[F2Index] as SKSpriteNode
-        F1.physicsBody?.categoryBitMask = collision.fishCategory
-        F1.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        let F2 = childNodeWithName("fish2") as SKSpriteNode
+        F2.physicsBody?.categoryBitMask = collision.fishCategory
+        F2.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F2.runAction(repeatPulse)
         
-        let F3 = levelStuff.children[F3Index] as SKSpriteNode
-        F1.physicsBody?.categoryBitMask = collision.fishCategory
-        F1.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        let F3 = childNodeWithName("fish3") as SKSpriteNode
+        F3.physicsBody?.categoryBitMask = collision.fishCategory
+        F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-        let PufferFish = levelStuff.children[pufferIndex] as SKSpriteNode
+        let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
+        PufferFish.physicsBody?.categoryBitMask = collision.WaterCategory
+        PufferFish.physicsBody?.collisionBitMask = 1 // allow contact
         let moveUp = SKAction.moveBy(CGVectorMake(0, 50), duration: 1.5)
         let moveDown = SKAction.moveBy(CGVectorMake(0, -50), duration: 1.5)
         let upDown = SKAction.sequence([moveUp, moveDown])
         let repeatMove = SKAction.repeatActionForever(upDown)
         
+        
         PufferFish.runAction(repeatMove)
-
-        self.addChild(levelStuff)
         
         
     //eventually this will look like:

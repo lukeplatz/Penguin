@@ -23,8 +23,6 @@ class Level2Scene: PlayScene{
     override func setupMap(){
         level = 2
         
-        //var levelStuff = Level2Scene.unarchiveFromFile("Level2")!
-        
         let pulseUp = SKAction.scaleTo(0.25, duration: 0.5)
         let pulseDown = SKAction.scaleTo(0.15, duration: 0.5)
         let pulse = SKAction.sequence([pulseUp, pulseDown])
@@ -59,6 +57,8 @@ class Level2Scene: PlayScene{
         
         
         let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
+        PufferFish.physicsBody?.categoryBitMask = collision.WaterCategory
+        PufferFish.physicsBody?.collisionBitMask = 1 // allow contact
         PufferFish.zPosition = 2
         let moveleft = SKAction.moveBy(CGVectorMake(-(self.size.width / 2), 0), duration: 1.0)
         let moveright = SKAction.moveBy(CGVectorMake((self.size.width / 2), 0), duration: 1.0)
