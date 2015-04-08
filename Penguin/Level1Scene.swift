@@ -19,6 +19,14 @@ class Level1Scene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
+    override func nextLevel() {
+        var levelStuff = Level2Scene.unarchiveFromFile("Level2")! as Level2Scene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
+    
     override func setupMap(){
         level = 1
 //        self.goal.anchorPoint = CGPointMake(0.5, 0.5)

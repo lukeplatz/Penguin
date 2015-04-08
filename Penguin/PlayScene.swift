@@ -26,7 +26,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
-    
+    let LevelWinStuff = SKNode.unarchiveFromFile("LevelWon")!
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
@@ -49,6 +49,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var quitButtonIndex = 0
     var retryButtonIndex = 0
+    
+    var nextLevelButtonIndex = 0
     
     //let gameOver = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
@@ -102,7 +104,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            if(self.died == false){
+            if(self.died == false && self.levelWin == false){
                 if self.nodeAtPoint(location) == self.backButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
@@ -136,7 +138,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     self.needToCalibrate = true
                 }
             }
-            else{
+            else if(self.died == true && self.levelWin == false){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
@@ -151,6 +153,26 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
+            else if(self.died == false && self.levelWin == true){
+                if (self.nodeAtPoint(location) == self.LevelWinStuff.children[quitButtonIndex] as NSObject){
+                    var levelSelectScene = LevelSelectScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    levelSelectScene.scaleMode = .ResizeFill
+                    levelSelectScene.size = skView.bounds.size
+                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    
+                    
+                }
+                else if(self.nodeAtPoint(location) == self.LevelWinStuff.children[retryButtonIndex] as NSObject){
+                    retryLevel()
+                }
+                else if(self.nodeAtPoint(location) == self.LevelWinStuff.children[nextLevelButtonIndex] as NSObject){
+                    nextLevel()
+                }
+                
+
+            }
         }
     }
     
@@ -158,6 +180,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //called every frame
     }
     
+    func nextLevel(){
+        
+    }
     
     func setupPenguin(){
         self.penguin.anchorPoint = CGPointMake(0.5, 0.5)
@@ -257,6 +282,20 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
+    func setupLevelWon(){
+        for index in 0...GameOverStuff.children.count - 1{
+            if(LevelWinStuff.children[index].name == "retryButton"){
+                retryButtonIndex = index
+            }
+            if(LevelWinStuff.children[index].name == "quitButton"){
+                quitButtonIndex = index
+            }
+            if(LevelWinStuff.children[index].name == "nextLevelButton"){
+                nextLevelButtonIndex = index
+            }
+        }
+    }
+    
     func setHighScore(){
         NSUserDefaults.standardUserDefaults().integerForKey("highscore\(self.level)")
         
@@ -280,6 +319,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 self.physicsWorld.speed = 0
                 self.addChild(winner)
                 self.physicsWorld.speed = 0
+                
+                setupLevelWon()
+                self.addChild(LevelWinStuff)
                 //throw up "start next level?" dialog
             }
         case collision.playerCategory | collision.WaterCategory:
