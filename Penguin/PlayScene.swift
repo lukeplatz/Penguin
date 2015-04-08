@@ -26,7 +26,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
-    let LevelWinStuff = SKNode.unarchiveFromFile("LevelWon")!
+    let LevelWinStuff = SKNode.unarchiveFromFile("LevelWin")!
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
