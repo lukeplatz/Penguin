@@ -46,6 +46,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let score = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
+    var blurNode:SKSpriteNode = SKSpriteNode()
     
     var quitButtonIndex = 0
     var retryButtonIndex = 0
@@ -122,10 +123,14 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     if(self.died == false && self.levelWin == false){
                         if(self.physicsWorld.speed == 0){
                             //Resume
+                            self.blurNode.removeFromParent()
                             self.pausedImage.removeFromParent()
                             self.physicsWorld.speed = 1
                         }else{
                             //Pause
+                            loadBlurScreen()
+                            self.pauseButton.zPosition = 100
+                            self.pausedImage.zPosition = 100
                             self.addChild(pausedImage)
                             self.physicsWorld.speed = 0
                         }
@@ -420,13 +425,14 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         let duration = 0.5
         
         let pauseBG:SKSpriteNode = self.getBluredScreenshot()
+        self.blurNode = pauseBG
         
         //pauseBG.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         pauseBG.alpha = 0
         pauseBG.zPosition = 90
         pauseBG.runAction(SKAction.fadeAlphaTo(1, duration: duration))
         
-        self.addChild(pauseBG)
+        self.addChild(blurNode)
         
     }
     
