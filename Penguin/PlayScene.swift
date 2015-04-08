@@ -419,7 +419,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
     func loadBlurScreen(){
         
         let duration = 0.5
@@ -434,6 +433,14 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(blurNode)
         
+    }
+    
+    func stopActions(){
+
+    }
+    
+    func startActions(){
+
     }
     
     func retryLevel(){
