@@ -41,6 +41,10 @@
 		65B51AA31AD5C7B300B238EF /* nextLevelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA21AD5C7B300B238EF /* nextLevelButton.png */; };
 		65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA41AD5C7EC00B238EF /* LevelWin.sks */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
+		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
+		A4CC31881AD5D971005B09DD /* ugFM2GS - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */; };
+		A4CC318A1AD5DD19005B09DD /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31891AD5DD19005B09DD /* Spaceship.png */; };
+		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,10 @@
 		65B51AA21AD5C7B300B238EF /* nextLevelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextLevelButton.png; sourceTree = "<group>"; };
 		65B51AA41AD5C7EC00B238EF /* LevelWin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelWin.sks; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
+		A4CC31851AD5D4A0005B09DD /* LevelC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelC.sks; sourceTree = "<group>"; };
+		A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ugFM2GS - Imgur.png"; path = "Images.xcassets/Shortblock.imageset/ugFM2GS - Imgur.png"; sourceTree = "<group>"; };
+		A4CC31891AD5DD19005B09DD /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Spaceship.png; path = Images.xcassets/Spaceship.imageset/Spaceship.png; sourceTree = "<group>"; };
+		A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +151,8 @@
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
 				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
-				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
+				A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */,
+				65B51AA41AD5C7EC00B238EF /* LevelWon.sks */,
 				372156681AD4B7E600101993 /* LevelB.sks */,
 				6571DCD01AC4862000793471 /* LevelBScene.swift */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
@@ -158,6 +167,7 @@
 				3716492D1AB8781A0019694B /* Images.xcassets */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
 				371649201AB8781A0019694B /* Supporting Files */,
+				A4CC31851AD5D4A0005B09DD /* LevelC.sks */,
 			);
 			path = Penguin;
 			sourceTree = "<group>";
@@ -165,6 +175,8 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4CC31891AD5DD19005B09DD /* Spaceship.png */,
+				A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */,
 				372156641AD47AE000101993 /* fish.png */,
 				65B51AA21AD5C7B300B238EF /* nextLevelButton.png */,
 				65B51AA01AD5C45400B238EF /* GameOverFrame.png */,
@@ -277,8 +289,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4CC318A1AD5DD19005B09DD /* Spaceship.png in Resources */,
 				65B51A9D1AD5C42000B238EF /* quitButton.png in Resources */,
+				A4CC31881AD5D971005B09DD /* ugFM2GS - Imgur.png in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
+				A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */,
 				65B51A9F1AD5C44700B238EF /* retryButton.png in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
@@ -314,6 +329,7 @@
 				37D0ADF01ACDBEDF00264216 /* IcebergObject.swift in Sources */,
 				A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */,
 				6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */,
+				A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */,
 				371649271AB8781A0019694B /* MainMenuScene.swift in Sources */,
 				6571DCD11AC4862000793471 /* LevelBScene.swift in Sources */,
 				65B4B2B41ABCDECF00F8DD9C /* HighscoreScene.swift in Sources */,
