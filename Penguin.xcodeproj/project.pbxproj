@@ -38,6 +38,8 @@
 		65B51A9D1AD5C42000B238EF /* quitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51A9C1AD5C42000B238EF /* quitButton.png */; };
 		65B51A9F1AD5C44700B238EF /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51A9E1AD5C44700B238EF /* retryButton.png */; };
 		65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA01AD5C45400B238EF /* GameOverFrame.png */; };
+		65B51AA31AD5C7B300B238EF /* nextLevelButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA21AD5C7B300B238EF /* nextLevelButton.png */; };
+		65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA41AD5C7EC00B238EF /* LevelWin.sks */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,8 @@
 		65B51A9C1AD5C42000B238EF /* quitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quitButton.png; sourceTree = "<group>"; };
 		65B51A9E1AD5C44700B238EF /* retryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retryButton.png; sourceTree = "<group>"; };
 		65B51AA01AD5C45400B238EF /* GameOverFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameOverFrame.png; sourceTree = "<group>"; };
+		65B51AA21AD5C7B300B238EF /* nextLevelButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextLevelButton.png; sourceTree = "<group>"; };
+		65B51AA41AD5C7EC00B238EF /* LevelWin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelWin.sks; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,7 @@
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
 				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
+				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
 				372156681AD4B7E600101993 /* LevelB.sks */,
 				6571DCD01AC4862000793471 /* LevelBScene.swift */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
@@ -161,9 +166,10 @@
 			isa = PBXGroup;
 			children = (
 				372156641AD47AE000101993 /* fish.png */,
+				65B51AA21AD5C7B300B238EF /* nextLevelButton.png */,
 				65B51AA01AD5C45400B238EF /* GameOverFrame.png */,
-				65B51A9C1AD5C42000B238EF /* quitButton.png */,
 				65B51A9E1AD5C44700B238EF /* retryButton.png */,
+				65B51A9C1AD5C42000B238EF /* quitButton.png */,
 				372156661AD47AF300101993 /* pufferFish.png */,
 				37CDAC151AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png */,
 				37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */,
@@ -280,9 +286,11 @@
 				372156691AD4B7E600101993 /* LevelB.sks in Resources */,
 				65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */,
 				37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */,
+				65B51AA31AD5C7B300B238EF /* nextLevelButton.png in Resources */,
 				3716492C1AB8781A0019694B /* Main.storyboard in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */,
 				37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */,
+				65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */,
 				372156651AD47AE000101993 /* fish.png in Resources */,
 				655176BE1AD4B78F0037964F /* GameOver.sks in Resources */,
 				372156671AD47AF300101993 /* pufferFish.png in Resources */,
