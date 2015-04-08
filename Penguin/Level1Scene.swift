@@ -31,8 +31,8 @@ class Level1Scene: PlayScene{
 //        self.addChild(waterTest.sprite)
         
         
-        let levelStuff = SKNode.unarchiveFromFile("Level1")!
-        //self.scene?.scaleMode = SKSceneScaleMode.ResizeFill
+        let levelStuff = SKNode.unarchiveFromFile("Level1")! as SKNode
+        //self.scene?.scaleMode = SKSceneScaleMode.Fill
         
         var penguinIndex = 0
         var goalIndex = 0

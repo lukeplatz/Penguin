@@ -122,11 +122,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }else{
-                self.instructions1.removeFromParent()
-                self.instructions2.removeFromParent()
-                self.physicsWorld.speed = 1
-                self.gameStarted = true
-                self.needToCalibrate = true
+                if(self.gameStarted == false){
+                    self.instructions1.removeFromParent()
+                    self.instructions2.removeFromParent()
+                    self.physicsWorld.speed = 1
+                    self.gameStarted = true
+                    self.needToCalibrate = true
+                }
             }
         }
     }
@@ -261,7 +263,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;
             self.score.text = "Score: \(PlayerScore)"
-            contact.bodyA.node?.removeFromParent()
+            let move = SKAction.moveTo(self.score.position, duration: 0.2)
+            contact.bodyA.node?.runAction(move)
         default:
             return
         }
