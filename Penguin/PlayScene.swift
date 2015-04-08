@@ -315,11 +315,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.goalCategory:
             if(self.levelWin == false){
                 self.levelWin = true
-                println("goal reached")
                 self.physicsWorld.speed = 0
-                self.addChild(winner)
-                self.physicsWorld.speed = 0
-                
+                loadBlurScreen()
                 setupLevelWon()
                 self.addChild(LevelWinStuff)
                 //throw up "start next level?" dialog
