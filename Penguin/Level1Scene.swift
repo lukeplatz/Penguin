@@ -11,6 +11,14 @@ import SpriteKit
 
 class Level1Scene: PlayScene{
     
+    override func retryLevel() {
+        var levelStuff = Level1Scene.unarchiveFromFile("Level1")! as Level1Scene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
+    
     override func setupMap(){
         level = 1
 //        self.goal.anchorPoint = CGPointMake(0.5, 0.5)

@@ -25,7 +25,7 @@ class Level2Scene: PlayScene{
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
-        skView.presentScene(levelStuff, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
     override func setupMap(){

@@ -37,7 +37,7 @@
 		65B4B2B41ABCDECF00F8DD9C /* HighscoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */; };
 		65B51A9D1AD5C42000B238EF /* quitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51A9C1AD5C42000B238EF /* quitButton.png */; };
 		65B51A9F1AD5C44700B238EF /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51A9E1AD5C44700B238EF /* retryButton.png */; };
-		65B51AA11AD5C45400B238EF /* GameOverFrame 16-16-52-387.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA01AD5C45400B238EF /* GameOverFrame 16-16-52-387.png */; };
+		65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA01AD5C45400B238EF /* GameOverFrame.png */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +86,7 @@
 		65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighscoreScene.swift; sourceTree = "<group>"; };
 		65B51A9C1AD5C42000B238EF /* quitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quitButton.png; sourceTree = "<group>"; };
 		65B51A9E1AD5C44700B238EF /* retryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retryButton.png; sourceTree = "<group>"; };
-		65B51AA01AD5C45400B238EF /* GameOverFrame 16-16-52-387.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "GameOverFrame 16-16-52-387.png"; sourceTree = "<group>"; };
+		65B51AA01AD5C45400B238EF /* GameOverFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameOverFrame.png; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				372156641AD47AE000101993 /* fish.png */,
-				65B51AA01AD5C45400B238EF /* GameOverFrame 16-16-52-387.png */,
+				65B51AA01AD5C45400B238EF /* GameOverFrame.png */,
 				65B51A9C1AD5C42000B238EF /* quitButton.png */,
 				65B51A9E1AD5C44700B238EF /* retryButton.png */,
 				372156661AD47AF300101993 /* pufferFish.png */,
@@ -278,7 +278,7 @@
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
 				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
 				372156691AD4B7E600101993 /* Level2.sks in Resources */,
-				65B51AA11AD5C45400B238EF /* GameOverFrame 16-16-52-387.png in Resources */,
+				65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */,
 				37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */,
 				3716492C1AB8781A0019694B /* Main.storyboard in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* Level1.sks in Resources */,
