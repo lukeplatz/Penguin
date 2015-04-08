@@ -27,6 +27,11 @@
 		37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC151AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png */; };
 		37D0ADEE1ACDBAE600264216 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0ADED1ACDBAE600264216 /* Object.swift */; };
 		37D0ADF01ACDBEDF00264216 /* IcebergObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */; };
+		655176BE1AD4B78F0037964F /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 655176BD1AD4B78F0037964F /* GameOver.sks */; };
+		655176C01AD4BA820037964F /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655176BF1AD4BA820037964F /* GameOver.swift */; };
+		6568FE3B1AD4BE2F0027550F /* quitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6568FE391AD4BE2F0027550F /* quitButton.png */; };
+		6568FE3C1AD4BE2F0027550F /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6568FE3A1AD4BE2F0027550F /* retryButton.png */; };
+		6568FE3E1AD4C08C0027550F /* GameOverFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 6568FE3D1AD4C08C0027550F /* GameOverFrame.png */; };
 		6571DCCF1AC481A300793471 /* Level1Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCCE1AC481A300793471 /* Level1Scene.swift */; };
 		6571DCD11AC4862000793471 /* Level2Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCD01AC4862000793471 /* Level2Scene.swift */; };
 		65B4B2AC1ABCD18900F8DD9C /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */; };
@@ -70,6 +75,11 @@
 		37CDAC151AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Xc2oNw8 - Imgur.png"; path = "Images.xcassets/Tallblock.imageset/Xc2oNw8 - Imgur.png"; sourceTree = "<group>"; };
 		37D0ADED1ACDBAE600264216 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IcebergObject.swift; sourceTree = "<group>"; };
+		655176BD1AD4B78F0037964F /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
+		655176BF1AD4BA820037964F /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		6568FE391AD4BE2F0027550F /* quitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = quitButton.png; path = ../../../Downloads/quitButton.png; sourceTree = "<group>"; };
+		6568FE3A1AD4BE2F0027550F /* retryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retryButton.png; path = ../../../Downloads/retryButton.png; sourceTree = "<group>"; };
+		6568FE3D1AD4C08C0027550F /* GameOverFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GameOverFrame.png; path = ../../GameOverFrame.png; sourceTree = "<group>"; };
 		6571DCCE1AC481A300793471 /* Level1Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level1Scene.swift; sourceTree = "<group>"; };
 		6571DCD01AC4862000793471 /* Level2Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level2Scene.swift; sourceTree = "<group>"; };
 		65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
@@ -120,6 +130,8 @@
 				371649221AB8781A0019694B /* AppDelegate.swift */,
 				371649241AB8781A0019694B /* MainMenuScene.sks */,
 				37CDAC0E1AD43D5300BA9AD3 /* Level1.sks */,
+				655176BD1AD4B78F0037964F /* GameOver.sks */,
+				655176BF1AD4BA820037964F /* GameOver.swift */,
 				371649261AB8781A0019694B /* MainMenuScene.swift */,
 				65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */,
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
@@ -146,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				372156641AD47AE000101993 /* fish.png */,
+				6568FE391AD4BE2F0027550F /* quitButton.png */,
+				6568FE3D1AD4C08C0027550F /* GameOverFrame.png */,
+				6568FE3A1AD4BE2F0027550F /* retryButton.png */,
 				372156661AD47AF300101993 /* pufferFish.png */,
 				37CDAC151AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png */,
 				37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */,
@@ -253,15 +268,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6568FE3B1AD4BE2F0027550F /* quitButton.png in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
 				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
 				37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */,
+				6568FE3C1AD4BE2F0027550F /* retryButton.png in Resources */,
+				6568FE3E1AD4C08C0027550F /* GameOverFrame.png in Resources */,
 				3716492C1AB8781A0019694B /* Main.storyboard in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* Level1.sks in Resources */,
 				37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */,
 				372156651AD47AE000101993 /* fish.png in Resources */,
+				655176BE1AD4B78F0037964F /* GameOver.sks in Resources */,
 				372156671AD47AF300101993 /* pufferFish.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +314,7 @@
 				371649231AB8781A0019694B /* AppDelegate.swift in Sources */,
 				37D0ADEE1ACDBAE600264216 /* Object.swift in Sources */,
 				65B4B2AC1ABCD18900F8DD9C /* OptionsScene.swift in Sources */,
+				655176C01AD4BA820037964F /* GameOver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
