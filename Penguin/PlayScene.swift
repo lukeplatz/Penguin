@@ -50,7 +50,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var quitButtonIndex = 0
     var retryButtonIndex = 0
     
-    let gameOver = SKLabelNode(fontNamed: "Arial")
+    //let gameOver = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
     let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
     
@@ -216,12 +216,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.pausedImage.zPosition = 10
         
-        self.gameOver.text = "Game Over"
-        self.gameOver.position.x = CGRectGetMidX(self.frame)
-        self.gameOver.position.y = CGRectGetMidY(self.frame)
-        self.gameOver.fontColor = UIColor.orangeColor()
-        self.gameOver.fontSize = 25
-        self.gameOver.zPosition = 10
+       
         
         self.instructions1.text = "Tilt to move your Penguin"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
@@ -290,7 +285,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.WaterCategory:
             //die
             self.physicsWorld.speed = 0
-            self.addChild(gameOver)
+            
             contact.bodyA.node?.removeAllActions()
             self.died = true
             //restart level / main menu dialog
@@ -319,7 +314,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             self.winner.removeFromParent()
         case collision.playerCategory | collision.WaterCategory:
             //die
-            self.gameOver.removeFromParent()
+            
             self.physicsWorld.speed = 1
             println("remove this functionality - end contact water|penguin")
         default:
