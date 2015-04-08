@@ -25,6 +25,7 @@ struct collision {
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()
+    let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
     
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
@@ -45,6 +46,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let score = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
+    
+    var quitButtonIndex = 0
+    var retryButtonIndex = 0
     
     let gameOver = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
@@ -76,6 +80,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         setupMap()
         
         
+        
         if (self.motionManager.accelerometerAvailable){
             //Set up and manage motion manager to get accelerometer data
             self.motionManager.accelerometerUpdateInterval = (1/40)
@@ -96,37 +101,60 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         /* Called when a touch begins */
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            if self.nodeAtPoint(location) == self.backButton{
-                motionManager.stopAccelerometerUpdates()
-                self.needToCalibrate = true
-                
-                //Sets HighScore
-                setHighScore()
-                
-                var mainMenuScene = LevelSelectScene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                mainMenuScene.scaleMode = .ResizeFill
-                mainMenuScene.size = skView.bounds.size
-                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-            }else if self.nodeAtPoint(location) == self.pauseButton{
-                if(self.died == false && self.levelWin == false){
-                    if(self.physicsWorld.speed == 0){
-                        //Resume
-                        self.pausedImage.removeFromParent()
-                        self.physicsWorld.speed = 1
-                    }else{
-                        //Pause
-                        self.addChild(pausedImage)
-                        self.physicsWorld.speed = 0
+            
+            if(self.died == false){
+                if self.nodeAtPoint(location) == self.backButton{
+                    motionManager.stopAccelerometerUpdates()
+                    self.needToCalibrate = true
+                    
+                    //Sets HighScore
+                    setHighScore()
+                    
+                    var mainMenuScene = LevelSelectScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    mainMenuScene.scaleMode = .ResizeFill
+                    mainMenuScene.size = skView.bounds.size
+                    skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                }else if self.nodeAtPoint(location) == self.pauseButton{
+                    if(self.died == false && self.levelWin == false){
+                        if(self.physicsWorld.speed == 0){
+                            //Resume
+                            self.pausedImage.removeFromParent()
+                            self.physicsWorld.speed = 1
+                        }else{
+                            //Pause
+                            self.addChild(pausedImage)
+                            self.physicsWorld.speed = 0
+                        }
                     }
+                }else{
+                    self.instructions1.removeFromParent()
+                    self.instructions2.removeFromParent()
+                    self.physicsWorld.speed = 1
+                    self.gameStarted = true
+                    self.needToCalibrate = true
                 }
-            }else{
-                self.instructions1.removeFromParent()
-                self.instructions2.removeFromParent()
-                self.physicsWorld.speed = 1
-                self.gameStarted = true
-                self.needToCalibrate = true
+            }
+            else{
+                if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
+                    var levelSelectScene = LevelSelectScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    levelSelectScene.scaleMode = .ResizeFill
+                    levelSelectScene.size = skView.bounds.size
+                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+
+                }
+                if (self.nodeAtPoint(location) == self.GameOverStuff.children[retryButtonIndex] as NSObject){
+                    var levelScene = Level1Scene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    levelScene.scaleMode = .ResizeFill
+                    levelScene.size = skView.bounds.size
+                    skView.presentScene(levelScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    
+                }
             }
         }
     }
@@ -226,6 +254,18 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
        
     }
     
+    func setupGameOver(){
+        for index in 0...GameOverStuff.children.count - 1{
+            if(GameOverStuff.children[index].name == "retryButton"){
+                retryButtonIndex = index
+            }
+            if(GameOverStuff.children[index].name == "quitButton"){
+                quitButtonIndex = index
+            }
+        }
+
+    }
+    
     func setHighScore(){
         NSUserDefaults.standardUserDefaults().integerForKey("highscore\(self.level)")
         
@@ -258,6 +298,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             self.died = true
             self.physicsWorld.speed = 0
             //restart level / main menu dialog
+            
+            self.addChild(GameOverStuff)
+            setupGameOver()
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;
             self.score.text = "Score: \(PlayerScore)"
@@ -285,3 +328,4 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         }
     }
 }
+
