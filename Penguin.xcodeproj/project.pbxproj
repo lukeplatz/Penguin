@@ -21,6 +21,7 @@
 		371649471AB87ECB0019694B /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649461AB87ECB0019694B /* PlayScene.swift */; };
 		372156651AD47AE000101993 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156641AD47AE000101993 /* fish.png */; };
 		372156671AD47AF300101993 /* pufferFish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156661AD47AF300101993 /* pufferFish.png */; };
+		372156691AD4B7E600101993 /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372156681AD4B7E600101993 /* Level2.sks */; };
 		37CDAC0F1AD43D5300BA9AD3 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC0E1AD43D5300BA9AD3 /* Level1.sks */; };
 		37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */; };
 		37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */; };
@@ -69,6 +70,7 @@
 		371649461AB87ECB0019694B /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		372156641AD47AE000101993 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		372156661AD47AF300101993 /* pufferFish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pufferFish.png; sourceTree = "<group>"; };
+		372156681AD4B7E600101993 /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
 		37CDAC0E1AD43D5300BA9AD3 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "water_texture_03_by_frostbo-d5agt22.jpg"; sourceTree = "<group>"; };
 		37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "H6EwGxP - Imgur.png"; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
 				6571DCCE1AC481A300793471 /* Level1Scene.swift */,
+				372156681AD4B7E600101993 /* Level2.sks */,
 				6571DCD01AC4862000793471 /* Level2Scene.swift */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
@@ -273,6 +276,7 @@
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
 				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
+				372156691AD4B7E600101993 /* Level2.sks in Resources */,
 				37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */,
 				6568FE3C1AD4BE2F0027550F /* retryButton.png in Resources */,
 				6568FE3E1AD4C08C0027550F /* GameOverFrame.png in Resources */,

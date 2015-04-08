@@ -19,40 +19,52 @@ import SpriteKit
 import CoreMotion
 
 class Level2Scene: PlayScene{
-    let longBlock = SKSpriteNode(imageNamed: "Tallblock")
-    let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
     
     override func setupMap(){
         level = 2
-        self.goal.anchorPoint = CGPointMake(0.5, 0.5)
-        self.goal.xScale = (50/self.goal.size.width)
-        self.goal.yScale = (50/self.goal.size.height)
-        self.goal.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.goal.size.width / 2), CGRectGetMaxY(self.frame) - (self.goal.size.height / 2) - statusbarHeight * 11)
-        self.goal.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
-        self.goal.physicsBody?.dynamic = false
-        self.goal.physicsBody?.categoryBitMask = collision.goalCategory
-        self.goal.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
-        //Sets up longblock
-        self.longBlock.anchorPoint = CGPointMake(0.5, 0.5)
-        let constraint = SKConstraint.zRotation(SKRange(constantValue: 1.575))
-        self.longBlock.constraints = [constraint]
-        self.longBlock.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.longBlock.size.width), CGRectGetMaxY(self.frame) - (self.longBlock.size.height / 2) - statusbarHeight * 10 - self.longBlock.size.width / 2)
-        self.longBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(self.longBlock.size.width), CGFloat(self.longBlock.size.height)))
-        self.longBlock.physicsBody?.dynamic = false
+        //var levelStuff = Level2Scene.unarchiveFromFile("Level2")!
         
-        //Sets up shortblock
-        self.shortBlock.anchorPoint = CGPointMake(0.5, 0.5)
-        self.shortBlock.xScale = (50/self.goal.size.width)
-        self.shortBlock.yScale = (50/self.goal.size.height)
-        self.shortBlock.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.shortBlock.size.width * 1.5), CGRectGetMaxY(self.frame) - (self.shortBlock.size.height / 2) - statusbarHeight * 10)
-        self.shortBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
-        self.shortBlock.physicsBody?.dynamic = false
+        let pulseUp = SKAction.scaleTo(0.25, duration: 0.5)
+        let pulseDown = SKAction.scaleTo(0.15, duration: 0.5)
+        let pulse = SKAction.sequence([pulseUp, pulseDown])
+        let repeatPulse = SKAction.repeatActionForever(pulse)
         
         
-        self.addChild(penguin)
-        self.addChild(goal)
-        self.addChild(longBlock)
-        self.addChild(shortBlock)
+        //apply action to all fish
+        let fish = childNodeWithName("fish1") as SKSpriteNode
+        fish.physicsBody?.categoryBitMask = collision.fishCategory
+        fish.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        fish.runAction(repeatPulse)
+        
+        let fish2 = childNodeWithName("fish2") as SKSpriteNode
+        fish2.physicsBody?.categoryBitMask = collision.fishCategory
+        fish2.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        fish2.runAction(repeatPulse)
+        
+        let fish3 = childNodeWithName("fish3") as SKSpriteNode
+        fish3.physicsBody?.categoryBitMask = collision.fishCategory
+        fish3.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        fish3.runAction(repeatPulse)
+
+        
+        let penguin = childNodeWithName("Penguin") as SKSpriteNode
+        penguin.physicsBody?.categoryBitMask = collision.playerCategory
+        penguin.physicsBody?.collisionBitMask = 1 // Enable Colliding
+        penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory
+        
+        let goal = childNodeWithName("goal") as SKSpriteNode
+        goal.physicsBody?.categoryBitMask = collision.goalCategory
+        goal.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        
+        
+        let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
+        PufferFish.zPosition = 2
+        let moveleft = SKAction.moveBy(CGVectorMake(-(self.size.width / 2), 0), duration: 1.0)
+        let moveright = SKAction.moveBy(CGVectorMake((self.size.width / 2), 0), duration: 1.0)
+        let leftRight = SKAction.sequence([moveleft, moveright, moveright, moveleft])
+        let repeatMove = SKAction.repeatActionForever(leftRight)
+        
+        PufferFish.runAction(repeatMove)
     }
 }
