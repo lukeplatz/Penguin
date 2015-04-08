@@ -315,11 +315,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.goalCategory:
             if(self.levelWin == false){
                 self.levelWin = true
-                println("goal reached")
                 self.physicsWorld.speed = 0
-                self.addChild(winner)
-                self.physicsWorld.speed = 0
-                
+                loadBlurScreen()
                 setupLevelWon()
                 self.addChild(LevelWinStuff)
                 //throw up "start next level?" dialog
@@ -331,6 +328,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.removeAllActions()
             self.died = true
             //restart level / main menu dialog
+            loadBlurScreen()
             GameOverStuff.removeFromParent()
             setupGameOver()
             self.addChild(GameOverStuff)
@@ -362,6 +360,74 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         default:
             return
         }
+    }
+    
+    
+    func getBluredScreenshot() -> SKSpriteNode{
+        
+        //create the graphics context
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view!.frame.size.width, height: self.view!.frame.size.height), true, 1)
+        
+        self.view!.drawViewHierarchyInRect(self.view!.frame, afterScreenUpdates: true)
+        
+        // retrieve graphics context
+        let context = UIGraphicsGetCurrentContext()
+        
+        // query image from it
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // create Core Image context
+        let ciContext = CIContext(options: nil)
+        // create a CIImage, think of a CIImage as image data for processing, nothing is displayed or can be displayed at this point
+        let coreImage = CIImage(image: image)
+        // pick the filter we want
+        let filter = CIFilter(name: "CIGaussianBlur")
+        // pass our image as input
+        filter.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        //edit the amount of blur
+        filter.setValue(3, forKey: kCIInputRadiusKey)
+        
+        //retrieve the processed image
+        let filteredImageData = filter.valueForKey(kCIOutputImageKey) as CIImage
+        // return a Quartz image from the Core Image context
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent())
+        // final UIImage
+        let filteredImage = UIImage(CGImage: filteredImageRef)
+        
+        // create a texture, pass the UIImage
+        let texture = SKTexture(image: filteredImage!)
+        // wrap it inside a sprite node
+        let sprite = SKSpriteNode(texture:texture)
+        
+        // make image the position in the center
+        sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        
+        var scale:CGFloat = UIScreen.mainScreen().scale
+        
+        sprite.size.width  *= scale
+        
+        sprite.size.height *= scale
+        
+        return sprite
+        
+        
+    }
+    
+    
+    func loadBlurScreen(){
+        
+        let duration = 0.5
+        
+        let pauseBG:SKSpriteNode = self.getBluredScreenshot()
+        
+        //pauseBG.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        pauseBG.alpha = 0
+        pauseBG.zPosition = 90
+        pauseBG.runAction(SKAction.fadeAlphaTo(1, duration: duration))
+        
+        self.addChild(pauseBG)
+        
     }
     
     func retryLevel(){
