@@ -22,6 +22,14 @@ struct collision {
 
 }
 
+enum GameState {
+    case Loading
+    case Playing
+    case Paused
+    case GameWon
+    case GameOver
+}
+
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()
@@ -30,7 +38,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
-    
+    var state = GameState.Loading
     var level = 1
     var PlayerScore = 0
     
@@ -140,6 +148,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     self.instructions2.removeFromParent()
                     self.physicsWorld.speed = 1
                     self.gameStarted = true
+                    self.state = GameState.Playing
                     self.needToCalibrate = true
                 }
             }
@@ -320,6 +329,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.goalCategory:
             if(self.levelWin == false){
                 self.levelWin = true
+                self.state = GameState.GameWon
                 self.physicsWorld.speed = 0
                 loadBlurScreen()
                 setupLevelWon()
@@ -332,6 +342,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             
             contact.bodyA.node?.removeAllActions()
             self.died = true
+            self.state = GameState.GameOver
             //restart level / main menu dialog
             loadBlurScreen()
             GameOverStuff.removeFromParent()
