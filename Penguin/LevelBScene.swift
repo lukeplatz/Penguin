@@ -15,8 +15,15 @@ import Foundation
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
+
+//
+//let blur = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
+//blur.frame = frame
+//self.view?.addSubview(blur)
+
 import SpriteKit
 import CoreMotion
+import UIKit
 
 class LevelBScene: PlayScene{
     
