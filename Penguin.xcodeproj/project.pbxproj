@@ -143,18 +143,13 @@
 			children = (
 				371649221AB8781A0019694B /* AppDelegate.swift */,
 				371649241AB8781A0019694B /* MainMenuScene.sks */,
-				37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */,
 				655176BD1AD4B78F0037964F /* GameOver.sks */,
 				655176BF1AD4BA820037964F /* GameOver.swift */,
 				371649261AB8781A0019694B /* MainMenuScene.swift */,
 				65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */,
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
-				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
-				A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */,
-				65B51AA41AD5C7EC00B238EF /* LevelWon.sks */,
-				372156681AD4B7E600101993 /* LevelB.sks */,
-				6571DCD01AC4862000793471 /* LevelBScene.swift */,
+				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */,
@@ -167,7 +162,8 @@
 				3716492D1AB8781A0019694B /* Images.xcassets */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
 				371649201AB8781A0019694B /* Supporting Files */,
-				A4CC31851AD5D4A0005B09DD /* LevelC.sks */,
+				372559A21AD5EF9200AE1808 /* Level Code */,
+				372559A11AD5EF7600AE1808 /* Level Editors */,
 			);
 			path = Penguin;
 			sourceTree = "<group>";
@@ -206,6 +202,26 @@
 				3716493B1AB8781A0019694B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		372559A11AD5EF7600AE1808 /* Level Editors */ = {
+			isa = PBXGroup;
+			children = (
+				37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */,
+				372156681AD4B7E600101993 /* LevelB.sks */,
+				A4CC31851AD5D4A0005B09DD /* LevelC.sks */,
+			);
+			name = "Level Editors";
+			sourceTree = "<group>";
+		};
+		372559A21AD5EF9200AE1808 /* Level Code */ = {
+			isa = PBXGroup;
+			children = (
+				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
+				A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */,
+				6571DCD01AC4862000793471 /* LevelBScene.swift */,
+			);
+			name = "Level Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
