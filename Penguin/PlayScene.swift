@@ -294,6 +294,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.removeAllActions()
             self.died = true
             //restart level / main menu dialog
+            GameOverStuff.removeFromParent()
             setupGameOver()
             self.addChild(GameOverStuff)
             
