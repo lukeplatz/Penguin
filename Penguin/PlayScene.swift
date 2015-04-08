@@ -147,12 +147,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 
                 }
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[retryButtonIndex] as NSObject){
-                    var levelScene = Level1Scene(size: self.size)
-                    let skView = self.view! as SKView
-                    skView.ignoresSiblingOrder = true
-                    levelScene.scaleMode = .ResizeFill
-                    levelScene.size = skView.bounds.size
-                    skView.presentScene(levelScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    retryLevel()
                     
                 }
             }
@@ -299,9 +294,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.removeAllActions()
             self.died = true
             //restart level / main menu dialog
-            
-            self.addChild(GameOverStuff)
             setupGameOver()
+            self.addChild(GameOverStuff)
+            
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;
             self.score.text = "Score: \(PlayerScore)"
@@ -329,6 +324,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         default:
             return
         }
+    }
+    
+    func retryLevel(){
+        
     }
 }
 

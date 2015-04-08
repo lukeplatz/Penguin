@@ -20,6 +20,14 @@ import CoreMotion
 
 class Level2Scene: PlayScene{
     
+    override func retryLevel() {
+        var levelStuff = Level2Scene.unarchiveFromFile("Level2")! as Level2Scene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+    }
+    
     override func setupMap(){
         level = 2
         
