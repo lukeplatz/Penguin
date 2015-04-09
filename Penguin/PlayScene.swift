@@ -19,7 +19,7 @@ struct collision {
     static let powerUpCategory : UInt32 = 0b10000
     static let goalCategory    : UInt32 = 100
     static let fishCategory    : UInt32 = 22
-
+    static let bridgeCategory  : UInt32 = 99
 }
 
 enum GameState {
@@ -415,6 +415,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
             let move = SKAction.moveTo(self.score.position, duration: 0.2)
             contact.bodyA.node?.runAction(move)
+        case collision.playerCategory | collision.powerUpCategory:
+            //add bridge
+            addBridges()
+            contact.bodyA.node?.removeFromParent()
         default:
             return
         }
@@ -494,6 +498,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         pauseBG.runAction(SKAction.fadeAlphaTo(1, duration: duration))
         
         self.addChild(blurNode)
+        
+    }
+    
+    func addBridges(){
         
     }
     
