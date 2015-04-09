@@ -19,13 +19,13 @@ class LevelAScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-//    override func nextLevel() {
-//        var levelStuff = LevelBScene.unarchiveFromFile("LevelB")! as LevelBScene
-//        levelStuff.scaleMode = .ResizeFill
-//        let skView = self.view! as SKView
-//        skView.ignoresSiblingOrder = true
-//        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-//    }
+    override func nextLevel() {
+        var levelStuff = LevelFScene.unarchiveFromFile("LevelF")! as LevelFScene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
     
     override func stopActions(){
         //stop all actions
