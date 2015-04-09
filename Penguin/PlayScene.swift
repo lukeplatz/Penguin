@@ -134,13 +134,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     if(self.state == GameState.Playing){
                             //Pause
                             loadBlurScreen()
-//                            self.pauseButton.zPosition = 100
-//                            self.pausedImage.zPosition = 100
-//                            self.addChild(pausedImage)
                             self.setupPausePopup()
-                            PauseStuff.alpha = 0
+                            PauseStuff.xScale = 0
+                            PauseStuff.yScale = 0
+                            PauseStuff.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
                             self.addChild(PauseStuff)
-                            PauseStuff.runAction(SKAction.fadeInWithDuration(0.5))
+                            let scale = SKAction.scaleTo(1, duration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0)
+                            PauseStuff.runAction(scale)
                             state = GameState.Paused
                             self.physicsWorld.speed = 0
                     }
@@ -385,10 +385,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 score.text = "SCORE: \(PlayerScore)"
                 setupLevelWon()
                 setHighScore()
-                LevelWinStuff.alpha = 0
+                LevelWinStuff.xScale = 0
+                LevelWinStuff.yScale = 0
+                LevelWinStuff.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
                 self.addChild(LevelWinStuff)
-                LevelWinStuff.runAction(SKAction.fadeInWithDuration(0.5))
-                //throw up "start next level?" dialog
+                let scale = SKAction.scaleTo(1, duration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0)
+                LevelWinStuff.runAction(scale)
             }
         case collision.playerCategory | collision.WaterCategory:
             //die
@@ -400,9 +402,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             loadBlurScreen()
             GameOverStuff.removeFromParent()
             setupGameOver()
-            GameOverStuff.alpha = 0
+            GameOverStuff.xScale = 0
+            GameOverStuff.yScale = 0
+            GameOverStuff.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
             self.addChild(GameOverStuff)
-            GameOverStuff.runAction(SKAction.fadeInWithDuration(0.5))
+            let scale = SKAction.scaleTo(1, duration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0)
+            GameOverStuff.runAction(scale)
             
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;

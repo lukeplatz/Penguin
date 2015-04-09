@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		370055001AC8E9AF002C5231 /* EndlessPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */; };
+		3700B7F31AD6E3EF00428CC4 /* SpriteKit-Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700B7F21AD6E3EF00428CC4 /* SpriteKit-Spring.swift */; };
 		370ABBBC1ACDC2BF008BD084 /* PowerUpObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370ABBBB1ACDC2BF008BD084 /* PowerUpObject.swift */; };
 		37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */; };
 		371649231AB8781A0019694B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649221AB8781A0019694B /* AppDelegate.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndlessPlayScene.swift; sourceTree = "<group>"; };
+		3700B7F21AD6E3EF00428CC4 /* SpriteKit-Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpriteKit-Spring.swift"; sourceTree = "<group>"; };
 		370ABBBB1ACDC2BF008BD084 /* PowerUpObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpObject.swift; sourceTree = "<group>"; };
 		37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectionScene.swift; sourceTree = "<group>"; };
 		3716491D1AB8781A0019694B /* Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penguin.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */,
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
+				3700B7F21AD6E3EF00428CC4 /* SpriteKit-Spring.swift */,
 				65C20DE21AD5D7FA00C8B923 /* PausePopup.sks */,
 				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
@@ -374,6 +377,7 @@
 				A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */,
 				6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */,
 				A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */,
+				3700B7F31AD6E3EF00428CC4 /* SpriteKit-Spring.swift in Sources */,
 				371649271AB8781A0019694B /* MainMenuScene.swift in Sources */,
 				6571DCD11AC4862000793471 /* LevelBScene.swift in Sources */,
 				65B4B2B41ABCDECF00F8DD9C /* HighscoreScene.swift in Sources */,
