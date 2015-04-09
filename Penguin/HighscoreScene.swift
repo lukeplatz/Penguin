@@ -16,7 +16,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let resetButton = SKSpriteNode(imageNamed: "ResetButton")
     let score = SKLabelNode(fontNamed: "Arial")
-    var NumLevelsUnlocked = 3
+    var NumLevelsUnlocked = 5
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -99,7 +99,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         
         self.resetButton.name = "reset"
         self.resetButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.resetButton.position = CGPointMake(CGRectGetMaxX(self.frame) - resetButton.size.width / 2, CGRectGetMidY(self.frame) - resetButton.size.height / 2)
+        self.resetButton.position = CGPointMake(CGRectGetMaxX(self.frame) - self.resetButton.size.width / 2, CGRectGetMinY(self.frame) + resetButton.size.height)
         self.addChild(resetButton)
 
         self.addChild(backButton)
