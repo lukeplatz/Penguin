@@ -380,7 +380,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 self.state = GameState.GameWon
                 self.physicsWorld.speed = 0
                 loadBlurScreen()
+                var score = LevelWinStuff.childNodeWithName("ScoreLabel") as SKLabelNode
+                score.text = "SCORE: \(PlayerScore)"
                 setupLevelWon()
+                setHighScore()
                 self.addChild(LevelWinStuff)
                 //throw up "start next level?" dialog
             }
