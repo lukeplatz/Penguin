@@ -1,25 +1,16 @@
 //
-//  LevelCScene.swift
+//  LevelDScene.swift
 //  Penguin
 //
-//  Created by Aaron Wade on 4/8/15.
+//  Created by Riley Chapin on 4/8/15.
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
 import SpriteKit
-//import CoreMotion
 
-class LevelCScene: PlayScene{
+class LevelDScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = LevelCScene.unarchiveFromFile("LevelC")! as LevelCScene
-        levelStuff.scaleMode = .ResizeFill
-        let skView = self.view! as SKView
-        skView.ignoresSiblingOrder = true
-        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-    }
-    
-    override func nextLevel() {
         var levelStuff = LevelDScene.unarchiveFromFile("LevelD")! as LevelDScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
@@ -27,8 +18,16 @@ class LevelCScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
+    override func nextLevel() {
+                var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
+                levelStuff.scaleMode = .ResizeFill
+                let skView = self.view! as SKView
+                skView.ignoresSiblingOrder = true
+                skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
+    
     override func setupMap(){
-        level = 3
+        level = 4
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
@@ -58,14 +57,14 @@ class LevelCScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-//        let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
-//        PufferFish.physicsBody?.categoryBitMask = collision.WaterCategory
-//        PufferFish.physicsBody?.collisionBitMask = 1 // allow contact
-//        let moveUp = SKAction.moveBy(CGVectorMake(0, 50), duration: 1.5)
-//        let moveDown = SKAction.moveBy(CGVectorMake(0, -50), duration: 1.5)
-//        let upDown = SKAction.sequence([moveUp, moveDown])
-//        let repeatMove = SKAction.repeatActionForever(upDown)
-//        PufferFish.runAction(repeatMove)
+        //        let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
+        //        PufferFish.physicsBody?.categoryBitMask = collision.WaterCategory
+        //        PufferFish.physicsBody?.collisionBitMask = 1 // allow contact
+        //        let moveUp = SKAction.moveBy(CGVectorMake(0, 50), duration: 1.5)
+        //        let moveDown = SKAction.moveBy(CGVectorMake(0, -50), duration: 1.5)
+        //        let upDown = SKAction.sequence([moveUp, moveDown])
+        //        let repeatMove = SKAction.repeatActionForever(upDown)
+        //        PufferFish.runAction(repeatMove)
         
     }
 }

@@ -45,6 +45,10 @@
 		A4CC31881AD5D971005B09DD /* ugFM2GS - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */; };
 		A4CC318A1AD5DD19005B09DD /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31891AD5DD19005B09DD /* Spaceship.png */; };
 		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
+		A4CC318E1AD5FE38005B09DD /* LevelDScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318D1AD5FE38005B09DD /* LevelDScene.swift */; };
+		A4CC31911AD5FEE9005B09DD /* LevelD.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31901AD5FEE9005B09DD /* LevelD.sks */; };
+		A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31941AD608B3005B09DD /* LevelE.sks */; };
+		A4CC31971AD608C5005B09DD /* LevelEScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC31961AD608C5005B09DD /* LevelEScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +104,10 @@
 		A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ugFM2GS - Imgur.png"; path = "Images.xcassets/Shortblock.imageset/ugFM2GS - Imgur.png"; sourceTree = "<group>"; };
 		A4CC31891AD5DD19005B09DD /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Spaceship.png; path = Images.xcassets/Spaceship.imageset/Spaceship.png; sourceTree = "<group>"; };
 		A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCScene.swift; sourceTree = "<group>"; };
+		A4CC318D1AD5FE38005B09DD /* LevelDScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDScene.swift; sourceTree = "<group>"; };
+		A4CC31901AD5FEE9005B09DD /* LevelD.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelD.sks; sourceTree = "<group>"; };
+		A4CC31941AD608B3005B09DD /* LevelE.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelE.sks; sourceTree = "<group>"; };
+		A4CC31961AD608C5005B09DD /* LevelEScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelEScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,20 +149,16 @@
 		3716491F1AB8781A0019694B /* Penguin */ = {
 			isa = PBXGroup;
 			children = (
+				A4CC318F1AD5FEA9005B09DD /* Levels */,
 				371649221AB8781A0019694B /* AppDelegate.swift */,
 				371649241AB8781A0019694B /* MainMenuScene.sks */,
-				37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */,
 				655176BD1AD4B78F0037964F /* GameOver.sks */,
 				655176BF1AD4BA820037964F /* GameOver.swift */,
 				371649261AB8781A0019694B /* MainMenuScene.swift */,
 				65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */,
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
-				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
-				A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */,
-				65B51AA41AD5C7EC00B238EF /* LevelWon.sks */,
-				372156681AD4B7E600101993 /* LevelB.sks */,
-				6571DCD01AC4862000793471 /* LevelBScene.swift */,
+				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */,
@@ -167,7 +171,6 @@
 				3716492D1AB8781A0019694B /* Images.xcassets */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
 				371649201AB8781A0019694B /* Supporting Files */,
-				A4CC31851AD5D4A0005B09DD /* LevelC.sks */,
 			);
 			path = Penguin;
 			sourceTree = "<group>";
@@ -206,6 +209,23 @@
 				3716493B1AB8781A0019694B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A4CC318F1AD5FEA9005B09DD /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */,
+				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
+				372156681AD4B7E600101993 /* LevelB.sks */,
+				6571DCD01AC4862000793471 /* LevelBScene.swift */,
+				A4CC31851AD5D4A0005B09DD /* LevelC.sks */,
+				A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */,
+				A4CC31901AD5FEE9005B09DD /* LevelD.sks */,
+				A4CC318D1AD5FE38005B09DD /* LevelDScene.swift */,
+				A4CC31941AD608B3005B09DD /* LevelE.sks */,
+				A4CC31961AD608C5005B09DD /* LevelEScene.swift */,
+			);
+			name = Levels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,12 +310,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4CC318A1AD5DD19005B09DD /* Spaceship.png in Resources */,
+				A4CC31911AD5FEE9005B09DD /* LevelD.sks in Resources */,
 				65B51A9D1AD5C42000B238EF /* quitButton.png in Resources */,
 				A4CC31881AD5D971005B09DD /* ugFM2GS - Imgur.png in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
 				A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */,
 				65B51A9F1AD5C44700B238EF /* retryButton.png in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
+				A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */,
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
 				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
 				372156691AD4B7E600101993 /* LevelB.sks in Resources */,
@@ -338,9 +360,11 @@
 				371649471AB87ECB0019694B /* PlayScene.swift in Sources */,
 				370055001AC8E9AF002C5231 /* EndlessPlayScene.swift in Sources */,
 				370ABBBC1ACDC2BF008BD084 /* PowerUpObject.swift in Sources */,
+				A4CC318E1AD5FE38005B09DD /* LevelDScene.swift in Sources */,
 				37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */,
 				371649231AB8781A0019694B /* AppDelegate.swift in Sources */,
 				37D0ADEE1ACDBAE600264216 /* Object.swift in Sources */,
+				A4CC31971AD608C5005B09DD /* LevelEScene.swift in Sources */,
 				65B4B2AC1ABCD18900F8DD9C /* OptionsScene.swift in Sources */,
 				655176C01AD4BA820037964F /* GameOver.swift in Sources */,
 			);
