@@ -2,7 +2,7 @@
 //  LevelCScene.swift
 //  Penguin
 //
-//  Created by Aaron Wade on 4/8/15.
+//  Created by Riley Chapin on 4/8/15.
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
