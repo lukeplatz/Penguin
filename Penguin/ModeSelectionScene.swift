@@ -62,11 +62,10 @@ class ModeSelectionScene: SKScene {
                 levelSelectScene.size = skView.bounds.size
                 skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }else if self.nodeAtPoint(location) == self.endlessButton{
-                var endlessScene = EndlessPlayScene(size: self.size)
+                var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
                 endlessScene.scaleMode = .Fill
-                endlessScene.size = skView.bounds.size
                 skView.presentScene(endlessScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }else{
                 println("ModeSelectionScene Background Pressed")
