@@ -15,7 +15,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
     let table = UITableView()
-    var NumLevelsUnlocked = 5
+    var NumLevelsUnlocked = 4
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -115,6 +115,20 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = true
             skView.presentScene(levelC, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            table.removeFromSuperview()
+        case (4):
+            var levelD = LevelDScene.unarchiveFromFile("LevelD")! as LevelDScene
+            levelD.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelD, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            table.removeFromSuperview()
+        case (5):
+            var levelE = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
+            levelE.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelE, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             table.removeFromSuperview()
         default:
             println("Level Not Unlocked!")
