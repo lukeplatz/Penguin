@@ -27,6 +27,14 @@ class LevelAScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
+    override func stopActions(){
+        //stop all actions
+    }
+    
+    override func startActions(){
+        //Start all actions
+    }
+    
     override func setupMap(){
         level = 1
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
@@ -39,14 +47,25 @@ class LevelAScene: PlayScene{
         let pulse = SKAction.sequence([pulseUp, pulseDown])
         let repeatPulse = SKAction.repeatActionForever(pulse)
         
+        //Uncomment for snow!!
+//        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
+//        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame))
+//        self.addChild(snow!)
+        
         let goal = childNodeWithName("goal") as SKSpriteNode
         goal.physicsBody?.categoryBitMask = collision.goalCategory
         goal.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
+        //Uncomment for spark on goal!
+//        let spark = SKEmitterNode.unarchiveFromFile("Spark")
+//        spark?.position = goal.position
+//        self.addChild(spark!)
+
+        
         let F1 = childNodeWithName("fish1") as SKSpriteNode
         F1.physicsBody?.categoryBitMask = collision.fishCategory
         F1.physicsBody?.collisionBitMask = 0 // dont collide with anything
-        F1.runAction(repeatPulse)
+        F1.runAction(repeatPulse, withKey: "Fish Pulse")
         
         let F2 = childNodeWithName("fish2") as SKSpriteNode
         F2.physicsBody?.categoryBitMask = collision.fishCategory

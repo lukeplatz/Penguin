@@ -22,15 +22,25 @@ struct collision {
 
 }
 
+enum GameState {
+    case Loading
+    case Playing
+    case Paused
+    case GameWon
+    case GameOver
+}
+
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var motionManager = CMMotionManager()
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
     let LevelWinStuff = SKNode.unarchiveFromFile("LevelWin")!
+    let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
-    
+    var state = GameState.Playing
+
     var level = 1
     var PlayerScore = 0
     
@@ -50,12 +60,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var quitButtonIndex = 0
     var retryButtonIndex = 0
-    
+    var resumeButtonIndex = 0
     var nextLevelButtonIndex = 0
     
     //let gameOver = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
     let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
+    let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
     
     var SPEED_MULTIPLIER = CGFloat(3)
     
@@ -105,7 +116,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            if(self.died == false && self.levelWin == false){
+            if(state == GameState.Playing){
                 if self.nodeAtPoint(location) == self.backButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
@@ -113,37 +124,36 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     //Sets HighScore
                     setHighScore()
                     
-                    var mainMenuScene = LevelSelectScene(size: self.size)
+                    var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
-                    mainMenuScene.scaleMode = .ResizeFill
-                    mainMenuScene.size = skView.bounds.size
-                    skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    levelSelectScene.scaleMode = .ResizeFill
+                    levelSelectScene.size = skView.bounds.size
+                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 }else if self.nodeAtPoint(location) == self.pauseButton{
-                    if(self.died == false && self.levelWin == false){
-                        if(self.physicsWorld.speed == 0){
-                            //Resume
-                            self.blurNode.removeFromParent()
-                            self.pausedImage.removeFromParent()
-                            self.physicsWorld.speed = 1
-                        }else{
+                    if(self.state == GameState.Playing){
+                        
                             //Pause
                             loadBlurScreen()
-                            self.pauseButton.zPosition = 100
-                            self.pausedImage.zPosition = 100
-                            self.addChild(pausedImage)
+//                            self.pauseButton.zPosition = 100
+//                            self.pausedImage.zPosition = 100
+//                            self.addChild(pausedImage)
+                            self.setupPausePopup()
+                            self.addChild(PauseStuff)
+                            state = GameState.Paused
                             self.physicsWorld.speed = 0
-                        }
                     }
                 }else{
                     self.instructions1.removeFromParent()
                     self.instructions2.removeFromParent()
+                    self.instructions3.removeFromParent()
                     self.physicsWorld.speed = 1
                     self.gameStarted = true
+                    self.state = GameState.Playing
                     self.needToCalibrate = true
                 }
             }
-            else if(self.died == true && self.levelWin == false){
+            else if(state == GameState.GameOver ){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
@@ -158,7 +168,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
-            else if(self.died == false && self.levelWin == true){
+            else if(state == GameState.GameWon){
                 if (self.nodeAtPoint(location) == self.LevelWinStuff.children[quitButtonIndex] as NSObject){
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
@@ -177,6 +187,31 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
 
+            }
+            else if(state == GameState.Paused){
+                if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
+                    self.state = GameState.Playing
+                    self.blurNode.removeFromParent()
+                    
+                    
+                    PauseStuff.removeFromParent()
+                    self.physicsWorld.speed = 1
+                }
+                if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
+                    var levelSelectScene = LevelSelectScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    levelSelectScene.scaleMode = .ResizeFill
+                    levelSelectScene.size = skView.bounds.size
+                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    
+                    
+                }
+                else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
+                    self.state = GameState.Playing
+                    retryLevel()
+                    
+                }
             }
         }
     }
@@ -250,18 +285,25 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         self.instructions1.text = "Tilt to move your Penguin"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
-        self.instructions1.position.y = CGRectGetMidY(self.frame) + 10
+        self.instructions1.position.y = CGRectGetMidY(self.frame) + 30
         self.instructions1.fontColor = UIColor.blackColor()
-        self.instructions1.fontSize = 20
+        self.instructions1.fontSize = 30
         
-        self.instructions2.text = "Gather Fish, Reach Spaceship!"
+        self.instructions2.text = "Gather the fish and reach the Spaceship!"
         self.instructions2.position.x = CGRectGetMidX(self.frame)
-        self.instructions2.position.y = CGRectGetMidY(self.frame) - 10
+        self.instructions2.position.y = CGRectGetMidY(self.frame)
         self.instructions2.fontColor = UIColor.blackColor()
-        self.instructions2.fontSize = 20
+        self.instructions2.fontSize = 30
+        
+        self.instructions3.text = "Tap to start sliding"
+        self.instructions3.position.x = CGRectGetMidX(self.frame)
+        self.instructions3.position.y = CGRectGetMidY(self.frame) - 50
+        self.instructions3.fontColor = UIColor.blackColor()
+        self.instructions3.fontSize = 30
         
         self.addChild(instructions1)
         self.addChild(instructions2)
+        self.addChild(instructions3)
         
         self.addChild(HUDbar)
         self.addChild(backButton)
@@ -285,6 +327,21 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             }
         }
 
+    }
+    
+    func setupPausePopup(){
+        for index in 0...GameOverStuff.children.count - 1{
+            if(self.PauseStuff.children[index].name == "retryButton"){
+                self.retryButtonIndex = index
+            }
+            if(self.PauseStuff.children[index].name == "quitButton"){
+                self.quitButtonIndex = index
+            }
+            if(self.PauseStuff.children[index].name == "resumeButton"){
+                self.resumeButtonIndex = index
+            }
+        }
+        
     }
     
     func setupLevelWon(){
@@ -320,9 +377,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.goalCategory:
             if(self.levelWin == false){
                 self.levelWin = true
+                self.state = GameState.GameWon
                 self.physicsWorld.speed = 0
                 loadBlurScreen()
+                var score = LevelWinStuff.childNodeWithName("ScoreLabel") as SKLabelNode
+                score.text = "SCORE: \(PlayerScore)"
                 setupLevelWon()
+                setHighScore()
                 self.addChild(LevelWinStuff)
                 //throw up "start next level?" dialog
             }
@@ -332,6 +393,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             
             contact.bodyA.node?.removeAllActions()
             self.died = true
+            self.state = GameState.GameOver
             //restart level / main menu dialog
             loadBlurScreen()
             GameOverStuff.removeFromParent()
@@ -419,7 +481,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
-    
     func loadBlurScreen(){
         
         let duration = 0.5
@@ -434,6 +495,14 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         self.addChild(blurNode)
         
+    }
+    
+    func stopActions(){
+
+    }
+    
+    func startActions(){
+
     }
     
     func retryLevel(){
