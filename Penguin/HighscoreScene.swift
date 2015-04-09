@@ -16,7 +16,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let resetButton = SKSpriteNode(imageNamed: "ResetButton")
     let score = SKLabelNode(fontNamed: "Arial")
-    var NumLevelsUnlocked = 2
+    var NumLevelsUnlocked = 3
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
