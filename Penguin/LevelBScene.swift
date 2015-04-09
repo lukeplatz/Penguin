@@ -36,7 +36,7 @@ class LevelBScene: PlayScene{
     }
     
     override func nextLevel() {
-                var levelStuff = LevelCScene.unarchiveFromFile("LevelC")! as LevelCScene
+                var levelStuff = LevelAScene.unarchiveFromFile("LevelA")! as LevelAScene
                 levelStuff.scaleMode = .ResizeFill
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
