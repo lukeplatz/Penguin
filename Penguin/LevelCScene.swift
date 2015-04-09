@@ -1,18 +1,18 @@
 //
-//  Level1Scene.swift
+//  LevelCScene.swift
 //  Penguin
 //
-//  Created by Jacob Gerstler on 3/26/15.
+//  Created by Aaron Wade on 4/8/15.
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
 import SpriteKit
 //import CoreMotion
 
-class LevelAScene: PlayScene{
+class LevelCScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = LevelAScene.unarchiveFromFile("LevelA")! as LevelAScene
+        var levelStuff = LevelCScene.unarchiveFromFile("LevelC")! as LevelCScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
@@ -20,23 +20,15 @@ class LevelAScene: PlayScene{
     }
     
     override func nextLevel() {
-        var levelStuff = LevelBScene.unarchiveFromFile("LevelB")! as LevelBScene
-        levelStuff.scaleMode = .ResizeFill
-        let skView = self.view! as SKView
-        skView.ignoresSiblingOrder = true
-        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-    }
-    
-    override func stopActions(){
-        //stop all actions
-    }
-    
-    override func startActions(){
-        //Start all actions
+//        var levelStuff = Level2Scene.unarchiveFromFile("Level2")! as Level2Scene
+//        levelStuff.scaleMode = .ResizeFill
+//        let skView = self.view! as SKView
+//        skView.ignoresSiblingOrder = true
+//        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
     override func setupMap(){
-        level = 1
+        level = 3
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
@@ -47,25 +39,14 @@ class LevelAScene: PlayScene{
         let pulse = SKAction.sequence([pulseUp, pulseDown])
         let repeatPulse = SKAction.repeatActionForever(pulse)
         
-        //Uncomment for snow!!
-//        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
-//        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame))
-//        self.addChild(snow!)
-        
         let goal = childNodeWithName("goal") as SKSpriteNode
         goal.physicsBody?.categoryBitMask = collision.goalCategory
         goal.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
-        //Uncomment for spark on goal!
-//        let spark = SKEmitterNode.unarchiveFromFile("Spark")
-//        spark?.position = goal.position
-//        self.addChild(spark!)
-
-        
         let F1 = childNodeWithName("fish1") as SKSpriteNode
         F1.physicsBody?.categoryBitMask = collision.fishCategory
         F1.physicsBody?.collisionBitMask = 0 // dont collide with anything
-        F1.runAction(repeatPulse, withKey: "Fish Pulse")
+        F1.runAction(repeatPulse)
         
         let F2 = childNodeWithName("fish2") as SKSpriteNode
         F2.physicsBody?.categoryBitMask = collision.fishCategory
@@ -77,15 +58,14 @@ class LevelAScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-        let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
-        PufferFish.physicsBody?.categoryBitMask = collision.WaterCategory
-        PufferFish.physicsBody?.collisionBitMask = 1 // allow contact
-        let moveUp = SKAction.moveBy(CGVectorMake(0, 50), duration: 1.5)
-        let moveDown = SKAction.moveBy(CGVectorMake(0, -50), duration: 1.5)
-        let upDown = SKAction.sequence([moveUp, moveDown])
-        let repeatMove = SKAction.repeatActionForever(upDown)
-        
-        PufferFish.runAction(repeatMove)
+//        let PufferFish = childNodeWithName("pufferFish") as SKSpriteNode
+//        PufferFish.physicsBody?.categoryBitMask = collision.WaterCategory
+//        PufferFish.physicsBody?.collisionBitMask = 1 // allow contact
+//        let moveUp = SKAction.moveBy(CGVectorMake(0, 50), duration: 1.5)
+//        let moveDown = SKAction.moveBy(CGVectorMake(0, -50), duration: 1.5)
+//        let upDown = SKAction.sequence([moveUp, moveDown])
+//        let repeatMove = SKAction.repeatActionForever(upDown)
+//        PufferFish.runAction(repeatMove)
         
     }
 }
