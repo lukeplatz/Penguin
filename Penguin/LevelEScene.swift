@@ -11,7 +11,7 @@ import SpriteKit
 class LevelEScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelDScene
+        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
