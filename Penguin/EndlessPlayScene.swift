@@ -181,10 +181,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 if self.nodeAtPoint(location) == self.backButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
-                    
-                    //Sets HighScore
-                    setHighScore()
-                    
                     var mainMenuScene = MainMenuScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -382,7 +378,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             self.addChild(gameOver)
             self.physicsWorld.speed = 0
             GameOverStuff.removeFromParent()
+            
+            var score = GameOverStuff.childNodeWithName("ScoreLabel") as SKLabelNode
+            score.text = "SCORE: \(PlayerScore)"
+            
+            setHighScore()
             setupGameOver()
+            
             self.addChild(GameOverStuff)
             self.gameO = true
             self.Pause = true
