@@ -132,14 +132,15 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 }else if self.nodeAtPoint(location) == self.pauseButton{
                     if(self.state == GameState.Playing){
-                        
                             //Pause
                             loadBlurScreen()
 //                            self.pauseButton.zPosition = 100
 //                            self.pausedImage.zPosition = 100
 //                            self.addChild(pausedImage)
                             self.setupPausePopup()
+                            PauseStuff.alpha = 0
                             self.addChild(PauseStuff)
+                            PauseStuff.runAction(SKAction.fadeInWithDuration(0.5))
                             state = GameState.Paused
                             self.physicsWorld.speed = 0
                     }
@@ -384,13 +385,14 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 score.text = "SCORE: \(PlayerScore)"
                 setupLevelWon()
                 setHighScore()
+                LevelWinStuff.alpha = 0
                 self.addChild(LevelWinStuff)
+                LevelWinStuff.runAction(SKAction.fadeInWithDuration(0.5))
                 //throw up "start next level?" dialog
             }
         case collision.playerCategory | collision.WaterCategory:
             //die
             self.physicsWorld.speed = 0
-            
             contact.bodyA.node?.removeAllActions()
             self.died = true
             self.state = GameState.GameOver
@@ -398,7 +400,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             loadBlurScreen()
             GameOverStuff.removeFromParent()
             setupGameOver()
+            GameOverStuff.alpha = 0
             self.addChild(GameOverStuff)
+            GameOverStuff.runAction(SKAction.fadeInWithDuration(0.5))
             
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;
@@ -415,15 +419,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //this gets called automatically when two objects end contact with each other
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
-        case collision.goalCategory | collision.playerCategory:
-            //either the contactMask was the bro type or the ground type
-            println("contact ended")
-            self.winner.removeFromParent()
-        case collision.playerCategory | collision.WaterCategory:
-            //die
-            
-            self.physicsWorld.speed = 1
-            println("remove this functionality - end contact water|penguin")
         default:
             return
         }
