@@ -47,7 +47,6 @@
 		65C20DE51AD5D90D00C8B923 /* resumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C20DE41AD5D90D00C8B923 /* resumeButton.png */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
-		A4CC31881AD5D971005B09DD /* ugFM2GS - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */; };
 		A4CC318A1AD5DD19005B09DD /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31891AD5DD19005B09DD /* Spaceship.png */; };
 		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
 		A4CC318E1AD5FE38005B09DD /* LevelDScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318D1AD5FE38005B09DD /* LevelDScene.swift */; };
@@ -159,7 +158,7 @@
 		3716491F1AB8781A0019694B /* Penguin */ = {
 			isa = PBXGroup;
 			children = (
-				A4CC318F1AD5FEA9005B09DD /* Levels */,
+				372559A21AD5EF9200AE1808 /* Levels */,
 				371649221AB8781A0019694B /* AppDelegate.swift */,
 				371649241AB8781A0019694B /* MainMenuScene.sks */,
 				655176BD1AD4B78F0037964F /* GameOver.sks */,
@@ -168,6 +167,7 @@
 				65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */,
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				371649461AB87ECB0019694B /* PlayScene.swift */,
+				65C20DE21AD5D7FA00C8B923 /* PausePopup.sks */,
 				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
@@ -223,14 +223,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A4CC318F1AD5FEA9005B09DD /* Levels */ = {
+		372559A21AD5EF9200AE1808 /* Levels */ = {
 			isa = PBXGroup;
 			children = (
+				372559AF1AD5FD3700AE1808 /* Spark.sks */,
+				372559A31AD5F50300AE1808 /* SnowParticles.sks */,
 				37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */,
-				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
 				372156681AD4B7E600101993 /* LevelB.sks */,
 				6571DCD01AC4862000793471 /* LevelBScene.swift */,
 				A4CC31851AD5D4A0005B09DD /* LevelC.sks */,
+				6571DCCE1AC481A300793471 /* LevelAScene.swift */,
 				A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */,
 				A4CC31901AD5FEE9005B09DD /* LevelD.sks */,
 				A4CC318D1AD5FE38005B09DD /* LevelDScene.swift */,
