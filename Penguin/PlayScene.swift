@@ -56,6 +56,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     //let gameOver = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
     let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
+    let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
     
     var SPEED_MULTIPLIER = CGFloat(3)
     
@@ -138,6 +139,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 }else{
                     self.instructions1.removeFromParent()
                     self.instructions2.removeFromParent()
+                    self.instructions3.removeFromParent()
                     self.physicsWorld.speed = 1
                     self.gameStarted = true
                     self.needToCalibrate = true
@@ -250,18 +252,25 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         self.instructions1.text = "Tilt to move your Penguin"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
-        self.instructions1.position.y = CGRectGetMidY(self.frame) + 10
+        self.instructions1.position.y = CGRectGetMidY(self.frame) + 30
         self.instructions1.fontColor = UIColor.blackColor()
-        self.instructions1.fontSize = 20
+        self.instructions1.fontSize = 30
         
-        self.instructions2.text = "Gather Fish, Reach Spaceship!"
+        self.instructions2.text = "Gather the fish and reach the Spaceship!"
         self.instructions2.position.x = CGRectGetMidX(self.frame)
-        self.instructions2.position.y = CGRectGetMidY(self.frame) - 10
+        self.instructions2.position.y = CGRectGetMidY(self.frame)
         self.instructions2.fontColor = UIColor.blackColor()
-        self.instructions2.fontSize = 20
+        self.instructions2.fontSize = 30
+        
+        self.instructions3.text = "Tap to start sliding"
+        self.instructions3.position.x = CGRectGetMidX(self.frame)
+        self.instructions3.position.y = CGRectGetMidY(self.frame) - 50
+        self.instructions3.fontColor = UIColor.blackColor()
+        self.instructions3.fontSize = 30
         
         self.addChild(instructions1)
         self.addChild(instructions2)
+        self.addChild(instructions3)
         
         self.addChild(HUDbar)
         self.addChild(backButton)
