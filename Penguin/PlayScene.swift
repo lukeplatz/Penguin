@@ -35,10 +35,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var motionManager = CMMotionManager()
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
     let LevelWinStuff = SKNode.unarchiveFromFile("LevelWin")!
+    let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
-    var state = GameState.Loading
+    var state = GameState.Playing
+
     var level = 1
     var PlayerScore = 0
     
@@ -58,7 +60,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var quitButtonIndex = 0
     var retryButtonIndex = 0
-    
+    var resumeButtonIndex = 0
     var nextLevelButtonIndex = 0
     
     //let gameOver = SKLabelNode(fontNamed: "Arial")
@@ -113,7 +115,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            if(self.died == false && self.levelWin == false){
+            if(state == GameState.Playing){
                 if self.nodeAtPoint(location) == self.backButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
@@ -121,27 +123,24 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     //Sets HighScore
                     setHighScore()
                     
-                    var mainMenuScene = LevelSelectScene(size: self.size)
+                    var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
-                    mainMenuScene.scaleMode = .ResizeFill
-                    mainMenuScene.size = skView.bounds.size
-                    skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    levelSelectScene.scaleMode = .ResizeFill
+                    levelSelectScene.size = skView.bounds.size
+                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 }else if self.nodeAtPoint(location) == self.pauseButton{
-                    if(self.died == false && self.levelWin == false){
-                        if(self.physicsWorld.speed == 0){
-                            //Resume
-                            self.blurNode.removeFromParent()
-                            self.pausedImage.removeFromParent()
-                            self.physicsWorld.speed = 1
-                        }else{
+                    if(self.state == GameState.Playing){
+                        
                             //Pause
                             loadBlurScreen()
-                            self.pauseButton.zPosition = 100
-                            self.pausedImage.zPosition = 100
-                            self.addChild(pausedImage)
+//                            self.pauseButton.zPosition = 100
+//                            self.pausedImage.zPosition = 100
+//                            self.addChild(pausedImage)
+                            self.setupPausePopup()
+                            self.addChild(PauseStuff)
+                            state = GameState.Paused
                             self.physicsWorld.speed = 0
-                        }
                     }
                 }else{
                     self.instructions1.removeFromParent()
@@ -152,7 +151,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     self.needToCalibrate = true
                 }
             }
-            else if(self.died == true && self.levelWin == false){
+            else if(state == GameState.GameOver ){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
@@ -167,7 +166,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             }
-            else if(self.died == false && self.levelWin == true){
+            else if(state == GameState.GameWon){
                 if (self.nodeAtPoint(location) == self.LevelWinStuff.children[quitButtonIndex] as NSObject){
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
@@ -186,6 +185,31 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
 
+            }
+            else if(state == GameState.Paused){
+                if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
+                    self.state = GameState.Playing
+                    self.blurNode.removeFromParent()
+                    
+                    
+                    PauseStuff.removeFromParent()
+                    self.physicsWorld.speed = 1
+                }
+                if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
+                    var levelSelectScene = LevelSelectScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    levelSelectScene.scaleMode = .ResizeFill
+                    levelSelectScene.size = skView.bounds.size
+                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    
+                    
+                }
+                else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
+                    self.state = GameState.Playing
+                    retryLevel()
+                    
+                }
             }
         }
     }
@@ -294,6 +318,21 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             }
         }
 
+    }
+    
+    func setupPausePopup(){
+        for index in 0...GameOverStuff.children.count - 1{
+            if(self.PauseStuff.children[index].name == "retryButton"){
+                self.retryButtonIndex = index
+            }
+            if(self.PauseStuff.children[index].name == "quitButton"){
+                self.quitButtonIndex = index
+            }
+            if(self.PauseStuff.children[index].name == "resumeButton"){
+                self.resumeButtonIndex = index
+            }
+        }
+        
     }
     
     func setupLevelWon(){
