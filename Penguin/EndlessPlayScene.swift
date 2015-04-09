@@ -11,6 +11,9 @@ import CoreMotion
 
 
 class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
+    let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
+
+    let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
     
     let longBlock = SKSpriteNode(imageNamed: "Tallblock")
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
@@ -24,6 +27,10 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     let speedLabel = SKLabelNode(fontNamed: "Arial")
+    
+    var retryButtonIndex = 0
+    var resumeButtonIndex = 0
+    var quitButtonIndex = 0
     
     var PlayerScore = 0
     
@@ -148,37 +155,92 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         /* Called when a touch begins */
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            if self.nodeAtPoint(location) == self.backButton{
-                motionManager.stopAccelerometerUpdates()
-                self.needToCalibrate = true
-                
-                //Sets HighScore
-                setHighScore()
-                
-                var mainMenuScene = MainMenuScene(size: self.size)
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                mainMenuScene.scaleMode = .ResizeFill
-                mainMenuScene.size = skView.bounds.size
-                skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-            }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
-                if(self.Pause == true){
-                    //Resume
-                    self.pausedImage.removeFromParent()
+            if(self.gameO == true){
+                if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
+                    var ModeSelect = ModeSelectionScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    ModeSelect.scaleMode = .ResizeFill
+                    ModeSelect.size = skView.bounds.size
+                    skView.presentScene(ModeSelect, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    
+                }
+                if (self.nodeAtPoint(location) == self.GameOverStuff.children[retryButtonIndex] as NSObject){
                     self.Pause = false
-                    self.physicsWorld.speed = 1
+                    var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    endlessScene.scaleMode = .Fill
+                    skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))
+                    
+                }
+
+            }
+            
+            else if(self.Pause == false){
+                if self.nodeAtPoint(location) == self.backButton{
+                    motionManager.stopAccelerometerUpdates()
+                    self.needToCalibrate = true
+                    
+                    //Sets HighScore
+                    setHighScore()
+                    
+                    var mainMenuScene = MainMenuScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    mainMenuScene.scaleMode = .ResizeFill
+                    mainMenuScene.size = skView.bounds.size
+                    skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
+                    if(self.Pause == true){
+                        //Resume
+                        self.pausedImage.removeFromParent()
+                        self.Pause = false
+                        self.physicsWorld.speed = 1
+                    }else{
+                        //Pause
+                        self.setupPausePopup()
+                        self.addChild(PauseStuff)
+                        self.physicsWorld.speed = 0
+                        self.Pause = true
+                    }
                 }else{
-                    //Pause
-                    self.addChild(pausedImage)
-                    self.physicsWorld.speed = 0
-                    self.Pause = true
+                    if(self.presentInstructions == true){
+                        instructions1.removeFromParent()
+                        instructions2.removeFromParent()
+                    }
+                    self.forwardMovement = -3.0
                 }
-            }else{
-                if(self.presentInstructions == true){
-                    instructions1.removeFromParent()
-                    instructions2.removeFromParent()
+            }
+           
+            else if(self.Pause == true){
+                if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
+                    self.Pause = false
+                    
+                    
+                    PauseStuff.removeFromParent()
+                    self.physicsWorld.speed = 1
                 }
-                self.forwardMovement = -3.0
+                if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
+                    var ModeSelection = ModeSelectionScene(size: self.size)
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    ModeSelection.scaleMode = .ResizeFill
+                    ModeSelection.size = skView.bounds.size
+                    skView.presentScene(ModeSelection, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    
+                    
+                }
+                else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
+                    self.Pause = false
+                    var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
+                    let skView = self.view! as SKView
+                    skView.ignoresSiblingOrder = true
+                    endlessScene.scaleMode = .Fill
+                    skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))
+                    
+                }
+
             }
         }
     }
@@ -223,10 +285,10 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
         self.backButton.xScale = (100/self.backButton.size.width)
         self.backButton.yScale = (100/self.backButton.size.height)
-        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
+        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - (statusbarHeight) - 12)
         self.backButton.zPosition = 2
         
-        self.HUDbar.yScale = 125/self.HUDbar.size.height
+        self.HUDbar.yScale = 135/self.HUDbar.size.height
         self.HUDbar.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - self.HUDbar.size.height / 2)
         self.HUDbar.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(self.HUDbar.size.width), CGFloat(self.HUDbar.size.height)))
         self.HUDbar.physicsBody?.dynamic = false
@@ -242,7 +304,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.pauseButton.xScale = (100/self.pauseButton.size.width)
         self.pauseButton.yScale = (100/self.pauseButton.size.height)
-        self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - statusbarHeight)
+        self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - (statusbarHeight) - 12)
         self.pauseButton.zPosition = 2
 
         
@@ -319,10 +381,42 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         case BodyType.penguin.rawValue | BodyType.bottom.rawValue:
             self.addChild(gameOver)
             self.physicsWorld.speed = 0
+            GameOverStuff.removeFromParent()
+            setupGameOver()
+            self.addChild(GameOverStuff)
             self.gameO = true
             self.Pause = true
         default:
             return
         }
     }
+    
+    
+    func setupGameOver(){
+        for index in 0...GameOverStuff.children.count - 1{
+            if(GameOverStuff.children[index].name == "retryButton"){
+                retryButtonIndex = index
+            }
+            if(GameOverStuff.children[index].name == "quitButton"){
+                quitButtonIndex = index
+            }
+        }
+        
+    }
+    
+    func setupPausePopup(){
+        for index in 0...PauseStuff.children.count - 1{
+            if(self.PauseStuff.children[index].name == "retryButton"){
+                self.retryButtonIndex = index
+            }
+            if(self.PauseStuff.children[index].name == "quitButton"){
+                self.quitButtonIndex = index
+            }
+            if(self.PauseStuff.children[index].name == "resumeButton"){
+                self.resumeButtonIndex = index
+            }
+        }
+        
+    }
+
 }
