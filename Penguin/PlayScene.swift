@@ -330,7 +330,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setupPausePopup(){
-        for index in 0...GameOverStuff.children.count - 1{
+        for index in 0...PauseStuff.children.count - 1{
             if(self.PauseStuff.children[index].name == "retryButton"){
                 self.retryButtonIndex = index
             }
