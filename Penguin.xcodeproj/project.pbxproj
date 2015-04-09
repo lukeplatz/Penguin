@@ -33,6 +33,10 @@
 		37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC151AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png */; };
 		37D0ADEE1ACDBAE600264216 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0ADED1ACDBAE600264216 /* Object.swift */; };
 		37D0ADF01ACDBEDF00264216 /* IcebergObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */; };
+		37E3C9191AD6F19B009D358A /* LevelF.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37E3C9181AD6F19B009D358A /* LevelF.sks */; };
+		37E3C91B1AD6F1BD009D358A /* LevelFScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E3C91A1AD6F1BD009D358A /* LevelFScene.swift */; };
+		37E3C91D1AD6F293009D358A /* BridgePowerup.png in Resources */ = {isa = PBXBuildFile; fileRef = 37E3C91C1AD6F293009D358A /* BridgePowerup.png */; };
+		37E3C91F1AD6F521009D358A /* ice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37E3C91E1AD6F521009D358A /* ice.jpg */; };
 		655176BE1AD4B78F0037964F /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = 655176BD1AD4B78F0037964F /* GameOver.sks */; };
 		655176C01AD4BA820037964F /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655176BF1AD4BA820037964F /* GameOver.swift */; };
 		6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCCE1AC481A300793471 /* LevelAScene.swift */; };
@@ -98,6 +102,10 @@
 		37CDAC151AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Xc2oNw8 - Imgur.png"; path = "Images.xcassets/Tallblock.imageset/Xc2oNw8 - Imgur.png"; sourceTree = "<group>"; };
 		37D0ADED1ACDBAE600264216 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IcebergObject.swift; sourceTree = "<group>"; };
+		37E3C9181AD6F19B009D358A /* LevelF.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelF.sks; sourceTree = "<group>"; };
+		37E3C91A1AD6F1BD009D358A /* LevelFScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelFScene.swift; sourceTree = "<group>"; };
+		37E3C91C1AD6F293009D358A /* BridgePowerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BridgePowerup.png; sourceTree = "<group>"; };
+		37E3C91E1AD6F521009D358A /* ice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ice.jpg; sourceTree = "<group>"; };
 		655176BD1AD4B78F0037964F /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		655176BF1AD4BA820037964F /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		6571DCCE1AC481A300793471 /* LevelAScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelAScene.swift; sourceTree = "<group>"; };
@@ -193,6 +201,8 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				37E3C91E1AD6F521009D358A /* ice.jpg */,
+				37E3C91C1AD6F293009D358A /* BridgePowerup.png */,
 				372559A41AD5F50300AE1808 /* spark.png */,
 				A4CC31891AD5DD19005B09DD /* Spaceship.png */,
 				A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */,
@@ -244,6 +254,8 @@
 				A4CC318D1AD5FE38005B09DD /* LevelDScene.swift */,
 				A4CC31941AD608B3005B09DD /* LevelE.sks */,
 				A4CC31961AD608C5005B09DD /* LevelEScene.swift */,
+				37E3C9181AD6F19B009D358A /* LevelF.sks */,
+				37E3C91A1AD6F1BD009D358A /* LevelFScene.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -334,6 +346,7 @@
 				65C20DE31AD5D7FA00C8B923 /* PausePopup.sks in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
 				A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */,
+				37E3C91D1AD6F293009D358A /* BridgePowerup.png in Resources */,
 				372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */,
@@ -348,6 +361,7 @@
 				37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */,
 				3716492C1AB8781A0019694B /* Main.storyboard in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */,
+				37E3C91F1AD6F521009D358A /* ice.jpg in Resources */,
 				37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */,
 				659E00CB1AD61DA9001E974C /* quitButton.png in Resources */,
 				65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */,
@@ -356,6 +370,7 @@
 				372156651AD47AE000101993 /* fish.png in Resources */,
 				655176BE1AD4B78F0037964F /* GameOver.sks in Resources */,
 				372156671AD47AF300101993 /* pufferFish.png in Resources */,
+				37E3C9191AD6F19B009D358A /* LevelF.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +398,7 @@
 				65B4B2B41ABCDECF00F8DD9C /* HighscoreScene.swift in Sources */,
 				65B4B2B21ABCDB9700F8DD9C /* LevelSelectScene.swift in Sources */,
 				371649291AB8781A0019694B /* GameViewController.swift in Sources */,
+				37E3C91B1AD6F1BD009D358A /* LevelFScene.swift in Sources */,
 				371649471AB87ECB0019694B /* PlayScene.swift in Sources */,
 				370055001AC8E9AF002C5231 /* EndlessPlayScene.swift in Sources */,
 				370ABBBC1ACDC2BF008BD084 /* PowerUpObject.swift in Sources */,
