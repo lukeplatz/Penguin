@@ -221,11 +221,12 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     func setupHUD(){
         //Back Image
         self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backButton.xScale = (50/self.backButton.size.width)
-        self.backButton.yScale = (50/self.backButton.size.height)
+        self.backButton.xScale = (100/self.backButton.size.width)
+        self.backButton.yScale = (100/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.backButton.zPosition = 2
         
+        self.HUDbar.yScale = 125/self.HUDbar.size.height
         self.HUDbar.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - self.HUDbar.size.height / 2)
         self.HUDbar.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(self.HUDbar.size.width), CGFloat(self.HUDbar.size.height)))
         self.HUDbar.physicsBody?.dynamic = false
@@ -239,8 +240,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.score.zPosition = 2
         
         
-        self.pauseButton.xScale = (50/self.pauseButton.size.width)
-        self.pauseButton.yScale = (50/self.pauseButton.size.height)
+        self.pauseButton.xScale = (100/self.pauseButton.size.width)
+        self.pauseButton.yScale = (100/self.pauseButton.size.height)
         self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - statusbarHeight)
         self.pauseButton.zPosition = 2
 
