@@ -110,10 +110,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 if self.nodeAtPoint(location) == self.backButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
-                    
-                    //Sets HighScore
-                    setHighScore()
-                    
                     var mainMenuScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -331,7 +327,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 self.levelWin = true
                 self.physicsWorld.speed = 0
                 loadBlurScreen()
+                var score = LevelWinStuff.childNodeWithName("ScoreLabel") as SKLabelNode
+                score.text = "SCORE: \(PlayerScore)"
                 setupLevelWon()
+                setHighScore()
                 self.addChild(LevelWinStuff)
                 //throw up "start next level?" dialog
             }
