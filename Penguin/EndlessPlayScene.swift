@@ -87,9 +87,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.addChild(bottom)
         
-//        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
-//        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 30)
-//        self.addChild(snow!)
+        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
+        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 30)
+        self.addChild(snow!)
         
         self.instructions1.text = "Press and Hold to slide backwards"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
