@@ -41,6 +41,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
+    var timerThread = NSThread()
     var motionManager = CMMotionManager()
     
     var calibrateX = CGFloat(0)
@@ -48,7 +49,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var needToCalibrate = true
     
     var maxDistance = CGFloat(0)
-    var scrollSpeed = 3
+    var scrollSpeed = 5
     
     var blockMaxX = CGFloat(0)
     var origShortBlockPositionY = CGFloat(0)
@@ -106,7 +107,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(instructions1)
         self.addChild(instructions2)
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("timerFired"), userInfo: nil, repeats: true)
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: Selector("timerFired"), userInfo: nil, repeats: true)
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
         
@@ -335,24 +336,47 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func timerFired(){
         if(self.paused == false){
-            println("Fired!")
             var obstacleSet = SKNode()
 //            //For picking random objects
-//            var rand = arc4random() % (3 - 1 + 1) + 1
+            var rand = arc4random() % (3 - 1 + 1) + 1
 //            var spriteName = "tiki-bottom-0\(rand)"
             
-            var iceBlock = SKSpriteNode(imageNamed: "Tallblock")
-            iceBlock.position = CGPointMake(CGRectGetMinX(self.frame) + iceBlock.size.width / 2, CGRectGetMaxY(self.frame))
-            iceBlock.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock.size)
-            iceBlock.physicsBody?.dynamic = false
-            obstacleSet.addChild(iceBlock)
-            
-            var iceBlock2 = SKSpriteNode(imageNamed: "Tallblock")
-            iceBlock2.position = CGPointMake(CGRectGetMaxX(self.frame) - iceBlock2.size.width / 2, CGRectGetMaxY(self.frame))
-            iceBlock2.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock2.size)
-            iceBlock2.physicsBody?.dynamic = false
-            obstacleSet.addChild(iceBlock2)
-            
+            if(rand == 1){
+                println("powerup")
+                var powerup1 = SKSpriteNode(imageNamed: "BridgePowerup")
+                powerup1.xScale = 100/powerup1.size.width
+                powerup1.yScale = 100/powerup1.size.height
+                powerup1.position = CGPointMake(CGRectGetMinX(self.frame) + 150, CGRectGetMaxY(self.frame))
+                powerup1.physicsBody = SKPhysicsBody(rectangleOfSize: powerup1.size)
+                powerup1.physicsBody?.dynamic = false
+                obstacleSet.addChild(powerup1)
+                
+                var powerup2 = SKSpriteNode(imageNamed: "BridgePowerup")
+                powerup2.xScale = 100/powerup2.size.width
+                powerup2.yScale = 100/powerup2.size.height
+                powerup2.position = CGPointMake(CGRectGetMaxX(self.frame) - 150, CGRectGetMaxY(self.frame))
+                powerup2.physicsBody = SKPhysicsBody(rectangleOfSize: powerup2.size)
+                powerup2.physicsBody?.dynamic = false
+                obstacleSet.addChild(powerup2)
+            }else{
+                var iceBlock = SKSpriteNode(imageNamed: "icicle")
+                iceBlock.zRotation = CGFloat(M_PI_2)
+                iceBlock.xScale = 100/iceBlock.size.width
+                iceBlock.yScale = 250/iceBlock.size.height
+                iceBlock.position = CGPointMake(CGRectGetMinX(self.frame) + iceBlock.size.height / 2, CGRectGetMaxY(self.frame))
+                iceBlock.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "icicle"), size: iceBlock.size)
+                iceBlock.physicsBody?.dynamic = false
+                obstacleSet.addChild(iceBlock)
+                
+                var iceBlock2 = SKSpriteNode(imageNamed: "icicle")
+                iceBlock2.zRotation = -CGFloat(M_PI_2)
+                iceBlock2.xScale = 100/iceBlock2.size.width
+                iceBlock2.yScale = 250/iceBlock2.size.height
+                iceBlock2.position = CGPointMake(CGRectGetMaxX(self.frame) - iceBlock2.size.height / 2, CGRectGetMaxY(self.frame))
+                iceBlock2.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "icicle"), size: iceBlock2.size)
+                iceBlock2.physicsBody?.dynamic = false
+                obstacleSet.addChild(iceBlock2)
+            }
             obstacles.append(obstacleSet)
             obstacleSet.runAction(moveObstacleForeverAction)
             self.addChild(obstacleSet)
@@ -360,6 +384,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             if(obstacles.count > 4){
                 obstacles.removeLast()
             }
+
         }
     }
     
