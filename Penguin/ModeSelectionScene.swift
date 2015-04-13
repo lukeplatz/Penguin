@@ -52,7 +52,6 @@ class ModeSelectionScene: SKScene {
                 mainMenuScene.scaleMode = .ResizeFill
                 mainMenuScene.size = skView.bounds.size
                 skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-                
             }
             else if self.nodeAtPoint(location) == self.storyButton{
                 var levelSelectScene = LevelSelectScene(size: self.size)
