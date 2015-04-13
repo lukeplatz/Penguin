@@ -68,12 +68,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
     let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
     
-    var SPEED_MULTIPLIER = CGFloat(3)
+    var SPEED_MULTIPLIER = CGFloat(2.3)
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     override func didMoveToView(view: SKView) {
-        self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
+        self.backgroundColor = UIColor(red: 250, green: 250, blue: 250, alpha: 1)
         self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
         
@@ -97,7 +97,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         if (self.motionManager.accelerometerAvailable){
             //Set up and manage motion manager to get accelerometer data
-            self.motionManager.accelerometerUpdateInterval = (1/40)
+            self.motionManager.accelerometerUpdateInterval = (1/15)
             self.motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{
                 data, error in
                 if(self.needToCalibrate){
