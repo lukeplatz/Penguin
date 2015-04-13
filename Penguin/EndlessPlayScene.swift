@@ -21,12 +21,12 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
-    let gameOver = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial")
     let instructions2 = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     let speedLabel = SKLabelNode(fontNamed: "Arial")
+    var blurNode:SKSpriteNode = SKSpriteNode()
     
     var retryButtonIndex = 0
     var resumeButtonIndex = 0
@@ -71,7 +71,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         // 2 Set physicsBody of scene to borderBody
         self.physicsBody = borderBody
         
-        var bottom = SKSpriteNode(color: UIColor.redColor(), size: CGSizeMake(CGRectGetWidth(self.frame), 10))
+        var bottom = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(CGRectGetWidth(self.frame), 10))
         bottom.position.x = CGRectGetMidX(self.frame)
         bottom.position.y = CGRectGetMinY(self.frame)
         bottom.physicsBody = SKPhysicsBody(rectangleOfSize: bottom.size)
@@ -80,20 +80,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         bottom.physicsBody?.categoryBitMask = BodyType.bottom.rawValue
         bottom.physicsBody?.contactTestBitMask = BodyType.penguin.rawValue | BodyType.bottom.rawValue
         
-        let moveUp = SKAction.moveBy(CGVectorMake(0, 5), duration: 1.0)
-        let moveDown = SKAction.moveBy(CGVectorMake(0, -5), duration: 1.0)
-        let pulse = SKAction.sequence([moveUp, moveDown])
-        let repeatMove = SKAction.repeatActionForever(pulse)
-        
-        bottom.runAction(repeatMove)
-        
         self.addChild(bottom)
         
-        self.gameOver.text = "Game Over"
-        self.gameOver.position.x = CGRectGetMidX(self.frame)
-        self.gameOver.position.y = CGRectGetMidY(self.frame)
-        self.gameOver.fontColor = UIColor.orangeColor()
-        self.gameOver.fontSize = 20
+        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
+        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 30)
+        self.addChild(snow!)
         
         self.instructions1.text = "Press and Hold to slide backwards"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
@@ -190,11 +181,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
                     if(self.Pause == true){
                         //Resume
+                        self.blurNode.removeFromParent()
                         self.pausedImage.removeFromParent()
                         self.Pause = false
                         self.physicsWorld.speed = 1
                     }else{
                         //Pause
+                        loadBlurScreen()
                         self.setupPausePopup()
                         self.addChild(PauseStuff)
                         self.physicsWorld.speed = 0
@@ -213,7 +206,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
                     self.Pause = false
                     
-                    
+                    self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
                     self.physicsWorld.speed = 1
                 }
@@ -375,10 +368,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
         case BodyType.penguin.rawValue | BodyType.bottom.rawValue:
-            self.addChild(gameOver)
             self.physicsWorld.speed = 0
             GameOverStuff.removeFromParent()
-            
+            loadBlurScreen()
             var score = GameOverStuff.childNodeWithName("ScoreLabel") as SKLabelNode
             score.text = "SCORE: \(PlayerScore)"
             
@@ -418,6 +410,75 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 self.resumeButtonIndex = index
             }
         }
+        
+    }
+    
+    
+    
+    func getBluredScreenshot() -> SKSpriteNode{
+        
+        //create the graphics context
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.view!.frame.size.width, height: self.view!.frame.size.height), true, 1)
+        
+        self.view!.drawViewHierarchyInRect(self.view!.frame, afterScreenUpdates: true)
+        
+        // retrieve graphics context
+        let context = UIGraphicsGetCurrentContext()
+        
+        // query image from it
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // create Core Image context
+        let ciContext = CIContext(options: nil)
+        // create a CIImage, think of a CIImage as image data for processing, nothing is displayed or can be displayed at this point
+        let coreImage = CIImage(image: image)
+        // pick the filter we want
+        let filter = CIFilter(name: "CIGaussianBlur")
+        // pass our image as input
+        filter.setValue(coreImage, forKey: kCIInputImageKey)
+        
+        //edit the amount of blur
+        filter.setValue(3, forKey: kCIInputRadiusKey)
+        
+        //retrieve the processed image
+        let filteredImageData = filter.valueForKey(kCIOutputImageKey) as CIImage
+        // return a Quartz image from the Core Image context
+        let filteredImageRef = ciContext.createCGImage(filteredImageData, fromRect: filteredImageData.extent())
+        // final UIImage
+        let filteredImage = UIImage(CGImage: filteredImageRef)
+        
+        // create a texture, pass the UIImage
+        let texture = SKTexture(image: filteredImage!)
+        // wrap it inside a sprite node
+        let sprite = SKSpriteNode(texture:texture)
+        
+        // make image the position in the center
+        sprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        
+        var scale:CGFloat = UIScreen.mainScreen().scale
+        
+        sprite.size.width  *= scale
+        
+        sprite.size.height *= scale
+        
+        return sprite
+        
+        
+    }
+    
+    func loadBlurScreen(){
+        
+        let duration = 0.5
+        
+        let pauseBG:SKSpriteNode = self.getBluredScreenshot()
+        self.blurNode = pauseBG
+        
+        //pauseBG.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        pauseBG.alpha = 0
+        pauseBG.zPosition = 90
+        pauseBG.runAction(SKAction.fadeAlphaTo(1, duration: duration))
+        
+        self.addChild(blurNode)
         
     }
 
