@@ -49,7 +49,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var gameStarted = false
     
     let penguin = SKSpriteNode(imageNamed: "Penguin")
-    let backButton = SKSpriteNode(imageNamed: "BackButton")
+    let retryButton = SKSpriteNode(imageNamed: "RetryButton")
     let goal = SKSpriteNode(imageNamed: "Spaceship")
     let winner = SKSpriteNode(imageNamed: "Winner")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
@@ -68,6 +68,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
     let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
     
+    
+    //3 before
     var SPEED_MULTIPLIER = CGFloat(2.3)
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
@@ -97,6 +99,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         if (self.motionManager.accelerometerAvailable){
             //Set up and manage motion manager to get accelerometer data
+            //was 1/40
             self.motionManager.accelerometerUpdateInterval = (1/15)
             self.motionManager.startAccelerometerUpdatesToQueue(NSOperationQueue.currentQueue(), withHandler:{
                 data, error in
@@ -117,19 +120,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.locationInNode(self)
             
             if(state == GameState.Playing){
-                if self.nodeAtPoint(location) == self.backButton{
-                    motionManager.stopAccelerometerUpdates()
-                    self.needToCalibrate = true
+                if self.nodeAtPoint(location) == self.retryButton{
                     
                     //Sets HighScore
                     setHighScore()
-                    
-                    var levelSelectScene = LevelSelectScene(size: self.size)
-                    let skView = self.view! as SKView
-                    skView.ignoresSiblingOrder = true
-                    levelSelectScene.scaleMode = .ResizeFill
-                    levelSelectScene.size = skView.bounds.size
-                    skView.presentScene(levelSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    retryLevel()
                 }else if self.nodeAtPoint(location) == self.pauseButton{
                     if(self.state == GameState.Playing){
                             //Pause
@@ -151,7 +146,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     self.physicsWorld.speed = 1
                     self.gameStarted = true
                     self.state = GameState.Playing
-                    self.needToCalibrate = true
+                    //self.needToCalibrate = true
                 }
             }
             else if(state == GameState.GameOver ){
@@ -244,11 +239,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     func setupHUD(){
         //Back Image
-        self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backButton.xScale = (100/self.backButton.size.width)
-        self.backButton.yScale = (100/self.backButton.size.height)
-        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - (statusbarHeight) - 12)
-        self.backButton.zPosition = 2
+        self.retryButton.anchorPoint = CGPointMake(0.5, 0.5)
+        self.retryButton.xScale = (100/self.retryButton.size.width)
+        self.retryButton.yScale = (100/self.retryButton.size.height)
+        self.retryButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.retryButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.retryButton.size.height / 2) - (statusbarHeight) - 12)
+        self.retryButton.zPosition = 2
         
         self.HUDbar.yScale = 135/self.HUDbar.size.height
         self.HUDbar.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - self.HUDbar.size.height / 2)
@@ -259,7 +254,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //Score
         self.PlayerScore = 0
         self.score.text = "Score: \(PlayerScore)"
-        self.score.position = CGPointMake(HUDbar.position.x, backButton.position.y - backButton.size.height / 4)
+        self.score.position = CGPointMake(HUDbar.position.x, retryButton.position.y - retryButton.size.height / 4)
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.score.zPosition = 2
         
@@ -307,7 +302,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(instructions3)
         
         self.addChild(HUDbar)
-        self.addChild(backButton)
+        self.addChild(retryButton)
         self.addChild(score)
         self.addChild(pauseButton)
     }
