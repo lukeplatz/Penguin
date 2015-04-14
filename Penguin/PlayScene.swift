@@ -328,7 +328,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 quitButtonIndex = index
             }
         }
-
     }
     
     func setupPausePopup(){
@@ -417,14 +416,15 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "Penguin" {
                 contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
                 contact.bodyB.node?.runAction(move)
+                contact.bodyB.node?.zPosition = HUDbar.zPosition - 1
             }else{
                 contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
                 contact.bodyA.node?.runAction(move)
+                contact.bodyA.node?.zPosition = HUDbar.zPosition - 1
             }
         case collision.playerCategory | collision.powerUpCategory:
             //add bridge
             addBridges()
-            contact.bodyA.node?.removeFromParent()
         default:
             return
         }

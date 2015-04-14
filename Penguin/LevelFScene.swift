@@ -26,8 +26,11 @@ class LevelFScene: PlayScene{
     //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     //    }
     
+    var leverFlipped = Bool()
+    
     override func setupMap(){
         level = 6
+        leverFlipped = false
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
@@ -57,36 +60,40 @@ class LevelFScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-        let bridgePowerup = childNodeWithName("bridgePowerup")
-        bridgePowerup?.physicsBody?.categoryBitMask = collision.powerUpCategory
-        bridgePowerup?.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        let lever = childNodeWithName("lever") as SKSpriteNode
+        lever.physicsBody?.categoryBitMask = collision.powerUpCategory
+        lever.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
     }
     
     override func addBridges() {
-        
-        let water1 = childNodeWithName("WtoRemove1") as SKSpriteNode
-        water1.physicsBody?.categoryBitMask = collision.none
-        water1.physicsBody?.collisionBitMask = 0
-        water1.removeFromParent()
-        
-        let water2 = childNodeWithName("WtoRemove2") as SKSpriteNode
-        water2.physicsBody?.categoryBitMask = collision.none
-        water2.physicsBody?.collisionBitMask = 0
-        water2.removeFromParent()
-        
-        let bridge1 = SKSpriteNode(imageNamed: "boxAlt")
-        bridge1.position = water1.position
-        bridge1.zPosition = 2
-        bridge1.physicsBody?.categoryBitMask = collision.bridgeCategory
-        
-        let bridge2 = SKSpriteNode(imageNamed: "boxAlt")
-        bridge2.position = water2.position
-        bridge2.zPosition = 2
-        bridge2.physicsBody?.categoryBitMask = collision.bridgeCategory
-        
-        self.addChild(bridge1)
-        self.addChild(bridge2)
-        
+        if(leverFlipped == false){
+            leverFlipped = true
+            let lever = childNodeWithName("lever") as SKSpriteNode
+            lever.texture = SKTexture(imageNamed: "switchRight")
+            
+            let water1 = childNodeWithName("WtoRemove1") as SKSpriteNode
+            water1.physicsBody?.categoryBitMask = collision.none
+            water1.physicsBody?.collisionBitMask = 0
+            water1.removeFromParent()
+            
+            let water2 = childNodeWithName("WtoRemove2") as SKSpriteNode
+            water2.physicsBody?.categoryBitMask = collision.none
+            water2.physicsBody?.collisionBitMask = 0
+            water2.removeFromParent()
+            
+            let bridge1 = SKSpriteNode(imageNamed: "boxAlt")
+            bridge1.position = water1.position
+            bridge1.zPosition = 2
+            bridge1.physicsBody?.categoryBitMask = collision.bridgeCategory
+            
+            let bridge2 = SKSpriteNode(imageNamed: "boxAlt")
+            bridge2.position = water2.position
+            bridge2.zPosition = 2
+            bridge2.physicsBody?.categoryBitMask = collision.bridgeCategory
+            
+            self.addChild(bridge1)
+            self.addChild(bridge2)
+        }
     }
 }
