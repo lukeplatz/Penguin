@@ -33,8 +33,8 @@ class LevelDScene: PlayScene{
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
         penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory
         
-        let pulseUp = SKAction.scaleTo(0.1, duration: 0.5)
-        let pulseDown = SKAction.scaleTo(0.12, duration: 0.5)
+        let pulseUp = SKAction.scaleTo(0.95, duration: 0.5)
+        let pulseDown = SKAction.scaleTo(1.05, duration: 0.5)
         let pulse = SKAction.sequence([pulseUp, pulseDown])
         let repeatPulse = SKAction.repeatActionForever(pulse)
         

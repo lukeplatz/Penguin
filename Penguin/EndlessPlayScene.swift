@@ -10,6 +10,16 @@ import SpriteKit
 import CoreMotion
 
 
+class Obstacles{
+    var node = SKNode()
+    var counted: Bool
+    
+    init(node: SKNode, counted: Bool){
+        self.node = node
+        self.counted = counted
+    }
+}
+
 class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
 
@@ -34,37 +44,35 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     var moveObstacleAction: SKAction!
     var moveObstacleForeverAction: SKAction!
-    var timer = NSTimer()
-    var obstacles = [SKNode]()
+    let spawnThenDelay: SKAction!
+    let spawnThenDelayForever: SKAction!
+    var obstacles = [Obstacles]()
     
     var PlayerScore = 0
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     var motionManager = CMMotionManager()
+    var counter = 0
     
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
     
-    var maxDistance = CGFloat(0)
-    var scrollSpeed = 3
+    var scrollSpeed = 5.0
+    var delay = NSTimeInterval(2.0)
     
-    var blockMaxX = CGFloat(0)
-    var origShortBlockPositionY = CGFloat(0)
-    var origLongBlockPositionY = CGFloat(0)
-    var shortCounted = false
-    var longCounted = false
-    
-    enum BodyType:UInt32 {
-        case penguin = 1
-        case bottom = 2
-    }
+    var minDistance = CGFloat(650)
     
     var Pause = false
     var gameO = false
     var presentInstructions = true
     var forwardMovement = CGFloat(0.0)
+    
+    var lastUpdateTimeInterval: CFTimeInterval = -1.0
+    var deltaTime: CGFloat = 0.0
+    var lastSpawn = NSTimeInterval(2.0)
+    var refreshActions = false
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
@@ -82,14 +90,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         bottom.physicsBody = SKPhysicsBody(rectangleOfSize: bottom.size)
         bottom.physicsBody?.dynamic = false
         bottom.physicsBody?.collisionBitMask = 1
-        bottom.physicsBody?.categoryBitMask = BodyType.bottom.rawValue
-        bottom.physicsBody?.contactTestBitMask = BodyType.penguin.rawValue | BodyType.bottom.rawValue
+        bottom.physicsBody?.categoryBitMask = collision.WaterCategory
+        bottom.physicsBody?.contactTestBitMask = collision.playerCategory
         
         self.addChild(bottom)
         
-//        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
-//        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 30)
-//        self.addChild(snow!)
+        let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
+        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 20)
+        self.addChild(snow!)
         
         self.instructions1.text = "Press and Hold to slide backwards"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
@@ -106,15 +114,19 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(instructions1)
         self.addChild(instructions2)
         
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: Selector("timerFired"), userInfo: nil, repeats: true)
+        self.getNewDelay()
+        
+//        let spawn = SKAction.runBlock({() in self.spawn()})
+//        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
+//        let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
+//        let spawnThenDelay = SKAction.sequence([spawn, delay, getNewDelay])
+//        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
+//        self.runAction(spawnThenDelayForever)
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
         
-        maxDistance = CGRectGetMaxY(self.frame) - CGRectGetMidY(self.frame)
-        
         //Sets up Penguin Image
         setupPenguin()
-        
         
         //Sets up BackButton, Score, PauseButton
         setupHUD()
@@ -132,23 +144,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 30 * 9.8, self.forwardMovement)
             })
         }
-        let xPosition1 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
-        self.shortBlock.anchorPoint = CGPointMake(0.5, 0.5)
-        self.shortBlock.position = CGPointMake(xPosition1, CGRectGetMaxY(self.frame))
-        self.shortBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(50)))
-        self.shortBlock.physicsBody?.dynamic = false
-        self.origShortBlockPositionY = self.shortBlock.position.y
-        
-        let xPosition2 = random(min: CGRectGetMinX(self.frame), max: CGRectGetMaxX(self.frame))
-        self.longBlock.anchorPoint = CGPointMake(0.5, 0.5)
-        self.longBlock.position = CGPointMake(xPosition2, CGRectGetMaxY(self.frame) + (CGRectGetHeight(self.frame) / 2))
-        self.longBlock.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(50), CGFloat(100)))
-        self.longBlock.physicsBody?.dynamic = false
-        self.longBlock.zRotation = CGFloat(M_PI / 2)
-        self.origLongBlockPositionY = self.longBlock.position.y
-        
-        self.addChild(shortBlock)
-        self.addChild(longBlock)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -191,12 +186,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     if(self.Pause == true){
                         //Resume
                         self.blurNode.removeFromParent()
-                        self.timer.fire()
                         self.pausedImage.removeFromParent()
                         self.Pause = false
+                        startAnimations()
                         self.physicsWorld.speed = 1
                     }else{
                         //Pause
+                        stopAnimations()
                         loadBlurScreen()
                         self.setupPausePopup()
                         self.addChild(PauseStuff)
@@ -208,16 +204,16 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                         instructions1.removeFromParent()
                         instructions2.removeFromParent()
                     }
-                    self.forwardMovement = -3.0
+                    self.forwardMovement = -4.0
                 }
             }
            
             else if(self.Pause == true){
                 if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
                     self.Pause = false
-                    self.timer.fire()
                     self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
+                    startAnimations()
                     self.physicsWorld.speed = 1
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
@@ -227,8 +223,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     ModeSelection.scaleMode = .ResizeFill
                     ModeSelection.size = skView.bounds.size
                     skView.presentScene(ModeSelection, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-                    
-                    
                 }
                 else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
                     self.Pause = false
@@ -239,7 +233,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))
                     
                 }
-
             }
         }
     }
@@ -247,7 +240,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            self.forwardMovement = 3.0
+            self.forwardMovement = 4.0
         }
     }
     
@@ -272,9 +265,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.penguin.physicsBody?.linearDamping = 5
         self.penguin.physicsBody?.allowsRotation = true
         self.penguin.physicsBody?.usesPreciseCollisionDetection = true
-        self.penguin.physicsBody?.categoryBitMask = BodyType.penguin.rawValue
+        self.penguin.physicsBody?.categoryBitMask = collision.playerCategory
         self.penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
-        self.penguin.physicsBody?.contactTestBitMask = BodyType.penguin.rawValue | BodyType.bottom.rawValue
+        self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.goalCategory
         self.addChild(penguin)
     }
     
@@ -333,58 +326,120 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         return random() * (max - min) + min
     }
     
-    func timerFired(){
+    func stopAnimations(){
+        self.removeAllActions()
+        for index in 0 ... obstacles.count - 1{
+            obstacles[index].node.removeAllActions()
+        }
+    }
+    
+    func startAnimations(){
+        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
+        moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        
+        for index in 0 ... obstacles.count - 1{
+            obstacles[index].node.removeAllActions()
+            obstacles[index].node.runAction(moveObstacleForeverAction)
+        }
+    }
+    
+    func getNewDelay(){
+        
+        //Throw in check for if delay is getting too small
+        //try to keep constant ratio of delay/speed
+        
+        let spawn = SKAction.runBlock({() in self.spawn()})
+        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
+        let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
+        let spawnThenDelay = SKAction.sequence([delay, spawn, getNewDelay])
+        //let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
+        self.runAction(spawnThenDelay)
+    }
+    
+    func spawn(){
         if(self.paused == false){
-            println("Fired!")
             var obstacleSet = SKNode()
-//            //For picking random objects
-//            var rand = arc4random() % (3 - 1 + 1) + 1
-//            var spriteName = "tiki-bottom-0\(rand)"
-            
-            var iceBlock = SKSpriteNode(imageNamed: "Tallblock")
-            iceBlock.position = CGPointMake(CGRectGetMinX(self.frame) + iceBlock.size.width / 2, CGRectGetMaxY(self.frame))
+            var PositionX = random(min: -250, max: 250)
+
+            var iceBlock = SKSpriteNode(imageNamed: "endlessIce")
+            iceBlock.xScale = 500/iceBlock.size.width
+            iceBlock.yScale = 50/iceBlock.size.height
+            iceBlock.position = CGPointMake(PositionX, CGRectGetMaxY(self.frame) - iceBlock.size.height / 2)
             iceBlock.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock.size)
             iceBlock.physicsBody?.dynamic = false
             obstacleSet.addChild(iceBlock)
             
-            var iceBlock2 = SKSpriteNode(imageNamed: "Tallblock")
-            iceBlock2.position = CGPointMake(CGRectGetMaxX(self.frame) - iceBlock2.size.width / 2, CGRectGetMaxY(self.frame))
-            iceBlock2.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock2.size)
+            var iceBlock2 = SKSpriteNode(imageNamed: "endlessIce")
+            iceBlock2.xScale = 500/iceBlock2.size.width
+            iceBlock2.yScale = 50/iceBlock2.size.height
+            iceBlock2.position = CGPointMake(iceBlock.position.x + CGFloat(minDistance), CGRectGetMaxY(self.frame) - iceBlock2.size.height / 2)
+            iceBlock2.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock.size)
             iceBlock2.physicsBody?.dynamic = false
             obstacleSet.addChild(iceBlock2)
             
-            obstacles.append(obstacleSet)
+            var checkpoint = SKSpriteNode(color: UIColor.clearColor(), size: CGSizeMake(minDistance, 10))
+            checkpoint.position = iceBlock.position
+            checkpoint.position.x += 250
+            checkpoint.physicsBody = SKPhysicsBody(rectangleOfSize: checkpoint.size)
+            checkpoint.physicsBody?.dynamic = false
+            checkpoint.physicsBody?.categoryBitMask = collision.goalCategory
+            obstacleSet.addChild(checkpoint)
+            
             obstacleSet.runAction(moveObstacleForeverAction)
+            obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
             self.addChild(obstacleSet)
-            obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMidY(self.frame))
-            if(obstacles.count > 4){
-                obstacles.removeLast()
+            
+            var newObstacle = Obstacles(node: obstacleSet, counted: false)
+            newObstacle.node.position.y = CGRectGetHeight(self.frame)
+            self.obstacles.append(newObstacle)
+            if(self.obstacles.count >= 4){
+                self.obstacles.removeAtIndex(0)
             }
+
         }
     }
     
     
     override func update(currentTime: NSTimeInterval) {
+        deltaTime = CGFloat(currentTime - lastUpdateTimeInterval)
+        lastUpdateTimeInterval = currentTime
         
+        //Prevents problems with an anomaly that occurs when delta time is too long - Apple does a similar thing in their code
+        if deltaTime > 1
+        {
+            deltaTime = 1.0 / 60.0
+            lastUpdateTimeInterval = currentTime
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
         //this gets called automatically when two objects begin contact with each other
         let contactMask = contact.bodyA.categoryBitMask | contact.bodyB.categoryBitMask
         switch(contactMask) {
-        case BodyType.penguin.rawValue | BodyType.bottom.rawValue:
+        case collision.playerCategory | collision.WaterCategory:
             self.physicsWorld.speed = 0
             GameOverStuff.removeFromParent()
+            stopAnimations()
             loadBlurScreen()
             var score = GameOverStuff.childNodeWithName("ScoreLabel") as SKLabelNode
             score.text = "SCORE: \(PlayerScore)"
-            
+            stopAnimations()
             setHighScore()
             setupGameOver()
             
             self.addChild(GameOverStuff)
             self.gameO = true
             self.Pause = true
+        case collision.playerCategory | collision.goalCategory:
+            contact.bodyA.categoryBitMask = collision.none
+            PlayerScore++
+            self.score.text = "Score: \(PlayerScore)"
+            if PlayerScore % 10 == 0 {
+                self.scrollSpeed *= 1.2
+                self.delay *= 0.8
+                refreshActions = true
+                startAnimations()
+            }
         default:
             return
         }

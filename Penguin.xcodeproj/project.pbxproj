@@ -20,6 +20,8 @@
 		371649311AB8781A0019694B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3716492F1AB8781A0019694B /* LaunchScreen.xib */; };
 		3716493D1AB8781A0019694B /* PenguinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716493C1AB8781A0019694B /* PenguinTests.swift */; };
 		371649471AB87ECB0019694B /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649461AB87ECB0019694B /* PlayScene.swift */; };
+		3718CC411ADC6BD600191E6E /* icicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC401ADC6BD600191E6E /* icicle.png */; };
+		3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC421ADC8A5A00191E6E /* endlessIce.png */; };
 		372156651AD47AE000101993 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156641AD47AE000101993 /* fish.png */; };
 		372156671AD47AF300101993 /* pufferFish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156661AD47AF300101993 /* pufferFish.png */; };
 		372156691AD4B7E600101993 /* LevelB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372156681AD4B7E600101993 /* LevelB.sks */; };
@@ -187,6 +189,8 @@
 		3716493B1AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3716493C1AB8781A0019694B /* PenguinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenguinTests.swift; sourceTree = "<group>"; };
 		371649461AB87ECB0019694B /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		3718CC401ADC6BD600191E6E /* icicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icicle.png; sourceTree = "<group>"; };
+		3718CC421ADC8A5A00191E6E /* endlessIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessIce.png; sourceTree = "<group>"; };
 		372156641AD47AE000101993 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		372156661AD47AF300101993 /* pufferFish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pufferFish.png; sourceTree = "<group>"; };
 		372156681AD4B7E600101993 /* LevelB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelB.sks; sourceTree = "<group>"; };
@@ -392,6 +396,8 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3718CC421ADC8A5A00191E6E /* endlessIce.png */,
+				3718CC401ADC6BD600191E6E /* icicle.png */,
 				37E3C91E1AD6F521009D358A /* ice.jpg */,
 				37E3C91C1AD6F293009D358A /* BridgePowerup.png */,
 				372559A41AD5F50300AE1808 /* spark.png */,
@@ -448,8 +454,8 @@
 				A4CC31961AD608C5005B09DD /* LevelEScene.swift */,
 				37E3C9181AD6F19B009D358A /* LevelF.sks */,
 				37E3C91A1AD6F1BD009D358A /* LevelFScene.swift */,
-				A47607511ADC71880055CC58 /* LevelGScene.swift */,
 				A47607531ADC721C0055CC58 /* LevelG.sks */,
+				A47607511ADC71880055CC58 /* LevelGScene.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -473,6 +479,9 @@
 		65609E051ADC70990074E689 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				65609E321ADC709A0074E689 /* snowWave.png */,
+				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
+				65609E0F1ADC70990074E689 /* iceBlock.png */,
 				65609E061ADC70990074E689 /* caneGreen.png */,
 				65609E071ADC70990074E689 /* caneGreenSmall.png */,
 				65609E081ADC70990074E689 /* caneGreenTop.png */,
@@ -482,13 +491,11 @@
 				65609E0C1ADC70990074E689 /* caneRedTop.png */,
 				65609E0D1ADC70990074E689 /* caneRedTopAlt.png */,
 				65609E0E1ADC70990074E689 /* deadTree.png */,
-				65609E0F1ADC70990074E689 /* iceBlock.png */,
 				65609E101ADC70990074E689 /* iceBlockAlt.png */,
 				65609E111ADC70990074E689 /* iceBlockHalf.png */,
 				65609E121ADC70990074E689 /* iceBlockHalfAlt.png */,
 				65609E131ADC70990074E689 /* iceWater.png */,
 				65609E141ADC70990074E689 /* iceWaterAlt.png */,
-				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
 				65609E161ADC709A0074E689 /* iceWaterDeepAlt.png */,
 				65609E171ADC709A0074E689 /* iceWaterDeepStars.png */,
 				65609E181ADC709A0074E689 /* iceWaterDeepStarsAlt.png */,
@@ -517,7 +524,6 @@
 				65609E2F1ADC709A0074E689 /* snowLeft.png */,
 				65609E301ADC709A0074E689 /* snowMid.png */,
 				65609E311ADC709A0074E689 /* snowRight.png */,
-				65609E321ADC709A0074E689 /* snowWave.png */,
 				65609E331ADC709A0074E689 /* spikesBottom.png */,
 				65609E341ADC709A0074E689 /* spikesBottomAlt.png */,
 				65609E351ADC709A0074E689 /* spikesBottomAlt2.png */,
@@ -706,6 +712,7 @@
 				65609E681ADC709A0074E689 /* caneGreenTop.png in Resources */,
 				65609EBB1ADC709A0074E689 /* tundraHalfMid.png in Resources */,
 				65609E971ADC709A0074E689 /* spikesTopAlt.png in Resources */,
+				3718CC411ADC6BD600191E6E /* icicle.png in Resources */,
 				372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */,
 				65609E801ADC709A0074E689 /* iglooRoofRight.png in Resources */,
 				65609E6B1ADC709A0074E689 /* caneRedSmall.png in Resources */,
@@ -747,6 +754,7 @@
 				659E00CD1AD61DBA001E974C /* resumeButton.png in Resources */,
 				37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */,
 				3716492C1AB8781A0019694B /* Main.storyboard in Resources */,
+				3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */,
 				65609E731ADC709A0074E689 /* iceWater.png in Resources */,
 				65609E701ADC709A0074E689 /* iceBlockAlt.png in Resources */,
 				65609EAE1ADC709A0074E689 /* treeTrunkBranchRightAlt.png in Resources */,
