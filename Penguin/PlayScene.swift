@@ -328,7 +328,6 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 quitButtonIndex = index
             }
         }
-
     }
     
     func setupPausePopup(){
