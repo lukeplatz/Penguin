@@ -32,6 +32,8 @@ enum GameState {
 
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
+    var levelStuff = SKNode.unarchiveFromFile("PlaySceneBackground")! as SKNode
+    
     var motionManager = CMMotionManager()
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
     let LevelWinStuff = SKNode.unarchiveFromFile("LevelWin")!
@@ -86,6 +88,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //Sets up Penguin Image
         setupPenguin()
         
+        self.addChild(levelStuff)
         
         //Sets up BackButton, Score, PauseButton
         setupHUD()

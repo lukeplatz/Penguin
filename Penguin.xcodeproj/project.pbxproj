@@ -448,8 +448,8 @@
 				A4CC31961AD608C5005B09DD /* LevelEScene.swift */,
 				37E3C9181AD6F19B009D358A /* LevelF.sks */,
 				37E3C91A1AD6F1BD009D358A /* LevelFScene.swift */,
-				A47607511ADC71880055CC58 /* LevelGScene.swift */,
 				A47607531ADC721C0055CC58 /* LevelG.sks */,
+				A47607511ADC71880055CC58 /* LevelGScene.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
