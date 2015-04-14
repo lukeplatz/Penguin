@@ -28,7 +28,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let longBlock = SKSpriteNode(imageNamed: "Tallblock")
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
     let penguin = SKSpriteNode(imageNamed: "Penguin")
-    let backButton = SKSpriteNode(imageNamed: "BackButton")
+    let retryButton = SKSpriteNode(imageNamed: "RetryButton")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial")
@@ -36,7 +36,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     let speedLabel = SKLabelNode(fontNamed: "Arial")
+    let cane = SKSpriteNode(imageNamed: "caneGreen")
     var blurNode:SKSpriteNode = SKSpriteNode()
+    
+    var canes = [SKNode]()
+    var background = SKNode()
     
     var retryButtonIndex = 0
     var resumeButtonIndex = 0
@@ -116,14 +120,24 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.getNewDelay()
         
-//        let spawn = SKAction.runBlock({() in self.spawn()})
-//        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
-//        let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
-//        let spawnThenDelay = SKAction.sequence([spawn, delay, getNewDelay])
-//        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
-//        self.runAction(spawnThenDelayForever)
+//        for index in 0...25 {
+//            var aCane = SKSpriteNode(imageNamed: "caneGreen")
+//            aCane.position.x = CGRectGetMinX(self.frame) + cane.size.width / 2
+//            if (index == 0){
+//                aCane.position.y = CGRectGetMaxY(self.frame)
+//            }else{
+//                aCane.position.y = self.canes[index - 1].position.y + cane.size.height
+//            }
+//            self.canes.insert(aCane, atIndex: index)
+//            self.background.addChild(self.canes[index])
+//        }
+//        self.background.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
+//        self.addChild(self.background)
+        
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        
+//        self.background.runAction(moveObstacleForeverAction)
         
         //Sets up Penguin Image
         setupPenguin()
@@ -173,16 +187,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             }
             
             else if(self.Pause == false){
-                if self.nodeAtPoint(location) == self.backButton{
+                if self.nodeAtPoint(location) == self.retryButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
-                    var mainMenuScene = MainMenuScene(size: self.size)
+                    var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
-                    mainMenuScene.scaleMode = .ResizeFill
-                    mainMenuScene.size = skView.bounds.size
-                    skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
+                    endlessScene.scaleMode = .Fill
+                    skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
                     if(self.Pause == true){
                         //Resume
                         self.blurNode.removeFromParent()
@@ -213,6 +225,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.Pause = false
                     self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
+                    getNewDelay()
                     startAnimations()
                     self.physicsWorld.speed = 1
                 }
@@ -273,11 +286,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func setupHUD(){
         //Back Image
-        self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backButton.xScale = (100/self.backButton.size.width)
-        self.backButton.yScale = (100/self.backButton.size.height)
-        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - (statusbarHeight) - 12)
-        self.backButton.zPosition = 2
+        self.retryButton.anchorPoint = CGPointMake(0.5, 0.5)
+        self.retryButton.xScale = (100/self.retryButton.size.width)
+        self.retryButton.yScale = (100/self.retryButton.size.height)
+        self.retryButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.retryButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.retryButton.size.height / 2) - (statusbarHeight) - 12)
+        self.retryButton.zPosition = 2
         
         self.HUDbar.yScale = 135/self.HUDbar.size.height
         self.HUDbar.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - self.HUDbar.size.height / 2)
@@ -288,7 +301,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         //Score
         self.PlayerScore = 0
         self.score.text = "Score: \(PlayerScore)"
-        self.score.position = CGPointMake(HUDbar.position.x, backButton.position.y - backButton.size.height / 4)
+        self.score.position = CGPointMake(HUDbar.position.x, retryButton.position.y - retryButton.size.height / 4)
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.score.zPosition = 2
         
@@ -304,7 +317,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.pausedImage.zPosition = 1
         
-        self.speedLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.frame) / 8, self.backButton.position.y - self.backButton.size.height)
+        self.speedLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.frame) / 8, self.retryButton.position.y - self.retryButton.size.height)
         self.speedLabel.zPosition = 2
         self.speedLabel.fontColor = UIColor.orangeColor()
         self.speedLabel.text = "Speed: 1"
@@ -313,7 +326,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.addChild(speedLabel)
         self.addChild(HUDbar)
-        self.addChild(backButton)
+        self.addChild(retryButton)
         self.addChild(score)
         self.addChild(pauseButton)
     }
@@ -328,6 +341,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func stopAnimations(){
         self.removeAllActions()
+        self.cane.removeAllActions()
         for index in 0 ... obstacles.count - 1{
             obstacles[index].node.removeAllActions()
         }
@@ -336,6 +350,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     func startAnimations(){
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        
+        self.cane.removeAllActions()
+        self.cane.runAction(moveObstacleForeverAction)
         
         for index in 0 ... obstacles.count - 1{
             obstacles[index].node.removeAllActions()
@@ -395,7 +412,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             if(self.obstacles.count >= 4){
                 self.obstacles.removeAtIndex(0)
             }
-
         }
     }
     
