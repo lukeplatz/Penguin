@@ -54,8 +54,8 @@ class LevelBScene: PlayScene{
     override func setupMap(){
         level = 2
         
-        let pulseUp = SKAction.scaleTo(0.25, duration: 0.5)
-        let pulseDown = SKAction.scaleTo(0.15, duration: 0.5)
+        let pulseUp = SKAction.scaleTo(0.95, duration: 0.5)
+        let pulseDown = SKAction.scaleTo(1.05, duration: 0.5)
         let pulse = SKAction.sequence([pulseUp, pulseDown])
         let repeatPulse = SKAction.repeatActionForever(pulse)
         
