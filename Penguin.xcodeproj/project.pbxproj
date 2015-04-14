@@ -23,6 +23,9 @@
 		3718CC411ADC6BD600191E6E /* icicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC401ADC6BD600191E6E /* icicle.png */; };
 		3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC421ADC8A5A00191E6E /* endlessIce.png */; };
 		3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC441ADD9A8500191E6E /* boxAlt.png */; };
+		3718CC491ADDAE2E00191E6E /* switchLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC461ADDAE2E00191E6E /* switchLeft.png */; };
+		3718CC4A1ADDAE2E00191E6E /* switchMid.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC471ADDAE2E00191E6E /* switchMid.png */; };
+		3718CC4B1ADDAE2E00191E6E /* switchRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC481ADDAE2E00191E6E /* switchRight.png */; };
 		372156651AD47AE000101993 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156641AD47AE000101993 /* fish.png */; };
 		372156671AD47AF300101993 /* pufferFish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156661AD47AF300101993 /* pufferFish.png */; };
 		372156691AD4B7E600101993 /* LevelB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372156681AD4B7E600101993 /* LevelB.sks */; };
@@ -193,6 +196,9 @@
 		3718CC401ADC6BD600191E6E /* icicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icicle.png; sourceTree = "<group>"; };
 		3718CC421ADC8A5A00191E6E /* endlessIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessIce.png; sourceTree = "<group>"; };
 		3718CC441ADD9A8500191E6E /* boxAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxAlt.png; sourceTree = "<group>"; };
+		3718CC461ADDAE2E00191E6E /* switchLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchLeft.png; sourceTree = "<group>"; };
+		3718CC471ADDAE2E00191E6E /* switchMid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchMid.png; sourceTree = "<group>"; };
+		3718CC481ADDAE2E00191E6E /* switchRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchRight.png; sourceTree = "<group>"; };
 		372156641AD47AE000101993 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		372156661AD47AF300101993 /* pufferFish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pufferFish.png; sourceTree = "<group>"; };
 		372156681AD4B7E600101993 /* LevelB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelB.sks; sourceTree = "<group>"; };
@@ -481,6 +487,9 @@
 		65609E051ADC70990074E689 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				3718CC461ADDAE2E00191E6E /* switchLeft.png */,
+				3718CC471ADDAE2E00191E6E /* switchMid.png */,
+				3718CC481ADDAE2E00191E6E /* switchRight.png */,
 				3718CC441ADD9A8500191E6E /* boxAlt.png */,
 				65609E321ADC709A0074E689 /* snowWave.png */,
 				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
@@ -682,6 +691,7 @@
 				65609E871ADC709A0074E689 /* snowBall.png in Resources */,
 				65609EC01ADC709A0074E689 /* tundraHillRight2.png in Resources */,
 				65609E721ADC709A0074E689 /* iceBlockHalfAlt.png in Resources */,
+				3718CC491ADDAE2E00191E6E /* switchLeft.png in Resources */,
 				65609EB21ADC709A0074E689 /* tundra.png in Resources */,
 				A4CC318A1AD5DD19005B09DD /* Spaceship.png in Resources */,
 				A4CC31911AD5FEE9005B09DD /* LevelD.sks in Resources */,
@@ -761,6 +771,7 @@
 				65609E731ADC709A0074E689 /* iceWater.png in Resources */,
 				65609E701ADC709A0074E689 /* iceBlockAlt.png in Resources */,
 				65609EAE1ADC709A0074E689 /* treeTrunkBranchRightAlt.png in Resources */,
+				3718CC4A1ADDAE2E00191E6E /* switchMid.png in Resources */,
 				65609E941ADC709A0074E689 /* spikesBottomAlt.png in Resources */,
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
@@ -784,6 +795,7 @@
 				65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */,
 				3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */,
 				372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */,
+				3718CC4B1ADDAE2E00191E6E /* switchRight.png in Resources */,
 				65609E861ADC709A0074E689 /* rockAlt.png in Resources */,
 				659E00CF1AD61DE8001E974C /* nextLevelButton.png in Resources */,
 				65609EA81ADC709A0074E689 /* treeTrunkBottomAlt2.png in Resources */,
