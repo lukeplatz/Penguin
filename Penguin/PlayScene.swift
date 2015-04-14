@@ -251,26 +251,26 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.backButton.xScale = (100/self.backButton.size.width)
         self.backButton.yScale = (100/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - (statusbarHeight) - 12)
-        self.backButton.zPosition = 2
+        self.backButton.zPosition = 3
         
         self.HUDbar.yScale = 135/self.HUDbar.size.height
         self.HUDbar.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - self.HUDbar.size.height / 2)
         self.HUDbar.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGFloat(self.HUDbar.size.width), CGFloat(self.HUDbar.size.height)))
         self.HUDbar.physicsBody?.dynamic = false
-        self.HUDbar.zPosition = 1
+        self.HUDbar.zPosition = 2
         
         //Score
         self.PlayerScore = 0
         self.score.text = "Score: \(PlayerScore)"
         self.score.position = CGPointMake(HUDbar.position.x, backButton.position.y - backButton.size.height / 4)
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-        self.score.zPosition = 2
+        self.score.zPosition = 3
         
         
         self.pauseButton.xScale = (100/self.pauseButton.size.width)
         self.pauseButton.yScale = (100/self.pauseButton.size.height)
         self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - (statusbarHeight) - 12)
-        self.pauseButton.zPosition = 2
+        self.pauseButton.zPosition = 3
         
         //Winner Message
         self.winner.anchorPoint = CGPointMake(0.5, 0.5)
@@ -283,7 +283,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         //Paused image
         self.pausedImage.anchorPoint = CGPointMake(0.5, 0.5)
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        self.pausedImage.zPosition = 10
+        self.pausedImage.zPosition = 9
         
        
         
@@ -292,18 +292,21 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.instructions1.position.y = CGRectGetMidY(self.frame) + 30
         self.instructions1.fontColor = UIColor.blackColor()
         self.instructions1.fontSize = 30
+        self.instructions1.zPosition = 9
         
         self.instructions2.text = "Gather the fish and reach the Spaceship!"
         self.instructions2.position.x = CGRectGetMidX(self.frame)
         self.instructions2.position.y = CGRectGetMidY(self.frame)
         self.instructions2.fontColor = UIColor.blackColor()
         self.instructions2.fontSize = 30
+        self.instructions2.zPosition = 9
         
         self.instructions3.text = "Tap to start sliding"
         self.instructions3.position.x = CGRectGetMidX(self.frame)
         self.instructions3.position.y = CGRectGetMidY(self.frame) - 50
         self.instructions3.fontColor = UIColor.blackColor()
         self.instructions3.fontSize = 30
+        self.instructions3.zPosition = 9
         
         self.addChild(instructions1)
         self.addChild(instructions2)
