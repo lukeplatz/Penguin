@@ -36,7 +36,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     let speedLabel = SKLabelNode(fontNamed: "Arial")
+    let cane = SKSpriteNode(imageNamed: "caneGreen")
     var blurNode:SKSpriteNode = SKSpriteNode()
+    
+    var canes = [SKNode]()
+    var background = SKNode()
     
     var retryButtonIndex = 0
     var resumeButtonIndex = 0
@@ -116,14 +120,24 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.getNewDelay()
         
-//        let spawn = SKAction.runBlock({() in self.spawn()})
-//        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
-//        let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
-//        let spawnThenDelay = SKAction.sequence([spawn, delay, getNewDelay])
-//        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
-//        self.runAction(spawnThenDelayForever)
+//        for index in 0...25 {
+//            var aCane = SKSpriteNode(imageNamed: "caneGreen")
+//            aCane.position.x = CGRectGetMinX(self.frame) + cane.size.width / 2
+//            if (index == 0){
+//                aCane.position.y = CGRectGetMaxY(self.frame)
+//            }else{
+//                aCane.position.y = self.canes[index - 1].position.y + cane.size.height
+//            }
+//            self.canes.insert(aCane, atIndex: index)
+//            self.background.addChild(self.canes[index])
+//        }
+//        self.background.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
+//        self.addChild(self.background)
+        
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        
+//        self.background.runAction(moveObstacleForeverAction)
         
         //Sets up Penguin Image
         setupPenguin()
@@ -211,6 +225,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.Pause = false
                     self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
+                    getNewDelay()
                     startAnimations()
                     self.physicsWorld.speed = 1
                 }
@@ -326,6 +341,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func stopAnimations(){
         self.removeAllActions()
+        self.cane.removeAllActions()
         for index in 0 ... obstacles.count - 1{
             obstacles[index].node.removeAllActions()
         }
@@ -334,6 +350,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     func startAnimations(){
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        
+        self.cane.removeAllActions()
+        self.cane.runAction(moveObstacleForeverAction)
         
         for index in 0 ... obstacles.count - 1{
             obstacles[index].node.removeAllActions()
@@ -393,7 +412,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             if(self.obstacles.count >= 4){
                 self.obstacles.removeAtIndex(0)
             }
-
         }
     }
     
