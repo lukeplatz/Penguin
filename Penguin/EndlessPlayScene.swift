@@ -52,23 +52,27 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
-    var timerThread = NSThread()
     var motionManager = CMMotionManager()
+    var counter = 0
     
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
     
-    var scrollSpeed = 5
+    var scrollSpeed = 5.0
+    var delay = NSTimeInterval(2.0)
     
     var minDistance = CGFloat(650)
-    var shortCounted = false
-    var longCounted = false
     
     var Pause = false
     var gameO = false
     var presentInstructions = true
     var forwardMovement = CGFloat(0.0)
+    
+    var lastUpdateTimeInterval: CFTimeInterval = -1.0
+    var deltaTime: CGFloat = 0.0
+    var lastSpawn = NSTimeInterval(2.0)
+    var refreshActions = false
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
@@ -92,7 +96,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(bottom)
         
         let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
-        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 30)
+        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 20)
         self.addChild(snow!)
         
         self.instructions1.text = "Press and Hold to slide backwards"
@@ -110,17 +114,19 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(instructions1)
         self.addChild(instructions2)
         
-        let spawn = SKAction.runBlock({() in self.timerFired()})
-        let delay = SKAction.waitForDuration(NSTimeInterval(2.0))
-        let spawnThenDelay = SKAction.sequence([spawn, delay])
-        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
-        self.runAction(spawnThenDelayForever)
+        self.getNewDelay()
+        
+//        let spawn = SKAction.runBlock({() in self.spawn()})
+//        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
+//        let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
+//        let spawnThenDelay = SKAction.sequence([spawn, delay, getNewDelay])
+//        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
+//        self.runAction(spawnThenDelayForever)
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
         
         //Sets up Penguin Image
         setupPenguin()
-        
         
         //Sets up BackButton, Score, PauseButton
         setupHUD()
@@ -321,18 +327,36 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func stopAnimations(){
+        self.removeAllActions()
         for index in 0 ... obstacles.count - 1{
             obstacles[index].node.removeAllActions()
         }
     }
     
     func startAnimations(){
+        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
+        moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        
         for index in 0 ... obstacles.count - 1{
+            obstacles[index].node.removeAllActions()
             obstacles[index].node.runAction(moveObstacleForeverAction)
         }
     }
     
-    func timerFired(){
+    func getNewDelay(){
+        
+        //Throw in check for if delay is getting too small
+        //try to keep constant ratio of delay/speed
+        
+        let spawn = SKAction.runBlock({() in self.spawn()})
+        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
+        let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
+        let spawnThenDelay = SKAction.sequence([delay, spawn, getNewDelay])
+        //let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
+        self.runAction(spawnThenDelay)
+    }
+    
+    func spawn(){
         if(self.paused == false){
             var obstacleSet = SKNode()
             var PositionX = random(min: -250, max: 250)
@@ -340,7 +364,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             var iceBlock = SKSpriteNode(imageNamed: "endlessIce")
             iceBlock.xScale = 500/iceBlock.size.width
             iceBlock.yScale = 50/iceBlock.size.height
-            iceBlock.position = CGPointMake(PositionX, CGRectGetMaxY(self.frame))
+            iceBlock.position = CGPointMake(PositionX, CGRectGetMaxY(self.frame) - iceBlock.size.height / 2)
             iceBlock.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock.size)
             iceBlock.physicsBody?.dynamic = false
             obstacleSet.addChild(iceBlock)
@@ -348,7 +372,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             var iceBlock2 = SKSpriteNode(imageNamed: "endlessIce")
             iceBlock2.xScale = 500/iceBlock2.size.width
             iceBlock2.yScale = 50/iceBlock2.size.height
-            iceBlock2.position = CGPointMake(iceBlock.position.x + CGFloat(minDistance), CGRectGetMaxY(self.frame))
+            iceBlock2.position = CGPointMake(iceBlock.position.x + CGFloat(minDistance), CGRectGetMaxY(self.frame) - iceBlock2.size.height / 2)
             iceBlock2.physicsBody = SKPhysicsBody(rectangleOfSize: iceBlock.size)
             iceBlock2.physicsBody?.dynamic = false
             obstacleSet.addChild(iceBlock2)
@@ -377,7 +401,15 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     
     override func update(currentTime: NSTimeInterval) {
+        deltaTime = CGFloat(currentTime - lastUpdateTimeInterval)
+        lastUpdateTimeInterval = currentTime
         
+        //Prevents problems with an anomaly that occurs when delta time is too long - Apple does a similar thing in their code
+        if deltaTime > 1
+        {
+            deltaTime = 1.0 / 60.0
+            lastUpdateTimeInterval = currentTime
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -402,8 +434,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             contact.bodyA.categoryBitMask = collision.none
             PlayerScore++
             self.score.text = "Score: \(PlayerScore)"
-            if PlayerScore % 5 == 0 {
-                scrollSpeed++
+            if PlayerScore % 10 == 0 {
+                self.scrollSpeed *= 1.2
+                self.delay *= 0.8
+                refreshActions = true
+                startAnimations()
             }
         default:
             return
