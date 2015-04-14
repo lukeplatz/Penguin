@@ -28,7 +28,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let longBlock = SKSpriteNode(imageNamed: "Tallblock")
     let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
     let penguin = SKSpriteNode(imageNamed: "Penguin")
-    let backButton = SKSpriteNode(imageNamed: "BackButton")
+    let retryButton = SKSpriteNode(imageNamed: "RetryButton")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
     let instructions1 = SKLabelNode(fontNamed: "Arial")
@@ -173,16 +173,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             }
             
             else if(self.Pause == false){
-                if self.nodeAtPoint(location) == self.backButton{
+                if self.nodeAtPoint(location) == self.retryButton{
                     motionManager.stopAccelerometerUpdates()
                     self.needToCalibrate = true
-                    var mainMenuScene = MainMenuScene(size: self.size)
+                    var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
-                    mainMenuScene.scaleMode = .ResizeFill
-                    mainMenuScene.size = skView.bounds.size
-                    skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
+                    endlessScene.scaleMode = .Fill
+                    skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
                     if(self.Pause == true){
                         //Resume
                         self.blurNode.removeFromParent()
@@ -273,11 +271,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func setupHUD(){
         //Back Image
-        self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backButton.xScale = (100/self.backButton.size.width)
-        self.backButton.yScale = (100/self.backButton.size.height)
-        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - (statusbarHeight) - 12)
-        self.backButton.zPosition = 2
+        self.retryButton.anchorPoint = CGPointMake(0.5, 0.5)
+        self.retryButton.xScale = (100/self.retryButton.size.width)
+        self.retryButton.yScale = (100/self.retryButton.size.height)
+        self.retryButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.retryButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.retryButton.size.height / 2) - (statusbarHeight) - 12)
+        self.retryButton.zPosition = 2
         
         self.HUDbar.yScale = 135/self.HUDbar.size.height
         self.HUDbar.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - self.HUDbar.size.height / 2)
@@ -288,7 +286,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         //Score
         self.PlayerScore = 0
         self.score.text = "Score: \(PlayerScore)"
-        self.score.position = CGPointMake(HUDbar.position.x, backButton.position.y - backButton.size.height / 4)
+        self.score.position = CGPointMake(HUDbar.position.x, retryButton.position.y - retryButton.size.height / 4)
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.score.zPosition = 2
         
@@ -304,7 +302,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.pausedImage.zPosition = 1
         
-        self.speedLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.frame) / 8, self.backButton.position.y - self.backButton.size.height)
+        self.speedLabel.position = CGPointMake(CGRectGetMaxX(self.frame) - CGRectGetWidth(self.frame) / 8, self.retryButton.position.y - self.retryButton.size.height)
         self.speedLabel.zPosition = 2
         self.speedLabel.fontColor = UIColor.orangeColor()
         self.speedLabel.text = "Speed: 1"
@@ -313,7 +311,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.addChild(speedLabel)
         self.addChild(HUDbar)
-        self.addChild(backButton)
+        self.addChild(retryButton)
         self.addChild(score)
         self.addChild(pauseButton)
     }
