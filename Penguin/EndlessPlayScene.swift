@@ -92,7 +92,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(bottom)
         
         let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
-        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 50)
+        snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 30)
         self.addChild(snow!)
         
         self.instructions1.text = "Press and Hold to slide backwards"
@@ -217,8 +217,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     ModeSelection.scaleMode = .ResizeFill
                     ModeSelection.size = skView.bounds.size
                     skView.presentScene(ModeSelection, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
-                    
-                    
                 }
                 else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
                     self.Pause = false
@@ -379,28 +377,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     
     override func update(currentTime: NSTimeInterval) {
-//        if (self.paused == true){
-//            return
-//        }
-//        doCompare()
         
     }
-//    func doCompare(){
-//        for var i = 0;  i < self.obstacles.count - 1; ++i {
-//            var penguinPosition:Int = (Int) convertPointToView(penguin.position)
-//            var blockPosition:Int = (Int) convertPointToView(obstacles[i].node.position)
-//            println(penguinPosition)
-//            if obstacles[i].counted == false && penguinPosition > blockPosition{
-//                println("obstacle position: \(blockPosition) Penguin: \(penguinPosition)")
-//                obstacles[i].counted = true
-//                PlayerScore++
-//                self.score.text = "Score: \(PlayerScore)"
-//                if PlayerScore % 5 == 0 {
-//                    scrollSpeed++
-//                }
-//            }
-//        }
-//    }
     
     func didBeginContact(contact: SKPhysicsContact) {
         //this gets called automatically when two objects begin contact with each other
