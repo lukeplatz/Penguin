@@ -65,18 +65,28 @@ class LevelFScene: PlayScene{
     
     override func addBridges() {
         
-        let water = childNodeWithName("WtoRemove") as SKSpriteNode
-        water.physicsBody?.categoryBitMask = collision.none
-        water.physicsBody?.collisionBitMask = 0
-        water.removeFromParent()
+        let water1 = childNodeWithName("WtoRemove1") as SKSpriteNode
+        water1.physicsBody?.categoryBitMask = collision.none
+        water1.physicsBody?.collisionBitMask = 0
+        water1.removeFromParent()
         
-        let bridge = SKSpriteNode(imageNamed: "ice.jpg")
-        bridge.size.height = water.size.height + 10
-        bridge.size.width = water.size.width
-        bridge.position = water.position
-        bridge.zPosition = 10
-        bridge.physicsBody?.categoryBitMask = collision.bridgeCategory
-        self.addChild(bridge)
+        let water2 = childNodeWithName("WtoRemove2") as SKSpriteNode
+        water2.physicsBody?.categoryBitMask = collision.none
+        water2.physicsBody?.collisionBitMask = 0
+        water2.removeFromParent()
+        
+        let bridge1 = SKSpriteNode(imageNamed: "boxAlt")
+        bridge1.position = water1.position
+        bridge1.zPosition = 2
+        bridge1.physicsBody?.categoryBitMask = collision.bridgeCategory
+        
+        let bridge2 = SKSpriteNode(imageNamed: "boxAlt")
+        bridge2.position = water2.position
+        bridge2.zPosition = 2
+        bridge2.physicsBody?.categoryBitMask = collision.bridgeCategory
+        
+        self.addChild(bridge1)
+        self.addChild(bridge2)
         
     }
 }

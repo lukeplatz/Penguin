@@ -22,6 +22,7 @@
 		371649471AB87ECB0019694B /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649461AB87ECB0019694B /* PlayScene.swift */; };
 		3718CC411ADC6BD600191E6E /* icicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC401ADC6BD600191E6E /* icicle.png */; };
 		3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC421ADC8A5A00191E6E /* endlessIce.png */; };
+		3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC441ADD9A8500191E6E /* boxAlt.png */; };
 		372156651AD47AE000101993 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156641AD47AE000101993 /* fish.png */; };
 		372156671AD47AF300101993 /* pufferFish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156661AD47AF300101993 /* pufferFish.png */; };
 		372156691AD4B7E600101993 /* LevelB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372156681AD4B7E600101993 /* LevelB.sks */; };
@@ -191,6 +192,7 @@
 		371649461AB87ECB0019694B /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		3718CC401ADC6BD600191E6E /* icicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icicle.png; sourceTree = "<group>"; };
 		3718CC421ADC8A5A00191E6E /* endlessIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessIce.png; sourceTree = "<group>"; };
+		3718CC441ADD9A8500191E6E /* boxAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxAlt.png; sourceTree = "<group>"; };
 		372156641AD47AE000101993 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		372156661AD47AF300101993 /* pufferFish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pufferFish.png; sourceTree = "<group>"; };
 		372156681AD4B7E600101993 /* LevelB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelB.sks; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 		65609E051ADC70990074E689 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				3718CC441ADD9A8500191E6E /* boxAlt.png */,
 				65609E321ADC709A0074E689 /* snowWave.png */,
 				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
 				65609E0F1ADC70990074E689 /* iceBlock.png */,
@@ -779,6 +782,7 @@
 				659E00CB1AD61DA9001E974C /* quitButton.png in Resources */,
 				A47607541ADC721C0055CC58 /* LevelG.sks in Resources */,
 				65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */,
+				3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */,
 				372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */,
 				65609E861ADC709A0074E689 /* rockAlt.png in Resources */,
 				659E00CF1AD61DE8001E974C /* nextLevelButton.png in Resources */,

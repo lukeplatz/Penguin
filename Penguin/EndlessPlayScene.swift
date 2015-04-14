@@ -342,8 +342,10 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     func stopAnimations(){
         self.removeAllActions()
         self.cane.removeAllActions()
-        for index in 0 ... obstacles.count - 1{
-            obstacles[index].node.removeAllActions()
+        if(obstacles.count > 0){
+            for index in 0 ... obstacles.count - 1{
+                obstacles[index].node.removeAllActions()
+            }
         }
     }
     
@@ -354,9 +356,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.cane.removeAllActions()
         self.cane.runAction(moveObstacleForeverAction)
         
-        for index in 0 ... obstacles.count - 1{
-            obstacles[index].node.removeAllActions()
-            obstacles[index].node.runAction(moveObstacleForeverAction)
+        if(obstacles.count > 0){
+            for index in 0 ... obstacles.count - 1{
+                obstacles[index].node.removeAllActions()
+                obstacles[index].node.runAction(moveObstacleForeverAction)
+            }
         }
     }
     
