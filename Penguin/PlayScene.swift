@@ -413,9 +413,14 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;
             self.score.text = "Score: \(PlayerScore)"
-            contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
             let move = SKAction.moveTo(self.score.position, duration: 0.2)
-            contact.bodyA.node?.runAction(move)
+            if contact.bodyA.node?.name == "Penguin" {
+                contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+                contact.bodyB.node?.runAction(move)
+            }else{
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+                contact.bodyA.node?.runAction(move)
+            }
         case collision.playerCategory | collision.powerUpCategory:
             //add bridge
             addBridges()
