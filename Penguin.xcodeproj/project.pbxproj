@@ -479,6 +479,9 @@
 		65609E051ADC70990074E689 /* Tiles */ = {
 			isa = PBXGroup;
 			children = (
+				65609E321ADC709A0074E689 /* snowWave.png */,
+				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
+				65609E0F1ADC70990074E689 /* iceBlock.png */,
 				65609E061ADC70990074E689 /* caneGreen.png */,
 				65609E071ADC70990074E689 /* caneGreenSmall.png */,
 				65609E081ADC70990074E689 /* caneGreenTop.png */,
@@ -488,13 +491,11 @@
 				65609E0C1ADC70990074E689 /* caneRedTop.png */,
 				65609E0D1ADC70990074E689 /* caneRedTopAlt.png */,
 				65609E0E1ADC70990074E689 /* deadTree.png */,
-				65609E0F1ADC70990074E689 /* iceBlock.png */,
 				65609E101ADC70990074E689 /* iceBlockAlt.png */,
 				65609E111ADC70990074E689 /* iceBlockHalf.png */,
 				65609E121ADC70990074E689 /* iceBlockHalfAlt.png */,
 				65609E131ADC70990074E689 /* iceWater.png */,
 				65609E141ADC70990074E689 /* iceWaterAlt.png */,
-				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
 				65609E161ADC709A0074E689 /* iceWaterDeepAlt.png */,
 				65609E171ADC709A0074E689 /* iceWaterDeepStars.png */,
 				65609E181ADC709A0074E689 /* iceWaterDeepStarsAlt.png */,
@@ -523,7 +524,6 @@
 				65609E2F1ADC709A0074E689 /* snowLeft.png */,
 				65609E301ADC709A0074E689 /* snowMid.png */,
 				65609E311ADC709A0074E689 /* snowRight.png */,
-				65609E321ADC709A0074E689 /* snowWave.png */,
 				65609E331ADC709A0074E689 /* spikesBottom.png */,
 				65609E341ADC709A0074E689 /* spikesBottomAlt.png */,
 				65609E351ADC709A0074E689 /* spikesBottomAlt2.png */,
