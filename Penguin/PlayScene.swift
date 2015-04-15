@@ -13,7 +13,7 @@ import CoreMotion
 struct collision {
     static let none            : UInt32 = 0b0
     static let playerCategory  : UInt32 = 1
-    static let ballCategory    : UInt32 = 0b10
+    static let iceManCategory  : UInt32 = 0b10
     static let IcebergCategory : UInt32 = 2
     static let WaterCategory   : UInt32 = 69
     static let powerUpCategory : UInt32 = 0b10000
