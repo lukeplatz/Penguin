@@ -25,6 +25,7 @@ class LevelIScene: PlayScene{
     //        skView.ignoresSiblingOrder = true
     //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     //    }
+    //More
     
     var leverFlipped = Bool()
     var goalSide = Bool()
