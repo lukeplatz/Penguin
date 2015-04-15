@@ -282,7 +282,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.penguin.physicsBody?.usesPreciseCollisionDetection = true
         self.penguin.physicsBody?.categoryBitMask = collision.playerCategory
         self.penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
-        self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.goalCategory
+        self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.goalCategory | collision.iceManCategory
         self.addChild(penguin)
     }
     
@@ -412,13 +412,22 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
             self.addChild(obstacleSet)
             
-            if(PlayerScore % 15 == 0 && PlayerScore > 0){
+            if(PlayerScore % 10 == 0 && PlayerScore > 0){
                 var fishLocX = random(min: 20, max: 620)
                 let spawnDelay = SKAction.waitForDuration(self.delay/2)
                 let spawnFish = SKAction.runBlock({self.spawnFishy(fishLocX)})
                 let delay_spawnFish = SKAction.sequence([spawnDelay, spawnFish])
                 self.runAction(delay_spawnFish)
             }
+            if(PlayerScore % 15 == 0 && PlayerScore > 0){
+                var iceMan = random(min: 20, max: 620)
+                let spawnDelay = SKAction.waitForDuration(self.delay/2)
+                let spawnIce = SKAction.runBlock({self.spawnIceMan(iceMan)})
+                let delay_spawnIce = SKAction.sequence([spawnDelay, spawnIce])
+                self.runAction(delay_spawnIce)
+            }
+            //fish is multiplier
+            //iceman removes multiplier (knocks it down 1?)
             
             var newObstacle = Obstacles(node: obstacleSet, counted: false)
             newObstacle.node.position.y = CGRectGetHeight(self.frame)
@@ -430,7 +439,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func spawnFishy(fishLoc: CGFloat){
-        println("Fish Spawn")
         var fish = SKSpriteNode(imageNamed: "fish")
         fish.xScale = 75/fish.size.width
         fish.yScale = 75/fish.size.height
@@ -441,12 +449,24 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(fish)
         fish.runAction(SKAction.moveToY(self.bottom.position.y, duration: 1.5))
         
+        //Zoom scoreBoard
         var delay = SKAction.waitForDuration(1.0)
         var zoomIn = SKAction.scaleTo(1.5, duration: 0.4)
         var zoomOut = SKAction.scaleTo(1.0, duration: 0.4)
         var seq = SKAction.sequence([delay, zoomIn, zoomOut])
         self.score.runAction(seq)
-        
+    }
+    
+    func spawnIceMan(iceManLoc: CGFloat){
+        var iceMan = SKSpriteNode(imageNamed: "IceMan")
+        iceMan.xScale = 100/iceMan.size.width
+        iceMan.yScale = 200/iceMan.size.height
+        iceMan.position = CGPointMake(iceManLoc, CGRectGetMaxY(self.frame) - iceMan.size.height / 2)
+        iceMan.physicsBody = SKPhysicsBody(rectangleOfSize: iceMan.size)
+        iceMan.physicsBody?.dynamic = false
+        iceMan.physicsBody?.categoryBitMask = collision.iceManCategory
+        self.addChild(iceMan)
+        iceMan.runAction(SKAction.moveToY(self.bottom.position.y, duration: 1.5))
     }
     
     
@@ -486,8 +506,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             self.score.text = "Score: \(PlayerScore)"
             
             let plusOne = SKEmitterNode.unarchiveFromFile("PlusOne") as SKEmitterNode
-            plusOne.position.y = HUDbar.position.y
-            plusOne.position.x = self.score.position.x + 75
+            plusOne.position = self.penguin.position
+//            plusOne.position.y = HUDbar.position.y
+//            plusOne.position.x = self.score.position.x + 75
             plusOne.zPosition = HUDbar.zPosition + 1
             plusOne.advanceSimulationTime(NSTimeInterval(1.0))
             self.addChild(plusOne)
@@ -499,7 +520,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 startAnimations()
             }
         case collision.playerCategory  | collision.fishCategory:
-            PlayerScore += 20;
+            PlayerScore += 10;
             self.score.text = "Score: \(PlayerScore)"
             var pos = CGPointMake(self.score.position.x, self.score.position.y + 20)
             let move = SKAction.moveTo(pos, duration: 0.3)
@@ -515,12 +536,31 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 contact.bodyA.node?.zPosition = HUDbar.zPosition - 1
             }
             let plusTen = SKEmitterNode.unarchiveFromFile("PlusTen") as SKEmitterNode
-            plusTen.position.y = HUDbar.position.y
-            plusTen.position.x = self.score.position.x - 75
+            plusTen.position = self.penguin.position
+//            plusTen.position.y = HUDbar.position.y
+//            plusTen.position.x = self.score.position.x - 75
             plusTen.zPosition = HUDbar.zPosition + 1
-            plusTen.advanceSimulationTime(NSTimeInterval(0.5))
+            plusTen.advanceSimulationTime(NSTimeInterval(1.0)) /*0.5 if up top*/
             self.addChild(plusTen)
-
+        case collision.playerCategory | collision.iceManCategory:
+            PlayerScore -= 10;
+            self.score.text = "Score: \(PlayerScore)"
+            if contact.bodyA.node?.name == "Penguin" {
+                contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+            }else{
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+            }
+            
+            let minusTen = SKEmitterNode.unarchiveFromFile("MinusTen") as SKEmitterNode
+            minusTen.position = self.penguin.position
+            minusTen.zPosition = HUDbar.zPosition + 1
+            minusTen.advanceSimulationTime(NSTimeInterval(1.0))
+            self.addChild(minusTen)
+            
+            let turnRed = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1, duration: 0.5)
+            let turnWhite = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0, duration: 0.5)
+            let alternate = SKAction.sequence([turnRed,turnWhite,turnRed,turnWhite])
+            self.penguin.runAction(alternate)
         default:
             return
         }
