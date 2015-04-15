@@ -20,6 +20,7 @@ struct collision {
     static let goalCategory    : UInt32 = 100
     static let fishCategory    : UInt32 = 22
     static let bridgeCategory  : UInt32 = 99
+    static let snowCategory    : UInt32 = 23423
 }
 
 enum GameState {
