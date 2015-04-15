@@ -21,6 +21,7 @@ struct collision {
     static let fishCategory    : UInt32 = 22
     static let bridgeCategory  : UInt32 = 99
     static let snowCategory    : UInt32 = 23423
+    static let doorCategory    : UInt32 = 934
 }
 
 enum GameState {
@@ -236,7 +237,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.penguin.physicsBody?.usesPreciseCollisionDetection = true
         self.penguin.physicsBody?.categoryBitMask = collision.playerCategory
         self.penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
-        self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory
+        self.penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory | collision.doorCategory
         
         //self.addChild(penguin)
     }
@@ -424,8 +425,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 contact.bodyA.node?.zPosition = HUDbar.zPosition - 1
             }
         case collision.playerCategory | collision.powerUpCategory:
-            //add bridge
             addBridges()
+        case collision.playerCategory | collision.doorCategory:
+            teleport()
         default:
             return
         }
@@ -509,6 +511,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func addBridges(){
+        
+    }
+    
+    func teleport() {
         
     }
     

@@ -18,13 +18,13 @@ class LevelHScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-    //    override func nextLevel() {
-    //        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
-    //        levelStuff.scaleMode = .ResizeFill
-    //        let skView = self.view! as SKView
-    //        skView.ignoresSiblingOrder = true
-    //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-    //    }
+    override func nextLevel() {
+        var levelStuff = LevelIScene.unarchiveFromFile("LevelI")! as LevelIScene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
     
     override func setupMap(){
         level = 8
