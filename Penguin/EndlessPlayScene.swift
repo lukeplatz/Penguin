@@ -527,8 +527,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             }
             let plusTen = SKEmitterNode.unarchiveFromFile("PlusTen") as SKEmitterNode
             plusTen.position = self.penguin.position
-//            plusTen.position.y = HUDbar.position.y
-//            plusTen.position.x = self.score.position.x - 75
             plusTen.zPosition = HUDbar.zPosition + 1
             plusTen.advanceSimulationTime(NSTimeInterval(1.0)) /*0.5 if up top*/
             self.addChild(plusTen)
