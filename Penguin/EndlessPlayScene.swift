@@ -37,6 +37,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     let speedLabel = SKLabelNode(fontNamed: "Arial")
     let cane = SKSpriteNode(imageNamed: "caneGreen")
+    var bottom:SKSpriteNode = SKSpriteNode()
     var blurNode:SKSpriteNode = SKSpriteNode()
     
     var canes = [SKNode]()
@@ -88,14 +89,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         // 2 Set physicsBody of scene to borderBody
         self.physicsBody = borderBody
         
-        var bottom = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(CGRectGetWidth(self.frame), 10))
-        bottom.position.x = CGRectGetMidX(self.frame)
-        bottom.position.y = CGRectGetMinY(self.frame)
-        bottom.physicsBody = SKPhysicsBody(rectangleOfSize: bottom.size)
-        bottom.physicsBody?.dynamic = false
-        bottom.physicsBody?.collisionBitMask = 1
-        bottom.physicsBody?.categoryBitMask = collision.WaterCategory
-        bottom.physicsBody?.contactTestBitMask = collision.playerCategory
+        self.bottom = SKSpriteNode(color: UIColor.whiteColor(), size: CGSizeMake(CGRectGetWidth(self.frame), 10))
+        self.bottom.position.x = CGRectGetMidX(self.frame)
+        self.bottom.position.y = CGRectGetMinY(self.frame)
+        self.bottom.physicsBody = SKPhysicsBody(rectangleOfSize: self.bottom.size)
+        self.bottom.physicsBody?.dynamic = false
+        self.bottom.physicsBody?.collisionBitMask = 1
+        self.bottom.physicsBody?.categoryBitMask = collision.WaterCategory
+        self.bottom.physicsBody?.contactTestBitMask = collision.playerCategory
         
         self.addChild(bottom)
         
@@ -270,6 +271,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func setupPenguin(){
         self.penguin.anchorPoint = CGPointMake(0.5, 0.5)
+        self.penguin.name = "Penguin"
         self.penguin.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 100)
         self.penguin.physicsBody = SKPhysicsBody(circleOfRadius: penguin.size.width / 2)
         self.penguin.physicsBody?.mass = 15
@@ -410,6 +412,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
             self.addChild(obstacleSet)
             
+            if(PlayerScore % 15 == 0 && PlayerScore > 0){
+                var fishLocX = random(min: 20, max: 620)
+                let spawnDelay = SKAction.waitForDuration(self.delay/2)
+                let spawnFish = SKAction.runBlock({self.spawnFishy(fishLocX)})
+                let delay_spawnFish = SKAction.sequence([spawnDelay, spawnFish])
+                self.runAction(delay_spawnFish)
+            }
+            
             var newObstacle = Obstacles(node: obstacleSet, counted: false)
             newObstacle.node.position.y = CGRectGetHeight(self.frame)
             self.obstacles.append(newObstacle)
@@ -417,6 +427,26 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 self.obstacles.removeAtIndex(0)
             }
         }
+    }
+    
+    func spawnFishy(fishLoc: CGFloat){
+        println("Fish Spawn")
+        var fish = SKSpriteNode(imageNamed: "fish")
+        fish.xScale = 75/fish.size.width
+        fish.yScale = 75/fish.size.height
+        fish.position = CGPointMake(fishLoc, CGRectGetMaxY(self.frame) - fish.size.height / 2)
+        fish.physicsBody = SKPhysicsBody(rectangleOfSize: fish.size)
+        fish.physicsBody?.dynamic = false
+        fish.physicsBody?.categoryBitMask = collision.fishCategory
+        self.addChild(fish)
+        fish.runAction(SKAction.moveToY(self.bottom.position.y, duration: 1.5))
+        
+        var delay = SKAction.waitForDuration(1.0)
+        var zoomIn = SKAction.scaleTo(1.5, duration: 0.4)
+        var zoomOut = SKAction.scaleTo(1.0, duration: 0.4)
+        var seq = SKAction.sequence([delay, zoomIn, zoomOut])
+        self.score.runAction(seq)
+        
     }
     
     
@@ -454,12 +484,43 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             contact.bodyA.categoryBitMask = collision.none
             PlayerScore++
             self.score.text = "Score: \(PlayerScore)"
+            
+            let plusOne = SKEmitterNode.unarchiveFromFile("PlusOne") as SKEmitterNode
+            plusOne.position.y = HUDbar.position.y
+            plusOne.position.x = self.score.position.x + 75
+            plusOne.zPosition = HUDbar.zPosition + 1
+            plusOne.advanceSimulationTime(NSTimeInterval(1.0))
+            self.addChild(plusOne)
+            
             if PlayerScore % 10 == 0 {
                 self.scrollSpeed *= 1.2
                 self.delay *= 0.8
                 refreshActions = true
                 startAnimations()
             }
+        case collision.playerCategory  | collision.fishCategory:
+            PlayerScore += 20;
+            self.score.text = "Score: \(PlayerScore)"
+            var pos = CGPointMake(self.score.position.x, self.score.position.y + 20)
+            let move = SKAction.moveTo(pos, duration: 0.3)
+            if contact.bodyA.node?.name == "Penguin" {
+                contact.bodyB.node?.removeAllActions()
+                contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+                contact.bodyB.node?.runAction(move)
+                contact.bodyB.node?.zPosition = HUDbar.zPosition - 1
+            }else{
+                contact.bodyA.node?.removeAllActions()
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+                contact.bodyA.node?.runAction(move)
+                contact.bodyA.node?.zPosition = HUDbar.zPosition - 1
+            }
+            let plusTen = SKEmitterNode.unarchiveFromFile("PlusTen") as SKEmitterNode
+            plusTen.position.y = HUDbar.position.y
+            plusTen.position.x = self.score.position.x + 75
+            plusTen.zPosition = HUDbar.zPosition + 1
+            plusTen.advanceSimulationTime(NSTimeInterval(0.5))
+            self.addChild(plusTen)
+
         default:
             return
         }
