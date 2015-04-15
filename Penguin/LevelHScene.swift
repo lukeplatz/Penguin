@@ -1,17 +1,17 @@
 //
-//  LevelG.swift
+//  LevelHScene.swift
 //  Penguin
 //
-//  Created by Riley Chapin on 4/13/15.
+//  Created by Riley Chapin on 4/15/15.
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
 import SpriteKit
 
-class LevelGScene: PlayScene{
+class LevelHScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = LevelGScene.unarchiveFromFile("LevelG")! as LevelGScene
+        var levelStuff = LevelHScene.unarchiveFromFile("LevelH")! as LevelHScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
@@ -27,7 +27,7 @@ class LevelGScene: PlayScene{
     //    }
     
     override func setupMap(){
-        level = 7
+        level = 8
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
@@ -57,26 +57,26 @@ class LevelGScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-//        let bridgePowerup = childNodeWithName("bridgePowerup")
-//        bridgePowerup?.physicsBody?.categoryBitMask = collision.powerUpCategory
-//        bridgePowerup?.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        //        let bridgePowerup = childNodeWithName("bridgePowerup")
+        //        bridgePowerup?.physicsBody?.categoryBitMask = collision.powerUpCategory
+        //        bridgePowerup?.physicsBody?.collisionBitMask = 0 // dont collide with anything
         
     }
     
-//    override func addBridges() {
-//        
-//        let water = childNodeWithName("WtoRemove") as SKSpriteNode
-//        water.physicsBody?.categoryBitMask = collision.none
-//        water.physicsBody?.collisionBitMask = 0
-//        water.removeFromParent()
-//        
-//        let bridge = SKSpriteNode(imageNamed: "ice.jpg")
-//        bridge.size.height = water.size.height + 10
-//        bridge.size.width = water.size.width
-//        bridge.position = water.position
-//        bridge.zPosition = 10
-//        bridge.physicsBody?.categoryBitMask = collision.bridgeCategory
-//        self.addChild(bridge)
-//        
-//    }
+    //    override func addBridges() {
+    //
+    //        let water = childNodeWithName("WtoRemove") as SKSpriteNode
+    //        water.physicsBody?.categoryBitMask = collision.none
+    //        water.physicsBody?.collisionBitMask = 0
+    //        water.removeFromParent()
+    //
+    //        let bridge = SKSpriteNode(imageNamed: "ice.jpg")
+    //        bridge.size.height = water.size.height + 10
+    //        bridge.size.width = water.size.width
+    //        bridge.position = water.position
+    //        bridge.zPosition = 10
+    //        bridge.physicsBody?.categoryBitMask = collision.bridgeCategory
+    //        self.addChild(bridge)
+    //        
+    //    }
 }

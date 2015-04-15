@@ -18,13 +18,13 @@ class LevelFScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-    //    override func nextLevel() {
-    //        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
-    //        levelStuff.scaleMode = .ResizeFill
-    //        let skView = self.view! as SKView
-    //        skView.ignoresSiblingOrder = true
-    //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-    //    }
+        override func nextLevel() {
+            var levelStuff = LevelGScene.unarchiveFromFile("LevelG")! as LevelGScene
+            levelStuff.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+        }
     
     var leverFlipped = Bool()
     
@@ -84,12 +84,12 @@ class LevelFScene: PlayScene{
             
             let bridge1 = SKSpriteNode(imageNamed: "boxAlt")
             bridge1.position = water1.position
-            bridge1.zPosition = 2
+            bridge1.zPosition = 0.9
             bridge1.physicsBody?.categoryBitMask = collision.bridgeCategory
             
             let bridge2 = SKSpriteNode(imageNamed: "boxAlt")
             bridge2.position = water2.position
-            bridge2.zPosition = 2
+            bridge2.zPosition = 0.9
             bridge2.physicsBody?.categoryBitMask = collision.bridgeCategory
             
             self.addChild(bridge1)

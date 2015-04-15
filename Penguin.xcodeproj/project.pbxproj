@@ -173,6 +173,8 @@
 		A4CC31911AD5FEE9005B09DD /* LevelD.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31901AD5FEE9005B09DD /* LevelD.sks */; };
 		A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31941AD608B3005B09DD /* LevelE.sks */; };
 		A4CC31971AD608C5005B09DD /* LevelEScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC31961AD608C5005B09DD /* LevelEScene.swift */; };
+		A4D26D7C1ADEF94600CDC466 /* LevelH.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4D26D7B1ADEF94600CDC466 /* LevelH.sks */; };
+		A4D26D7E1ADEF98700CDC466 /* LevelHScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D26D7D1ADEF98700CDC466 /* LevelHScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +361,8 @@
 		A4CC31901AD5FEE9005B09DD /* LevelD.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelD.sks; sourceTree = "<group>"; };
 		A4CC31941AD608B3005B09DD /* LevelE.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelE.sks; sourceTree = "<group>"; };
 		A4CC31961AD608C5005B09DD /* LevelEScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelEScene.swift; sourceTree = "<group>"; };
+		A4D26D7B1ADEF94600CDC466 /* LevelH.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelH.sks; sourceTree = "<group>"; };
+		A4D26D7D1ADEF98700CDC466 /* LevelHScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelHScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +496,8 @@
 				37E3C91A1AD6F1BD009D358A /* LevelFScene.swift */,
 				A47607531ADC721C0055CC58 /* LevelG.sks */,
 				A47607511ADC71880055CC58 /* LevelGScene.swift */,
+				A4D26D7B1ADEF94600CDC466 /* LevelH.sks */,
+				A4D26D7D1ADEF98700CDC466 /* LevelHScene.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -520,8 +526,8 @@
 				3718CC461ADDAE2E00191E6E /* switchLeft.png */,
 				3718CC471ADDAE2E00191E6E /* switchMid.png */,
 				3718CC481ADDAE2E00191E6E /* switchRight.png */,
-				3718CC441ADD9A8500191E6E /* boxAlt.png */,
 				65609E321ADC709A0074E689 /* snowWave.png */,
+				3718CC441ADD9A8500191E6E /* boxAlt.png */,
 				65609E151ADC709A0074E689 /* iceWaterDeep.png */,
 				65609E0F1ADC70990074E689 /* iceBlock.png */,
 				65609E061ADC70990074E689 /* caneGreen.png */,
@@ -739,6 +745,7 @@
 				A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */,
 				65609E821ADC709A0074E689 /* pineSaplingAlt.png in Resources */,
 				A47607561ADC75EA0055CC58 /* PlaySceneBackground.sks in Resources */,
+				A4D26D7C1ADEF94600CDC466 /* LevelH.sks in Resources */,
 				65609EC91ADC70A30074E689 /* sheet.svg in Resources */,
 				37E3C91D1AD6F293009D358A /* BridgePowerup.png in Resources */,
 				65609EAD1ADC709A0074E689 /* treeTrunkBranchLeftAlt.png in Resources */,
@@ -874,6 +881,7 @@
 			files = (
 				37D0ADF01ACDBEDF00264216 /* IcebergObject.swift in Sources */,
 				A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */,
+				A4D26D7E1ADEF98700CDC466 /* LevelHScene.swift in Sources */,
 				6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */,
 				A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */,
 				3700B7F31AD6E3EF00428CC4 /* SpriteKit-Spring.swift in Sources */,
