@@ -82,6 +82,9 @@ class LevelIScene: PlayScene{
     override func addBridges() {
         if(leverFlipped == false){
             leverFlipped = true
+            let lever = childNodeWithName("lever") as SKSpriteNode
+            lever.texture = SKTexture(imageNamed: "switchRight")
+            
             let water1 = childNodeWithName("WtoRemove1") as SKSpriteNode
             water1.physicsBody?.categoryBitMask = collision.none
             water1.physicsBody?.collisionBitMask = 0
