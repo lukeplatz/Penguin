@@ -11,6 +11,7 @@ import SpriteKit
 class LevelDScene: PlayScene{
     
     override func retryLevel() {
+        motionManager.stopAccelerometerUpdates()
         var levelStuff = LevelDScene.unarchiveFromFile("LevelD")! as LevelDScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
@@ -19,11 +20,12 @@ class LevelDScene: PlayScene{
     }
     
     override func nextLevel() {
-                var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
-                levelStuff.scaleMode = .ResizeFill
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+        motionManager.stopAccelerometerUpdates()
+        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
     override func setupMap(){
