@@ -55,7 +55,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     var motionManager = CMMotionManager()
-    var numBlocksSpawned = 0
+    var timeChange = 0.0
     
     var calibrateX = CGFloat(0)
     var calibrateY = CGFloat(0)
@@ -151,6 +151,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     println("calibrated: \(self.calibrateX)")
                 }
                 self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 30 * 9.8, self.forwardMovement)
+                println(data.acceleration.x)
             })
         }
     }
@@ -161,6 +162,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             let location = touch.locationInNode(self)
             if(self.gameO == true){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     var ModeSelect = ModeSelectionScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -170,6 +172,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     
                 }
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[retryButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     self.Pause = false
                     var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
                     let skView = self.view! as SKView
@@ -220,11 +223,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.Pause = false
                     self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
-                    getNewDelay()
                     startAnimations()
                     self.physicsWorld.speed = 1
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     var ModeSelection = ModeSelectionScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -233,13 +236,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     skView.presentScene(ModeSelection, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 }
                 else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     self.Pause = false
                     var endlessScene = EndlessPlayScene.unarchiveFromFile("EndlessLevel")! as EndlessPlayScene
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
                     endlessScene.scaleMode = .Fill
                     skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))
-                    
                 }
             }
         }
@@ -339,15 +342,15 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func startAnimations(){
-        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0.02)
-        moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
-        
         if(obstacles.count > 0){
             for index in 0 ... obstacles.count - 1{
-                obstacles[index].node.removeAllActions()
-                obstacles[index].node.runAction(moveObstacleForeverAction)
+                sendNodeAction(obstacles[index].node)
             }
         }
+        let wait = SKAction.waitForDuration(NSTimeInterval((currentDelay - timeChange)))
+        let startBackUp = SKAction.runBlock({self.getNewDelay()})
+        let waitStart = SKAction.sequence([wait, startBackUp])
+        self.runAction(waitStart)
     }
     
     func sendNodeAction(node: SKNode){
@@ -358,6 +361,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func getNewDelay(){
+        timeChange = 0.0
         let spawn = SKAction.runBlock({() in self.spawn()})
         let delay = SKAction.waitForDuration(NSTimeInterval(currentDelay))
         let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
@@ -398,7 +402,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             self.addChild(obstacleSet)
             
             sendNodeAction(obstacleSet)
-            //obstacleSet.runAction(moveObstacleForeverAction)
             
             var spawnSomething = random(min: 0, max: 100)
             if (spawnSomething > 10 && spawnSomething < 20 && PlayerScore > 0){
@@ -415,12 +418,10 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 self.runAction(delay_spawnIce)
             }
             
-            self.numBlocksSpawned++
-            
             var newObstacle = Obstacles(node: obstacleSet, counted: false)
             newObstacle.node.position.y = CGRectGetHeight(self.frame)
             self.obstacles.append(newObstacle)
-            if(self.obstacles.count >= 4){
+            if(self.obstacles.count >= 10){
                 self.obstacles.removeAtIndex(0)
             }
         }
@@ -467,7 +468,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     
     override func update(currentTime: NSTimeInterval) {
-        
+        if(Pause == false){
+            timeChange += 1/60
+        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -547,12 +550,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 println("min speed")
             }
             refreshActions = true
-            
-//            let minusTen = SKEmitterNode.unarchiveFromFile("MinusTen") as SKEmitterNode
-//            minusTen.position = self.penguin.position
-//            minusTen.zPosition = HUDbar.zPosition + 1
-//            minusTen.advanceSimulationTime(NSTimeInterval(1.0))
-//            self.addChild(minusTen)
             
             let turnRed = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1, duration: 0.5)
             let turnWhite = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0, duration: 0.5)
