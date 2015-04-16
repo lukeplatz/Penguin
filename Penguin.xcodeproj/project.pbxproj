@@ -45,6 +45,7 @@
 		3724F39A1AE012FF00EC1801 /* StoryAdventure2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3971AE012FF00EC1801 /* StoryAdventure2.sks */; };
 		3724F39B1AE012FF00EC1801 /* StoryAdventure3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3981AE012FF00EC1801 /* StoryAdventure3.sks */; };
 		3724F39D1AE0182A00EC1801 /* girlPenguin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3724F39C1AE0182A00EC1801 /* girlPenguin.png */; };
+		3724F39F1AE01ED000EC1801 /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3724F39E1AE01ED000EC1801 /* IceMan.png */; };
 		372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559A31AD5F50300AE1808 /* SnowParticles.sks */; };
 		372559A61AD5F50300AE1808 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 372559A41AD5F50300AE1808 /* spark.png */; };
 		372559B01AD5FD3700AE1808 /* PlusOne.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559AF1AD5FD3700AE1808 /* PlusOne.sks */; };
@@ -266,6 +267,7 @@
 		3724F3971AE012FF00EC1801 /* StoryAdventure2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure2.sks; sourceTree = "<group>"; };
 		3724F3981AE012FF00EC1801 /* StoryAdventure3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure3.sks; sourceTree = "<group>"; };
 		3724F39C1AE0182A00EC1801 /* girlPenguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girlPenguin.png; sourceTree = "<group>"; };
+		3724F39E1AE01ED000EC1801 /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
 		372559A31AD5F50300AE1808 /* SnowParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticles.sks; sourceTree = "<group>"; };
 		372559A41AD5F50300AE1808 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		372559AF1AD5FD3700AE1808 /* PlusOne.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlusOne.sks; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */,
 				A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */,
 				A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */,
+				3724F39E1AE01ED000EC1801 /* IceMan.png */,
 				A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */,
 				375E3A321ADFC22300EA0725 /* Medium.png */,
 				375E3A301ADFC21C00EA0725 /* Fast.png */,
@@ -949,6 +952,7 @@
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
 				A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */,
+				3724F39F1AE01ED000EC1801 /* IceMan.png in Resources */,
 				375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
