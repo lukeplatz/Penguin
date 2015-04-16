@@ -41,9 +41,6 @@
 		372156651AD47AE000101993 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156641AD47AE000101993 /* fish.png */; };
 		372156671AD47AF300101993 /* pufferFish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156661AD47AF300101993 /* pufferFish.png */; };
 		372156691AD4B7E600101993 /* LevelB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372156681AD4B7E600101993 /* LevelB.sks */; };
-		3724F3991AE012FF00EC1801 /* StoryAdventure.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3961AE012FF00EC1801 /* StoryAdventure.sks */; };
-		3724F39A1AE012FF00EC1801 /* StoryAdventure2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3971AE012FF00EC1801 /* StoryAdventure2.sks */; };
-		3724F39B1AE012FF00EC1801 /* StoryAdventure3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3981AE012FF00EC1801 /* StoryAdventure3.sks */; };
 		3724F39D1AE0182A00EC1801 /* girlPenguin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3724F39C1AE0182A00EC1801 /* girlPenguin.png */; };
 		3724F39F1AE01ED000EC1801 /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3724F39E1AE01ED000EC1801 /* IceMan.png */; };
 		372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559A31AD5F50300AE1808 /* SnowParticles.sks */; };
@@ -264,9 +261,6 @@
 		372156641AD47AE000101993 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		372156661AD47AF300101993 /* pufferFish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pufferFish.png; sourceTree = "<group>"; };
 		372156681AD4B7E600101993 /* LevelB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelB.sks; sourceTree = "<group>"; };
-		3724F3961AE012FF00EC1801 /* StoryAdventure.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure.sks; sourceTree = "<group>"; };
-		3724F3971AE012FF00EC1801 /* StoryAdventure2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure2.sks; sourceTree = "<group>"; };
-		3724F3981AE012FF00EC1801 /* StoryAdventure3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure3.sks; sourceTree = "<group>"; };
 		3724F39C1AE0182A00EC1801 /* girlPenguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girlPenguin.png; sourceTree = "<group>"; };
 		3724F39E1AE01ED000EC1801 /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
 		372559A31AD5F50300AE1808 /* SnowParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticles.sks; sourceTree = "<group>"; };
@@ -852,7 +846,6 @@
 				65609EBC1ADC709A0074E689 /* tundraHalfRight.png in Resources */,
 				A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
-				3724F3991AE012FF00EC1801 /* StoryAdventure.sks in Resources */,
 				65609E8F1ADC709A0074E689 /* snowLeft.png in Resources */,
 				65609EB81ADC709A0074E689 /* tundraCliffRightAlt.png in Resources */,
 				65609EA61ADC709A0074E689 /* treeTrunkBottom.png in Resources */,
@@ -895,7 +888,6 @@
 				375E3A2B1ADFB76500EA0725 /* SpeedDown.sks in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				65609EB61ADC709A0074E689 /* tundraCliffLeftAlt.png in Resources */,
-				3724F39B1AE012FF00EC1801 /* StoryAdventure3.sks in Resources */,
 				65609E9C1ADC709A0074E689 /* treeBranchesLeftAlt.png in Resources */,
 				A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */,
 				371284201ADF0DC500AA4CD4 /* signExit.png in Resources */,
@@ -920,7 +912,6 @@
 				65609E9A1ADC709A0074E689 /* tree.png in Resources */,
 				65609E771ADC709A0074E689 /* iceWaterDeepStars.png in Resources */,
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
-				3724F39A1AE012FF00EC1801 /* StoryAdventure2.sks in Resources */,
 				A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */,
 				65609EC11ADC709A0074E689 /* tundraLedgeLeft.png in Resources */,
 				3718CC4D1ADDB2DE00191E6E /* ConfirmPopup.sks in Resources */,
