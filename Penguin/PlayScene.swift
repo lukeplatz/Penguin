@@ -67,7 +67,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var resumeButtonIndex = 0
     var nextLevelButtonIndex = 0
     
-    let startMsge = SKLabelNode(fontNames: "Arial")
+    let startMsg = SKLabelNode(fontNamed: "Arial")
     
     //let gameOver = SKLabelNode(fontNamed: "Arial")
 //    let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
@@ -147,9 +147,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                             self.physicsWorld.speed = 0
                     }
                 }else{
-                    self.instructions1.removeFromParent()
-                    self.instructions2.removeFromParent()
-                    self.instructions3.removeFromParent()
+                    self.startMsg.removeFromParent()
+//                    self.instructions1.removeFromParent()
+//                    self.instructions2.removeFromParent()
+//                    self.instructions3.removeFromParent()
                     self.physicsWorld.speed = 1
                     self.gameStarted = true
                     self.state = GameState.Playing
