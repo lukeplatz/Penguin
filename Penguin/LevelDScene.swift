@@ -27,7 +27,7 @@ class LevelDScene: PlayScene{
     }
     
     override func setupMap(){
-        level = 4
+        level = 2
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory
         penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
