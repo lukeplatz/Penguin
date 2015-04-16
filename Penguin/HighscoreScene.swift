@@ -16,11 +16,9 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let score = SKLabelNode(fontNamed: "Arial")
     var NumLevelsUnlocked = 6
-    
+    var backStuff = SKNode.unarchiveFromFile("HillsBackgroundNOPENGY")! as SKNode
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
-    let cloud1 = SKSpriteNode(imageNamed: "Penguin")
-    let cloud2 = SKSpriteNode(imageNamed: "Penguin")
     var scenes:[SKSpriteNode] = []
     let table = UITableView()
     let highScoreBannerView = UIImageView()
@@ -40,23 +38,15 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
-        cloud1.anchorPoint = CGPointZero
-        cloud1.position = CGPointMake(size.width * 0.6, size.height * 0.65)
-        self.addChild(cloud1)
-        
-        cloud2.anchorPoint = CGPointZero
-        cloud2.position = CGPointMake(0, size.height * 0.62)
-        self.addChild(cloud2)
-        scenes.append(cloud1)
-        scenes.append(cloud2)
-        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.1, size.width * 0.6, size.height)
+
+        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height)
         table.backgroundColor = UIColor.clearColor()
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
         
         
-        highScoreBannerView.frame = CGRectMake(size.width * 0.2, 0, size.width * 0.6, size.height * 0.1)
+        highScoreBannerView.frame = CGRectMake(size.width * 0.2, size.height * 0.1, size.width * 0.6, size.height * 0.1)
         highScoreBannerView.image = UIImage(named: "highScoresTitle")
         self.view?.addSubview(highScoreBannerView)
         
@@ -95,7 +85,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
 
         self.addChild(backButton)
-        
+        self.addChild(backStuff)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {

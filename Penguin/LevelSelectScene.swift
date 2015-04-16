@@ -11,18 +11,18 @@ import SpriteKit
 
 class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     
-    let title = SKSpriteNode(imageNamed: "selectLevelTitle")
+    let title = SKSpriteNode(imageNamed: "selectLevel")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
     let table = UITableView()
     var NumLevelsUnlocked = 12
-    
+    var backStuff = SKNode.unarchiveFromFile("HillsBackground")! as SKNode
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-    
+   
     override func didMoveToView(view: SKView) {
         
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
-        
+
         self.title.anchorPoint = CGPointMake(0.5, 0.5)
         self.title.xScale = (300/self.title.size.width)
         self.title.yScale = (100/self.title.size.height)
@@ -44,7 +44,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
         table.delegate   = self
         table.allowsSelection = true
         self.view?.addSubview(table)
-        
+        self.addChild(backStuff)
         self.addChild(title)
         self.addChild(backButton)
         //self.addChild(level1Button)
