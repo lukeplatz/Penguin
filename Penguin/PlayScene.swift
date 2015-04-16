@@ -159,6 +159,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             }
             else if(state == GameState.GameOver ){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -174,6 +175,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             }
             else if(state == GameState.GameWon){
                 if (self.nodeAtPoint(location) == self.LevelWinStuff.children[quitButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -184,9 +186,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 else if(self.nodeAtPoint(location) == self.LevelWinStuff.children[retryButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     retryLevel()
                 }
                 else if(self.nodeAtPoint(location) == self.LevelWinStuff.children[nextLevelButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     nextLevel()
                 }
                 
@@ -202,6 +206,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     self.physicsWorld.speed = 1
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     var levelSelectScene = LevelSelectScene(size: self.size)
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
@@ -212,6 +217,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
                 else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
+                    motionManager.stopAccelerometerUpdates()
                     self.state = GameState.Playing
                     retryLevel()
                     

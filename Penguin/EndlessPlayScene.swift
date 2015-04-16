@@ -24,9 +24,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
 
     let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
-    
-    let longBlock = SKSpriteNode(imageNamed: "Tallblock")
-    let shortBlock = SKSpriteNode(imageNamed: "Shortblock")
+
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let retryButton = SKSpriteNode(imageNamed: "RetryButton")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
@@ -38,7 +36,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var bottom:SKSpriteNode = SKSpriteNode()
     var blurNode:SKSpriteNode = SKSpriteNode()
     
-    var background = SKNode()
+    var background1 = SKNode()
+    var background2 = SKNode()
+    var backgroundPosition = CGPoint()
     
     var retryButtonIndex = 0
     var resumeButtonIndex = 0
@@ -126,6 +126,18 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(instructions1)
         self.addChild(instructions2)
         
+        self.background1 = SKSpriteNode(imageNamed: "EndlessBackground")
+        self.background1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        self.background2 = SKSpriteNode(imageNamed: "EndlessBackground")
+        self.background2.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) + CGRectGetHeight(self.frame) / 2)
+        backgroundPosition = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) + CGRectGetHeight(self.frame) / 2)
+        self.background1.zPosition = -10
+        self.background2.zPosition = -10
+        self.addChild(background1)
+        self.addChild(background2)
+        sendNodeAction(background1)
+        sendNodeAction(background2)
+        
         self.getNewDelay()
         
         currentSpeed = SLOWSPEED
@@ -133,7 +145,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0.01)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
-    
+        
         //Sets up Penguin Image
         setupPenguin()
         
@@ -151,7 +163,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     println("calibrated: \(self.calibrateX)")
                 }
                 self.physicsWorld.gravity = CGVectorMake((CGFloat(data.acceleration.x) - self.calibrateX) * 30 * 9.8, self.forwardMovement)
-                println(data.acceleration.x)
             })
         }
     }
@@ -334,6 +345,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func stopAnimations(){
         self.removeAllActions() // stops from spawning new obstacles
+        background1.removeAllActions()
+        background2.removeAllActions()
+        println("paused")
         if(obstacles.count > 0){
             for index in 0 ... obstacles.count - 1{
                 obstacles[index].node.removeAllActions()
@@ -342,12 +356,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func startAnimations(){
+        sendNodeAction(background1)
+        sendNodeAction(background2)
         if(obstacles.count > 0){
             for index in 0 ... obstacles.count - 1{
                 sendNodeAction(obstacles[index].node)
             }
         }
-        let wait = SKAction.waitForDuration(NSTimeInterval((currentDelay - timeChange)))
+        let wait = SKAction.waitForDuration(NSTimeInterval((currentDelay - timeChange) / 2))
         let startBackUp = SKAction.runBlock({self.getNewDelay()})
         let waitStart = SKAction.sequence([wait, startBackUp])
         self.runAction(waitStart)
@@ -470,6 +486,12 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: NSTimeInterval) {
         if(Pause == false){
             timeChange += 1/60
+        }
+        if(background1.position.y <= (0 - (CGRectGetHeight(self.frame) / 2))){
+            background1.position = backgroundPosition
+        }
+        if(background2.position.y <= (0 - (CGRectGetHeight(self.frame) / 2))){
+            background2.position = backgroundPosition
         }
     }
     

@@ -11,6 +11,7 @@ import SpriteKit
 class LevelEScene: PlayScene{
     
     override func retryLevel() {
+        motionManager.stopAccelerometerUpdates()
         var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
@@ -19,6 +20,7 @@ class LevelEScene: PlayScene{
     }
     
     override func nextLevel() {
+        motionManager.stopAccelerometerUpdates()
         var levelStuff = LevelBScene.unarchiveFromFile("LevelB")! as LevelBScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView

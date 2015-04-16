@@ -46,6 +46,8 @@
 		372559A61AD5F50300AE1808 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 372559A41AD5F50300AE1808 /* spark.png */; };
 		372559B01AD5FD3700AE1808 /* PlusOne.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559AF1AD5FD3700AE1808 /* PlusOne.sks */; };
 		372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559B11AD615D300AE1808 /* EndlessLevel.sks */; };
+		375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A221ADFA36000EA0725 /* BackgroundIce.png */; };
+		375E3A251ADFA87700EA0725 /* EndlessBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A241ADFA87700EA0725 /* EndlessBackground.png */; };
 		37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */; };
 		37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */; };
 		37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */; };
@@ -240,6 +242,8 @@
 		372559A41AD5F50300AE1808 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		372559AF1AD5FD3700AE1808 /* PlusOne.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlusOne.sks; sourceTree = "<group>"; };
 		372559B11AD615D300AE1808 /* EndlessLevel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessLevel.sks; sourceTree = "<group>"; };
+		375E3A221ADFA36000EA0725 /* BackgroundIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundIce.png; sourceTree = "<group>"; };
+		375E3A241ADFA87700EA0725 /* EndlessBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndlessBackground.png; sourceTree = "<group>"; };
 		37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelA.sks; sourceTree = "<group>"; };
 		37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "water_texture_03_by_frostbo-d5agt22.jpg"; sourceTree = "<group>"; };
 		37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "H6EwGxP - Imgur.png"; sourceTree = "<group>"; };
@@ -449,6 +453,8 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				375E3A241ADFA87700EA0725 /* EndlessBackground.png */,
+				375E3A221ADFA36000EA0725 /* BackgroundIce.png */,
 				3712841F1ADF0DC500AA4CD4 /* signExit.png */,
 				C5157D1F1ADF485A007E1EEF /* P5.png */,
 				3718CC621ADDF35900191E6E /* P10.png */,
@@ -830,6 +836,7 @@
 				65609EAB1ADC709A0074E689 /* treeTrunkBranchEndLeft.png in Resources */,
 				65609E741ADC709A0074E689 /* iceWaterAlt.png in Resources */,
 				65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */,
+				375E3A251ADFA87700EA0725 /* EndlessBackground.png in Resources */,
 				372559A61AD5F50300AE1808 /* spark.png in Resources */,
 				65609E911ADC709A0074E689 /* snowRight.png in Resources */,
 				C5157D201ADF485A007E1EEF /* P5.png in Resources */,
@@ -851,6 +858,7 @@
 				65609E941ADC709A0074E689 /* spikesBottomAlt.png in Resources */,
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
+				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
 				65609EBD1ADC709A0074E689 /* tundraHillLeft.png in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */,
