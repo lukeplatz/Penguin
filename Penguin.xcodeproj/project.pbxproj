@@ -185,7 +185,7 @@
 		A4A73A841ADF61BD0062E1DB /* LevelJScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */; };
 		A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A851ADF61F20062E1DB /* LevelJ.sks */; };
 		A4A73A8C1ADF76930062E1DB /* EndlessInstructions1.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8B1ADF76930062E1DB /* EndlessInstructions1.sks */; };
-		A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */; };
+		A4A73A8E1ADF76CB0062E1DB /* StoryInstructions1.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8D1ADF76CB0062E1DB /* StoryInstructions1.sks */; };
 		A4A73A901ADFA0240062E1DB /* LevelK.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8F1ADFA0240062E1DB /* LevelK.sks */; };
 		A4A73A921ADFAA660062E1DB /* LevelKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A911ADFAA660062E1DB /* LevelKScene.swift */; };
 		A4A73A971ADFB11B0062E1DB /* LevelL.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A931ADFB11B0062E1DB /* LevelL.sks */; };
@@ -197,6 +197,7 @@
 		A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */; };
 		A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */; };
 		A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */; };
+		A4A73AA71AE012AA0062E1DB /* StoryInstructions2.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
 		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
@@ -405,7 +406,7 @@
 		A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelJScene.swift; sourceTree = "<group>"; };
 		A4A73A851ADF61F20062E1DB /* LevelJ.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelJ.sks; sourceTree = "<group>"; };
 		A4A73A8B1ADF76930062E1DB /* EndlessInstructions1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions1.sks; sourceTree = "<group>"; };
-		A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions.sks; sourceTree = "<group>"; };
+		A4A73A8D1ADF76CB0062E1DB /* StoryInstructions1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions1.sks; sourceTree = "<group>"; };
 		A4A73A8F1ADFA0240062E1DB /* LevelK.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelK.sks; sourceTree = "<group>"; };
 		A4A73A911ADFAA660062E1DB /* LevelKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelKScene.swift; sourceTree = "<group>"; };
 		A4A73A931ADFB11B0062E1DB /* LevelL.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelL.sks; sourceTree = "<group>"; };
@@ -417,6 +418,7 @@
 		A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectModeTitle.png; sourceTree = "<group>"; };
 		A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinSlideTitle.png; sourceTree = "<group>"; };
 		A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
+		A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions2.sks; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 		A4CC31851AD5D4A0005B09DD /* LevelC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelC.sks; sourceTree = "<group>"; };
 		A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ugFM2GS - Imgur.png"; path = "Images.xcassets/Shortblock.imageset/ugFM2GS - Imgur.png"; sourceTree = "<group>"; };
@@ -614,7 +616,8 @@
 				A4A73A8B1ADF76930062E1DB /* EndlessInstructions1.sks */,
 				375E3A3A1ADFE03700EA0725 /* EndlessInstructions2.sks */,
 				375E3A3C1ADFE2BB00EA0725 /* EndlessInstructions3.sks */,
-				A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */,
+				A4A73A8D1ADF76CB0062E1DB /* StoryInstructions1.sks */,
+				A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -899,7 +902,7 @@
 				371649251AB8781A0019694B /* MainMenu.sks in Resources */,
 				372156691AD4B7E600101993 /* LevelB.sks in Resources */,
 				3718CC591ADDE0CB00191E6E /* PlusTen.sks in Resources */,
-				A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */,
+				A4A73A8E1ADF76CB0062E1DB /* StoryInstructions1.sks in Resources */,
 				65609E751ADC709A0074E689 /* iceWaterDeep.png in Resources */,
 				65609E901ADC709A0074E689 /* snowMid.png in Resources */,
 				3718CC631ADDF35900191E6E /* P10.png in Resources */,
@@ -977,6 +980,7 @@
 				3718CC611ADDF1BD00191E6E /* P1.png in Resources */,
 				65609E7E1ADC709A0074E689 /* iglooRoof.png in Resources */,
 				65609E991ADC709A0074E689 /* spikeTop.png in Resources */,
+				A4A73AA71AE012AA0062E1DB /* StoryInstructions2.sks in Resources */,
 				6521D3381ADF3955007CC37A /* igloo.png in Resources */,
 				372156671AD47AF300101993 /* pufferFish.png in Resources */,
 				65609EA11ADC709A0074E689 /* treeBranchesSnowRightAlt.png in Resources */,
