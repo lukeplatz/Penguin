@@ -38,6 +38,13 @@ class MainMenuScene: SKScene {
             NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "EndlessInstructions")
             NSUserDefaults.standardUserDefaults().synchronize()
         }
+        
+        var showStoryInstructs = NSUserDefaults.standardUserDefaults().integerForKey("StoryInstructions")
+        if(showStoryInstructs != 2){
+            println("story instructions will show")
+            NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "StoryInstructions")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
 
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
         

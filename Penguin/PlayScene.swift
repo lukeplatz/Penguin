@@ -36,6 +36,9 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var levelStuff = SKNode.unarchiveFromFile("PlaySceneBackground")! as SKNode
     
+    let Instructions1 = SKNode.unarchiveFromFile("StoryInstructions1")!
+    let Instructions2 = SKNode.unarchiveFromFile("StoryInstructions2")!
+    
     var motionManager = CMMotionManager()
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
     let LevelWinStuff = SKNode.unarchiveFromFile("LevelWin")!
@@ -69,10 +72,11 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     let startMsg = SKLabelNode(fontNamed: "Arial")
     
-    //let gameOver = SKLabelNode(fontNamed: "Arial")
-//    let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
-//    let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
-//    let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
+    var presentInstructions = true
+    var forwardMovement = CGFloat(0.0)
+    
+    var instructionsPresent = false
+    var instructionsShown = 0
     
     
     //3 before
@@ -128,7 +132,23 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            if(state == GameState.Playing){
+            if(instructionsPresent == true){
+                if(self.nodeAtPoint(location) == self.Instructions1.childNodeWithName("nextButton") as SKSpriteNode){
+                    if(instructionsShown == 1){
+                        instructionsShown++
+                        self.Instructions1.removeFromParent()
+                        self.Instructions2.zPosition = 100
+                        self.Instructions2.removeFromParent()
+                        self.addChild(Instructions2)
+                    }else if (instructionsShown == 2){
+                        instructionsShown++
+                        self.Instructions2.removeFromParent()
+                        self.blurNode.removeFromParent()
+                        instructionsPresent = false
+                    }
+                }
+            }
+            else if(state == GameState.Playing){
                 if self.nodeAtPoint(location) == self.retryButton{
                     
                     //Sets HighScore
@@ -333,6 +353,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(retryButton)
         self.addChild(lvlNum)
         self.addChild(pauseButton)
+        
+        var showInstructs = NSUserDefaults.standardUserDefaults().integerForKey("StoryInstructions")
+        if(showInstructs == 1){
+            NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "StoryInstructions")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            showInstructions()// present the instructions
+        }
     }
     
     
@@ -548,6 +575,27 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     func retryLevel(){
         
+    }
+    
+    func showInstructions(){
+        let wait = SKAction.waitForDuration(NSTimeInterval(0.25))
+        let i = SKAction.runBlock({self.showI()})
+        let a = SKAction.sequence([wait, i])
+        self.runAction(a)
+    }
+    
+    func showI(){
+        Instructions1.removeFromParent()
+        loadBlurScreen()
+        Instructions1.xScale = 0
+        Instructions1.yScale = 0
+        Instructions1.zPosition = 100
+        Instructions1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        self.addChild(Instructions1)
+        let scale = SKAction.scaleTo(1, duration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0)
+        Instructions1.runAction(scale)
+        instructionsPresent = true
+        instructionsShown++
     }
 }
 

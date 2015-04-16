@@ -76,6 +76,7 @@ class OptionsScene: SKScene {
                     NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscore\(index)")
                     NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscoreEndless")
                     NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "EndlessInstructions")
+                    NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "StoryInstructions")
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
                 popupUp = false
