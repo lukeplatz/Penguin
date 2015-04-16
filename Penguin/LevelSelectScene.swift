@@ -165,6 +165,13 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
             skView.ignoresSiblingOrder = true
             skView.presentScene(levelJ, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             table.removeFromSuperview()
+        case (11):
+            var levelK = LevelKScene.unarchiveFromFile("LevelK")! as LevelKScene
+            levelK.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelK, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+            table.removeFromSuperview()
         default:
             println("Level Not Unlocked!")
         }
