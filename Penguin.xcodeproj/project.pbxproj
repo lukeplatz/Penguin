@@ -48,6 +48,9 @@
 		372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559B11AD615D300AE1808 /* EndlessLevel.sks */; };
 		375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A221ADFA36000EA0725 /* BackgroundIce.png */; };
 		375E3A251ADFA87700EA0725 /* EndlessBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A241ADFA87700EA0725 /* EndlessBackground.png */; };
+		375E3A271ADFB52000EA0725 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A261ADFB52000EA0725 /* arrow.png */; };
+		375E3A291ADFB54900EA0725 /* SpeedUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A281ADFB54900EA0725 /* SpeedUp.sks */; };
+		375E3A2B1ADFB76500EA0725 /* SpeedDown.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A2A1ADFB76500EA0725 /* SpeedDown.sks */; };
 		37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */; };
 		37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */; };
 		37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */; };
@@ -250,6 +253,9 @@
 		372559B11AD615D300AE1808 /* EndlessLevel.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessLevel.sks; sourceTree = "<group>"; };
 		375E3A221ADFA36000EA0725 /* BackgroundIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundIce.png; sourceTree = "<group>"; };
 		375E3A241ADFA87700EA0725 /* EndlessBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EndlessBackground.png; sourceTree = "<group>"; };
+		375E3A261ADFB52000EA0725 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		375E3A281ADFB54900EA0725 /* SpeedUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpeedUp.sks; sourceTree = "<group>"; };
+		375E3A2A1ADFB76500EA0725 /* SpeedDown.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpeedDown.sks; sourceTree = "<group>"; };
 		37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelA.sks; sourceTree = "<group>"; };
 		37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "water_texture_03_by_frostbo-d5agt22.jpg"; sourceTree = "<group>"; };
 		37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "H6EwGxP - Imgur.png"; sourceTree = "<group>"; };
@@ -447,6 +453,8 @@
 				C5157D1D1ADF4834007E1EEF /* PlusFive.sks */,
 				3718CC5C1ADDEB7600191E6E /* MinusTen.sks */,
 				372559AF1AD5FD3700AE1808 /* PlusOne.sks */,
+				375E3A281ADFB54900EA0725 /* SpeedUp.sks */,
+				375E3A2A1ADFB76500EA0725 /* SpeedDown.sks */,
 				371649281AB8781A0019694B /* GameViewController.swift */,
 				37D0ADED1ACDBAE600264216 /* Object.swift */,
 				37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */,
@@ -465,6 +473,7 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				375E3A261ADFB52000EA0725 /* arrow.png */,
 				375E3A241ADFA87700EA0725 /* EndlessBackground.png */,
 				375E3A221ADFA36000EA0725 /* BackgroundIce.png */,
 				3712841F1ADF0DC500AA4CD4 /* signExit.png */,
@@ -812,6 +821,7 @@
 				65609E7C1ADC709A0074E689 /* iglooAlt.png in Resources */,
 				65609EA21ADC709A0074E689 /* treeBranchesSnowRightSnowAlt.png in Resources */,
 				65609E9E1ADC709A0074E689 /* treeBranchesRight.png in Resources */,
+				375E3A271ADFB52000EA0725 /* arrow.png in Resources */,
 				65609E671ADC709A0074E689 /* caneGreenSmall.png in Resources */,
 				65609EA01ADC709A0074E689 /* treeBranchesSnowRight.png in Resources */,
 				65609E811ADC709A0074E689 /* pineSapling.png in Resources */,
@@ -827,6 +837,7 @@
 				65609E851ADC709A0074E689 /* rock.png in Resources */,
 				65609EBF1ADC709A0074E689 /* tundraHillRight.png in Resources */,
 				3718CC531ADDB82900191E6E /* Options.sks in Resources */,
+				375E3A2B1ADFB76500EA0725 /* SpeedDown.sks in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				65609EB61ADC709A0074E689 /* tundraCliffLeftAlt.png in Resources */,
 				65609E9C1ADC709A0074E689 /* treeBranchesLeftAlt.png in Resources */,
@@ -889,6 +900,7 @@
 				65609E661ADC709A0074E689 /* caneGreen.png in Resources */,
 				3718CC5D1ADDEB7600191E6E /* MinusTen.sks in Resources */,
 				65609EA41ADC709A0074E689 /* treeTopSnow.png in Resources */,
+				375E3A291ADFB54900EA0725 /* SpeedUp.sks in Resources */,
 				65609E831ADC709A0074E689 /* plant.png in Resources */,
 				65609E6D1ADC709A0074E689 /* caneRedTopAlt.png in Resources */,
 				65609EB71ADC709A0074E689 /* tundraCliffRight.png in Resources */,
