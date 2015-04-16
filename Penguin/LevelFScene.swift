@@ -32,6 +32,8 @@ class LevelFScene: PlayScene{
     
     override func setupMap(){
         level = 6
+        self.lvlNum.text = "Level \(level)"
+
         leverFlipped = false
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
         penguin.physicsBody?.categoryBitMask = collision.playerCategory

@@ -57,7 +57,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let goal = SKSpriteNode(imageNamed: "Spaceship")
     let winner = SKSpriteNode(imageNamed: "Winner")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
-    let score = SKLabelNode(fontNamed: "Arial")
+    let lvlNum = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     var blurNode:SKSpriteNode = SKSpriteNode()
@@ -267,12 +267,13 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.HUDbar.physicsBody?.dynamic = false
         self.HUDbar.zPosition = 2
         
-        //Score
         self.PlayerScore = 0
-        self.score.text = "Score: \(PlayerScore)"
-        self.score.position = CGPointMake(HUDbar.position.x, retryButton.position.y - retryButton.size.height / 4)
+        
+        //level number
+        //self.score.text = "Score: \(PlayerScore)"
+        self.lvlNum.position = CGPointMake(HUDbar.position.x, retryButton.position.y - retryButton.size.height / 2)
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-        self.score.zPosition = 3
+        self.lvlNum.zPosition = 3
         
         
         self.pauseButton.xScale = (100/self.pauseButton.size.width)
@@ -330,7 +331,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(startMsg)
         self.addChild(HUDbar)
         self.addChild(retryButton)
-        self.addChild(score)
+        self.addChild(lvlNum)
         self.addChild(pauseButton)
     }
     
@@ -432,8 +433,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
             
         case collision.playerCategory | collision.fishCategory:
             PlayerScore++;
-            self.score.text = "Score: \(PlayerScore)"
-            let move = SKAction.moveTo(self.score.position, duration: 0.2)
+            //elf.score.text = "Score: \(PlayerScore)"
+            let move = SKAction.moveTo(self.lvlNum.position, duration: 0.2)
             if contact.bodyA.node?.name == "Penguin" {
                 contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
                 contact.bodyB.node?.runAction(move)

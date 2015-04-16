@@ -33,6 +33,8 @@ class LevelKScene: PlayScene{
     
     override func setupMap(){
         level = 11
+        self.lvlNum.text = "Level \(level)"
+
         leverFlipped = false
         goalSide = false
         
