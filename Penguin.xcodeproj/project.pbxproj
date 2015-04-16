@@ -34,7 +34,6 @@
 		3718CC511ADDB3DF00191E6E /* yesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC501ADDB3DF00191E6E /* yesButton.png */; };
 		3718CC531ADDB82900191E6E /* Options.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC521ADDB82900191E6E /* Options.sks */; };
 		3718CC591ADDE0CB00191E6E /* PlusTen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC581ADDE0CB00191E6E /* PlusTen.sks */; };
-		3718CC5B1ADDE47000191E6E /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC5A1ADDE47000191E6E /* IceMan.png */; };
 		3718CC5D1ADDEB7600191E6E /* MinusTen.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC5C1ADDEB7600191E6E /* MinusTen.sks */; };
 		3718CC5F1ADDF01600191E6E /* N10.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC5E1ADDF01600191E6E /* N10.png */; };
 		3718CC611ADDF1BD00191E6E /* P1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC601ADDF1BD00191E6E /* P1.png */; };
@@ -42,6 +41,11 @@
 		372156651AD47AE000101993 /* fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156641AD47AE000101993 /* fish.png */; };
 		372156671AD47AF300101993 /* pufferFish.png in Resources */ = {isa = PBXBuildFile; fileRef = 372156661AD47AF300101993 /* pufferFish.png */; };
 		372156691AD4B7E600101993 /* LevelB.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372156681AD4B7E600101993 /* LevelB.sks */; };
+		3724F3991AE012FF00EC1801 /* StoryAdventure.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3961AE012FF00EC1801 /* StoryAdventure.sks */; };
+		3724F39A1AE012FF00EC1801 /* StoryAdventure2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3971AE012FF00EC1801 /* StoryAdventure2.sks */; };
+		3724F39B1AE012FF00EC1801 /* StoryAdventure3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3724F3981AE012FF00EC1801 /* StoryAdventure3.sks */; };
+		3724F39D1AE0182A00EC1801 /* girlPenguin.png in Resources */ = {isa = PBXBuildFile; fileRef = 3724F39C1AE0182A00EC1801 /* girlPenguin.png */; };
+		3724F39F1AE01ED000EC1801 /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3724F39E1AE01ED000EC1801 /* IceMan.png */; };
 		372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559A31AD5F50300AE1808 /* SnowParticles.sks */; };
 		372559A61AD5F50300AE1808 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 372559A41AD5F50300AE1808 /* spark.png */; };
 		372559B01AD5FD3700AE1808 /* PlusOne.sks in Resources */ = {isa = PBXBuildFile; fileRef = 372559AF1AD5FD3700AE1808 /* PlusOne.sks */; };
@@ -253,7 +257,6 @@
 		3718CC501ADDB3DF00191E6E /* yesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yesButton.png; sourceTree = "<group>"; };
 		3718CC521ADDB82900191E6E /* Options.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Options.sks; sourceTree = "<group>"; };
 		3718CC581ADDE0CB00191E6E /* PlusTen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlusTen.sks; sourceTree = "<group>"; };
-		3718CC5A1ADDE47000191E6E /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
 		3718CC5C1ADDEB7600191E6E /* MinusTen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MinusTen.sks; sourceTree = "<group>"; };
 		3718CC5E1ADDF01600191E6E /* N10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = N10.png; sourceTree = "<group>"; };
 		3718CC601ADDF1BD00191E6E /* P1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P1.png; sourceTree = "<group>"; };
@@ -261,6 +264,11 @@
 		372156641AD47AE000101993 /* fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fish.png; sourceTree = "<group>"; };
 		372156661AD47AF300101993 /* pufferFish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pufferFish.png; sourceTree = "<group>"; };
 		372156681AD4B7E600101993 /* LevelB.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelB.sks; sourceTree = "<group>"; };
+		3724F3961AE012FF00EC1801 /* StoryAdventure.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure.sks; sourceTree = "<group>"; };
+		3724F3971AE012FF00EC1801 /* StoryAdventure2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure2.sks; sourceTree = "<group>"; };
+		3724F3981AE012FF00EC1801 /* StoryAdventure3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryAdventure3.sks; sourceTree = "<group>"; };
+		3724F39C1AE0182A00EC1801 /* girlPenguin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = girlPenguin.png; sourceTree = "<group>"; };
+		3724F39E1AE01ED000EC1801 /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
 		372559A31AD5F50300AE1808 /* SnowParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticles.sks; sourceTree = "<group>"; };
 		372559A41AD5F50300AE1808 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		372559AF1AD5FD3700AE1808 /* PlusOne.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlusOne.sks; sourceTree = "<group>"; };
@@ -501,11 +509,13 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3724F39C1AE0182A00EC1801 /* girlPenguin.png */,
 				375E3A381ADFDF7900EA0725 /* nextButton.png */,
 				A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */,
 				A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */,
 				A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */,
 				A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */,
+				3724F39E1AE01ED000EC1801 /* IceMan.png */,
 				A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */,
 				375E3A321ADFC22300EA0725 /* Medium.png */,
 				375E3A301ADFC21C00EA0725 /* Fast.png */,
@@ -518,7 +528,6 @@
 				3718CC621ADDF35900191E6E /* P10.png */,
 				3718CC601ADDF1BD00191E6E /* P1.png */,
 				3718CC5E1ADDF01600191E6E /* N10.png */,
-				3718CC5A1ADDE47000191E6E /* IceMan.png */,
 				3718CC501ADDB3DF00191E6E /* yesButton.png */,
 				3718CC4E1ADDB3D900191E6E /* noButton.png */,
 				3718CC421ADC8A5A00191E6E /* endlessIce.png */,
@@ -843,6 +852,7 @@
 				65609EBC1ADC709A0074E689 /* tundraHalfRight.png in Resources */,
 				A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
+				3724F3991AE012FF00EC1801 /* StoryAdventure.sks in Resources */,
 				65609E8F1ADC709A0074E689 /* snowLeft.png in Resources */,
 				65609EB81ADC709A0074E689 /* tundraCliffRightAlt.png in Resources */,
 				65609EA61ADC709A0074E689 /* treeTrunkBottom.png in Resources */,
@@ -861,7 +871,6 @@
 				65609E881ADC709A0074E689 /* snowBallBig.png in Resources */,
 				65609E6C1ADC709A0074E689 /* caneRedTop.png in Resources */,
 				65609E691ADC709A0074E689 /* caneGreenTopAlt.png in Resources */,
-				3718CC5B1ADDE47000191E6E /* IceMan.png in Resources */,
 				65609ECA1ADC70A30074E689 /* sheet.swf in Resources */,
 				A4A73AA11ADFD3A40062E1DB /* highScoresTitle.png in Resources */,
 				65609E7C1ADC709A0074E689 /* iglooAlt.png in Resources */,
@@ -886,6 +895,7 @@
 				375E3A2B1ADFB76500EA0725 /* SpeedDown.sks in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				65609EB61ADC709A0074E689 /* tundraCliffLeftAlt.png in Resources */,
+				3724F39B1AE012FF00EC1801 /* StoryAdventure3.sks in Resources */,
 				65609E9C1ADC709A0074E689 /* treeBranchesLeftAlt.png in Resources */,
 				A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */,
 				371284201ADF0DC500AA4CD4 /* signExit.png in Resources */,
@@ -901,6 +911,7 @@
 				659E00C91AD61D9E001E974C /* retryButton.png in Resources */,
 				371649251AB8781A0019694B /* MainMenu.sks in Resources */,
 				372156691AD4B7E600101993 /* LevelB.sks in Resources */,
+				3724F39D1AE0182A00EC1801 /* girlPenguin.png in Resources */,
 				3718CC591ADDE0CB00191E6E /* PlusTen.sks in Resources */,
 				A4A73A8E1ADF76CB0062E1DB /* StoryInstructions1.sks in Resources */,
 				65609E751ADC709A0074E689 /* iceWaterDeep.png in Resources */,
@@ -909,6 +920,7 @@
 				65609E9A1ADC709A0074E689 /* tree.png in Resources */,
 				65609E771ADC709A0074E689 /* iceWaterDeepStars.png in Resources */,
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
+				3724F39A1AE012FF00EC1801 /* StoryAdventure2.sks in Resources */,
 				A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */,
 				65609EC11ADC709A0074E689 /* tundraLedgeLeft.png in Resources */,
 				3718CC4D1ADDB2DE00191E6E /* ConfirmPopup.sks in Resources */,
@@ -940,6 +952,7 @@
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
 				A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */,
+				3724F39F1AE01ED000EC1801 /* IceMan.png in Resources */,
 				375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
