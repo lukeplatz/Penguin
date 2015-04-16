@@ -15,7 +15,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
     let table = UITableView()
-    var NumLevelsUnlocked = 10
+    var NumLevelsUnlocked = 11
     
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
