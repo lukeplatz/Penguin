@@ -271,7 +271,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         //level number
         //self.score.text = "Score: \(PlayerScore)"
-        self.lvlNum.position = CGPointMake(HUDbar.position.x, retryButton.position.y - retryButton.size.height / 2)
+        self.lvlNum.position = CGPointMake(HUDbar.position.x, HUDbar.position.y)
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.lvlNum.zPosition = 3
         
