@@ -81,6 +81,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
     override func didMoveToView(view: SKView) {
+        UIApplication.sharedApplication().idleTimerDisabled = true
+        
         self.backgroundColor = UIColor(red: 250, green: 250, blue: 250, alpha: 1)
         self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
