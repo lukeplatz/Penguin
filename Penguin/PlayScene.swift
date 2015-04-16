@@ -356,7 +356,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         var showInstructs = NSUserDefaults.standardUserDefaults().integerForKey("StoryInstructions")
         if(showInstructs == 1){
-            //NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "StoryInstructions")
+            NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "StoryInstructions")
             NSUserDefaults.standardUserDefaults().synchronize()
             showInstructions()// present the instructions
         }
