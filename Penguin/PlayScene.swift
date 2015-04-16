@@ -67,10 +67,12 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     var resumeButtonIndex = 0
     var nextLevelButtonIndex = 0
     
+    let startMsge = SKLabelNode(fontNames: "Arial")
+    
     //let gameOver = SKLabelNode(fontNamed: "Arial")
-    let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
-    let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
-    let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
+//    let instructions1 = SKLabelNode(fontNamed: "Arial Bold")
+//    let instructions2 = SKLabelNode(fontNamed: "Arial Bold")
+//    let instructions3 = SKLabelNode(fontNamed: "Arial Bold")
     
     
     //3 before
@@ -283,32 +285,40 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         self.pausedImage.zPosition = 9
         
        
+        self.startMsg.text = "Tap to calibrate and start sliding!"
+        self.startMsg.position.x = CGRectGetMidX(self.frame)
+        self.startMsg.position.y = CGRectGetMidY(self.frame)
+        self.startMsg.fontColor = UIColor.blackColor()
+        self.startMsg.fontSize = 30
+        self.startMsg.zPosition = 9
         
-        self.instructions1.text = "Tilt to move your Penguin"
-        self.instructions1.position.x = CGRectGetMidX(self.frame)
-        self.instructions1.position.y = CGRectGetMidY(self.frame) + 30
-        self.instructions1.fontColor = UIColor.blackColor()
-        self.instructions1.fontSize = 30
-        self.instructions1.zPosition = 9
+//        self.instructions1.text = "Tilt to move your Penguin"
+//        self.instructions1.position.x = CGRectGetMidX(self.frame)
+//        self.instructions1.position.y = CGRectGetMidY(self.frame) + 30
+//        self.instructions1.fontColor = UIColor.blackColor()
+//        self.instructions1.fontSize = 30
+//        self.instructions1.zPosition = 9
+//        
+//        self.instructions2.text = "Gather the fish and reach the Spaceship!"
+//        self.instructions2.position.x = CGRectGetMidX(self.frame)
+//        self.instructions2.position.y = CGRectGetMidY(self.frame)
+//        self.instructions2.fontColor = UIColor.blackColor()
+//        self.instructions2.fontSize = 30
+//        self.instructions2.zPosition = 9
+//        
+//        self.instructions3.text = "Tap to start sliding"
+//        self.instructions3.position.x = CGRectGetMidX(self.frame)
+//        self.instructions3.position.y = CGRectGetMidY(self.frame) - 50
+//        self.instructions3.fontColor = UIColor.blackColor()
+//        self.instructions3.fontSize = 30
+//        self.instructions3.zPosition = 9
         
-        self.instructions2.text = "Gather the fish and reach the Spaceship!"
-        self.instructions2.position.x = CGRectGetMidX(self.frame)
-        self.instructions2.position.y = CGRectGetMidY(self.frame)
-        self.instructions2.fontColor = UIColor.blackColor()
-        self.instructions2.fontSize = 30
-        self.instructions2.zPosition = 9
+//        self.addChild(instructions1)
+//        self.addChild(instructions2)
+//        self.addChild(instructions3)
+
         
-        self.instructions3.text = "Tap to start sliding"
-        self.instructions3.position.x = CGRectGetMidX(self.frame)
-        self.instructions3.position.y = CGRectGetMidY(self.frame) - 50
-        self.instructions3.fontColor = UIColor.blackColor()
-        self.instructions3.fontSize = 30
-        self.instructions3.zPosition = 9
-        
-        self.addChild(instructions1)
-        self.addChild(instructions2)
-        self.addChild(instructions3)
-        
+        self.addChild(startMsg)
         self.addChild(HUDbar)
         self.addChild(retryButton)
         self.addChild(score)
