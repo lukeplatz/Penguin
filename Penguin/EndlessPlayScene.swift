@@ -61,8 +61,17 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var calibrateY = CGFloat(0)
     var needToCalibrate = true
     
-    var scrollSpeed = 5.0
-    var delay = NSTimeInterval(2.0)
+    var SLOWSPEED = 8.0
+    var MEDIUMSPEED = 12.0
+    var FASTSPEED = 16.0
+    var FASTDELAY = NSTimeInterval(0.6)
+    var MEDIUMDELAY = NSTimeInterval(0.75)
+    var SLOWDELAY = NSTimeInterval(1.0)
+    
+    var currentDelay = NSTimeInterval()
+    var currentSpeed = 0.0
+    
+    var refreshActions = false
     
     var minDistance = CGFloat(650)
     
@@ -71,10 +80,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var presentInstructions = true
     var forwardMovement = CGFloat(0.0)
     
-    var lastUpdateTimeInterval: CFTimeInterval = -1.0
-    var deltaTime: CGFloat = 0.0
-    var lastSpawn = NSTimeInterval(2.0)
-    var refreshActions = false
+    
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
@@ -107,24 +113,27 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         self.instructions1.text = "Press and Hold to slide backwards"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
-        self.instructions1.position.y = CGRectGetMidY(self.frame) + 10
+        self.instructions1.position.y = CGRectGetMidY(self.frame) + 20
         self.instructions1.fontColor = UIColor.orangeColor()
-        self.instructions1.fontSize = 20
+        self.instructions1.fontSize = 30
         
         self.instructions2.text = "Release to slide forwards!"
         self.instructions2.position.x = CGRectGetMidX(self.frame)
-        self.instructions2.position.y = CGRectGetMidY(self.frame) - 10
+        self.instructions2.position.y = CGRectGetMidY(self.frame) - 20
         self.instructions2.fontColor = UIColor.orangeColor()
-        self.instructions2.fontSize = 20
+        self.instructions2.fontSize = 30
         
         self.addChild(instructions1)
         self.addChild(instructions2)
         
         self.getNewDelay()
         
-        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
-        moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+        currentSpeed = SLOWSPEED
+        currentDelay = SLOWDELAY
         
+        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0.01)
+        moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
+    
         //Sets up Penguin Image
         setupPenguin()
         
@@ -321,7 +330,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func stopAnimations(){
-        self.removeAllActions()
+        self.removeAllActions() // stops from spawning new obstacles
         if(obstacles.count > 0){
             for index in 0 ... obstacles.count - 1{
                 obstacles[index].node.removeAllActions()
@@ -330,7 +339,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     }
     
     func startAnimations(){
-        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(scrollSpeed)), duration: 0.02)
+        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0.02)
         moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
         
         if(obstacles.count > 0){
@@ -341,13 +350,16 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func sendNodeAction(node: SKNode){
+        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0)
+        moveObstacleForeverAction = SKAction.runBlock({self.sendNodeAction(node)})
+        var repeat = SKAction.sequence([moveObstacleAction, moveObstacleForeverAction])
+        node.runAction(repeat)
+    }
+    
     func getNewDelay(){
-        
-        //Throw in check for if delay is getting too small
-        //try to keep constant ratio of delay/speed
-        
         let spawn = SKAction.runBlock({() in self.spawn()})
-        let delay = SKAction.waitForDuration(NSTimeInterval(self.delay))
+        let delay = SKAction.waitForDuration(NSTimeInterval(currentDelay))
         let getNewDelay = SKAction.runBlock({() in self.getNewDelay()})
         let spawnThenDelay = SKAction.sequence([delay, spawn, getNewDelay])
         self.runAction(spawnThenDelay)
@@ -382,9 +394,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             checkpoint.physicsBody?.categoryBitMask = collision.goalCategory
             obstacleSet.addChild(checkpoint)
             
-            obstacleSet.runAction(moveObstacleForeverAction)
             obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
             self.addChild(obstacleSet)
+            
+            sendNodeAction(obstacleSet)
+            //obstacleSet.runAction(moveObstacleForeverAction)
             
             var spawnSomething = random(min: 0, max: 100)
             if (spawnSomething > 10 && spawnSomething < 20 && PlayerScore > 0){
@@ -400,25 +414,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 let delay_spawnIce = SKAction.sequence([spawnDelay, spawnIce])
                 self.runAction(delay_spawnIce)
             }
-            //fish is multiplier
-            //iceman removes multiplier (knocks it down 1?)
             
             self.numBlocksSpawned++
-            
-            if self.numBlocksSpawned % 10 == 0 {
-                println("UP to delay: \(self.delay) scroll: \(scrollSpeed)")
-                if(self.delay >= 0.5){
-                    self.scrollSpeed *= 1.1
-                    self.delay *= 0.9
-                    //+2 pts while maxed out speed
-                    //slow down when hitting ice
-                    refreshActions = true
-                    startAnimations()
-                    
-                }else{
-                    println("Maxed out delay: \(self.delay) scroll: \(scrollSpeed)")
-                }
-            }
             
             var newObstacle = Obstacles(node: obstacleSet, counted: false)
             newObstacle.node.position.y = CGRectGetHeight(self.frame)
@@ -470,15 +467,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     
     override func update(currentTime: NSTimeInterval) {
-        deltaTime = CGFloat(currentTime - lastUpdateTimeInterval)
-        lastUpdateTimeInterval = currentTime
         
-        //Prevents problems with an anomaly that occurs when delta time is too long - Apple does a similar thing in their code
-        if deltaTime > 1
-        {
-            deltaTime = 1.0 / 60.0
-            lastUpdateTimeInterval = currentTime
-        }
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -501,17 +490,36 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             self.Pause = true
         case collision.playerCategory | collision.goalCategory:
             contact.bodyA.categoryBitMask = collision.none
-            PlayerScore++
+            var plusScore = SKEmitterNode()
+            if(currentSpeed == SLOWSPEED){
+                plusScore = SKEmitterNode.unarchiveFromFile("PlusOne") as SKEmitterNode
+                PlayerScore++
+            }else if(currentSpeed == MEDIUMSPEED){
+                plusScore = SKEmitterNode.unarchiveFromFile("PlusFive") as SKEmitterNode
+                PlayerScore += 5
+            }else if(currentSpeed == FASTSPEED){
+                plusScore = SKEmitterNode.unarchiveFromFile("PlusTen") as SKEmitterNode
+                PlayerScore += 10
+            }
+            plusScore.position = self.penguin.position
+            plusScore.zPosition = HUDbar.zPosition + 1
+            plusScore.advanceSimulationTime(NSTimeInterval(1.0))
             self.score.text = "Score: \(PlayerScore)"
-            
-            let plusOne = SKEmitterNode.unarchiveFromFile("PlusOne") as SKEmitterNode
-            plusOne.position = self.penguin.position
-            plusOne.zPosition = HUDbar.zPosition + 1
-            plusOne.advanceSimulationTime(NSTimeInterval(1.0))
-            self.addChild(plusOne)
+            self.addChild(plusScore)
         case collision.playerCategory  | collision.fishCategory:
-            PlayerScore += 10;
-            self.score.text = "Score: \(PlayerScore)"
+            //increase speed and delay
+            if(currentSpeed == SLOWSPEED){
+                println("up to medium speed")
+                currentSpeed = MEDIUMSPEED
+                currentDelay = MEDIUMDELAY
+            }else if (currentSpeed == MEDIUMSPEED){
+                println("up to fast speed")
+                currentSpeed = FASTSPEED
+                currentDelay = FASTDELAY
+            }else{
+                println("speed max")
+            }
+            refreshActions = true
             var pos = CGPointMake(self.score.position.x, self.score.position.y + 20)
             let move = SKAction.moveTo(pos, duration: 0.3)
             if contact.bodyA.node?.name == "Penguin" {
@@ -525,30 +533,38 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 contact.bodyA.node?.runAction(move)
                 contact.bodyA.node?.zPosition = HUDbar.zPosition - 1
             }
-            let plusTen = SKEmitterNode.unarchiveFromFile("PlusTen") as SKEmitterNode
-            plusTen.position = self.penguin.position
-            plusTen.zPosition = HUDbar.zPosition + 1
-            plusTen.advanceSimulationTime(NSTimeInterval(1.0)) /*0.5 if up top*/
-            self.addChild(plusTen)
         case collision.playerCategory | collision.iceManCategory:
-            PlayerScore -= 10;
-            self.score.text = "Score: \(PlayerScore)"
-            if contact.bodyA.node?.name == "Penguin" {
-                contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+            //decrease speed and delay
+            if(currentSpeed == FASTSPEED){
+                println("down to medium speed")
+                currentSpeed = MEDIUMSPEED
+                currentDelay = MEDIUMDELAY
+            }else if (currentSpeed == MEDIUMSPEED){
+                println("down to fast speed")
+                currentSpeed = SLOWSPEED
+                currentDelay = SLOWDELAY
             }else{
-                contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+                println("min speed")
             }
+            refreshActions = true
             
-            let minusTen = SKEmitterNode.unarchiveFromFile("MinusTen") as SKEmitterNode
-            minusTen.position = self.penguin.position
-            minusTen.zPosition = HUDbar.zPosition + 1
-            minusTen.advanceSimulationTime(NSTimeInterval(1.0))
-            self.addChild(minusTen)
+//            let minusTen = SKEmitterNode.unarchiveFromFile("MinusTen") as SKEmitterNode
+//            minusTen.position = self.penguin.position
+//            minusTen.zPosition = HUDbar.zPosition + 1
+//            minusTen.advanceSimulationTime(NSTimeInterval(1.0))
+//            self.addChild(minusTen)
             
             let turnRed = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 1, duration: 0.5)
             let turnWhite = SKAction.colorizeWithColor(UIColor.redColor(), colorBlendFactor: 0, duration: 0.5)
             let alternate = SKAction.sequence([turnRed,turnWhite,turnRed,turnWhite])
             self.penguin.runAction(alternate)
+            
+            if contact.bodyA.node?.name == "Penguin" {
+                contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+            }else{
+                contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
+            }
+
         case collision.playerCategory | collision.snowCategory:
             
             println("touched snow")
