@@ -11,7 +11,7 @@ import SpriteKit
 
 class ModeSelectionScene: SKScene {
     
-    let title = SKSpriteNode(imageNamed: "ModeSelection")
+    let title = SKSpriteNode(imageNamed: "selectModeTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let storyButton = SKSpriteNode(imageNamed: "StoryButton")
     let endlessButton = SKSpriteNode(imageNamed: "EndlessButton")

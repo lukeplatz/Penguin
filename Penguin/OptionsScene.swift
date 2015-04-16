@@ -11,7 +11,7 @@ import SpriteKit
 
 class OptionsScene: SKScene {
     
-    let title = SKSpriteNode(imageNamed: "OptionsTitle")
+    let title = SKSpriteNode(imageNamed: "optionsTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let resetButton = SKSpriteNode(imageNamed: "ResetButton")
     let confirmStuff = SKNode.unarchiveFromFile("ConfirmPopup")!
