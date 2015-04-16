@@ -18,13 +18,13 @@ class LevelGScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-    //    override func nextLevel() {
-    //        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
-    //        levelStuff.scaleMode = .ResizeFill
-    //        let skView = self.view! as SKView
-    //        skView.ignoresSiblingOrder = true
-    //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-    //    }
+        override func nextLevel() {
+            var levelStuff = LevelHScene.unarchiveFromFile("LevelH")! as LevelHScene
+            levelStuff.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+        }
     
     override func setupMap(){
         level = 7
@@ -57,26 +57,6 @@ class LevelGScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-//        let bridgePowerup = childNodeWithName("bridgePowerup")
-//        bridgePowerup?.physicsBody?.categoryBitMask = collision.powerUpCategory
-//        bridgePowerup?.physicsBody?.collisionBitMask = 0 // dont collide with anything
-        
     }
     
-//    override func addBridges() {
-//        
-//        let water = childNodeWithName("WtoRemove") as SKSpriteNode
-//        water.physicsBody?.categoryBitMask = collision.none
-//        water.physicsBody?.collisionBitMask = 0
-//        water.removeFromParent()
-//        
-//        let bridge = SKSpriteNode(imageNamed: "ice.jpg")
-//        bridge.size.height = water.size.height + 10
-//        bridge.size.width = water.size.width
-//        bridge.position = water.position
-//        bridge.zPosition = 10
-//        bridge.physicsBody?.categoryBitMask = collision.bridgeCategory
-//        self.addChild(bridge)
-//        
-//    }
 }

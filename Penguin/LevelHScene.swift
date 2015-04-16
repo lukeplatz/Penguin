@@ -18,13 +18,13 @@ class LevelHScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-    //    override func nextLevel() {
-    //        var levelStuff = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
-    //        levelStuff.scaleMode = .ResizeFill
-    //        let skView = self.view! as SKView
-    //        skView.ignoresSiblingOrder = true
-    //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-    //    }
+    override func nextLevel() {
+        var levelStuff = LevelIScene.unarchiveFromFile("LevelI")! as LevelIScene
+        levelStuff.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
     
     override func setupMap(){
         level = 8
@@ -57,26 +57,29 @@ class LevelHScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-        //        let bridgePowerup = childNodeWithName("bridgePowerup")
-        //        bridgePowerup?.physicsBody?.categoryBitMask = collision.powerUpCategory
-        //        bridgePowerup?.physicsBody?.collisionBitMask = 0 // dont collide with anything
+        let moveleft = SKAction.moveBy(CGVectorMake(-(self.size.width / 2), 0), duration: 1.0)
+        let moveright = SKAction.moveBy(CGVectorMake((self.size.width / 2), 0), duration: 1.0)
+        let leftRight = SKAction.sequence([moveleft, moveright, moveright, moveleft])
+        let repeatLRMove = SKAction.repeatActionForever(leftRight)
         
+        let moveup = SKAction.moveBy(CGVectorMake((self.size.height / 2), 0), duration: 1.0)
+        let movedown = SKAction.moveBy(CGVectorMake(-(self.size.height / 2), 0), duration: 1.0)
+        let upDown = SKAction.sequence([moveup, movedown, movedown, moveup])
+        let repeatUDMove = SKAction.repeatActionForever(upDown)
+        
+        let puffer1 = childNodeWithName("pf1") as SKSpriteNode
+        puffer1.physicsBody?.categoryBitMask = collision.WaterCategory
+        puffer1.physicsBody?.collisionBitMask = 1 // allow contact
+        puffer1.runAction(repeatLRMove)
+        
+        let puffer2 = childNodeWithName("pf2") as SKSpriteNode
+        puffer2.physicsBody?.categoryBitMask = collision.WaterCategory
+        puffer2.physicsBody?.collisionBitMask = 1 // allow contact
+        puffer2.runAction(repeatUDMove)
+        
+        let puffer3 = childNodeWithName("pf3") as SKSpriteNode
+        puffer3.physicsBody?.categoryBitMask = collision.WaterCategory
+        puffer3.physicsBody?.collisionBitMask = 1 // allow contact
+        puffer3.runAction(repeatUDMove)
     }
-    
-    //    override func addBridges() {
-    //
-    //        let water = childNodeWithName("WtoRemove") as SKSpriteNode
-    //        water.physicsBody?.categoryBitMask = collision.none
-    //        water.physicsBody?.collisionBitMask = 0
-    //        water.removeFromParent()
-    //
-    //        let bridge = SKSpriteNode(imageNamed: "ice.jpg")
-    //        bridge.size.height = water.size.height + 10
-    //        bridge.size.width = water.size.width
-    //        bridge.position = water.position
-    //        bridge.zPosition = 10
-    //        bridge.physicsBody?.categoryBitMask = collision.bridgeCategory
-    //        self.addChild(bridge)
-    //        
-    //    }
 }

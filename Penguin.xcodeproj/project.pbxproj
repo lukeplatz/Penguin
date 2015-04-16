@@ -10,6 +10,9 @@
 		370055001AC8E9AF002C5231 /* EndlessPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */; };
 		3700B7F31AD6E3EF00428CC4 /* SpriteKit-Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3700B7F21AD6E3EF00428CC4 /* SpriteKit-Spring.swift */; };
 		370ABBBC1ACDC2BF008BD084 /* PowerUpObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370ABBBB1ACDC2BF008BD084 /* PowerUpObject.swift */; };
+		3712841C1ADF074100AA4CD4 /* LevelI.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3712841B1ADF074100AA4CD4 /* LevelI.sks */; };
+		3712841E1ADF087B00AA4CD4 /* LevelIScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712841D1ADF087B00AA4CD4 /* LevelIScene.swift */; };
+		371284201ADF0DC500AA4CD4 /* signExit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3712841F1ADF0DC500AA4CD4 /* signExit.png */; };
 		37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */; };
 		371649231AB8781A0019694B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649221AB8781A0019694B /* AppDelegate.swift */; };
 		371649251AB8781A0019694B /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 371649241AB8781A0019694B /* MainMenuScene.sks */; };
@@ -191,6 +194,9 @@
 		370054FF1AC8E9AF002C5231 /* EndlessPlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndlessPlayScene.swift; sourceTree = "<group>"; };
 		3700B7F21AD6E3EF00428CC4 /* SpriteKit-Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SpriteKit-Spring.swift"; sourceTree = "<group>"; };
 		370ABBBB1ACDC2BF008BD084 /* PowerUpObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerUpObject.swift; sourceTree = "<group>"; };
+		3712841B1ADF074100AA4CD4 /* LevelI.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelI.sks; sourceTree = "<group>"; };
+		3712841D1ADF087B00AA4CD4 /* LevelIScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelIScene.swift; sourceTree = "<group>"; };
+		3712841F1ADF0DC500AA4CD4 /* signExit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signExit.png; sourceTree = "<group>"; };
 		37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelectionScene.swift; sourceTree = "<group>"; };
 		3716491D1AB8781A0019694B /* Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penguin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		371649211AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -430,6 +436,7 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3712841F1ADF0DC500AA4CD4 /* signExit.png */,
 				3718CC621ADDF35900191E6E /* P10.png */,
 				3718CC601ADDF1BD00191E6E /* P1.png */,
 				3718CC5E1ADDF01600191E6E /* N10.png */,
@@ -498,6 +505,8 @@
 				A47607511ADC71880055CC58 /* LevelGScene.swift */,
 				A4D26D7B1ADEF94600CDC466 /* LevelH.sks */,
 				A4D26D7D1ADEF98700CDC466 /* LevelHScene.swift */,
+				3712841B1ADF074100AA4CD4 /* LevelI.sks */,
+				3712841D1ADF087B00AA4CD4 /* LevelIScene.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -723,6 +732,7 @@
 				65609E9D1ADC709A0074E689 /* treeBranchesLeftSnowAlt.png in Resources */,
 				65609E7D1ADC709A0074E689 /* iglooDoor.png in Resources */,
 				65609EA71ADC709A0074E689 /* treeTrunkBottomAlt.png in Resources */,
+				3712841C1ADF074100AA4CD4 /* LevelI.sks in Resources */,
 				65609EB11ADC709A0074E689 /* treeTrunkTop.png in Resources */,
 				65609E871ADC709A0074E689 /* snowBall.png in Resources */,
 				65609EC01ADC709A0074E689 /* tundraHillRight2.png in Resources */,
@@ -774,6 +784,7 @@
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				65609EB61ADC709A0074E689 /* tundraCliffLeftAlt.png in Resources */,
 				65609E9C1ADC709A0074E689 /* treeBranchesLeftAlt.png in Resources */,
+				371284201ADF0DC500AA4CD4 /* signExit.png in Resources */,
 				65609E7A1ADC709A0074E689 /* iceWaterMidAlt.png in Resources */,
 				A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */,
 				65609EC31ADC709A0074E689 /* tundraLeft.png in Resources */,
@@ -882,6 +893,7 @@
 				37D0ADF01ACDBEDF00264216 /* IcebergObject.swift in Sources */,
 				A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */,
 				A4D26D7E1ADEF98700CDC466 /* LevelHScene.swift in Sources */,
+				3712841E1ADF087B00AA4CD4 /* LevelIScene.swift in Sources */,
 				6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */,
 				A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */,
 				3700B7F31AD6E3EF00428CC4 /* SpriteKit-Spring.swift in Sources */,
@@ -1026,7 +1038,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Penguin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1041,7 +1053,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Penguin/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
