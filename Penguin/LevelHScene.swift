@@ -79,11 +79,11 @@ class LevelHScene: PlayScene{
         let puffer2 = childNodeWithName("pf2") as SKSpriteNode
         puffer2.physicsBody?.categoryBitMask = collision.WaterCategory
         puffer2.physicsBody?.collisionBitMask = 1 // allow contact
-        puffer2.runAction(repeatLRMove)
+        puffer2.runAction(repeatUDMove)
         
         let puffer3 = childNodeWithName("pf3") as SKSpriteNode
         puffer3.physicsBody?.categoryBitMask = collision.WaterCategory
         puffer3.physicsBody?.collisionBitMask = 1 // allow contact
-        puffer3.runAction(repeatUDMove)
+        puffer3.runAction(repeatLRMove)
     }
 }
