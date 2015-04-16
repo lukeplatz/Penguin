@@ -157,7 +157,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         
         var showInstructs = NSUserDefaults.standardUserDefaults().integerForKey("EndlessInstructions")
         if(showInstructs == 1){
-            NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "EndlessInstructions")
+            //NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "EndlessInstructions")
             NSUserDefaults.standardUserDefaults().synchronize()
             showInstructions()// present the instructions
         }
