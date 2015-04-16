@@ -18,13 +18,13 @@ class LevelIScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-//        override func nextLevel() {
-//            var levelStuff = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
-//            levelStuff.scaleMode = .ResizeFill
-//            let skView = self.view! as SKView
-//            skView.ignoresSiblingOrder = true
-//            skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-//        }
+        override func nextLevel() {
+            var levelStuff = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
+            levelStuff.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+        }
     
     var leverFlipped = Bool()
     var goalSide = Bool()
