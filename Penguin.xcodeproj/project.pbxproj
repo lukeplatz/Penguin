@@ -187,6 +187,11 @@
 		A4A73A981ADFB11B0062E1DB /* LevelLScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A941ADFB11B0062E1DB /* LevelLScene.swift */; };
 		A4A73A991ADFB11B0062E1DB /* LevelM.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A951ADFB11B0062E1DB /* LevelM.sks */; };
 		A4A73A9A1ADFB11B0062E1DB /* LevelMScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */; };
+		A4A73AA01ADFD3A40062E1DB /* selectLevelTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */; };
+		A4A73AA11ADFD3A40062E1DB /* highScoresTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */; };
+		A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */; };
+		A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */; };
+		A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
 		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
@@ -397,6 +402,11 @@
 		A4A73A941ADFB11B0062E1DB /* LevelLScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelLScene.swift; sourceTree = "<group>"; };
 		A4A73A951ADFB11B0062E1DB /* LevelM.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelM.sks; sourceTree = "<group>"; };
 		A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMScene.swift; sourceTree = "<group>"; };
+		A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectLevelTitle.png; sourceTree = "<group>"; };
+		A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highScoresTitle.png; sourceTree = "<group>"; };
+		A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectModeTitle.png; sourceTree = "<group>"; };
+		A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinSlideTitle.png; sourceTree = "<group>"; };
+		A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 		A4CC31851AD5D4A0005B09DD /* LevelC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelC.sks; sourceTree = "<group>"; };
 		A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ugFM2GS - Imgur.png"; path = "Images.xcassets/Shortblock.imageset/ugFM2GS - Imgur.png"; sourceTree = "<group>"; };
@@ -479,6 +489,11 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */,
+				A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */,
+				A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */,
+				A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */,
+				A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */,
 				375E3A321ADFC22300EA0725 /* Medium.png */,
 				375E3A301ADFC21C00EA0725 /* Fast.png */,
 				375E3A2E1ADFC19E00EA0725 /* Slow.png */,
@@ -829,6 +844,7 @@
 				65609E691ADC709A0074E689 /* caneGreenTopAlt.png in Resources */,
 				3718CC5B1ADDE47000191E6E /* IceMan.png in Resources */,
 				65609ECA1ADC70A30074E689 /* sheet.swf in Resources */,
+				A4A73AA11ADFD3A40062E1DB /* highScoresTitle.png in Resources */,
 				65609E7C1ADC709A0074E689 /* iglooAlt.png in Resources */,
 				65609EA21ADC709A0074E689 /* treeBranchesSnowRightSnowAlt.png in Resources */,
 				65609E9E1ADC709A0074E689 /* treeBranchesRight.png in Resources */,
@@ -852,6 +868,7 @@
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
 				65609EB61ADC709A0074E689 /* tundraCliffLeftAlt.png in Resources */,
 				65609E9C1ADC709A0074E689 /* treeBranchesLeftAlt.png in Resources */,
+				A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */,
 				371284201ADF0DC500AA4CD4 /* signExit.png in Resources */,
 				65609E7A1ADC709A0074E689 /* iceWaterMidAlt.png in Resources */,
 				A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */,
@@ -873,6 +890,7 @@
 				65609E9A1ADC709A0074E689 /* tree.png in Resources */,
 				65609E771ADC709A0074E689 /* iceWaterDeepStars.png in Resources */,
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
+				A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */,
 				65609EC11ADC709A0074E689 /* tundraLedgeLeft.png in Resources */,
 				3718CC4D1ADDB2DE00191E6E /* ConfirmPopup.sks in Resources */,
 				65609EAB1ADC709A0074E689 /* treeTrunkBranchEndLeft.png in Resources */,
@@ -901,6 +919,7 @@
 				65609E941ADC709A0074E689 /* spikesBottomAlt.png in Resources */,
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
+				A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
 				65609EBD1ADC709A0074E689 /* tundraHillLeft.png in Resources */,
@@ -927,6 +946,7 @@
 				C5157D1E1ADF4834007E1EEF /* PlusFive.sks in Resources */,
 				372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */,
 				3718CC4B1ADDAE2E00191E6E /* switchRight.png in Resources */,
+				A4A73AA01ADFD3A40062E1DB /* selectLevelTitle.png in Resources */,
 				65609E861ADC709A0074E689 /* rockAlt.png in Resources */,
 				659E00CF1AD61DE8001E974C /* nextLevelButton.png in Resources */,
 				65609EA81ADC709A0074E689 /* treeTrunkBottomAlt2.png in Resources */,

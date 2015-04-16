@@ -14,7 +14,7 @@ class MainMenuScene: SKScene {
     let playButton = SKSpriteNode(imageNamed: "PlayButton")
     let optionsButton = SKSpriteNode(imageNamed: "OptionsButton")
     let highscoresButton = SKSpriteNode(imageNamed: "HighscoresButton")
-    let title = SKSpriteNode(imageNamed: "Title")
+    let title = SKSpriteNode(imageNamed: "penguinSlideTitle")
 
     
     override func didMoveToView(view: SKView) {

@@ -11,7 +11,7 @@ import SpriteKit
 
 class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     
-    let title = SKSpriteNode(imageNamed: "LevelSelectTitle")
+    let title = SKSpriteNode(imageNamed: "selectLevelTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
     let table = UITableView()

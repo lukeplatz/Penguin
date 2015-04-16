@@ -12,7 +12,7 @@ import UIKit
 
 class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     
-    let title = SKSpriteNode(imageNamed: "HighscoresTitle")
+    let title = SKSpriteNode(imageNamed: "highScoresTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let score = SKLabelNode(fontNamed: "Arial")
     var NumLevelsUnlocked = 6
