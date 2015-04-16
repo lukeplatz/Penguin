@@ -66,8 +66,8 @@ class LevelHScene: PlayScene{
         let leftRight = SKAction.sequence([moveleft, moveright, moveright, moveleft])
         let repeatLRMove = SKAction.repeatActionForever(leftRight)
         
-        let moveup = SKAction.moveBy(CGVectorMake(0,(self.size.height / 2)), duration: 1.0)
-        let movedown = SKAction.moveBy(CGVectorMake(0,-(self.size.height / 2)), duration: 1.0)
+        let moveup = SKAction.moveBy(CGVectorMake(0,(self.size.height / 3)), duration: 1.0)
+        let movedown = SKAction.moveBy(CGVectorMake(0,-(self.size.height / 3)), duration: 1.0)
         let upDown = SKAction.sequence([moveup, movedown, movedown, moveup])
         let repeatUDMove = SKAction.repeatActionForever(upDown)
         
