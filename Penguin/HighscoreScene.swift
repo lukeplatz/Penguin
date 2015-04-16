@@ -106,12 +106,11 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         let touchedNode = self.nodeAtPoint(location!)
         
         if (touchedNode.name == "back") {
-            let transition = SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5)
-            transition.pausesIncomingScene = true
-            
-            let mainScene = MainMenuScene(size:self.size)
-            mainScene.scaleMode = SKSceneScaleMode.AspectFill
-            self.view?.presentScene(mainScene, transition: transition)
+            var mainMenuScene = MainMenuScene.unarchiveFromFile("MainMenu") as MainMenuScene
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            mainMenuScene.scaleMode = .ResizeFill
+            skView.presentScene(mainMenuScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
             table.removeFromSuperview()
             highScoreBannerView.removeFromSuperview()
             

@@ -15,7 +15,7 @@
 		371284201ADF0DC500AA4CD4 /* signExit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3712841F1ADF0DC500AA4CD4 /* signExit.png */; };
 		37150EF71ABCAF3B00472733 /* ModeSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */; };
 		371649231AB8781A0019694B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649221AB8781A0019694B /* AppDelegate.swift */; };
-		371649251AB8781A0019694B /* MainMenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 371649241AB8781A0019694B /* MainMenuScene.sks */; };
+		371649251AB8781A0019694B /* MainMenu.sks in Resources */ = {isa = PBXBuildFile; fileRef = 371649241AB8781A0019694B /* MainMenu.sks */; };
 		371649271AB8781A0019694B /* MainMenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649261AB8781A0019694B /* MainMenuScene.swift */; };
 		371649291AB8781A0019694B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649281AB8781A0019694B /* GameViewController.swift */; };
 		3716492C1AB8781A0019694B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3716492A1AB8781A0019694B /* Main.storyboard */; };
@@ -226,7 +226,7 @@
 		3716491D1AB8781A0019694B /* Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Penguin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		371649211AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		371649221AB8781A0019694B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		371649241AB8781A0019694B /* MainMenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenuScene.sks; sourceTree = "<group>"; };
+		371649241AB8781A0019694B /* MainMenu.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainMenu.sks; sourceTree = "<group>"; };
 		371649261AB8781A0019694B /* MainMenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuScene.swift; sourceTree = "<group>"; };
 		371649281AB8781A0019694B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		3716492B1AB8781A0019694B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -587,7 +587,7 @@
 		65609E041AD6FE200074E689 /* Menus */ = {
 			isa = PBXGroup;
 			children = (
-				371649241AB8781A0019694B /* MainMenuScene.sks */,
+				371649241AB8781A0019694B /* MainMenu.sks */,
 				371649261AB8781A0019694B /* MainMenuScene.swift */,
 				65B4B2B11ABCDB9700F8DD9C /* LevelSelectScene.swift */,
 				655176BD1AD4B78F0037964F /* GameOver.sks */,
@@ -880,7 +880,7 @@
 				3716492E1AB8781A0019694B /* Images.xcassets in Resources */,
 				65609E711ADC709A0074E689 /* iceBlockHalf.png in Resources */,
 				659E00C91AD61D9E001E974C /* retryButton.png in Resources */,
-				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
+				371649251AB8781A0019694B /* MainMenu.sks in Resources */,
 				372156691AD4B7E600101993 /* LevelB.sks in Resources */,
 				3718CC591ADDE0CB00191E6E /* PlusTen.sks in Resources */,
 				A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */,
