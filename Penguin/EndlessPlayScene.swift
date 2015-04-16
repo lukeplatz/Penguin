@@ -199,7 +199,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
                     endlessScene.scaleMode = .Fill
-                    skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
+                    skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))
+                }else if self.nodeAtPoint(location) == self.pauseButton && self.gameO == false{
                     if(self.Pause == true){
                         //Resume
                         self.blurNode.removeFromParent()
