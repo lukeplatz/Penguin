@@ -925,6 +925,7 @@
 				65609E941ADC709A0074E689 /* spikesBottomAlt.png in Resources */,
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
+				A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */,
 				375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,

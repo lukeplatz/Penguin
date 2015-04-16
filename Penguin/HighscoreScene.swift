@@ -58,7 +58,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         
         
         highScoreBannerView.frame = CGRectMake(size.width * 0.2, 0, size.width * 0.6, size.height * 0.1)
-        highScoreBannerView.image = UIImage(named: "HighscoresTitle")
+        highScoreBannerView.image = UIImage(named: "highScoresTitle")
         self.view?.addSubview(highScoreBannerView)
         
         table.tableFooterView = UIView(frame: CGRectZero)

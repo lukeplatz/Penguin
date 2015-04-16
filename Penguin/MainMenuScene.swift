@@ -66,10 +66,11 @@ class MainMenuScene: SKScene {
                 skView.presentScene(optionsScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }
             else if self.nodeAtPoint(location) == self.highscoresButton{
-                var highscoreScene = HighscoreScene.unarchiveFromFile("HighScores")! as HighscoreScene
+                var highscoreScene = HighscoreScene(size: self.size)
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
                 highscoreScene.scaleMode = .ResizeFill
+                highscoreScene.size = skView.bounds.size
                 skView.presentScene(highscoreScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
             }
             else{

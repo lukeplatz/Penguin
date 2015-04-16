@@ -172,12 +172,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             if(self.gameO == true){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
-                    var ModeSelect = ModeSelectionScene(size: self.size)
+                    var ModeSelectScene = ModeSelectionScene.unarchiveFromFile("ModeSelection")! as ModeSelectionScene
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
-                    ModeSelect.scaleMode = .ResizeFill
-                    ModeSelect.size = skView.bounds.size
-                    skView.presentScene(ModeSelect, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    ModeSelectScene.scaleMode = .ResizeFill
+                    skView.presentScene(ModeSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                     
                 }
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[retryButtonIndex] as NSObject){
@@ -245,12 +244,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
-                    var ModeSelection = ModeSelectionScene(size: self.size)
+                    var ModeSelectScene = ModeSelectionScene.unarchiveFromFile("ModeSelection")! as ModeSelectionScene
                     let skView = self.view! as SKView
                     skView.ignoresSiblingOrder = true
-                    ModeSelection.scaleMode = .ResizeFill
-                    ModeSelection.size = skView.bounds.size
-                    skView.presentScene(ModeSelection, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                    ModeSelectScene.scaleMode = .ResizeFill
+                    skView.presentScene(ModeSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 }
                 else if(self.nodeAtPoint(location) == self.PauseStuff.children[retryButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()

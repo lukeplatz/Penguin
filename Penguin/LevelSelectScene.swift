@@ -57,12 +57,11 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             if self.nodeAtPoint(location) == self.backButton{
-                var modeSelectionScene = ModeSelectionScene(size: self.size)
+                var ModeSelectScene = ModeSelectionScene.unarchiveFromFile("ModeSelection")! as ModeSelectionScene
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
-                modeSelectionScene.scaleMode = .ResizeFill
-                modeSelectionScene.size = skView.bounds.size
-                skView.presentScene(modeSelectionScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
+                ModeSelectScene.scaleMode = .ResizeFill
+                skView.presentScene(ModeSelectScene, transition: SKTransition.pushWithDirection(SKTransitionDirection.Right, duration: 0.5))
                 table.removeFromSuperview()
             }else{
                 println("LevelSelectScene Background Pressed")
