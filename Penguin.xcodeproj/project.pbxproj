@@ -171,6 +171,8 @@
 		A47607561ADC75EA0055CC58 /* PlaySceneBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = A47607551ADC75EA0055CC58 /* PlaySceneBackground.sks */; };
 		A4A73A841ADF61BD0062E1DB /* LevelJScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */; };
 		A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A851ADF61F20062E1DB /* LevelJ.sks */; };
+		A4A73A8C1ADF76930062E1DB /* EndlessInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */; };
+		A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
 		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
@@ -365,6 +367,8 @@
 		A47607551ADC75EA0055CC58 /* PlaySceneBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaySceneBackground.sks; sourceTree = "<group>"; };
 		A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelJScene.swift; sourceTree = "<group>"; };
 		A4A73A851ADF61F20062E1DB /* LevelJ.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelJ.sks; sourceTree = "<group>"; };
+		A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions.sks; sourceTree = "<group>"; };
+		A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions.sks; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 		A4CC31851AD5D4A0005B09DD /* LevelC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelC.sks; sourceTree = "<group>"; };
 		A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ugFM2GS - Imgur.png"; path = "Images.xcassets/Shortblock.imageset/ugFM2GS - Imgur.png"; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 				65B51AA41AD5C7EC00B238EF /* LevelWin.sks */,
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */,
+				A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */,
+				A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */,
 			);
 			name = Menus;
 			sourceTree = "<group>";
@@ -790,6 +796,7 @@
 				372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */,
 				65609E801ADC709A0074E689 /* iglooRoofRight.png in Resources */,
 				65609E6B1ADC709A0074E689 /* caneRedSmall.png in Resources */,
+				A4A73A8C1ADF76930062E1DB /* EndlessInstructions.sks in Resources */,
 				65609E8A1ADC709A0074E689 /* snowBallGround.png in Resources */,
 				65609E851ADC709A0074E689 /* rock.png in Resources */,
 				65609EBF1ADC709A0074E689 /* tundraHillRight.png in Resources */,
@@ -811,6 +818,7 @@
 				371649251AB8781A0019694B /* MainMenuScene.sks in Resources */,
 				372156691AD4B7E600101993 /* LevelB.sks in Resources */,
 				3718CC591ADDE0CB00191E6E /* PlusTen.sks in Resources */,
+				A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */,
 				65609E751ADC709A0074E689 /* iceWaterDeep.png in Resources */,
 				65609E901ADC709A0074E689 /* snowMid.png in Resources */,
 				3718CC631ADDF35900191E6E /* P10.png in Resources */,
