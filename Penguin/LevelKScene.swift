@@ -1,18 +1,17 @@
 //
-//  LevelJScene.swift
+//  LevelKScene.swift
 //  Penguin
 //
-//  Created by Riley Chapin on 4/15/15.
+//  Created by Riley Chapin on 4/16/15.
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
 import SpriteKit
 
-class LevelJScene: PlayScene{
+class LevelKScene: PlayScene{
     
     override func retryLevel() {
-        motionManager.stopAccelerometerUpdates()
-        var levelStuff = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
+        var levelStuff = LevelKScene.unarchiveFromFile("LevelK")! as LevelKScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
@@ -20,7 +19,7 @@ class LevelJScene: PlayScene{
     }
     
             override func nextLevel() {
-                var levelStuff = LevelKScene.unarchiveFromFile("LevelK")! as LevelKScene
+                var levelStuff = LevelLScene.unarchiveFromFile("LevelL")! as LevelLScene
                 levelStuff.scaleMode = .ResizeFill
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
@@ -33,7 +32,7 @@ class LevelJScene: PlayScene{
     var doorExit = SKSpriteNode()
     
     override func setupMap(){
-        level = 10
+        level = 11
         leverFlipped = false
         goalSide = false
         
