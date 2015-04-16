@@ -26,6 +26,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
 
     let penguin = SKSpriteNode(imageNamed: "Penguin")
+    let speedIndicator = SKSpriteNode(imageNamed: "Slow")
     let retryButton = SKSpriteNode(imageNamed: "RetryButton")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
@@ -325,12 +326,16 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - (statusbarHeight) - 12)
         self.pauseButton.zPosition = 2
 
+        self.speedIndicator.position = self.pauseButton.position
+        self.speedIndicator.position.y -= self.pauseButton.size.height
+        self.speedIndicator.zPosition = 2
         
         //Paused image
         self.pausedImage.anchorPoint = CGPointMake(0.5, 0.5)
         self.pausedImage.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         self.pausedImage.zPosition = 1
         
+        self.addChild(speedIndicator)
         self.addChild(HUDbar)
         self.addChild(retryButton)
         self.addChild(score)
@@ -543,10 +548,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 println("up to medium speed")
                 currentSpeed = MEDIUMSPEED
                 currentDelay = MEDIUMDELAY
+                speedIndicator.texture = SKTexture(imageNamed: "Medium")
+                speedIndicator.size.width *= 2
             }else if (currentSpeed == MEDIUMSPEED){
                 println("up to fast speed")
                 currentSpeed = FASTSPEED
                 currentDelay = FASTDELAY
+                speedIndicator.texture = SKTexture(imageNamed: "Fast")
+                speedIndicator.size.width *= 4/3
             }else{
                 println("speed max")
             }
@@ -580,10 +589,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                 println("down to medium speed")
                 currentSpeed = MEDIUMSPEED
                 currentDelay = MEDIUMDELAY
+                speedIndicator.texture = SKTexture(imageNamed: "Medium")
+                speedIndicator.size.width *= 2/3
             }else if (currentSpeed == MEDIUMSPEED){
                 println("down to fast speed")
                 currentSpeed = SLOWSPEED
                 currentDelay = SLOWDELAY
+                speedIndicator.texture = SKTexture(imageNamed: "Slow")
+                speedIndicator.size.width *= 1/2
             }else{
                 println("min speed")
             }

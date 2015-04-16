@@ -51,6 +51,9 @@
 		375E3A271ADFB52000EA0725 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A261ADFB52000EA0725 /* arrow.png */; };
 		375E3A291ADFB54900EA0725 /* SpeedUp.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A281ADFB54900EA0725 /* SpeedUp.sks */; };
 		375E3A2B1ADFB76500EA0725 /* SpeedDown.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A2A1ADFB76500EA0725 /* SpeedDown.sks */; };
+		375E3A2F1ADFC19E00EA0725 /* Slow.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A2E1ADFC19E00EA0725 /* Slow.png */; };
+		375E3A311ADFC21C00EA0725 /* Fast.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A301ADFC21C00EA0725 /* Fast.png */; };
+		375E3A331ADFC22300EA0725 /* Medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A321ADFC22300EA0725 /* Medium.png */; };
 		37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */; };
 		37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */; };
 		37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */; };
@@ -256,6 +259,9 @@
 		375E3A261ADFB52000EA0725 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		375E3A281ADFB54900EA0725 /* SpeedUp.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpeedUp.sks; sourceTree = "<group>"; };
 		375E3A2A1ADFB76500EA0725 /* SpeedDown.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpeedDown.sks; sourceTree = "<group>"; };
+		375E3A2E1ADFC19E00EA0725 /* Slow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slow.png; sourceTree = "<group>"; };
+		375E3A301ADFC21C00EA0725 /* Fast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fast.png; sourceTree = "<group>"; };
+		375E3A321ADFC22300EA0725 /* Medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Medium.png; sourceTree = "<group>"; };
 		37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelA.sks; sourceTree = "<group>"; };
 		37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "water_texture_03_by_frostbo-d5agt22.jpg"; sourceTree = "<group>"; };
 		37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "H6EwGxP - Imgur.png"; sourceTree = "<group>"; };
@@ -473,6 +479,9 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				375E3A321ADFC22300EA0725 /* Medium.png */,
+				375E3A301ADFC21C00EA0725 /* Fast.png */,
+				375E3A2E1ADFC19E00EA0725 /* Slow.png */,
 				375E3A261ADFB52000EA0725 /* arrow.png */,
 				375E3A241ADFA87700EA0725 /* EndlessBackground.png */,
 				375E3A221ADFA36000EA0725 /* BackgroundIce.png */,
@@ -794,6 +803,7 @@
 				65C20DE31AD5D7FA00C8B923 /* PausePopup.sks in Resources */,
 				A4A73A901ADFA0240062E1DB /* LevelK.sks in Resources */,
 				65609E6F1ADC709A0074E689 /* iceBlock.png in Resources */,
+				375E3A331ADFC22300EA0725 /* Medium.png in Resources */,
 				A4A73A971ADFB11B0062E1DB /* LevelL.sks in Resources */,
 				65609EC41ADC709A0074E689 /* tundraMid.png in Resources */,
 				65609E8E1ADC709A0074E689 /* snowHillLow.png in Resources */,
@@ -804,6 +814,7 @@
 				65609EB81ADC709A0074E689 /* tundraCliffRightAlt.png in Resources */,
 				65609EA61ADC709A0074E689 /* treeTrunkBottom.png in Resources */,
 				65609E7F1ADC709A0074E689 /* iglooRoofLeft.png in Resources */,
+				375E3A311ADFC21C00EA0725 /* Fast.png in Resources */,
 				65609E9B1ADC709A0074E689 /* treeBranchesLeft.png in Resources */,
 				A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */,
 				65609E821ADC709A0074E689 /* pineSaplingAlt.png in Resources */,
@@ -873,6 +884,7 @@
 				C5157D201ADF485A007E1EEF /* P5.png in Resources */,
 				372559B01AD5FD3700AE1808 /* PlusOne.sks in Resources */,
 				65609EB31ADC709A0074E689 /* tundraCenter.png in Resources */,
+				375E3A2F1ADFC19E00EA0725 /* Slow.png in Resources */,
 				3718CC4F1ADDB3D900191E6E /* noButton.png in Resources */,
 				65609EAF1ADC709A0074E689 /* treeTrunkSplitLeft.png in Resources */,
 				65609EB91ADC709A0074E689 /* tundraHalf.png in Resources */,
