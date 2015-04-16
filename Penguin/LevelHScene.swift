@@ -57,13 +57,13 @@ class LevelHScene: PlayScene{
         F3.physicsBody?.collisionBitMask = 0 // dont collide with anything
         F3.runAction(repeatPulse)
         
-        let moveleft = SKAction.moveBy(CGVectorMake(-(self.size.width / 2), 0), duration: 1.0)
-        let moveright = SKAction.moveBy(CGVectorMake((self.size.width / 2), 0), duration: 1.0)
+        let moveleft = SKAction.moveBy(CGVectorMake(-(self.size.width / 3), 0), duration: 1.0)
+        let moveright = SKAction.moveBy(CGVectorMake((self.size.width / 3), 0), duration: 1.0)
         let leftRight = SKAction.sequence([moveleft, moveright, moveright, moveleft])
         let repeatLRMove = SKAction.repeatActionForever(leftRight)
         
-        let moveup = SKAction.moveBy(CGVectorMake((self.size.height / 2), 0), duration: 1.0)
-        let movedown = SKAction.moveBy(CGVectorMake(-(self.size.height / 2), 0), duration: 1.0)
+        let moveup = SKAction.moveBy(CGVectorMake(0,(self.size.height / 2)), duration: 1.0)
+        let movedown = SKAction.moveBy(CGVectorMake(0,-(self.size.height / 2)), duration: 1.0)
         let upDown = SKAction.sequence([moveup, movedown, movedown, moveup])
         let repeatUDMove = SKAction.repeatActionForever(upDown)
         
