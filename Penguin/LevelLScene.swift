@@ -8,10 +8,10 @@
 
 import SpriteKit
 
-class LevelKScene: PlayScene{
+class LevelLScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = LevelKScene.unarchiveFromFile("LevelK")! as LevelKScene
+        var levelStuff = LevelLScene.unarchiveFromFile("LevelL")! as LevelLScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
