@@ -25,7 +25,6 @@ class LevelIScene: PlayScene{
     //        skView.ignoresSiblingOrder = true
     //        skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     //    }
-    //More
     
     var leverFlipped = Bool()
     var goalSide = Bool()
@@ -73,10 +72,12 @@ class LevelIScene: PlayScene{
         
         doorEnter = childNodeWithName("doorEnter") as SKSpriteNode
         doorEnter.physicsBody?.categoryBitMask = collision.doorCategory
+        doorEnter.physicsBody?.contactTestBitMask = collision.playerCategory
         doorEnter.physicsBody?.collisionBitMask = 0
         
         doorExit = childNodeWithName("doorExit") as SKSpriteNode
-        doorExit.physicsBody?.categoryBitMask = collision.doorCategory
+        doorExit.physicsBody?.categoryBitMask = collision.none
+        doorExit.physicsBody?.contactTestBitMask = collision.playerCategory
         doorExit.physicsBody?.collisionBitMask = 0
     }
     
@@ -103,12 +104,12 @@ class LevelIScene: PlayScene{
             
             let bridge1 = SKSpriteNode(imageNamed: "boxAlt")
             bridge1.position = water1.position
-            bridge1.zPosition = 0.9
+            bridge1.zPosition = 1
             bridge1.physicsBody?.categoryBitMask = collision.bridgeCategory
             
             let bridge2 = SKSpriteNode(imageNamed: "boxAlt")
             bridge2.position = water2.position
-            bridge2.zPosition = 0.9
+            bridge2.zPosition = 1
             bridge2.physicsBody?.categoryBitMask = collision.bridgeCategory
             
             self.addChild(bridge1)
@@ -117,16 +118,42 @@ class LevelIScene: PlayScene{
     }
     
     override func teleport() {
+        let penguin = childNodeWithName("Penguin") as SKSpriteNode
+        penguin.physicsBody?.categoryBitMask = collision.playerCategory
+        penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
+        penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory | collision.doorCategory
         println("teleport")
-        if(goalSide == false){ //travel to exit door
-            goalSide = true
-            println("try")
-            penguin.position = doorExit.position
-            penguin.position.x -= doorExit.size.height
-        }else{ // travel to enter door
-            goalSide = false
-            penguin.position = doorEnter.position
-            penguin.position.x -= doorEnter.size.height
-        }
+        penguin.physicsBody?.dynamic = false
+        
+        var shrink = SKAction.scaleTo(0, duration: 0.5)
+        penguin.runAction(shrink)
+        
+        var wait = SKAction.waitForDuration(0.5)
+        var b = SKAction.runBlock({self.spawnPenguin()})
+        var seq = SKAction.sequence([wait, b])
+        self.runAction(seq)
+    }
+    
+    func spawnPenguin(){
+        let penguin = childNodeWithName("Penguin") as SKSpriteNode
+        penguin.position = doorExit.position
+        penguin.position.y -= doorExit.size.height
+        penguin.zPosition = 1
+        penguin.physicsBody?.categoryBitMask = collision.playerCategory
+        penguin.physicsBody?.collisionBitMask = 1 // dont collide with anything
+        penguin.physicsBody?.contactTestBitMask = collision.WaterCategory | collision.IcebergCategory | collision.powerUpCategory | collision.goalCategory | collision.doorCategory
+        var grow = SKAction.scaleTo(1, duration: 0.5)
+        penguin.runAction(grow)
+        
+        var rock = SKSpriteNode(imageNamed: "rock")
+        rock.physicsBody = SKPhysicsBody(rectangleOfSize: rock.size)
+        rock.zPosition = 1
+        rock.position = doorExit.position
+        rock.position.y -= 1
+        rock.physicsBody?.dynamic = false
+        rock.physicsBody?.collisionBitMask = 1
+        self.addChild(rock)
+        
+        penguin.physicsBody?.dynamic = true
     }
 }
