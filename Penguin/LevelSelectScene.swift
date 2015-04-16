@@ -160,7 +160,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
             table.removeFromSuperview()
         case (10):
             var levelJ = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
-            levelI.scaleMode = .ResizeFill
+            levelJ.scaleMode = .ResizeFill
             let skView = self.view! as SKView
             skView.ignoresSiblingOrder = true
             skView.presentScene(levelJ, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
