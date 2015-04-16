@@ -432,11 +432,11 @@
 				37D0ADEF1ACDBEDF00264216 /* IcebergObject.swift */,
 				A4CC317F1AD30CB3005B09DD /* WaterObject.swift */,
 				370ABBBB1ACDC2BF008BD084 /* PowerUpObject.swift */,
-				3716492A1AB8781A0019694B /* Main.storyboard */,
-				65609EC61ADC70A20074E689 /* Vector */,
 				65609E051ADC70990074E689 /* Tiles */,
 				3716492D1AB8781A0019694B /* Images.xcassets */,
+				3716492A1AB8781A0019694B /* Main.storyboard */,
 				3716492F1AB8781A0019694B /* LaunchScreen.xib */,
+				65609EC61ADC70A20074E689 /* Vector */,
 				371649201AB8781A0019694B /* Supporting Files */,
 			);
 			path = Penguin;
@@ -517,8 +517,8 @@
 				A4D26D7D1ADEF98700CDC466 /* LevelHScene.swift */,
 				3712841B1ADF074100AA4CD4 /* LevelI.sks */,
 				3712841D1ADF087B00AA4CD4 /* LevelIScene.swift */,
-				A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */,
 				A4A73A851ADF61F20062E1DB /* LevelJ.sks */,
+				A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
