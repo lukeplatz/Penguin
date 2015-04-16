@@ -117,7 +117,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.instructions1.fontColor = UIColor.orangeColor()
         self.instructions1.fontSize = 30
         
-        self.instructions2.text = "Release to slide forwards!"
+        self.instructions2.text = "Release to slide forwards! Tap to Begin"
         self.instructions2.position.x = CGRectGetMidX(self.frame)
         self.instructions2.position.y = CGRectGetMidY(self.frame) - 20
         self.instructions2.fontColor = UIColor.orangeColor()
@@ -135,10 +135,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.background2.zPosition = -10
         self.addChild(background1)
         self.addChild(background2)
-        sendNodeAction(background1)
-        sendNodeAction(background2)
-        
-        self.getNewDelay()
         
         currentSpeed = SLOWSPEED
         currentDelay = SLOWDELAY
@@ -224,6 +220,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     if(self.presentInstructions == true){
                         instructions1.removeFromParent()
                         instructions2.removeFromParent()
+                        //Game Start!
+                        sendNodeAction(background1)
+                        sendNodeAction(background2)
+                        self.getNewDelay()
+                        self.presentInstructions = false
                     }
                     self.forwardMovement = -4.0
                 }
@@ -532,7 +533,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             self.score.text = "Score: \(PlayerScore)"
             self.addChild(plusScore)
         case collision.playerCategory  | collision.fishCategory:
-            //increase speed and delay
+            var speedUp = SKEmitterNode.unarchiveFromFile("SpeedUp") as SKEmitterNode
+            speedUp.position = self.penguin.position
+            speedUp.zPosition = self.penguin.zPosition
+            speedUp.advanceSimulationTime(NSTimeInterval(0.1))
+            self.addChild(speedUp)
             if(currentSpeed == SLOWSPEED){
                 println("up to medium speed")
                 currentSpeed = MEDIUMSPEED
@@ -550,16 +555,26 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             if contact.bodyA.node?.name == "Penguin" {
                 contact.bodyB.node?.removeAllActions()
                 contact.bodyB.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
-                contact.bodyB.node?.runAction(move)
+                let fish = contact.bodyB.node as SKSpriteNode
+                let remove = SKAction.runBlock({self.removeFishy(fish)})
+                let moveAndRemove = SKAction.sequence([move, remove])
+                contact.bodyB.node?.runAction(moveAndRemove)
                 contact.bodyB.node?.zPosition = HUDbar.zPosition - 1
             }else{
                 contact.bodyA.node?.removeAllActions()
                 contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
-                contact.bodyA.node?.runAction(move)
+                let fish = contact.bodyA.node as SKSpriteNode
+                let remove = SKAction.runBlock({self.removeFishy(fish)})
+                let moveAndRemove = SKAction.sequence([move, remove])
+                contact.bodyA.node?.runAction(moveAndRemove)
                 contact.bodyA.node?.zPosition = HUDbar.zPosition - 1
             }
         case collision.playerCategory | collision.iceManCategory:
-            //decrease speed and delay
+            var speedDown = SKEmitterNode.unarchiveFromFile("SpeedDown") as SKEmitterNode
+            speedDown.position = self.penguin.position
+            speedDown.zPosition = HUDbar.zPosition + 1
+            speedDown.advanceSimulationTime(NSTimeInterval(0.1))
+            self.addChild(speedDown)
             if(currentSpeed == FASTSPEED){
                 println("down to medium speed")
                 currentSpeed = MEDIUMSPEED
