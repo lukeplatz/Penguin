@@ -168,6 +168,8 @@
 		65609ECA1ADC70A30074E689 /* sheet.swf in Resources */ = {isa = PBXBuildFile; fileRef = 65609EC81ADC70A30074E689 /* sheet.swf */; };
 		6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCCE1AC481A300793471 /* LevelAScene.swift */; };
 		6571DCD11AC4862000793471 /* LevelBScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCD01AC4862000793471 /* LevelBScene.swift */; };
+		65836F071AE0232700E80B29 /* lilPenguinGuyReversed.png in Resources */ = {isa = PBXBuildFile; fileRef = 65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */; };
+		65836F091AE027C700E80B29 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 65836F081AE027C700E80B29 /* back_button.png */; };
 		659E00C91AD61D9E001E974C /* retryButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 659E00C81AD61D9E001E974C /* retryButton.png */; };
 		659E00CB1AD61DA9001E974C /* quitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 659E00CA1AD61DA9001E974C /* quitButton.png */; };
 		659E00CD1AD61DBA001E974C /* resumeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 659E00CC1AD61DBA001E974C /* resumeButton.png */; };
@@ -178,6 +180,15 @@
 		65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA01AD5C45400B238EF /* GameOverFrame.png */; };
 		65B51AA51AD5C7EC00B238EF /* LevelWin.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65B51AA41AD5C7EC00B238EF /* LevelWin.sks */; };
 		65C1015B1ADF47530048CFBA /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1015A1ADF47530048CFBA /* Spaceship.png */; };
+		65C101631AE00B080048CFBA /* optionsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101621AE00B080048CFBA /* optionsButton.png */; };
+		65C101671AE00B630048CFBA /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101661AE00B630048CFBA /* playButton.png */; };
+		65C101691AE00B8D0048CFBA /* highscoreButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101681AE00B8D0048CFBA /* highscoreButton.png */; };
+		65C1016D1AE00D940048CFBA /* menuBack.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 65C1016C1AE00D940048CFBA /* menuBack.jpg */; };
+		65C101711AE010130048CFBA /* penguinSlideTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101701AE010130048CFBA /* penguinSlideTitle.png */; };
+		65C101751AE011E40048CFBA /* lilPenguinGuy.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101741AE011E40048CFBA /* lilPenguinGuy.png */; };
+		65C101771AE017630048CFBA /* storyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101761AE017630048CFBA /* storyButton.png */; };
+		65C101791AE0176B0048CFBA /* endlessButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101781AE0176B0048CFBA /* endlessButton.png */; };
+		65C1017B1AE022540048CFBA /* selectModeTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C1017A1AE022540048CFBA /* selectModeTitle.png */; };
 		65C20DE31AD5D7FA00C8B923 /* PausePopup.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65C20DE21AD5D7FA00C8B923 /* PausePopup.sks */; };
 		A47607521ADC71880055CC58 /* LevelGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47607511ADC71880055CC58 /* LevelGScene.swift */; };
 		A47607541ADC721C0055CC58 /* LevelG.sks in Resources */ = {isa = PBXBuildFile; fileRef = A47607531ADC721C0055CC58 /* LevelG.sks */; };
@@ -194,8 +205,6 @@
 		A4A73A9A1ADFB11B0062E1DB /* LevelMScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */; };
 		A4A73AA01ADFD3A40062E1DB /* selectLevelTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */; };
 		A4A73AA11ADFD3A40062E1DB /* highScoresTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */; };
-		A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */; };
-		A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */; };
 		A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
@@ -388,6 +397,8 @@
 		65609EC81ADC70A30074E689 /* sheet.swf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sheet.swf; sourceTree = "<group>"; };
 		6571DCCE1AC481A300793471 /* LevelAScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelAScene.swift; sourceTree = "<group>"; };
 		6571DCD01AC4862000793471 /* LevelBScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelBScene.swift; sourceTree = "<group>"; };
+		65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lilPenguinGuyReversed.png; sourceTree = "<group>"; };
+		65836F081AE027C700E80B29 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		659E00C81AD61D9E001E974C /* retryButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = retryButton.png; sourceTree = "<group>"; };
 		659E00CA1AD61DA9001E974C /* quitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quitButton.png; sourceTree = "<group>"; };
 		659E00CC1AD61DBA001E974C /* resumeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resumeButton.png; sourceTree = "<group>"; };
@@ -398,6 +409,15 @@
 		65B51AA01AD5C45400B238EF /* GameOverFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GameOverFrame.png; sourceTree = "<group>"; };
 		65B51AA41AD5C7EC00B238EF /* LevelWin.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelWin.sks; sourceTree = "<group>"; };
 		65C1015A1ADF47530048CFBA /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		65C101621AE00B080048CFBA /* optionsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsButton.png; sourceTree = "<group>"; };
+		65C101661AE00B630048CFBA /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
+		65C101681AE00B8D0048CFBA /* highscoreButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoreButton.png; sourceTree = "<group>"; };
+		65C1016C1AE00D940048CFBA /* menuBack.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = menuBack.jpg; sourceTree = "<group>"; };
+		65C101701AE010130048CFBA /* penguinSlideTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinSlideTitle.png; sourceTree = "<group>"; };
+		65C101741AE011E40048CFBA /* lilPenguinGuy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lilPenguinGuy.png; sourceTree = "<group>"; };
+		65C101761AE017630048CFBA /* storyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storyButton.png; sourceTree = "<group>"; };
+		65C101781AE0176B0048CFBA /* endlessButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessButton.png; sourceTree = "<group>"; };
+		65C1017A1AE022540048CFBA /* selectModeTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectModeTitle.png; sourceTree = "<group>"; };
 		65C20DE21AD5D7FA00C8B923 /* PausePopup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PausePopup.sks; sourceTree = "<group>"; };
 		A47607511ADC71880055CC58 /* LevelGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelGScene.swift; sourceTree = "<group>"; };
 		A47607531ADC721C0055CC58 /* LevelG.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelG.sks; sourceTree = "<group>"; };
@@ -414,8 +434,6 @@
 		A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMScene.swift; sourceTree = "<group>"; };
 		A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectLevelTitle.png; sourceTree = "<group>"; };
 		A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highScoresTitle.png; sourceTree = "<group>"; };
-		A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectModeTitle.png; sourceTree = "<group>"; };
-		A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = penguinSlideTitle.png; sourceTree = "<group>"; };
 		A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 		A4CC31851AD5D4A0005B09DD /* LevelC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelC.sks; sourceTree = "<group>"; };
@@ -500,13 +518,21 @@
 			isa = PBXGroup;
 			children = (
 				375E3A381ADFDF7900EA0725 /* nextButton.png */,
+				65C101681AE00B8D0048CFBA /* highscoreButton.png */,
 				A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */,
+				65C101741AE011E40048CFBA /* lilPenguinGuy.png */,
+				65C101701AE010130048CFBA /* penguinSlideTitle.png */,
+				65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */,
 				A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */,
-				A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */,
-				A4A73A9E1ADFD3A40062E1DB /* penguinSlideTitle.png */,
 				A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */,
+				65C101621AE00B080048CFBA /* optionsButton.png */,
+				65C101761AE017630048CFBA /* storyButton.png */,
+				65C1017A1AE022540048CFBA /* selectModeTitle.png */,
 				375E3A321ADFC22300EA0725 /* Medium.png */,
+				65C1016C1AE00D940048CFBA /* menuBack.jpg */,
+				65C101661AE00B630048CFBA /* playButton.png */,
 				375E3A301ADFC21C00EA0725 /* Fast.png */,
+				65C101781AE0176B0048CFBA /* endlessButton.png */,
 				375E3A2E1ADFC19E00EA0725 /* Slow.png */,
 				375E3A261ADFB52000EA0725 /* arrow.png */,
 				375E3A241ADFA87700EA0725 /* EndlessBackground.png */,
@@ -530,6 +556,7 @@
 				659E00CE1AD61DE8001E974C /* nextLevelButton.png */,
 				65B51AA01AD5C45400B238EF /* GameOverFrame.png */,
 				659E00CA1AD61DA9001E974C /* quitButton.png */,
+				65836F081AE027C700E80B29 /* back_button.png */,
 				659E00C81AD61D9E001E974C /* retryButton.png */,
 				659E00CC1AD61DBA001E974C /* resumeButton.png */,
 				372156661AD47AF300101993 /* pufferFish.png */,
@@ -880,11 +907,14 @@
 				65609E851ADC709A0074E689 /* rock.png in Resources */,
 				65609EBF1ADC709A0074E689 /* tundraHillRight.png in Resources */,
 				3718CC531ADDB82900191E6E /* Options.sks in Resources */,
+				65C101691AE00B8D0048CFBA /* highscoreButton.png in Resources */,
 				375E3A2B1ADFB76500EA0725 /* SpeedDown.sks in Resources */,
 				371649311AB8781A0019694B /* LaunchScreen.xib in Resources */,
+				65C101671AE00B630048CFBA /* playButton.png in Resources */,
+				65C101631AE00B080048CFBA /* optionsButton.png in Resources */,
+				65836F071AE0232700E80B29 /* lilPenguinGuyReversed.png in Resources */,
 				65609EB61ADC709A0074E689 /* tundraCliffLeftAlt.png in Resources */,
 				65609E9C1ADC709A0074E689 /* treeBranchesLeftAlt.png in Resources */,
-				A4A73AA21ADFD3A40062E1DB /* selectModeTitle.png in Resources */,
 				371284201ADF0DC500AA4CD4 /* signExit.png in Resources */,
 				65609E7A1ADC709A0074E689 /* iceWaterMidAlt.png in Resources */,
 				A4CC31951AD608B3005B09DD /* LevelE.sks in Resources */,
@@ -908,7 +938,9 @@
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
 				A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */,
 				65609EC11ADC709A0074E689 /* tundraLedgeLeft.png in Resources */,
+				65C1016D1AE00D940048CFBA /* menuBack.jpg in Resources */,
 				3718CC4D1ADDB2DE00191E6E /* ConfirmPopup.sks in Resources */,
+				65C101771AE017630048CFBA /* storyButton.png in Resources */,
 				65609EAB1ADC709A0074E689 /* treeTrunkBranchEndLeft.png in Resources */,
 				65609E741ADC709A0074E689 /* iceWaterAlt.png in Resources */,
 				65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */,
@@ -936,7 +968,6 @@
 				65609E941ADC709A0074E689 /* spikesBottomAlt.png in Resources */,
 				65609E9F1ADC709A0074E689 /* treeBranchesSnowLeft.png in Resources */,
 				65609EC51ADC709A0074E689 /* tundraRight.png in Resources */,
-				A4A73AA31ADFD3A40062E1DB /* penguinSlideTitle.png in Resources */,
 				375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
@@ -954,6 +985,7 @@
 				65609E6D1ADC709A0074E689 /* caneRedTopAlt.png in Resources */,
 				65609EB71ADC709A0074E689 /* tundraCliffRight.png in Resources */,
 				65609E6A1ADC709A0074E689 /* caneRed.png in Resources */,
+				65C101791AE0176B0048CFBA /* endlessButton.png in Resources */,
 				65609E8B1ADC709A0074E689 /* snowGroundLeft.png in Resources */,
 				659E00CB1AD61DA9001E974C /* quitButton.png in Resources */,
 				A47607541ADC721C0055CC58 /* LevelG.sks in Resources */,
@@ -965,11 +997,14 @@
 				372559A51AD5F50300AE1808 /* SnowParticles.sks in Resources */,
 				3718CC4B1ADDAE2E00191E6E /* switchRight.png in Resources */,
 				A4A73AA01ADFD3A40062E1DB /* selectLevelTitle.png in Resources */,
+				65C1017B1AE022540048CFBA /* selectModeTitle.png in Resources */,
 				65609E861ADC709A0074E689 /* rockAlt.png in Resources */,
 				659E00CF1AD61DE8001E974C /* nextLevelButton.png in Resources */,
 				65609EA81ADC709A0074E689 /* treeTrunkBottomAlt2.png in Resources */,
 				65609E931ADC709A0074E689 /* spikesBottom.png in Resources */,
+				65C101711AE010130048CFBA /* penguinSlideTitle.png in Resources */,
 				375E3A3B1ADFE03700EA0725 /* EndlessInstructions2.sks in Resources */,
+				65836F091AE027C700E80B29 /* back_button.png in Resources */,
 				65609E891ADC709A0074E689 /* snowBallBigGround.png in Resources */,
 				372156651AD47AE000101993 /* fish.png in Resources */,
 				655176BE1AD4B78F0037964F /* GameOver.sks in Resources */,
@@ -982,6 +1017,7 @@
 				65609EA11ADC709A0074E689 /* treeBranchesSnowRightAlt.png in Resources */,
 				375E3A351ADFD61B00EA0725 /* ModeSelection.sks in Resources */,
 				65609EAC1ADC709A0074E689 /* treeTrunkBranchEndRight.png in Resources */,
+				65C101751AE011E40048CFBA /* lilPenguinGuy.png in Resources */,
 				65609E951ADC709A0074E689 /* spikesBottomAlt2.png in Resources */,
 				65609EA51ADC709A0074E689 /* treeTrunk.png in Resources */,
 				37E3C9191AD6F19B009D358A /* LevelF.sks in Resources */,
