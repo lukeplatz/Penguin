@@ -18,13 +18,13 @@ class LevelKScene: PlayScene{
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-            override func nextLevel() {
-                var levelStuff = LevelLScene.unarchiveFromFile("LevelL")! as LevelLScene
-                levelStuff.scaleMode = .ResizeFill
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-            }
+    //        override func nextLevel() {
+    //            var levelStuff = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
+    //            levelStuff.scaleMode = .ResizeFill
+    //            let skView = self.view! as SKView
+    //            skView.ignoresSiblingOrder = true
+    //            skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    //        }
     
     var leverFlipped = Bool()
     var goalSide = Bool()
@@ -32,7 +32,7 @@ class LevelKScene: PlayScene{
     var doorExit = SKSpriteNode()
     
     override func setupMap(){
-        level = 11
+        level = 13
         leverFlipped = false
         goalSide = false
         
