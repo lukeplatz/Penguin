@@ -173,6 +173,7 @@
 		A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A851ADF61F20062E1DB /* LevelJ.sks */; };
 		A4A73A8C1ADF76930062E1DB /* EndlessInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */; };
 		A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */; };
+		A4A73A901ADFA0240062E1DB /* LevelK.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8F1ADFA0240062E1DB /* LevelK.sks */; };
 		A4CC31801AD30CB3005B09DD /* WaterObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC317F1AD30CB3005B09DD /* WaterObject.swift */; };
 		A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4CC31851AD5D4A0005B09DD /* LevelC.sks */; };
 		A4CC318C1AD5DDD8005B09DD /* LevelCScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CC318B1AD5DDD8005B09DD /* LevelCScene.swift */; };
@@ -369,6 +370,7 @@
 		A4A73A851ADF61F20062E1DB /* LevelJ.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelJ.sks; sourceTree = "<group>"; };
 		A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions.sks; sourceTree = "<group>"; };
 		A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions.sks; sourceTree = "<group>"; };
+		A4A73A8F1ADFA0240062E1DB /* LevelK.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelK.sks; sourceTree = "<group>"; };
 		A4CC317F1AD30CB3005B09DD /* WaterObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaterObject.swift; sourceTree = "<group>"; };
 		A4CC31851AD5D4A0005B09DD /* LevelC.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelC.sks; sourceTree = "<group>"; };
 		A4CC31871AD5D971005B09DD /* ugFM2GS - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ugFM2GS - Imgur.png"; path = "Images.xcassets/Shortblock.imageset/ugFM2GS - Imgur.png"; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 				3712841D1ADF087B00AA4CD4 /* LevelIScene.swift */,
 				A4A73A851ADF61F20062E1DB /* LevelJ.sks */,
 				A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */,
+				A4A73A8F1ADFA0240062E1DB /* LevelK.sks */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -759,6 +762,7 @@
 				65609EB21ADC709A0074E689 /* tundra.png in Resources */,
 				A4CC31911AD5FEE9005B09DD /* LevelD.sks in Resources */,
 				65C20DE31AD5D7FA00C8B923 /* PausePopup.sks in Resources */,
+				A4A73A901ADFA0240062E1DB /* LevelK.sks in Resources */,
 				65609E6F1ADC709A0074E689 /* iceBlock.png in Resources */,
 				65609EC41ADC709A0074E689 /* tundraMid.png in Resources */,
 				65609E8E1ADC709A0074E689 /* snowHillLow.png in Resources */,
