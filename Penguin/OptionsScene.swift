@@ -75,6 +75,7 @@ class OptionsScene: SKScene {
                 for index in 1 ... NumLevelsUnlocked{
                     NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscore\(index)")
                     NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscoreEndless")
+                    NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "EndlessInstructions")
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
                 popupUp = false

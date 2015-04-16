@@ -56,6 +56,9 @@
 		375E3A331ADFC22300EA0725 /* Medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A321ADFC22300EA0725 /* Medium.png */; };
 		375E3A351ADFD61B00EA0725 /* ModeSelection.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A341ADFD61B00EA0725 /* ModeSelection.sks */; };
 		375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A361ADFD68300EA0725 /* HighScores.sks */; };
+		375E3A391ADFDF7900EA0725 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A381ADFDF7900EA0725 /* nextButton.png */; };
+		375E3A3B1ADFE03700EA0725 /* EndlessInstructions2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A3A1ADFE03700EA0725 /* EndlessInstructions2.sks */; };
+		375E3A3D1ADFE2BB00EA0725 /* EndlessInstructions3.sks in Resources */ = {isa = PBXBuildFile; fileRef = 375E3A3C1ADFE2BB00EA0725 /* EndlessInstructions3.sks */; };
 		37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */; };
 		37CDAC121AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */; };
 		37CDAC141AD44B9400BA9AD3 /* H6EwGxP - Imgur.png in Resources */ = {isa = PBXBuildFile; fileRef = 37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */; };
@@ -181,7 +184,7 @@
 		A47607561ADC75EA0055CC58 /* PlaySceneBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = A47607551ADC75EA0055CC58 /* PlaySceneBackground.sks */; };
 		A4A73A841ADF61BD0062E1DB /* LevelJScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */; };
 		A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A851ADF61F20062E1DB /* LevelJ.sks */; };
-		A4A73A8C1ADF76930062E1DB /* EndlessInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */; };
+		A4A73A8C1ADF76930062E1DB /* EndlessInstructions1.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8B1ADF76930062E1DB /* EndlessInstructions1.sks */; };
 		A4A73A8E1ADF76CB0062E1DB /* StoryInstructions.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */; };
 		A4A73A901ADFA0240062E1DB /* LevelK.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A8F1ADFA0240062E1DB /* LevelK.sks */; };
 		A4A73A921ADFAA660062E1DB /* LevelKScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A911ADFAA660062E1DB /* LevelKScene.swift */; };
@@ -271,6 +274,9 @@
 		375E3A321ADFC22300EA0725 /* Medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Medium.png; sourceTree = "<group>"; };
 		375E3A341ADFD61B00EA0725 /* ModeSelection.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ModeSelection.sks; sourceTree = "<group>"; };
 		375E3A361ADFD68300EA0725 /* HighScores.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HighScores.sks; sourceTree = "<group>"; };
+		375E3A381ADFDF7900EA0725 /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextButton.png; sourceTree = "<group>"; };
+		375E3A3A1ADFE03700EA0725 /* EndlessInstructions2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions2.sks; sourceTree = "<group>"; };
+		375E3A3C1ADFE2BB00EA0725 /* EndlessInstructions3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions3.sks; sourceTree = "<group>"; };
 		37CDAC0E1AD43D5300BA9AD3 /* LevelA.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelA.sks; sourceTree = "<group>"; };
 		37CDAC111AD44B6E00BA9AD3 /* water_texture_03_by_frostbo-d5agt22.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "water_texture_03_by_frostbo-d5agt22.jpg"; sourceTree = "<group>"; };
 		37CDAC131AD44B9400BA9AD3 /* H6EwGxP - Imgur.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "H6EwGxP - Imgur.png"; sourceTree = "<group>"; };
@@ -398,7 +404,7 @@
 		A47607551ADC75EA0055CC58 /* PlaySceneBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaySceneBackground.sks; sourceTree = "<group>"; };
 		A4A73A831ADF61BD0062E1DB /* LevelJScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelJScene.swift; sourceTree = "<group>"; };
 		A4A73A851ADF61F20062E1DB /* LevelJ.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelJ.sks; sourceTree = "<group>"; };
-		A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions.sks; sourceTree = "<group>"; };
+		A4A73A8B1ADF76930062E1DB /* EndlessInstructions1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndlessInstructions1.sks; sourceTree = "<group>"; };
 		A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions.sks; sourceTree = "<group>"; };
 		A4A73A8F1ADFA0240062E1DB /* LevelK.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelK.sks; sourceTree = "<group>"; };
 		A4A73A911ADFAA660062E1DB /* LevelKScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelKScene.swift; sourceTree = "<group>"; };
@@ -493,6 +499,7 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				375E3A381ADFDF7900EA0725 /* nextButton.png */,
 				A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */,
 				A4A73A9C1ADFD3A40062E1DB /* highScoresTitle.png */,
 				A4A73A9D1ADFD3A40062E1DB /* selectModeTitle.png */,
@@ -604,7 +611,9 @@
 				37150EF61ABCAF3B00472733 /* ModeSelectionScene.swift */,
 				375E3A361ADFD68300EA0725 /* HighScores.sks */,
 				65B4B2B31ABCDECF00F8DD9C /* HighscoreScene.swift */,
-				A4A73A8B1ADF76930062E1DB /* EndlessInstructions.sks */,
+				A4A73A8B1ADF76930062E1DB /* EndlessInstructions1.sks */,
+				375E3A3A1ADFE03700EA0725 /* EndlessInstructions2.sks */,
+				375E3A3C1ADFE2BB00EA0725 /* EndlessInstructions3.sks */,
 				A4A73A8D1ADF76CB0062E1DB /* StoryInstructions.sks */,
 			);
 			name = Menus;
@@ -839,6 +848,7 @@
 				65609E9B1ADC709A0074E689 /* treeBranchesLeft.png in Resources */,
 				A4CC31861AD5D4A0005B09DD /* LevelC.sks in Resources */,
 				65609E821ADC709A0074E689 /* pineSaplingAlt.png in Resources */,
+				375E3A3D1ADFE2BB00EA0725 /* EndlessInstructions3.sks in Resources */,
 				A47607561ADC75EA0055CC58 /* PlaySceneBackground.sks in Resources */,
 				65C1015B1ADF47530048CFBA /* Spaceship.png in Resources */,
 				A4D26D7C1ADEF94600CDC466 /* LevelH.sks in Resources */,
@@ -865,7 +875,7 @@
 				372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */,
 				65609E801ADC709A0074E689 /* iglooRoofRight.png in Resources */,
 				65609E6B1ADC709A0074E689 /* caneRedSmall.png in Resources */,
-				A4A73A8C1ADF76930062E1DB /* EndlessInstructions.sks in Resources */,
+				A4A73A8C1ADF76930062E1DB /* EndlessInstructions1.sks in Resources */,
 				65609E8A1ADC709A0074E689 /* snowBallGround.png in Resources */,
 				65609E851ADC709A0074E689 /* rock.png in Resources */,
 				65609EBF1ADC709A0074E689 /* tundraHillRight.png in Resources */,
@@ -904,6 +914,7 @@
 				65B51AA11AD5C45400B238EF /* GameOverFrame.png in Resources */,
 				375E3A251ADFA87700EA0725 /* EndlessBackground.png in Resources */,
 				372559A61AD5F50300AE1808 /* spark.png in Resources */,
+				375E3A391ADFDF7900EA0725 /* nextButton.png in Resources */,
 				65609E911ADC709A0074E689 /* snowRight.png in Resources */,
 				C5157D201ADF485A007E1EEF /* P5.png in Resources */,
 				372559B01AD5FD3700AE1808 /* PlusOne.sks in Resources */,
@@ -958,6 +969,7 @@
 				659E00CF1AD61DE8001E974C /* nextLevelButton.png in Resources */,
 				65609EA81ADC709A0074E689 /* treeTrunkBottomAlt2.png in Resources */,
 				65609E931ADC709A0074E689 /* spikesBottom.png in Resources */,
+				375E3A3B1ADFE03700EA0725 /* EndlessInstructions2.sks in Resources */,
 				65609E891ADC709A0074E689 /* snowBallBigGround.png in Resources */,
 				372156651AD47AE000101993 /* fish.png in Resources */,
 				655176BE1AD4B78F0037964F /* GameOver.sks in Resources */,

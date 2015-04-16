@@ -29,6 +29,13 @@ class MainMenuScene: SKScene {
             CGRectGetMidY(self.frame) + 40 )
         self.optionsButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 40)
         self.highscoresButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - 100)
+        
+        var showEndlessInstructs = NSUserDefaults.standardUserDefaults().integerForKey("EndlessInstructions")
+        if(showEndlessInstructs != 2){
+            println("endless instructions will show")
+            NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "EndlessInstructions")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
 
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
         

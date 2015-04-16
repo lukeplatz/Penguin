@@ -49,7 +49,6 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.addChild(cloud2)
         scenes.append(cloud1)
         scenes.append(cloud2)
-        
         table.frame  = CGRectMake(size.width * 0.2, size.height * 0.1, size.width * 0.6, size.height)
         table.backgroundColor = UIColor.clearColor()
         

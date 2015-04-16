@@ -24,6 +24,10 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
 
     let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
+    
+    let Instructions1 = SKNode.unarchiveFromFile("EndlessInstructions1")!
+    let Instructions2 = SKNode.unarchiveFromFile("EndlessInstructions2")!
+    let Instructions3 = SKNode.unarchiveFromFile("EndlessInstructions3")!
 
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let speedIndicator = SKSpriteNode(imageNamed: "Slow")
@@ -82,7 +86,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     var presentInstructions = true
     var forwardMovement = CGFloat(0.0)
     
-    
+    var instructionsPresent = false
+    var instructionsShown = 0
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
@@ -113,13 +118,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         snow?.physicsBody?.contactTestBitMask = collision.playerCategory
         self.addChild(snow!)
         
-        self.instructions1.text = "Press and Hold to slide backwards"
+        self.instructions1.text = "***Hold Still***"
         self.instructions1.position.x = CGRectGetMidX(self.frame)
         self.instructions1.position.y = CGRectGetMidY(self.frame) + 20
         self.instructions1.fontColor = UIColor.orangeColor()
         self.instructions1.fontSize = 30
         
-        self.instructions2.text = "Release to slide forwards! Tap to Begin"
+        self.instructions2.text = "Tap to Begin!"
         self.instructions2.position.x = CGRectGetMidX(self.frame)
         self.instructions2.position.y = CGRectGetMidY(self.frame) - 20
         self.instructions2.fontColor = UIColor.orangeColor()
@@ -150,6 +155,14 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         //Sets up BackButton, Score, PauseButton
         setupHUD()
         
+        var showInstructs = NSUserDefaults.standardUserDefaults().integerForKey("EndlessInstructions")
+        if(showInstructs == 1){
+            NSUserDefaults.standardUserDefaults().setInteger(2, forKey: "EndlessInstructions")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            showInstructions()// present the instructions
+        }
+        
+        
         if (self.motionManager.accelerometerAvailable){
             //Set up and manage motion manager to get accelerometer data
             self.motionManager.accelerometerUpdateInterval = (1/40)
@@ -169,7 +182,29 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         /* Called when a touch begins */
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            if(self.gameO == true){
+            
+            if(instructionsPresent == true){
+                if(self.nodeAtPoint(location) == self.Instructions1.childNodeWithName("nextButton") as SKSpriteNode){
+                    if(instructionsShown == 1){
+                        instructionsShown++
+                        self.Instructions1.removeFromParent()
+                        self.Instructions2.zPosition = 100
+                        self.Instructions2.removeFromParent()
+                        self.addChild(Instructions2)
+                    }else if (instructionsShown == 2){
+                        instructionsShown++
+                        self.Instructions2.removeFromParent()
+                        self.Instructions3.zPosition = 100
+                        self.Instructions3.removeFromParent()
+                        self.addChild(Instructions3)
+                    }else{
+                        self.Instructions3.removeFromParent()
+                        self.blurNode.removeFromParent()
+                        instructionsPresent = false
+                    }
+                }
+            }
+            else if(self.gameO == true){
                 if (self.nodeAtPoint(location) == self.GameOverStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
                     var ModeSelectScene = ModeSelectionScene.unarchiveFromFile("ModeSelection")! as ModeSelectionScene
@@ -228,7 +263,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                         self.getNewDelay()
                         self.presentInstructions = false
                         gameStarted = true
-                        self.addChild(pauseButton)
+                        self.needToCalibrate = true
                     }
                     self.forwardMovement = -4.0
                 }
@@ -236,11 +271,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
            
             else if(self.Pause == true){
                 if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
+                    if(gameStarted == true){
+                        startAnimations()
+                    }
                     self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
                     self.Pause = false
                     self.physicsWorld.speed = 1
-                    startAnimations()
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
@@ -266,7 +303,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
-            self.forwardMovement = 4.0
+            if(gameStarted == true){
+                self.forwardMovement = 4.0
+            }
         }
     }
     
@@ -337,6 +376,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.pausedImage.zPosition = 1
         
         self.addChild(speedIndicator)
+        self.addChild(pauseButton)
         self.addChild(HUDbar)
         self.addChild(retryButton)
         self.addChild(score)
@@ -643,6 +683,27 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             }
         }
         
+    }
+    
+    func showInstructions(){
+        let wait = SKAction.waitForDuration(NSTimeInterval(0.25))
+        let i = SKAction.runBlock({self.showI()})
+        let a = SKAction.sequence([wait, i])
+        self.runAction(a)
+    }
+    
+    func showI(){
+        Instructions1.removeFromParent()
+        loadBlurScreen()
+        Instructions1.xScale = 0
+        Instructions1.yScale = 0
+        Instructions1.zPosition = 100
+        Instructions1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        self.addChild(Instructions1)
+        let scale = SKAction.scaleTo(1, duration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0)
+        Instructions1.runAction(scale)
+        instructionsPresent = true
+        instructionsShown++
     }
     
     func setupPausePopup(){
