@@ -7,7 +7,6 @@
 //
 
 import SpriteKit
-//Gamescene == View
 class MainMenuScene: SKScene {
     //Sets up playbutton and title variables
 
