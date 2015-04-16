@@ -6,16 +6,6 @@
 //  Copyright (c) 2015 Luke Platz. All rights reserved.
 //
 
-import Foundation
-//
-//  Level1Scene.swift
-//  Penguin
-//
-//  Created by Jacob Gerstler on 3/26/15.
-//  Copyright (c) 2015 Luke Platz. All rights reserved.
-//
-
-
 //
 //let blur = UIVisualEffectView(effect: UIBlurEffect(style: UIBlurEffectStyle.Light))
 //blur.frame = frame
