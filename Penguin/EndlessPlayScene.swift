@@ -76,6 +76,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     var minDistance = CGFloat(650)
     
+    var gameStarted = false
     var Pause = false
     var gameO = false
     var presentInstructions = true
@@ -85,7 +86,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 250, blue: 154, alpha: 1)
-        self.physicsWorld.gravity = CGVectorMake(0, 2)
+        self.physicsWorld.gravity = CGVectorMake(0, 0)
         self.physicsWorld.contactDelegate = self
         
         // 1 Create a physics body that borders the screen
@@ -227,6 +228,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                         sendNodeAction(background2)
                         self.getNewDelay()
                         self.presentInstructions = false
+                        gameStarted = true
+                        self.addChild(pauseButton)
                     }
                     self.forwardMovement = -4.0
                 }
@@ -234,11 +237,11 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
            
             else if(self.Pause == true){
                 if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
-                    self.Pause = false
                     self.blurNode.removeFromParent()
                     PauseStuff.removeFromParent()
-                    startAnimations()
+                    self.Pause = false
                     self.physicsWorld.speed = 1
+                    startAnimations()
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
@@ -339,7 +342,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.addChild(HUDbar)
         self.addChild(retryButton)
         self.addChild(score)
-        self.addChild(pauseButton)
     }
     
     func random() -> CGFloat {
