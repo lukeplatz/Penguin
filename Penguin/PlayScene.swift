@@ -35,7 +35,7 @@ enum GameState {
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var levelStuff = SKNode.unarchiveFromFile("PlaySceneBackground")! as SKNode
-    
+    var tapToStartStuff = SKNode.unarchiveFromFile("TapToStartPopup")! as SKNode
     let Instructions1 = SKNode.unarchiveFromFile("StoryInstructions1")!
     let Instructions2 = SKNode.unarchiveFromFile("StoryInstructions2")!
     
@@ -169,7 +169,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                             self.physicsWorld.speed = 0
                     }
                 }else{
-                    self.startMsg.removeFromParent()
+                    
+                        self.tapToStartStuff.removeFromParent()
+                    
+                    
 //                    self.instructions1.removeFromParent()
 //                    self.instructions2.removeFromParent()
 //                    self.instructions3.removeFromParent()
@@ -348,7 +351,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 //        self.addChild(instructions3)
 
         
-        self.addChild(startMsg)
+        self.addChild(tapToStartStuff)
         self.addChild(HUDbar)
         self.addChild(retryButton)
         self.addChild(lvlNum)
@@ -587,6 +590,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func showI(){
         Instructions1.removeFromParent()
         loadBlurScreen()
+    
         Instructions1.xScale = 0
         Instructions1.yScale = 0
         Instructions1.zPosition = 100

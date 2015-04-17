@@ -83,7 +83,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.backButton.xScale = (50/self.backButton.size.width)
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-
+        backButton.zPosition = 100
         self.addChild(backButton)
         self.addChild(backStuff)
     }
