@@ -39,8 +39,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
 
-        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height)
-        table.backgroundColor = UIColor.clearColor()
+//        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height)
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
@@ -55,6 +54,9 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         highScoreBannerView.image = UIImage(named: "highScoresTitle")
         self.view?.addSubview(highScoreBannerView)
         
+        
+        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height - (size.height * 0.2))
+        table.backgroundColor = UIColor.clearColor()
         table.tableFooterView = UIView(frame: CGRectZero)
         table.dataSource = self
         table.delegate   = self
