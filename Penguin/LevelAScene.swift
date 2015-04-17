@@ -22,7 +22,7 @@ class LevelAScene: PlayScene{
     
     override func nextLevel() {
         motionManager.stopAccelerometerUpdates()
-        var levelStuff = LevelFScene.unarchiveFromFile("LevelF")! as LevelFScene
+        var levelStuff = LevelHScene.unarchiveFromFile("LevelH")! as LevelHScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
@@ -38,7 +38,7 @@ class LevelAScene: PlayScene{
     }
     
     override func setupMap(){
-        level = 5
+        level = 12
         self.lvlNum.text = "Level \(level)"
         
         let penguin = childNodeWithName("Penguin") as SKSpriteNode

@@ -44,7 +44,7 @@ class LevelBScene: PlayScene{
     }
     
     override func setupMap(){
-        level = 4
+        level = 11
         self.lvlNum.text = "Level \(level)"
         
         let pulseUp = SKAction.scaleTo(0.95, duration: 0.5)

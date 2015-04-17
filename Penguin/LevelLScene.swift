@@ -19,7 +19,7 @@ class LevelLScene: PlayScene{
     }
     
             override func nextLevel() {
-                var levelStuff = LevelMScene.unarchiveFromFile("LevelM")! as LevelMScene
+                var levelStuff = LevelGScene.unarchiveFromFile("LevelG")! as LevelGScene
                 levelStuff.scaleMode = .ResizeFill
                 let skView = self.view! as SKView
                 skView.ignoresSiblingOrder = true
@@ -32,7 +32,7 @@ class LevelLScene: PlayScene{
     var doorExit = SKSpriteNode()
     
     override func setupMap(){
-        level = 12
+        level = 8
         self.lvlNum.text = "Level \(level)"
 
         leverFlipped = false

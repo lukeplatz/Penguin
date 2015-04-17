@@ -93,115 +93,48 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("Level: \(indexPath.row + 1)!")
         
+        var levelXXX = PlayScene()
+        
         switch (indexPath.row + 1){
         case (1):
-            var levelC = LevelCScene.unarchiveFromFile("LevelC")! as LevelCScene
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            levelC.scaleMode = .ResizeFill
-            skView.presentScene(levelC, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelCScene.unarchiveFromFile("LevelC")! as LevelCScene
         case (2):
-            var levelD = LevelDScene.unarchiveFromFile("LevelD")! as LevelDScene
-            levelD.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelD, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelDScene.unarchiveFromFile("LevelK")! as LevelDScene
         case (3):
-            var levelE = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
-            levelE.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelE, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelEScene.unarchiveFromFile("LevelJ")! as LevelEScene
         case (4):
-            var levelB = LevelBScene.unarchiveFromFile("LevelB")! as LevelBScene
-            levelB.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelB, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelBScene.unarchiveFromFile("LevelD")! as LevelBScene
         case (5):
-            var levelA = LevelAScene.unarchiveFromFile("LevelA")! as LevelAScene
-            levelA.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelA, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelAScene.unarchiveFromFile("LevelE")! as LevelAScene
         case (6):
-            var levelF = LevelFScene.unarchiveFromFile("LevelF")! as LevelFScene
-            levelF.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelF, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelFScene.unarchiveFromFile("LevelF")! as LevelFScene
         case (7):
-            var levelG = LevelGScene.unarchiveFromFile("LevelG")! as LevelGScene
-            levelG.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelG, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelGScene.unarchiveFromFile("LevelI")! as LevelGScene
         case (8):
-            var levelH = LevelHScene.unarchiveFromFile("LevelH")! as LevelHScene
-            levelH.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelH, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelHScene.unarchiveFromFile("LevelL")! as LevelHScene
         case (9):
-            var levelI = LevelIScene.unarchiveFromFile("LevelI")! as LevelIScene
-            levelI.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelI, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelIScene.unarchiveFromFile("LevelG")! as LevelIScene
         case (10):
-            var levelJ = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
-            levelJ.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelJ, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelJScene.unarchiveFromFile("LevelN")! as LevelJScene
         case (11):
-            var levelK = LevelKScene.unarchiveFromFile("LevelK")! as LevelKScene
-            levelK.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelK, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelKScene.unarchiveFromFile("LevelB")! as LevelKScene
         case (12):
-            var levelL = LevelLScene.unarchiveFromFile("LevelL")! as LevelLScene
-            levelL.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelL, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelLScene.unarchiveFromFile("LevelA")! as LevelLScene
         case (13):
-            var levelM = LevelMScene.unarchiveFromFile("LevelM")! as LevelMScene
-            levelM.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelM, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelMScene.unarchiveFromFile("LevelH")! as LevelMScene
         case (14):
-            var levelN = LevelNScene.unarchiveFromFile("LevelN")! as LevelNScene
-            levelN.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelN, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelNScene.unarchiveFromFile("LevelM")! as LevelNScene
         case (15):
-            var levelO = LevelOScene.unarchiveFromFile("LevelO")! as LevelOScene
-            levelO.scaleMode = .ResizeFill
-            let skView = self.view! as SKView
-            skView.ignoresSiblingOrder = true
-            skView.presentScene(levelO, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
-            table.removeFromSuperview()
+            levelXXX = LevelOScene.unarchiveFromFile("LevelO")! as LevelOScene
         default:
             println("Level Not Unlocked!")
         }
+        
+        levelXXX.scaleMode = .ResizeFill
+        let skView = self.view! as SKView
+        skView.ignoresSiblingOrder = true
+        skView.presentScene(levelXXX, transition: SKTransition.pushWithDirection(SKTransitionDirection.Left, duration: 0.5))
+        table.removeFromSuperview()
     }
     
     override func update(currentTime: CFTimeInterval) {

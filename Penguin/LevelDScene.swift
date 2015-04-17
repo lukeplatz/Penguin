@@ -29,7 +29,7 @@ class LevelDScene: PlayScene{
     }
     
     override func setupMap(){
-        level = 2
+        level = 4
         self.lvlNum.text = "Level \(level)"
 
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
