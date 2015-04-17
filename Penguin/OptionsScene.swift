@@ -10,7 +10,7 @@ import SpriteKit
 
 
 class OptionsScene: SKScene {
-    
+    var menuStuff = SKNode.unarchiveFromFile("Options")! as SKNode
     let title = SKSpriteNode(imageNamed: "optionsTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let resetButton = SKSpriteNode(imageNamed: "ResetButton")
@@ -40,12 +40,13 @@ class OptionsScene: SKScene {
         self.backButton.xScale = (100/self.backButton.size.width)
         self.backButton.yScale = (100/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-        
+        self.backButton.zPosition = 100
         self.resetButton.name = "reset"
         self.resetButton.anchorPoint = CGPointMake(0.5, 0.5)
         self.resetButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        self.resetButton.zPosition = 100
         self.addChild(resetButton)
-        
+        self.addChild(menuStuff)
         self.addChild(title)
         self.addChild(backButton)
         

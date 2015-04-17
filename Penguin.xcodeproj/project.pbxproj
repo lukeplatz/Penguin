@@ -172,6 +172,7 @@
 		6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCCE1AC481A300793471 /* LevelAScene.swift */; };
 		6571DCD11AC4862000793471 /* LevelBScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCD01AC4862000793471 /* LevelBScene.swift */; };
 		6573745D1AE0B4A200A4B071 /* retry.png in Resources */ = {isa = PBXBuildFile; fileRef = 6573745C1AE0B4A200A4B071 /* retry.png */; };
+		657374611AE15CCC00A4B071 /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 657374601AE15CCC00A4B071 /* optionsTitle.png */; };
 		65836F071AE0232700E80B29 /* lilPenguinGuyReversed.png in Resources */ = {isa = PBXBuildFile; fileRef = 65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */; };
 		65836F091AE027C700E80B29 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 65836F081AE027C700E80B29 /* back_button.png */; };
 		65836F0B1AE02E3A00E80B29 /* HillsBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65836F0A1AE02E3A00E80B29 /* HillsBackground.sks */; };
@@ -211,7 +212,6 @@
 		A4A73A991ADFB11B0062E1DB /* LevelM.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A951ADFB11B0062E1DB /* LevelM.sks */; };
 		A4A73A9A1ADFB11B0062E1DB /* LevelMScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */; };
 		A4A73AA01ADFD3A40062E1DB /* selectLevelTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */; };
-		A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */; };
 		A4A73AA71AE012AA0062E1DB /* StoryInstructions2.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */; };
 		A4A7D2401AE096ED00680256 /* LevelN.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A7D23E1AE096ED00680256 /* LevelN.sks */; };
 		A4A7D2411AE096ED00680256 /* LevelNScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7D23F1AE096ED00680256 /* LevelNScene.swift */; };
@@ -412,6 +412,7 @@
 		6571DCCE1AC481A300793471 /* LevelAScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelAScene.swift; sourceTree = "<group>"; };
 		6571DCD01AC4862000793471 /* LevelBScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelBScene.swift; sourceTree = "<group>"; };
 		6573745C1AE0B4A200A4B071 /* retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retry.png; path = Images.xcassets/RetryButton.imageset/retry.png; sourceTree = "<group>"; };
+		657374601AE15CCC00A4B071 /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
 		65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lilPenguinGuyReversed.png; sourceTree = "<group>"; };
 		65836F081AE027C700E80B29 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		65836F0A1AE02E3A00E80B29 /* HillsBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HillsBackground.sks; sourceTree = "<group>"; };
@@ -451,7 +452,6 @@
 		A4A73A951ADFB11B0062E1DB /* LevelM.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelM.sks; sourceTree = "<group>"; };
 		A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMScene.swift; sourceTree = "<group>"; };
 		A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectLevelTitle.png; sourceTree = "<group>"; };
-		A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
 		A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions2.sks; sourceTree = "<group>"; };
 		A4A7D23E1AE096ED00680256 /* LevelN.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelN.sks; sourceTree = "<group>"; };
 		A4A7D23F1AE096ED00680256 /* LevelNScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelNScene.swift; sourceTree = "<group>"; };
@@ -549,11 +549,11 @@
 				65C101741AE011E40048CFBA /* lilPenguinGuy.png */,
 				65C101701AE010130048CFBA /* penguinSlideTitle.png */,
 				65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */,
-				A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */,
 				65C101621AE00B080048CFBA /* optionsButton.png */,
 				65C101761AE017630048CFBA /* storyButton.png */,
 				375E3A321ADFC22300EA0725 /* Medium.png */,
 				6568C5D01AE037E0007769A9 /* highScoresTitle.png */,
+				657374601AE15CCC00A4B071 /* optionsTitle.png */,
 				65C1016C1AE00D940048CFBA /* menuBack.jpg */,
 				65C101661AE00B630048CFBA /* playButton.png */,
 				375E3A301ADFC21C00EA0725 /* Fast.png */,
@@ -976,7 +976,6 @@
 				65609E9A1ADC709A0074E689 /* tree.png in Resources */,
 				65609E771ADC709A0074E689 /* iceWaterDeepStars.png in Resources */,
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
-				A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */,
 				65609EC11ADC709A0074E689 /* tundraLedgeLeft.png in Resources */,
 				65C1016D1AE00D940048CFBA /* menuBack.jpg in Resources */,
 				3718CC4D1ADDB2DE00191E6E /* ConfirmPopup.sks in Resources */,
@@ -1012,6 +1011,7 @@
 				375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
+				657374611AE15CCC00A4B071 /* optionsTitle.png in Resources */,
 				65609EBD1ADC709A0074E689 /* tundraHillLeft.png in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */,
 				37E3C91F1AD6F521009D358A /* ice.jpg in Resources */,
