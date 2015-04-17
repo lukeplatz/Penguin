@@ -35,6 +35,7 @@ class LevelMScene: PlayScene{
     
     override func setupMap(){
         level = 14
+        self.lvlNum.text = "Level \(level)"
         leverFlipped = false
         goalSide = false
         

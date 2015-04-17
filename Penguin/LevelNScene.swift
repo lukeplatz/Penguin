@@ -32,6 +32,8 @@ class LevelNScene: PlayScene{
     
     override func setupMap(){
         level = 10
+        self.lvlNum.text = "Level \(level)"
+
         leverFlipped = false
         
         let penguin = childNodeWithName("Penguin") as SKSpriteNode
