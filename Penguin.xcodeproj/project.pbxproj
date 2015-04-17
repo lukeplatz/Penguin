@@ -24,6 +24,7 @@
 		3716493D1AB8781A0019694B /* PenguinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716493C1AB8781A0019694B /* PenguinTests.swift */; };
 		371649471AB87ECB0019694B /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649461AB87ECB0019694B /* PlayScene.swift */; };
 		3717737B1AE0C16A00F68844 /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3717737A1AE0C16A00F68844 /* IceMan.png */; };
+		3717737D1AE1607700F68844 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 3717737C1AE1607700F68844 /* unlock.png */; };
 		3718CC411ADC6BD600191E6E /* icicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC401ADC6BD600191E6E /* icicle.png */; };
 		3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC421ADC8A5A00191E6E /* endlessIce.png */; };
 		3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC441ADD9A8500191E6E /* boxAlt.png */; };
@@ -262,6 +263,7 @@
 		3716493C1AB8781A0019694B /* PenguinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenguinTests.swift; sourceTree = "<group>"; };
 		371649461AB87ECB0019694B /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
 		3717737A1AE0C16A00F68844 /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
+		3717737C1AE1607700F68844 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlock.png; sourceTree = "<group>"; };
 		3718CC401ADC6BD600191E6E /* icicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icicle.png; sourceTree = "<group>"; };
 		3718CC421ADC8A5A00191E6E /* endlessIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessIce.png; sourceTree = "<group>"; };
 		3718CC441ADD9A8500191E6E /* boxAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxAlt.png; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3717737C1AE1607700F68844 /* unlock.png */,
 				3724F39C1AE0182A00EC1801 /* girlPenguin.png */,
 				375E3A381ADFDF7900EA0725 /* nextButton.png */,
 				65C101681AE00B8D0048CFBA /* highscoreButton.png */,
@@ -1062,6 +1065,7 @@
 				65C101751AE011E40048CFBA /* lilPenguinGuy.png in Resources */,
 				65609E951ADC709A0074E689 /* spikesBottomAlt2.png in Resources */,
 				65609EA51ADC709A0074E689 /* treeTrunk.png in Resources */,
+				3717737D1AE1607700F68844 /* unlock.png in Resources */,
 				37E3C9191AD6F19B009D358A /* LevelF.sks in Resources */,
 				65609EBA1ADC709A0074E689 /* tundraHalfLeft.png in Resources */,
 				65609EC21ADC709A0074E689 /* tundraLedgeRight.png in Resources */,
