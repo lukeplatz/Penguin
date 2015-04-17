@@ -105,7 +105,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
         case (4):
             levelXXX = LevelBScene.unarchiveFromFile("LevelD")! as LevelBScene
         case (5):
-            levelXXX = LevelAScene.unarchiveFromFile("LevelE")! as LevelAScene
+            levelXXX = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
         case (6):
             levelXXX = LevelFScene.unarchiveFromFile("LevelF")! as LevelFScene
         case (7):
