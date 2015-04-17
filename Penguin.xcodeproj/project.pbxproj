@@ -23,6 +23,8 @@
 		371649311AB8781A0019694B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3716492F1AB8781A0019694B /* LaunchScreen.xib */; };
 		3716493D1AB8781A0019694B /* PenguinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716493C1AB8781A0019694B /* PenguinTests.swift */; };
 		371649471AB87ECB0019694B /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649461AB87ECB0019694B /* PlayScene.swift */; };
+		3717737B1AE0C16A00F68844 /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3717737A1AE0C16A00F68844 /* IceMan.png */; };
+		3717737D1AE1607700F68844 /* unlock.png in Resources */ = {isa = PBXBuildFile; fileRef = 3717737C1AE1607700F68844 /* unlock.png */; };
 		3718CC411ADC6BD600191E6E /* icicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC401ADC6BD600191E6E /* icicle.png */; };
 		3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC421ADC8A5A00191E6E /* endlessIce.png */; };
 		3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC441ADD9A8500191E6E /* boxAlt.png */; };
@@ -170,6 +172,8 @@
 		6568C5D31AE039F8007769A9 /* HillsBackgroundNOPENGY.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6568C5D21AE039F8007769A9 /* HillsBackgroundNOPENGY.sks */; };
 		6571DCCF1AC481A300793471 /* LevelAScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCCE1AC481A300793471 /* LevelAScene.swift */; };
 		6571DCD11AC4862000793471 /* LevelBScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6571DCD01AC4862000793471 /* LevelBScene.swift */; };
+		6573745D1AE0B4A200A4B071 /* retry.png in Resources */ = {isa = PBXBuildFile; fileRef = 6573745C1AE0B4A200A4B071 /* retry.png */; };
+		657374611AE15CCC00A4B071 /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 657374601AE15CCC00A4B071 /* optionsTitle.png */; };
 		65836F071AE0232700E80B29 /* lilPenguinGuyReversed.png in Resources */ = {isa = PBXBuildFile; fileRef = 65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */; };
 		65836F091AE027C700E80B29 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 65836F081AE027C700E80B29 /* back_button.png */; };
 		65836F0B1AE02E3A00E80B29 /* HillsBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65836F0A1AE02E3A00E80B29 /* HillsBackground.sks */; };
@@ -194,6 +198,7 @@
 		65C101771AE017630048CFBA /* storyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101761AE017630048CFBA /* storyButton.png */; };
 		65C101791AE0176B0048CFBA /* endlessButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 65C101781AE0176B0048CFBA /* endlessButton.png */; };
 		65C20DE31AD5D7FA00C8B923 /* PausePopup.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65C20DE21AD5D7FA00C8B923 /* PausePopup.sks */; };
+		65D68C271AE09BA800E82A87 /* TapToStartPopup.sks in Resources */ = {isa = PBXBuildFile; fileRef = 65D68C261AE09BA800E82A87 /* TapToStartPopup.sks */; };
 		A47607521ADC71880055CC58 /* LevelGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A47607511ADC71880055CC58 /* LevelGScene.swift */; };
 		A47607541ADC721C0055CC58 /* LevelG.sks in Resources */ = {isa = PBXBuildFile; fileRef = A47607531ADC721C0055CC58 /* LevelG.sks */; };
 		A47607561ADC75EA0055CC58 /* PlaySceneBackground.sks in Resources */ = {isa = PBXBuildFile; fileRef = A47607551ADC75EA0055CC58 /* PlaySceneBackground.sks */; };
@@ -208,7 +213,6 @@
 		A4A73A991ADFB11B0062E1DB /* LevelM.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A951ADFB11B0062E1DB /* LevelM.sks */; };
 		A4A73A9A1ADFB11B0062E1DB /* LevelMScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */; };
 		A4A73AA01ADFD3A40062E1DB /* selectLevelTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */; };
-		A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */; };
 		A4A73AA71AE012AA0062E1DB /* StoryInstructions2.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */; };
 		A4A7D2401AE096ED00680256 /* LevelN.sks in Resources */ = {isa = PBXBuildFile; fileRef = A4A7D23E1AE096ED00680256 /* LevelN.sks */; };
 		A4A7D2411AE096ED00680256 /* LevelNScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A7D23F1AE096ED00680256 /* LevelNScene.swift */; };
@@ -258,6 +262,8 @@
 		3716493B1AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3716493C1AB8781A0019694B /* PenguinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenguinTests.swift; sourceTree = "<group>"; };
 		371649461AB87ECB0019694B /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		3717737A1AE0C16A00F68844 /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
+		3717737C1AE1607700F68844 /* unlock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unlock.png; sourceTree = "<group>"; };
 		3718CC401ADC6BD600191E6E /* icicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icicle.png; sourceTree = "<group>"; };
 		3718CC421ADC8A5A00191E6E /* endlessIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessIce.png; sourceTree = "<group>"; };
 		3718CC441ADD9A8500191E6E /* boxAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxAlt.png; sourceTree = "<group>"; };
@@ -407,6 +413,8 @@
 		6568C5D21AE039F8007769A9 /* HillsBackgroundNOPENGY.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HillsBackgroundNOPENGY.sks; sourceTree = "<group>"; };
 		6571DCCE1AC481A300793471 /* LevelAScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelAScene.swift; sourceTree = "<group>"; };
 		6571DCD01AC4862000793471 /* LevelBScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelBScene.swift; sourceTree = "<group>"; };
+		6573745C1AE0B4A200A4B071 /* retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = retry.png; path = Images.xcassets/RetryButton.imageset/retry.png; sourceTree = "<group>"; };
+		657374601AE15CCC00A4B071 /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
 		65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lilPenguinGuyReversed.png; sourceTree = "<group>"; };
 		65836F081AE027C700E80B29 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		65836F0A1AE02E3A00E80B29 /* HillsBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HillsBackground.sks; sourceTree = "<group>"; };
@@ -431,6 +439,7 @@
 		65C101761AE017630048CFBA /* storyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storyButton.png; sourceTree = "<group>"; };
 		65C101781AE0176B0048CFBA /* endlessButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessButton.png; sourceTree = "<group>"; };
 		65C20DE21AD5D7FA00C8B923 /* PausePopup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PausePopup.sks; sourceTree = "<group>"; };
+		65D68C261AE09BA800E82A87 /* TapToStartPopup.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = TapToStartPopup.sks; path = Tiles/TapToStartPopup.sks; sourceTree = "<group>"; };
 		A47607511ADC71880055CC58 /* LevelGScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelGScene.swift; sourceTree = "<group>"; };
 		A47607531ADC721C0055CC58 /* LevelG.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelG.sks; sourceTree = "<group>"; };
 		A47607551ADC75EA0055CC58 /* PlaySceneBackground.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlaySceneBackground.sks; sourceTree = "<group>"; };
@@ -445,7 +454,6 @@
 		A4A73A951ADFB11B0062E1DB /* LevelM.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelM.sks; sourceTree = "<group>"; };
 		A4A73A961ADFB11B0062E1DB /* LevelMScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelMScene.swift; sourceTree = "<group>"; };
 		A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectLevelTitle.png; sourceTree = "<group>"; };
-		A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = optionsTitle.png; sourceTree = "<group>"; };
 		A4A73AA51AE012AA0062E1DB /* StoryInstructions2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StoryInstructions2.sks; sourceTree = "<group>"; };
 		A4A7D23E1AE096ED00680256 /* LevelN.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LevelN.sks; sourceTree = "<group>"; };
 		A4A7D23F1AE096ED00680256 /* LevelNScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelNScene.swift; sourceTree = "<group>"; };
@@ -533,19 +541,22 @@
 		371649201AB8781A0019694B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3717737C1AE1607700F68844 /* unlock.png */,
 				3724F39C1AE0182A00EC1801 /* girlPenguin.png */,
 				375E3A381ADFDF7900EA0725 /* nextButton.png */,
 				65C101681AE00B8D0048CFBA /* highscoreButton.png */,
 				A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */,
+				3717737A1AE0C16A00F68844 /* IceMan.png */,
 				65836F0E1AE0337000E80B29 /* selectLevel.png */,
+				6573745C1AE0B4A200A4B071 /* retry.png */,
 				65C101741AE011E40048CFBA /* lilPenguinGuy.png */,
 				65C101701AE010130048CFBA /* penguinSlideTitle.png */,
 				65836F061AE0232700E80B29 /* lilPenguinGuyReversed.png */,
-				A4A73A9F1ADFD3A40062E1DB /* optionsTitle.png */,
 				65C101621AE00B080048CFBA /* optionsButton.png */,
 				65C101761AE017630048CFBA /* storyButton.png */,
 				375E3A321ADFC22300EA0725 /* Medium.png */,
 				6568C5D01AE037E0007769A9 /* highScoresTitle.png */,
+				657374601AE15CCC00A4B071 /* optionsTitle.png */,
 				65C1016C1AE00D940048CFBA /* menuBack.jpg */,
 				65C101661AE00B630048CFBA /* playButton.png */,
 				375E3A301ADFC21C00EA0725 /* Fast.png */,
@@ -652,6 +663,7 @@
 				65836F0A1AE02E3A00E80B29 /* HillsBackground.sks */,
 				6568C5D21AE039F8007769A9 /* HillsBackgroundNOPENGY.sks */,
 				655176BD1AD4B78F0037964F /* GameOver.sks */,
+				65D68C261AE09BA800E82A87 /* TapToStartPopup.sks */,
 				65B4B2AB1ABCD18900F8DD9C /* OptionsScene.swift */,
 				3718CC521ADDB82900191E6E /* Options.sks */,
 				3718CC4C1ADDB2DE00191E6E /* ConfirmPopup.sks */,
@@ -893,6 +905,7 @@
 				A4A73A861ADF61F20062E1DB /* LevelJ.sks in Resources */,
 				37CDAC161AD44C0300BA9AD3 /* Xc2oNw8 - Imgur.png in Resources */,
 				65609E8F1ADC709A0074E689 /* snowLeft.png in Resources */,
+				6573745D1AE0B4A200A4B071 /* retry.png in Resources */,
 				65609EB81ADC709A0074E689 /* tundraCliffRightAlt.png in Resources */,
 				65609EA61ADC709A0074E689 /* treeTrunkBottom.png in Resources */,
 				65609E7F1ADC709A0074E689 /* iglooRoofLeft.png in Resources */,
@@ -926,6 +939,7 @@
 				3718CC411ADC6BD600191E6E /* icicle.png in Resources */,
 				372559B21AD615D300AE1808 /* EndlessLevel.sks in Resources */,
 				65609E801ADC709A0074E689 /* iglooRoofRight.png in Resources */,
+				65D68C271AE09BA800E82A87 /* TapToStartPopup.sks in Resources */,
 				65609E6B1ADC709A0074E689 /* caneRedSmall.png in Resources */,
 				A4A73A8C1ADF76930062E1DB /* EndlessInstructions1.sks in Resources */,
 				65609E8A1ADC709A0074E689 /* snowBallGround.png in Resources */,
@@ -961,10 +975,10 @@
 				65609E751ADC709A0074E689 /* iceWaterDeep.png in Resources */,
 				65609E901ADC709A0074E689 /* snowMid.png in Resources */,
 				3718CC631ADDF35900191E6E /* P10.png in Resources */,
+				3717737B1AE0C16A00F68844 /* IceMan.png in Resources */,
 				65609E9A1ADC709A0074E689 /* tree.png in Resources */,
 				65609E771ADC709A0074E689 /* iceWaterDeepStars.png in Resources */,
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
-				A4A73AA41ADFD3A40062E1DB /* optionsTitle.png in Resources */,
 				65609EC11ADC709A0074E689 /* tundraLedgeLeft.png in Resources */,
 				65C1016D1AE00D940048CFBA /* menuBack.jpg in Resources */,
 				3718CC4D1ADDB2DE00191E6E /* ConfirmPopup.sks in Resources */,
@@ -1000,6 +1014,7 @@
 				375E3A371ADFD68300EA0725 /* HighScores.sks in Resources */,
 				375E3A231ADFA36000EA0725 /* BackgroundIce.png in Resources */,
 				65609E791ADC709A0074E689 /* iceWaterMid.png in Resources */,
+				657374611AE15CCC00A4B071 /* optionsTitle.png in Resources */,
 				65609EBD1ADC709A0074E689 /* tundraHillLeft.png in Resources */,
 				37CDAC0F1AD43D5300BA9AD3 /* LevelA.sks in Resources */,
 				37E3C91F1AD6F521009D358A /* ice.jpg in Resources */,
@@ -1050,6 +1065,7 @@
 				65C101751AE011E40048CFBA /* lilPenguinGuy.png in Resources */,
 				65609E951ADC709A0074E689 /* spikesBottomAlt2.png in Resources */,
 				65609EA51ADC709A0074E689 /* treeTrunk.png in Resources */,
+				3717737D1AE1607700F68844 /* unlock.png in Resources */,
 				37E3C9191AD6F19B009D358A /* LevelF.sks in Resources */,
 				65609EBA1ADC709A0074E689 /* tundraHalfLeft.png in Resources */,
 				65609EC21ADC709A0074E689 /* tundraLedgeRight.png in Resources */,

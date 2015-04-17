@@ -15,13 +15,19 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let level1Button = SKSpriteNode(imageNamed: "Level1")
     let table = UITableView()
-    var NumLevelsUnlocked = 15
+    var NumLevelsUnlocked = 1
     var backStuff = SKNode.unarchiveFromFile("HillsBackground")! as SKNode
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
    
     override func didMoveToView(view: SKView) {
         
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
+        
+        var i = 1
+        while NSUserDefaults.standardUserDefaults().integerForKey("levelWon\(i)") == 1 {
+            NumLevelsUnlocked++
+            i++
+        }
 
         self.title.anchorPoint = CGPointMake(0.5, 0.5)
         self.title.xScale = (300/self.title.size.width)

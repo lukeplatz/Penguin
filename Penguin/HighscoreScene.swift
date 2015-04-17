@@ -15,7 +15,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     let title = SKSpriteNode(imageNamed: "highScoresTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let score = SKLabelNode(fontNamed: "Arial")
-    var NumLevelsUnlocked = 6
+    var NumLevelsUnlocked = 0
     var backStuff = SKNode.unarchiveFromFile("HillsBackgroundNOPENGY")! as SKNode
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -39,17 +39,24 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     override func didMoveToView(view: SKView) {
         self.backgroundColor = UIColor(red: 0, green: 191, blue: 255, alpha: 1)
 
-        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height)
-        table.backgroundColor = UIColor.clearColor()
+//        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height)
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
         
+        var i = 1
+        while NSUserDefaults.standardUserDefaults().integerForKey("levelWon\(i)") == 1 {
+            NumLevelsUnlocked++
+            i++
+        }
         
         highScoreBannerView.frame = CGRectMake(size.width * 0.2, size.height * 0.1, size.width * 0.6, size.height * 0.1)
         highScoreBannerView.image = UIImage(named: "highScoresTitle")
         self.view?.addSubview(highScoreBannerView)
         
+        
+        table.frame  = CGRectMake(size.width * 0.2, size.height * 0.2, size.width * 0.6, size.height - (size.height * 0.2))
+        table.backgroundColor = UIColor.clearColor()
         table.tableFooterView = UIView(frame: CGRectZero)
         table.dataSource = self
         table.delegate   = self
@@ -83,7 +90,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.backButton.xScale = (50/self.backButton.size.width)
         self.backButton.yScale = (50/self.backButton.size.height)
         self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-
+        backButton.zPosition = 100
         self.addChild(backButton)
         self.addChild(backStuff)
     }

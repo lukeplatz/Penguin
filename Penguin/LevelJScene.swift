@@ -20,6 +20,7 @@ class LevelJScene: PlayScene{
     }
     
             override func nextLevel() {
+                motionManager.stopAccelerometerUpdates()
                 var levelStuff = LevelDScene.unarchiveFromFile("LevelD")! as LevelDScene
                 levelStuff.scaleMode = .ResizeFill
                 let skView = self.view! as SKView

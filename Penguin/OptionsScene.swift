@@ -10,10 +10,11 @@ import SpriteKit
 
 
 class OptionsScene: SKScene {
-    
+    var menuStuff = SKNode.unarchiveFromFile("Options")! as SKNode
     let title = SKSpriteNode(imageNamed: "optionsTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let resetButton = SKSpriteNode(imageNamed: "ResetButton")
+    let unlockButton = SKSpriteNode(imageNamed: "unlock")
     let confirmStuff = SKNode.unarchiveFromFile("ConfirmPopup")!
     var blurNode:SKSpriteNode = SKSpriteNode()
     var NumLevelsUnlocked = 6
@@ -37,15 +38,26 @@ class OptionsScene: SKScene {
             CGRectGetMaxY(self.frame) - 120)
         
         self.backButton.anchorPoint = CGPointMake(0.5, 0.5)
-        self.backButton.xScale = (100/self.backButton.size.width)
-        self.backButton.yScale = (100/self.backButton.size.height)
-        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
-        
+//        self.backButton.xScale = (100/self.backButton.size.width)
+//        self.backButton.yScale = (100/self.backButton.size.height)
+        self.backButton.position = CGPointMake(CGRectGetMinX(self.frame) + (self.backButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2))
+        self.backButton.zPosition = 100
         self.resetButton.name = "reset"
         self.resetButton.anchorPoint = CGPointMake(0.5, 0.5)
         self.resetButton.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        self.addChild(resetButton)
+        self.resetButton.zPosition = 100
         
+        self.unlockButton.name = "unlock"
+        self.unlockButton.anchorPoint = CGPointMake(0.5,0.5)
+        self.backButton.xScale = (100/self.backButton.size.width)
+        self.backButton.yScale = (100/self.backButton.size.height)
+        self.unlockButton.position = resetButton.position
+        self.unlockButton.position.y -= resetButton.size.height * 3
+        self.unlockButton.zPosition = 100
+        
+        self.addChild(unlockButton)
+        self.addChild(resetButton)
+        self.addChild(menuStuff)
         self.addChild(title)
         self.addChild(backButton)
         
@@ -71,12 +83,24 @@ class OptionsScene: SKScene {
                 let scale = SKAction.scaleTo(1, duration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0)
                 confirmStuff.runAction(scale)
                 popupUp = true
+            }else if(self.nodeAtPoint(location) == self.unlockButton){
+                var i = 1
+                while i <= 15 {
+                    NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "levelWon\(i)")
+                    i++
+                }
+                println("unlocked")
             }else if (self.nodeAtPoint(location) == self.confirmStuff.children[confirmYesIndex] as NSObject){
                 for index in 1 ... NumLevelsUnlocked{
                     NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscore\(index)")
                     NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "highscoreEndless")
                     NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "EndlessInstructions")
                     NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "StoryInstructions")
+                    var i = 1
+                    while NSUserDefaults.standardUserDefaults().integerForKey("levelWon\(i)") == 1 {
+                        NSUserDefaults.standardUserDefaults().setInteger(0, forKey: "levelWon\(i)")
+                        i++
+                    }
                     NSUserDefaults.standardUserDefaults().synchronize()
                 }
                 popupUp = false

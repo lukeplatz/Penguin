@@ -35,7 +35,8 @@ enum GameState {
 class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var levelStuff = SKNode.unarchiveFromFile("PlaySceneBackground")! as SKNode
-    
+    var tapToStartStuff = SKNode.unarchiveFromFile("TapToStartPopup")! as SKNode
+    var tappedToStart = false
     let Instructions1 = SKNode.unarchiveFromFile("StoryInstructions1")!
     let Instructions2 = SKNode.unarchiveFromFile("StoryInstructions2")!
     
@@ -169,7 +170,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                             self.physicsWorld.speed = 0
                     }
                 }else{
-                    self.startMsg.removeFromParent()
+                    
+                        self.tapToStartStuff.removeFromParent()
+                        self.tappedToStart = true
+                    
 //                    self.instructions1.removeFromParent()
 //                    self.instructions2.removeFromParent()
 //                    self.instructions3.removeFromParent()
@@ -225,7 +229,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                     
                     PauseStuff.removeFromParent()
-                    self.physicsWorld.speed = 1
+                    if(tappedToStart){
+                        self.physicsWorld.speed = 1
+                    }
+
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
@@ -291,7 +298,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         
         //level number
         //self.score.text = "Score: \(PlayerScore)"
-        self.lvlNum.position = CGPointMake(HUDbar.position.x, HUDbar.position.y)
+        self.lvlNum.position = CGPointMake(HUDbar.position.x, CGRectGetMaxY(self.frame) - (self.retryButton.size.height))
         //self.score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMaxY(self.frame) - (self.backButton.size.height / 2) - statusbarHeight)
         self.lvlNum.zPosition = 3
         
@@ -348,7 +355,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
 //        self.addChild(instructions3)
 
         
-        self.addChild(startMsg)
+        self.addChild(tapToStartStuff)
         self.addChild(HUDbar)
         self.addChild(retryButton)
         self.addChild(lvlNum)
@@ -426,6 +433,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         switch(contactMask) {
         case collision.playerCategory | collision.goalCategory:
             if(self.levelWin == false){
+                NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "levelWon\(self.level)")
+                NSUserDefaults.standardUserDefaults().synchronize()
                 self.levelWin = true
                 self.state = GameState.GameWon
                 self.physicsWorld.speed = 0
@@ -587,6 +596,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     func showI(){
         Instructions1.removeFromParent()
         loadBlurScreen()
+    
         Instructions1.xScale = 0
         Instructions1.yScale = 0
         Instructions1.zPosition = 100
