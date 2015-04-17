@@ -147,9 +147,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         currentSpeed = SLOWSPEED
         currentDelay = SLOWDELAY
         
-        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0.01)
-        moveObstacleForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveObstacleAction]))
-        
         //Sets up Penguin Image
         setupPenguin()
         
@@ -259,8 +256,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                         instructions1.removeFromParent()
                         instructions2.removeFromParent()
                         //Game Start!
-                        //                        sendNodeAction(background1)
-                        //                        sendNodeAction(background2)
                         self.getNewDelay()
                         self.presentInstructions = false
                         gameStarted = true
@@ -393,36 +388,15 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func stopAnimations(){
         self.removeAllActions() // stops from spawning new obstacles
-        //        background1.removeAllActions()
-        //        background2.removeAllActions()
-        //        println("paused")
-        //        if(obstacles.count > 0){
-        //            for index in 0 ... obstacles.count - 1{
-        //                obstacles[index].node.removeAllActions()
-        //            }
-        //        }
     }
     
     func startAnimations(){
-        //        sendNodeAction(background1)
-        //        sendNodeAction(background2)
-        //        if(obstacles.count > 0){
-        //            for index in 0 ... obstacles.count - 1{
-        //                sendNodeAction(obstacles[index].node)
-        //            }
-        //        }
         let wait = SKAction.waitForDuration(NSTimeInterval((currentDelay - timeChange) / 2))
         let startBackUp = SKAction.runBlock({self.getNewDelay()})
         let waitStart = SKAction.sequence([wait, startBackUp])
         self.runAction(waitStart)
     }
     
-    //    func sendNodeAction(node: SKNode){
-    //        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0)
-    //        moveObstacleForeverAction = SKAction.runBlock({self.sendNodeAction(node)})
-    //        var repeat = SKAction.sequence([moveObstacleAction, moveObstacleForeverAction])
-    //        node.runAction(repeat)
-    //    }
     
     func getNewDelay(){
         timeChange = 0.0
@@ -465,7 +439,6 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
             self.addChild(obstacleSet)
             
-            //sendNodeAction(obstacleSet)
             
             var spawnSomething = random(min: 0, max: 100)
             if (spawnSomething > 10 && spawnSomething < 20 && PlayerScore > 0){
