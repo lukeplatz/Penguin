@@ -22,13 +22,13 @@ class Obstacles{
 
 class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let GameOverStuff = SKNode.unarchiveFromFile("GameOver")!
-
+    
     let PauseStuff = SKNode.unarchiveFromFile("PausePopup")!
     
     let Instructions1 = SKNode.unarchiveFromFile("EndlessInstructions1")!
     let Instructions2 = SKNode.unarchiveFromFile("EndlessInstructions2")!
     let Instructions3 = SKNode.unarchiveFromFile("EndlessInstructions3")!
-
+    
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let speedIndicator = SKSpriteNode(imageNamed: "Slow")
     let retryButton = SKSpriteNode(imageNamed: "RetryButton")
@@ -113,6 +113,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         let snow = SKEmitterNode.unarchiveFromFile("SnowParticles")
         snow?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMinY(self.frame) + 20)
         snow?.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(CGRectGetWidth(self.frame), CGRectGetMinY(self.frame) + 40))
+        snow?.zPosition = 20
         snow?.physicsBody?.dynamic = false
         snow?.physicsBody?.categoryBitMask = collision.snowCategory
         snow?.physicsBody?.contactTestBitMask = collision.playerCategory
@@ -224,9 +225,9 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     skView.presentScene(endlessScene, transition: SKTransition.fadeWithDuration(1))
                     
                 }
-
+                
             }
-            
+                
             else if(self.Pause == false){
                 if self.nodeAtPoint(location) == self.retryButton{
                     motionManager.stopAccelerometerUpdates()
@@ -258,8 +259,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                         instructions1.removeFromParent()
                         instructions2.removeFromParent()
                         //Game Start!
-//                        sendNodeAction(background1)
-//                        sendNodeAction(background2)
+                        //                        sendNodeAction(background1)
+                        //                        sendNodeAction(background2)
                         self.getNewDelay()
                         self.presentInstructions = false
                         gameStarted = true
@@ -268,7 +269,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     self.forwardMovement = -4.0
                 }
             }
-           
+                
             else if(self.Pause == true){
                 if(self.nodeAtPoint(location) == self.PauseStuff.children[resumeButtonIndex] as NSObject){
                     if(gameStarted == true){
@@ -365,7 +366,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         self.pauseButton.yScale = (100/self.pauseButton.size.height)
         self.pauseButton.position = CGPointMake(CGRectGetMaxX(self.frame) - (self.pauseButton.size.width / 2), CGRectGetMaxY(self.frame) - (self.pauseButton.size.height / 2) - (statusbarHeight) - 12)
         self.pauseButton.zPosition = 2
-
+        
         self.speedIndicator.position = self.pauseButton.position
         self.speedIndicator.position.y -= self.pauseButton.size.height
         self.speedIndicator.zPosition = 2
@@ -392,36 +393,36 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func stopAnimations(){
         self.removeAllActions() // stops from spawning new obstacles
-//        background1.removeAllActions()
-//        background2.removeAllActions()
-//        println("paused")
-//        if(obstacles.count > 0){
-//            for index in 0 ... obstacles.count - 1{
-//                obstacles[index].node.removeAllActions()
-//            }
-//        }
+        //        background1.removeAllActions()
+        //        background2.removeAllActions()
+        //        println("paused")
+        //        if(obstacles.count > 0){
+        //            for index in 0 ... obstacles.count - 1{
+        //                obstacles[index].node.removeAllActions()
+        //            }
+        //        }
     }
     
     func startAnimations(){
-//        sendNodeAction(background1)
-//        sendNodeAction(background2)
-//        if(obstacles.count > 0){
-//            for index in 0 ... obstacles.count - 1{
-//                sendNodeAction(obstacles[index].node)
-//            }
-//        }
+        //        sendNodeAction(background1)
+        //        sendNodeAction(background2)
+        //        if(obstacles.count > 0){
+        //            for index in 0 ... obstacles.count - 1{
+        //                sendNodeAction(obstacles[index].node)
+        //            }
+        //        }
         let wait = SKAction.waitForDuration(NSTimeInterval((currentDelay - timeChange) / 2))
         let startBackUp = SKAction.runBlock({self.getNewDelay()})
         let waitStart = SKAction.sequence([wait, startBackUp])
         self.runAction(waitStart)
     }
     
-//    func sendNodeAction(node: SKNode){
-//        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0)
-//        moveObstacleForeverAction = SKAction.runBlock({self.sendNodeAction(node)})
-//        var repeat = SKAction.sequence([moveObstacleAction, moveObstacleForeverAction])
-//        node.runAction(repeat)
-//    }
+    //    func sendNodeAction(node: SKNode){
+    //        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0)
+    //        moveObstacleForeverAction = SKAction.runBlock({self.sendNodeAction(node)})
+    //        var repeat = SKAction.sequence([moveObstacleAction, moveObstacleForeverAction])
+    //        node.runAction(repeat)
+    //    }
     
     func getNewDelay(){
         timeChange = 0.0
@@ -436,7 +437,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         if(self.paused == false){
             var obstacleSet = SKNode()
             var PositionX = random(min: -250, max: 250)
-
+            
             var iceBlock = SKSpriteNode(imageNamed: "endlessIce")
             iceBlock.xScale = 500/iceBlock.size.width
             iceBlock.yScale = 50/iceBlock.size.height
@@ -659,7 +660,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             }else{
                 contact.bodyA.node?.physicsBody?.categoryBitMask = 0 // So it doesnt double count it
             }
-
+            
         case collision.playerCategory | collision.snowCategory:
             
             println("touched snow")
@@ -774,5 +775,5 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         pauseBG.runAction(SKAction.fadeAlphaTo(1, duration: duration))
         self.addChild(blurNode)
     }
-
+    
 }
