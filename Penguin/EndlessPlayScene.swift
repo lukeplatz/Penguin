@@ -258,8 +258,8 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                         instructions1.removeFromParent()
                         instructions2.removeFromParent()
                         //Game Start!
-                        sendNodeAction(background1)
-                        sendNodeAction(background2)
+//                        sendNodeAction(background1)
+//                        sendNodeAction(background2)
                         self.getNewDelay()
                         self.presentInstructions = false
                         gameStarted = true
@@ -392,36 +392,36 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     func stopAnimations(){
         self.removeAllActions() // stops from spawning new obstacles
-        background1.removeAllActions()
-        background2.removeAllActions()
-        println("paused")
-        if(obstacles.count > 0){
-            for index in 0 ... obstacles.count - 1{
-                obstacles[index].node.removeAllActions()
-            }
-        }
+//        background1.removeAllActions()
+//        background2.removeAllActions()
+//        println("paused")
+//        if(obstacles.count > 0){
+//            for index in 0 ... obstacles.count - 1{
+//                obstacles[index].node.removeAllActions()
+//            }
+//        }
     }
     
     func startAnimations(){
-        sendNodeAction(background1)
-        sendNodeAction(background2)
-        if(obstacles.count > 0){
-            for index in 0 ... obstacles.count - 1{
-                sendNodeAction(obstacles[index].node)
-            }
-        }
+//        sendNodeAction(background1)
+//        sendNodeAction(background2)
+//        if(obstacles.count > 0){
+//            for index in 0 ... obstacles.count - 1{
+//                sendNodeAction(obstacles[index].node)
+//            }
+//        }
         let wait = SKAction.waitForDuration(NSTimeInterval((currentDelay - timeChange) / 2))
         let startBackUp = SKAction.runBlock({self.getNewDelay()})
         let waitStart = SKAction.sequence([wait, startBackUp])
         self.runAction(waitStart)
     }
     
-    func sendNodeAction(node: SKNode){
-        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0)
-        moveObstacleForeverAction = SKAction.runBlock({self.sendNodeAction(node)})
-        var repeat = SKAction.sequence([moveObstacleAction, moveObstacleForeverAction])
-        node.runAction(repeat)
-    }
+//    func sendNodeAction(node: SKNode){
+//        moveObstacleAction = SKAction.moveBy(CGVectorMake(0, -CGFloat(currentSpeed)), duration: 0)
+//        moveObstacleForeverAction = SKAction.runBlock({self.sendNodeAction(node)})
+//        var repeat = SKAction.sequence([moveObstacleAction, moveObstacleForeverAction])
+//        node.runAction(repeat)
+//    }
     
     func getNewDelay(){
         timeChange = 0.0
@@ -464,18 +464,18 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             obstacleSet.position = CGPointMake(CGRectGetMinX(self.frame), CGRectGetMaxY(self.frame))
             self.addChild(obstacleSet)
             
-            sendNodeAction(obstacleSet)
+            //sendNodeAction(obstacleSet)
             
             var spawnSomething = random(min: 0, max: 100)
             if (spawnSomething > 10 && spawnSomething < 20 && PlayerScore > 0){
                 var fishLocX = random(min: 20, max: 620)
-                let spawnDelay = SKAction.waitForDuration(NSTimeInterval(2.0))
+                let spawnDelay = SKAction.waitForDuration(NSTimeInterval(currentDelay / 2))
                 let spawnFish = SKAction.runBlock({self.spawnFishy(fishLocX)})
                 let delay_spawnFish = SKAction.sequence([spawnDelay, spawnFish])
                 self.runAction(delay_spawnFish)
             }else if (spawnSomething > 60 && spawnSomething < 70 && PlayerScore > 0){
                 var iceMan = random(min: 20, max: 620)
-                let spawnDelay = SKAction.waitForDuration(NSTimeInterval(2.0))
+                let spawnDelay = SKAction.waitForDuration(NSTimeInterval(currentDelay / 2))
                 let spawnIce = SKAction.runBlock({self.spawnIceMan(iceMan)})
                 let delay_spawnIce = SKAction.sequence([spawnDelay, spawnIce])
                 self.runAction(delay_spawnIce)
@@ -484,7 +484,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
             var newObstacle = Obstacles(node: obstacleSet, counted: false)
             newObstacle.node.position.y = CGRectGetHeight(self.frame)
             self.obstacles.append(newObstacle)
-            if(self.obstacles.count >= 10){
+            if(self.obstacles.count >= 6){
                 self.obstacles.removeAtIndex(0)
             }
         }
@@ -531,8 +531,15 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     
     
     override func update(currentTime: NSTimeInterval) {
-        if(Pause == false){
+        if(Pause == false && gameStarted == true){
             timeChange += 1/60
+            background1.position.y -= CGFloat(currentSpeed)
+            background2.position.y -= CGFloat(currentSpeed)
+            if(obstacles.count > 0){
+                for index in 0 ... obstacles.count - 1{
+                    obstacles[index].node.position.y -= CGFloat(currentSpeed)
+                }
+            }
         }
         if(background1.position.y <= (0 - (CGRectGetHeight(self.frame) / 2))){
             background1.position = backgroundPosition
