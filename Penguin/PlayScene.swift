@@ -36,6 +36,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
     
     var levelStuff = SKNode.unarchiveFromFile("PlaySceneBackground")! as SKNode
     var tapToStartStuff = SKNode.unarchiveFromFile("TapToStartPopup")! as SKNode
+    var tappedToStart = false
     let Instructions1 = SKNode.unarchiveFromFile("StoryInstructions1")!
     let Instructions2 = SKNode.unarchiveFromFile("StoryInstructions2")!
     
@@ -171,7 +172,7 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                 }else{
                     
                         self.tapToStartStuff.removeFromParent()
-                    
+                        self.tappedToStart = true
                     
 //                    self.instructions1.removeFromParent()
 //                    self.instructions2.removeFromParent()
@@ -228,7 +229,10 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
                     
                     
                     PauseStuff.removeFromParent()
-                    self.physicsWorld.speed = 1
+                    if(tappedToStart){
+                        self.physicsWorld.speed = 1
+                    }
+
                 }
                 if (self.nodeAtPoint(location) == self.PauseStuff.children[quitButtonIndex] as NSObject){
                     motionManager.stopAccelerometerUpdates()
