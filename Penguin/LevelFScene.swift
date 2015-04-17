@@ -21,7 +21,7 @@ class LevelFScene: PlayScene{
     
     override func nextLevel() {
         motionManager.stopAccelerometerUpdates()
-        var levelStuff = LevelGScene.unarchiveFromFile("LevelG")! as LevelGScene
+        var levelStuff = LevelIScene.unarchiveFromFile("LevelI")! as LevelIScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
