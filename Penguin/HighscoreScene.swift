@@ -15,7 +15,7 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
     let title = SKSpriteNode(imageNamed: "highScoresTitle")
     let backButton = SKSpriteNode(imageNamed: "BackButton")
     let score = SKLabelNode(fontNamed: "Arial")
-    var NumLevelsUnlocked = 6
+    var NumLevelsUnlocked = 0
     var backStuff = SKNode.unarchiveFromFile("HillsBackgroundNOPENGY")! as SKNode
     let statusbarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
     
@@ -45,6 +45,11 @@ class HighscoreScene: SKScene, UITableViewDelegate, UITableViewDataSource {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refersh")
         
+        var i = 1
+        while NSUserDefaults.standardUserDefaults().integerForKey("levelWon\(i)") == 1 {
+            NumLevelsUnlocked++
+            i++
+        }
         
         highScoreBannerView.frame = CGRectMake(size.width * 0.2, size.height * 0.1, size.width * 0.6, size.height * 0.1)
         highScoreBannerView.image = UIImage(named: "highScoresTitle")

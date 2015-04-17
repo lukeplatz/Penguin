@@ -429,6 +429,8 @@ class PlayScene: SKScene, SKPhysicsContactDelegate {
         switch(contactMask) {
         case collision.playerCategory | collision.goalCategory:
             if(self.levelWin == false){
+                NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "levelWon\(self.level)")
+                NSUserDefaults.standardUserDefaults().synchronize()
                 self.levelWin = true
                 self.state = GameState.GameWon
                 self.physicsWorld.speed = 0

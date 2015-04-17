@@ -23,6 +23,7 @@
 		371649311AB8781A0019694B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3716492F1AB8781A0019694B /* LaunchScreen.xib */; };
 		3716493D1AB8781A0019694B /* PenguinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3716493C1AB8781A0019694B /* PenguinTests.swift */; };
 		371649471AB87ECB0019694B /* PlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371649461AB87ECB0019694B /* PlayScene.swift */; };
+		3717737B1AE0C16A00F68844 /* IceMan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3717737A1AE0C16A00F68844 /* IceMan.png */; };
 		3718CC411ADC6BD600191E6E /* icicle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC401ADC6BD600191E6E /* icicle.png */; };
 		3718CC431ADC8A5A00191E6E /* endlessIce.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC421ADC8A5A00191E6E /* endlessIce.png */; };
 		3718CC451ADD9A8500191E6E /* boxAlt.png in Resources */ = {isa = PBXBuildFile; fileRef = 3718CC441ADD9A8500191E6E /* boxAlt.png */; };
@@ -260,6 +261,7 @@
 		3716493B1AB8781A0019694B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3716493C1AB8781A0019694B /* PenguinTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PenguinTests.swift; sourceTree = "<group>"; };
 		371649461AB87ECB0019694B /* PlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayScene.swift; sourceTree = "<group>"; };
+		3717737A1AE0C16A00F68844 /* IceMan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IceMan.png; sourceTree = "<group>"; };
 		3718CC401ADC6BD600191E6E /* icicle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icicle.png; sourceTree = "<group>"; };
 		3718CC421ADC8A5A00191E6E /* endlessIce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = endlessIce.png; sourceTree = "<group>"; };
 		3718CC441ADD9A8500191E6E /* boxAlt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boxAlt.png; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 				375E3A381ADFDF7900EA0725 /* nextButton.png */,
 				65C101681AE00B8D0048CFBA /* highscoreButton.png */,
 				A4A73A9B1ADFD3A40062E1DB /* selectLevelTitle.png */,
+				3717737A1AE0C16A00F68844 /* IceMan.png */,
 				65836F0E1AE0337000E80B29 /* selectLevel.png */,
 				6573745C1AE0B4A200A4B071 /* retry.png */,
 				65C101741AE011E40048CFBA /* lilPenguinGuy.png */,
@@ -969,6 +972,7 @@
 				65609E751ADC709A0074E689 /* iceWaterDeep.png in Resources */,
 				65609E901ADC709A0074E689 /* snowMid.png in Resources */,
 				3718CC631ADDF35900191E6E /* P10.png in Resources */,
+				3717737B1AE0C16A00F68844 /* IceMan.png in Resources */,
 				65609E9A1ADC709A0074E689 /* tree.png in Resources */,
 				65609E771ADC709A0074E689 /* iceWaterDeepStars.png in Resources */,
 				65609E781ADC709A0074E689 /* iceWaterDeepStarsAlt.png in Resources */,
