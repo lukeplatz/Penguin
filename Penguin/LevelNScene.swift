@@ -8,23 +8,23 @@
 
 import SpriteKit
 
-class LevelMScene: PlayScene{
+class LevelNScene: PlayScene{
     
     override func retryLevel() {
-        var levelStuff = LevelMScene.unarchiveFromFile("LevelM")! as LevelMScene
+        var levelStuff = LevelNScene.unarchiveFromFile("LevelN")! as LevelNScene
         levelStuff.scaleMode = .ResizeFill
         let skView = self.view! as SKView
         skView.ignoresSiblingOrder = true
         skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
     }
     
-            override func nextLevel() {
-                var levelStuff = LevelNScene.unarchiveFromFile("LevelN")! as LevelNScene
-                levelStuff.scaleMode = .ResizeFill
-                let skView = self.view! as SKView
-                skView.ignoresSiblingOrder = true
-                skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
-            }
+    override func nextLevel() {
+            var levelStuff = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
+            levelStuff.scaleMode = .ResizeFill
+            let skView = self.view! as SKView
+            skView.ignoresSiblingOrder = true
+            skView.presentScene(levelStuff, transition: SKTransition.fadeWithDuration(1))
+    }
     
     var leverFlipped = Bool()
     var goalSide = Bool()
