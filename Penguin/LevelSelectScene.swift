@@ -71,7 +71,7 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 15
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -99,31 +99,31 @@ class LevelSelectScene: SKScene, UITableViewDelegate, UITableViewDataSource  {
         case (1):
             levelXXX = LevelCScene.unarchiveFromFile("LevelC")! as LevelCScene
         case (2):
-            levelXXX = LevelDScene.unarchiveFromFile("LevelK")! as LevelDScene
+            levelXXX = LevelKScene.unarchiveFromFile("LevelK")! as LevelKScene
         case (3):
-            levelXXX = LevelEScene.unarchiveFromFile("LevelJ")! as LevelEScene
+            levelXXX = LevelJScene.unarchiveFromFile("LevelJ")! as LevelJScene
         case (4):
-            levelXXX = LevelBScene.unarchiveFromFile("LevelD")! as LevelBScene
+            levelXXX = LevelDScene.unarchiveFromFile("LevelD")! as LevelDScene
         case (5):
-            levelXXX = LevelAScene.unarchiveFromFile("LevelE")! as LevelAScene
+            levelXXX = LevelEScene.unarchiveFromFile("LevelE")! as LevelEScene
         case (6):
             levelXXX = LevelFScene.unarchiveFromFile("LevelF")! as LevelFScene
         case (7):
-            levelXXX = LevelGScene.unarchiveFromFile("LevelI")! as LevelGScene
+            levelXXX = LevelIScene.unarchiveFromFile("LevelI")! as LevelIScene
         case (8):
-            levelXXX = LevelHScene.unarchiveFromFile("LevelL")! as LevelHScene
+            levelXXX = LevelLScene.unarchiveFromFile("LevelL")! as LevelLScene
         case (9):
-            levelXXX = LevelIScene.unarchiveFromFile("LevelG")! as LevelIScene
+            levelXXX = LevelGScene.unarchiveFromFile("LevelG")! as LevelGScene
         case (10):
-            levelXXX = LevelJScene.unarchiveFromFile("LevelN")! as LevelJScene
+            levelXXX = LevelNScene.unarchiveFromFile("LevelN")! as LevelNScene
         case (11):
-            levelXXX = LevelKScene.unarchiveFromFile("LevelB")! as LevelKScene
+            levelXXX = LevelBScene.unarchiveFromFile("LevelB")! as LevelBScene
         case (12):
-            levelXXX = LevelLScene.unarchiveFromFile("LevelA")! as LevelLScene
+            levelXXX = LevelAScene.unarchiveFromFile("LevelA")! as LevelAScene
         case (13):
-            levelXXX = LevelMScene.unarchiveFromFile("LevelH")! as LevelMScene
+            levelXXX = LevelHScene.unarchiveFromFile("LevelH")! as LevelHScene
         case (14):
-            levelXXX = LevelNScene.unarchiveFromFile("LevelM")! as LevelNScene
+            levelXXX = LevelMScene.unarchiveFromFile("LevelM")! as LevelMScene
         case (15):
             levelXXX = LevelOScene.unarchiveFromFile("LevelO")! as LevelOScene
         default:
