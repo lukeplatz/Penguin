@@ -28,14 +28,13 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
     let Instructions1 = SKNode.unarchiveFromFile("EndlessInstructions1")!
     let Instructions2 = SKNode.unarchiveFromFile("EndlessInstructions2")!
     let Instructions3 = SKNode.unarchiveFromFile("EndlessInstructions3")!
+    var tapToStartStuff = SKNode.unarchiveFromFile("TapToStartPopup")! as SKNode
     
     let penguin = SKSpriteNode(imageNamed: "Penguin")
     let speedIndicator = SKSpriteNode(imageNamed: "Slow")
     let retryButton = SKSpriteNode(imageNamed: "RetryButton")
     let pausedImage = SKSpriteNode(imageNamed: "Paused")
     let score = SKLabelNode(fontNamed: "Arial")
-    let instructions1 = SKLabelNode(fontNamed: "Arial")
-    let instructions2 = SKLabelNode(fontNamed: "Arial")
     let HUDbar = SKSpriteNode(imageNamed: "HudBar")
     let pauseButton = SKSpriteNode(imageNamed: "PauseButton")
     var bottom:SKSpriteNode = SKSpriteNode()
@@ -119,20 +118,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
         snow?.physicsBody?.contactTestBitMask = collision.playerCategory
         self.addChild(snow!)
         
-        self.instructions1.text = "***Hold Still***"
-        self.instructions1.position.x = CGRectGetMidX(self.frame)
-        self.instructions1.position.y = CGRectGetMidY(self.frame) + 20
-        self.instructions1.fontColor = UIColor.orangeColor()
-        self.instructions1.fontSize = 30
-        
-        self.instructions2.text = "Tap to Begin!"
-        self.instructions2.position.x = CGRectGetMidX(self.frame)
-        self.instructions2.position.y = CGRectGetMidY(self.frame) - 20
-        self.instructions2.fontColor = UIColor.orangeColor()
-        self.instructions2.fontSize = 30
-        
-        self.addChild(instructions1)
-        self.addChild(instructions2)
+        self.addChild(tapToStartStuff)
         
         self.background1 = SKSpriteNode(imageNamed: "EndlessBackground")
         self.background1.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
@@ -253,8 +239,7 @@ class EndlessPlayScene : SKScene, SKPhysicsContactDelegate {
                     }
                 }else{
                     if(self.presentInstructions == true){
-                        instructions1.removeFromParent()
-                        instructions2.removeFromParent()
+                        tapToStartStuff.removeFromParent()
                         //Game Start!
                         self.getNewDelay()
                         self.presentInstructions = false
