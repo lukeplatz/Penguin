@@ -65,6 +65,8 @@ class LevelNScene: PlayScene{
         let moveright = SKAction.moveBy(CGVectorMake((self.size.width / 3), 0), duration: 1.0)
         let leftRight = SKAction.sequence([moveleft, moveright, moveright, moveleft])
         let repeatLRMove = SKAction.repeatActionForever(leftRight)
+        let rightLeft = SKAction.sequence([moveright, moveleft, moveleft, moveright])
+        let repeatRLMove = SKAction.repeatActionForever(rightLeft)
         
         let puffer1 = childNodeWithName("pf1") as SKSpriteNode
         puffer1.physicsBody?.categoryBitMask = collision.WaterCategory
@@ -74,7 +76,7 @@ class LevelNScene: PlayScene{
         let puffer2 = childNodeWithName("pf2") as SKSpriteNode
         puffer2.physicsBody?.categoryBitMask = collision.WaterCategory
         puffer2.physicsBody?.collisionBitMask = 1 // allow contact
-        puffer2.runAction(repeatLRMove)
+        puffer2.runAction(repeatRLMove)
         
         let lever = childNodeWithName("lever") as SKSpriteNode
         lever.physicsBody?.categoryBitMask = collision.powerUpCategory
@@ -118,12 +120,12 @@ class LevelNScene: PlayScene{
             bridge2.physicsBody?.categoryBitMask = collision.bridgeCategory
             
             let bridge3 = SKSpriteNode(imageNamed: "boxAlt")
-            bridge3.position = water1.position
+            bridge3.position = water3.position
             bridge3.zPosition = 0.9
             bridge3.physicsBody?.categoryBitMask = collision.bridgeCategory
             
             let bridge4 = SKSpriteNode(imageNamed: "boxAlt")
-            bridge4.position = water2.position
+            bridge4.position = water4.position
             bridge4.zPosition = 0.9
             bridge4.physicsBody?.categoryBitMask = collision.bridgeCategory
             
